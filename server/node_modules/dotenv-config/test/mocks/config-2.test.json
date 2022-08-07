@@ -1,0 +1,17 @@
+{
+  "test": {
+    "require": true,
+    "env": "HOST"
+  },
+  "port": "PORT",
+  "random": "UNDEFINED_VAR",
+  "default": {
+    "require": true,
+    "env": "DEFAULT",
+    "default": "default"
+  },
+  "missing-required": {
+    "require": true,
+    "env": "MISSING_ENV"
+  }
+}

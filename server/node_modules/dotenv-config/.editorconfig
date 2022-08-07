@@ -1,0 +1,13 @@
+# Configurations to normalize the IDE behavior.
+# http://editorconfig.org/
+
+root = true
+
+[*]
+indent_style = space
+tab_width = 2
+indent_size = tab
+charset = utf-8
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
