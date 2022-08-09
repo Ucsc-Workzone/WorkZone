@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -12,11 +13,17 @@ import NotificationSection from './NotificationSection';
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
+import LoginButton from './Login';
+import { useState } from 'react';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
+    const [login, setLogin] = useState('');
     const theme = useTheme();
+    useEffect(() => {
+        const setLogin = false;
+    });
 
     return (
         <>
@@ -56,13 +63,16 @@ const Header = ({ handleLeftDrawerToggle }) => {
             </Box>
 
             {/* header search */}
-            <SearchSection />
+            {/* {login && <SearchSection />
+
+         }    */}
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ flexGrow: 1 }} />
 
             {/* notification & profile */}
-            <NotificationSection />
-            <ProfileSection />
+            <LoginButton />
+            {login && <NotificationSection />}
+            {login && <ProfileSection />}
         </>
     );
 };

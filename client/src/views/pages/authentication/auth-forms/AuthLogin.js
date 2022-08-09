@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -56,13 +57,40 @@ const FirebaseLogin = ({ ...others }) => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+    const handleLogin = async () => {
+        const email = document.getElementById('outlined-adornment-email-login').value;
+        const password = document.getElementById('outlined-adornment-password-login').value;
+        console.log(email);
+        axios
+            .post('http://localhost:5000/api/auth/login', {
+                username: email,
+                password: password
+            })
+            .then((response) => {
+                const data = response.data;
+                console.log(data);
+                if (!data['accessToken']) {
+                    // navigate('/register')
+                    alert(data['error']);
+                } else {
+                    setLogstatus(true);
+                    //  window.open('http://localhost:3000/#/register');
+
+                    localStorage.setItem('token', data['accessToken']);
+                    localStorage.setItem('userid', data['userid']);
+                    localStorage.setItem('userRole', data['userrole']);
+
+                    navigate('/dashboard');
+                }
+            });
+    };
 
     return (
         <>
             <Grid container direction="column" justifyContent="center" spacing={2}>
                 <Grid item xs={12}>
                     <AnimateButton>
-                        <Button
+                        {/* <Button
                             disableElevation
                             fullWidth
                             onClick={googleHandler}
@@ -78,7 +106,7 @@ const FirebaseLogin = ({ ...others }) => {
                                 <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
                             </Box>
                             Sign in with Google
-                        </Button>
+                        </Button> */}
                     </AnimateButton>
                 </Grid>
                 <Grid item xs={12}>
@@ -90,7 +118,7 @@ const FirebaseLogin = ({ ...others }) => {
                     >
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
 
-                        <Button
+                        {/* <Button
                             variant="outlined"
                             sx={{
                                 cursor: 'unset',
@@ -106,15 +134,15 @@ const FirebaseLogin = ({ ...others }) => {
                             disabled
                         >
                             OR
-                        </Button>
+                        </Button> */}
 
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                     </Box>
                 </Grid>
                 <Grid item xs={12} container alignItems="center" justifyContent="center">
-                    <Box sx={{ mb: 2 }}>
+                    {/* <Box sx={{ mb: 2 }}>
                         <Typography variant="subtitle1">Sign in with Email address</Typography>
-                    </Box>
+                    </Box> */}
                 </Grid>
             </Grid>
 
@@ -147,7 +175,7 @@ const FirebaseLogin = ({ ...others }) => {
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
                         <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>
-                            <InputLabel htmlFor="outlined-adornment-email-login">Email Address / Username</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-email-login">Email Address </InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-email-login"
                                 type="email"
@@ -232,6 +260,7 @@ const FirebaseLogin = ({ ...others }) => {
                                     type="submit"
                                     variant="contained"
                                     color="secondary"
+                                    onClick={handleLogin}
                                 >
                                     Sign in
                                 </Button>
