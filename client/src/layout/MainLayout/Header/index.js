@@ -22,7 +22,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
     const [login, setLogin] = useState('');
     const theme = useTheme();
     useEffect(() => {
-        const setLogin = false;
+        const loginStat = localStorage.getItem('loginStatus');
+        setLogin(loginStat);
     });
 
     return (
@@ -41,24 +42,26 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     <LogoSection />
                 </Box>
                 <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
-                    <Avatar
-                        variant="rounded"
-                        sx={{
-                            ...theme.typography.commonAvatar,
-                            ...theme.typography.mediumAvatar,
-                            transition: 'all .2s ease-in-out',
-                            background: theme.palette.secondary.light,
-                            color: theme.palette.secondary.dark,
-                            '&:hover': {
-                                background: theme.palette.secondary.dark,
-                                color: theme.palette.secondary.light
-                            }
-                        }}
-                        onClick={handleLeftDrawerToggle}
-                        color="inherit"
-                    >
-                        <IconMenu2 stroke={1.5} size="1.3rem" />
-                    </Avatar>
+                    {
+                        <Avatar
+                            variant="rounded"
+                            sx={{
+                                ...theme.typography.commonAvatar,
+                                ...theme.typography.mediumAvatar,
+                                transition: 'all .2s ease-in-out',
+                                background: theme.palette.secondary.light,
+                                color: theme.palette.secondary.dark,
+                                '&:hover': {
+                                    background: theme.palette.secondary.dark,
+                                    color: theme.palette.secondary.light
+                                }
+                            }}
+                            onClick={handleLeftDrawerToggle}
+                            color="inherit"
+                        >
+                            <IconMenu2 stroke={1.5} size="1.3rem" />
+                        </Avatar>
+                    }
                 </ButtonBase>
             </Box>
 

@@ -1,21 +1,9 @@
 const bycrypt=require('bcrypt')
 const router = require("express").Router();
-const mysql=require("mysql2");
 const{createToken,validToken}=require('./JWT')
-let db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'crud_contact'
-});
-db.connect(function(err) {
-    if (err) {
-      return console.error('error: ' + err.message);
-    }
-  
-    console.log('Connected to the MySQL server.');
-  });
-
+const {db}=require('../models/Index')
+const jwt_token=require('jwt-decode')
+const {sendRegMail}=require('./Mail')
 
 router.post('/login',async(req,res)=>{
     
@@ -24,21 +12,24 @@ router.post('/login',async(req,res)=>{
     const sqlGet=`SELECT * FROM user where username='${username}'`;
     db.query(sqlGet,(error,result)=>{
        
+      
        if(result.length==0){
-        res.status(400).json({error:"User Doent Exist"})
+        res.json({error:"User Doent Exist"})
        }
        else{
+       
         const dbpassword=result[0].password;
        bycrypt.compare(password,dbpassword).then((match)=>{
             if(!match){
-                res.status(400).json({error:"Invalid Credentials"})
+                res.json({error:"Invalid Credentials"})
             }
             else{
                 const accessToken=createToken(result[0]);
              res.cookie("access-Token",accessToken,{
                 maxAge:60*60*24*1000*30
              });
-             res.json("Loggin")
+             const { password, ...others } = result[0];
+             res.json({...others,accessToken})
             }
             
         })
@@ -63,7 +54,63 @@ router.post('/register',(req,res)=>{
   })
 })
 
-router.post('/profile',validToken,(req,res)=>{
-    res.json("Profile")
+router.post('/reguser',(req,res)=>{
+    const {userid,username,userrole}=req.body;
+    const sqlGet=`INSERT INTO user(userid,username,userrole) VALUES(${userid},'${username}','${userrole}')`;
+
+    db.query(sqlGet,(error,result)=>{
+        if(error){
+            res.send(error)
+        }
+        else{
+            const status=sendRegMail(username);
+         
+            res.json("Email semt")
+          
+        }
+    })
 })
+router.post('/profile',(req,res)=>{
+   
+    const token=req.cookies["access-Token"];
+    var decoded = jwt_token(token)
+
+    res.json(decoded);
+
+
+})
+
+router.post('/sendmail',async(req,res)=>{
+    
+    const {text}=req.body
+    // res.json(text)
+
+    // var token = randtoken.generate(20);
+    // const transport=nodemailer.createTransport({
+    //     service:'gmail',
+    //     auth:{
+    //         user:'malithiperera1998@gmail.com',
+    //         pass:'pztoeiikalwcgnhv'
+    //     }
+    // });
+ 
+
+    // var mailOptions={
+    //     from:'malithiperera1998@gmail.com',
+    //     to:"malithiperera1998@gmail.com",
+    //     subject:"Test Mail",
+    //     html: '<p>You requested for email verification, kindly use this <a href="http://localhost:3000/?#/leave?token=' + token + '">link</a> to verify your email address</p>'
+    // };
+    //  transport.sendMail(mailOptions,function(error,info){
+    //     if(error){
+    //         console.log(error)
+    //     }
+    //     else{
+    //         console.log("email send")
+    //     }
+    // })
+
+})
+
+
 module.exports = router;

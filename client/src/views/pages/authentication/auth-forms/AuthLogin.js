@@ -50,6 +50,7 @@ const FirebaseLogin = ({ ...others }) => {
     };
 
     const [showPassword, setShowPassword] = useState(false);
+    const [login, setLogin] = useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -73,14 +74,13 @@ const FirebaseLogin = ({ ...others }) => {
                     // navigate('/register')
                     alert(data['error']);
                 } else {
-                    setLogstatus(true);
+                    setLogin(true);
                     //  window.open('http://localhost:3000/#/register');
 
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userrole']);
-
-                    navigate('/dashboard');
+                    localStorage.setItem('loginStatus', true);
                 }
             });
     };
