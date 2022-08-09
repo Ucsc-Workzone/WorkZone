@@ -87,10 +87,10 @@ const MainLayout = () => {
             <AppBar
                 enableColorOnDark
                 position="fixed"
-                color="inherit"
+                color=""
                 elevation={0}
                 sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: theme.palette.warning.warningDark,
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
                 }}
             >

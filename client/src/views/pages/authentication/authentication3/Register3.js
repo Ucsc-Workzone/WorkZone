@@ -66,16 +66,7 @@ const Register = () => {
                                         <Divider />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Grid item container direction="column" alignItems="center" xs={12}>
-                                            <Typography
-                                                component={Link}
-                                                to="/pages/login/login3"
-                                                variant="subtitle1"
-                                                sx={{ textDecoration: 'none' }}
-                                            >
-                                                Already have an account?
-                                            </Typography>
-                                        </Grid>
+                                        <Grid item container direction="column" alignItems="center" xs={12}></Grid>
                                     </Grid>
                                 </Grid>
                             </AuthCardWrapper>

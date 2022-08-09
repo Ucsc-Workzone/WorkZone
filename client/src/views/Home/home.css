@@ -1,0 +1,25 @@
+.main-container{
+    width: 100%;
+    /* background-color: rgb(194, 187, 187); */
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.container-left{
+/* background-color: #fff; */
+width: 65%;
+height: 100vh;
+display: flex;
+}
+.container-right{
+    background-color: #fff;
+    width: 30%;
+    height: 100vh;
+}
+.home-conatiner{
+    width: 100%;
+    height: 500px;
+    background-color: #fff;
+}
