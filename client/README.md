@@ -1,175 +1,118 @@
-# [React Berry Dashboard](https://appseed.us/product/berry-dashboard/api-server-nodejs/react/) 
+# Berry Free React Material UI Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20Berry%20React%20-%20The%20most%20beautiful%20Material%20designed%20Admin%20Dashboard%20Template%20&url=https://berrydashboard.io&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
 
-**Berry** is a creative **[React Dashboard](https://appseed.us/product/react-node-js-berry-dashboard)** built using the Material-UI. It is meant to be the best User Experience with highly customizable feature-riched pages. It is a complete game-changer **React Dashboard** with an easy and intuitive responsive design as on retina screens or laptops. The product comes with a simple JWT authentication flow: `login`/`register`/`logout` powered by an open-source **Node JS API** Backend via `Passport` Library.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/berry-free-react-admin-template/blob/main/LICENSE)
+[![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/berry-free-react-admin-template)](https://github.com/codedthemes/berry-free-react-admin-template/)
 
-> Features
 
-- Modern aesthetics UI design - Designed by *CodedThemes*
-- React, Redux, Redux-persist
-- Authentication: JWT Login/Register/Logout
-- **Full-stack Ready** using a **Node JS API Server** (open-source project) - Server Features
-  - `Typescript` / SQLite Persistence / TypeORM / Joy (validation)
-  - Passport library - `passport-jwt` strategy.
+Berry is a free Material UI admin dashboard template built with React. It is meant to provide the best possible User Experience with highly customizable feature-rich pages. It is a complete Dashboard Template that has easy and intuitive responsive design whether it is viewed on retina screens or laptops.
 
-> Links
+:star: :star: :star: Do not forget to star (Top right of this page) it if you like the theme  :star: :star: :star:
 
-* [React Node JS Berry](https://appseed.us/product/berry-dashboard/api-server-nodejs/react/) - product page
-* [React Node JS Berry](https://react-node-js-berry-dashboard.appseed-srv1.com/) - LIVE Demo
-* Free Support via Github (issues tracker) and [Discord](https://discord.gg/fZC6hup).
-* Related Products:
-  - **PRO Version**: [Full-Stack React Berry PRO](https://appseed.us/product/berry-dashboard-pro/full-stack/react/) 
-  - Django API Backend - [Django React Berry](https://appseed.us/product/berry-dashboard/api-server-django/react/) - `open-source` project
-  - Flask API Backend - [Flask React Berry](https://appseed.us/product/berry-dashboard/api-server-flask/react/) - `open-source` project
+![IMG_8566.jpg](https://berrydashboard.io/imp-images/berry-github-free-repo-1.jpg)
 
-<br />
 
-## Quick Start in [Docker](https://www.docker.com/)
+[Pro version](https://berrydashboard.io) of Berry react template contains features like TypeScript, Next.js Seed versions, Apps, Authentication Methods (i.e. JWT, Auth0, Firebase), Advance Components, Form Plugins, Layouts, Widgets, and many more.
 
-> Get the code
+| [Berry Free](https://berrydashboard.io/free/)    | [Berry](https://material-ui.com/store/items/berry-react-material-admin/) |
+| ---------------------------------------------------------------------------------------- | :------------------------------------------------------------------------|
+| **9** Demo pages                                                                         | **45+** demo pages                                                       |
+| -                                                                                        | ✓ Multi-language                                                         |
+| -                                                                                        | ✓ Dark/Light Mode 🌓                                                    |
+| -                                                                                        | ✓ TypeScript version                                                     |
+| -                                                                                        | ✓ Design files (Figma)                                                   |
+| -                                                                                        | ✓ 6+ color Options                                                       |
+| -                                                                                        | ✓ RTL                                                                    |
+| -                                                                                        | ✓ JWT, Firebase, Auth0 authentications                                   |
+| -                                                                                        | ✓ [More components](https://berrydashboard.io/dashboard/default)         |  
 
-```bash
-$ git clone https://github.com/app-generator/react-berry-dashboard.git
-$ cd react-berry-dashboard
+
+## Why Berry?
+
+Berry offers everything you need to create dashboards. We have included the following high-end features in our initial release:
+
+ * Modern aesthetics UI design
+ * Material-UI components
+ * Fully Responsive, all modern browser supported
+ * Easy to use code structure
+ * Flexible & High-Performance code
+ * Easy Documentation Guide
+
+## Free Berry React version
+
+ - [Preview](https://berrydashboard.io/free/)
+ - [Download from Github](https://github.com/codedthemes/berry-free-react-admin-template)
+ 
+## Berry Pro version
+
+ - [Preview](https://berrydashboard.io)
+ - [Purchase from MUI Store](https://material-ui.com/store/items/berry-react-material-admin/)
+
+## Table of contents
+
+ * [Getting Started](#getting-started)
+ * [Documentation](#documentation)
+ * [Technology Stack](#technology-stack)
+ * [Author](#author)
+ * [Issues?](#issues)
+ * [License](#license)
+ * [More Products](#more-free-react-material-admin-templates)
+ * [Follow us](#follow-us)
+ 
+## Getting Started
+
+Clone from Github 
+```
+git clone https://github.com/codedthemes/berry-free-react-admin-template.git
 ```
 
-> Start the app in Docker
+## Documentation
 
-```bash
-$ docker-compose pull  # download dependencies 
-$ docker-compose build # local set up
-$ docker-compose up    # start the app 
-```
+[Berry documentation](https://codedthemes.gitbook.io/berry/) helps you with installation, deployment, and troubleshooting.
 
-The React UI starts on port `3000` and expects an API server on port `5000` (saved in configuration).
+## Technology Stack
 
-<br />
+ - [Material UI V5](https://material-ui.com/)
+ - Built with React Hooks API
+ - Redux & React Context API for State Management
+ - React Router for Navigation Routing
+ - Support of react-script
+ - Code Splitting
+ - CSS-in-JS where CSS is composed using JavaScript instead of defined in external files
 
-![React Nodejs Berry - Open-source full-stack seed project crafted by CodedThemes and AppSeed.](https://user-images.githubusercontent.com/51070104/176936514-f1bccb21-bafe-4b43-9e4c-b6fe0ec9511d.png)
+## Author
 
-<br >
+Berry is developed by Team [CodedThemes](https://codedthemes.com).
 
-> **Note**: This product can be used with other API Servers for a complete full-stack experience. **ALL API servers use a unified interface**
+## Issues
 
-- [Django API Server](https://github.com/app-generator/api-server-django) - open-source product
-- [Flask API Server](https://github.com/app-generator/api-server-flask) - open-source product
-- [Node JS API Server](https://github.com/app-generator/api-server-nodejs) - open-source product / Typescript / SQLite / TypeORM / Joy for validation
-- [Node JS API Server PRO](https://github.com/app-generator/api-server-nodejs-pro) - **commercial product**
-    - Typescript / SQLite / TypeORM / Joy Validation / Docker
-    - Typescript / MongoDB / Mongoose / Joy Validation / Docker (separate branch, same project)
+To report a bug, please submit an [issue](https://github.com/codedthemes/berry-free-react-admin-template/issues) on Github. We will respond as soon as possible to resolve the issue.
 
-<br />
+## License
 
-## How to use it
+ - Licensed cover under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
 
-To use the product Node JS (>= 12.x) is required and GIT to clone/download the project from the public repository.
+## Berry - Nodejs version by Appseed
 
-**Step 1** - Clone the project
+- [Free Nodejs](https://appseed.us/product/react-node-js-berry-dashboard)
+- [Premium Berry Nodejs](https://appseed.us/full-stack/react-berry-dashboard)
 
-```bash
-$ git clone https://github.com/app-generator/react-berry-dashboard.git
-$ cd react-berry-dashboard
-```
+## More Free React Material Admin Templates
 
-<br >
+ - [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
+ - [Free Mantis](https://mantisdashboard.io/free/)
 
-**Step 2** - Install dependencies via NPM or yarn
+[![IMG_8566.jpg](https://camo.githubusercontent.com/a2364ad8c498b2a7378dae5e1a5eb5d8e1fcb2d6ceeb8b54acdc2e8bc2508775/68747470733a2f2f6d616e74697364617368626f6172642e696f2f6164762d62616e6e65722d696d616765732f6f672d736f6369616c2e706e67)](https://mantisdashboard.io/free/)
 
-```bash
-$ npm i
-// OR
-$ yarn
-```
+## More Premium React Material Admin Templates
 
-<br />
-
-**Step 3** - Start in development mode
-
-```bash
-$ npm run start 
-// OR
-$ yarn start
-```
-
-<br />
-
-## Configure the backend server
-
-The product comes with a usable JWT Authentication flow that provides only the basic requests: login/logout/register. 
-
-**API Server URL** - `src/config/constant.js` 
-
-```javascript
-const config = {
-    ...
-    API_SERVER: 'http://localhost:5000/api/'  // <-- The magic line
-};
-```
-
-<br />
-
-**API Server Descriptor** - POSTMAN Collection
-
-The API Server signature is provided by the [Unified API Definition](https://docs.appseed.us/boilerplate-code/api-unified-definition)
-
-- [API POSTMAN Collection](https://github.com/app-generator/api-server-unified/blob/main/api.postman_collection.json) - can be used to mock (simulate) the backend server or code a new one in your preferred framework. 
-
-<br />
-
-## Node JS API Server
-
-The product is also open-source and is already configured to work with Berry Dashboard Template - product features:
-
-- Typescript / `NodeJS` / `Express` Server
-- JWT authentication (`passport-jwt` strategy)
-- Persistence: `SQLite` / `TypeORM`
-
-> Links
-
-- [Node JS API](https://github.com/app-generator/api-server-nodejs) - source code
-- [Node JS API](https://appseed.us/boilerplate-code/nodejs-starter) - product page
-
-<br />
-
-![Node JS API - Open-source API server built on top of Express Nodejs Framework.](https://user-images.githubusercontent.com/51070104/124934824-c210a700-e00d-11eb-9d01-e05bd8bfb608.png)
-
-<br />
-
-### Compile the API Server
-
-**Step 1** - Clone the project
-
-```bash
-$ git clone https://github.com/app-generator/api-server-nodejs.git
-$ cd api-server-nodejs
-```
-
-**Step #2** - Install dependencies via NPM or Yarn
-
-```bash
-$ npm i
-// OR
-$ yarn
-```
-
-**Step 3** - Run the SQLite migration via TypeORM
-
-```
-$ npm run typeorm migration:run
-// OR 
-$ yarn typeorm migration:run
-```
-
-**Step 4** - Start the API server (development mode)
-
-```bash
-$ npm run dev
-// OR
-$ yarn dev
-```
-
-The API server will start using the `PORT` specified in `.env` file (default 5000).
-
-<br /> 
-
----
-[React Berry Dashboard](https://appseed.us/product/berry-dashboard/api-server-nodejs/react/) - Provided by [CodedThemes](https://codedthemes.com/) and **AppSeed [App Generator](https://appseed.us/generator)**.
+ - [Mantis](https://mui.com/store/items/mantis-react-admin-dashboard-template/)
+ - [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/)
+ 
+## Follow us
+ - [Website](https://berrydashboard.io)
+ - [Blog](https://blog.berrydashboard.io)
+ - [CodedThemes](https://codedthemes.com)
+ - [Dribbble](https://dribbble.com/codedthemes)
+ - [Facebook](https://www.facebook.com/codedthemes)
+ - [Twitter](https://twitter.com/codedthemes)

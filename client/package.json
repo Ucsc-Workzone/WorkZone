@@ -1,54 +1,56 @@
 {
-    "name": "react-berry-admin-template",
-    "version": "0.0.4",
+    "name": "berry-material-react-free",
+    "version": "3.2.0",
     "private": true,
-    "homepage": "https://berrydashboard.io",
+    "homepage": "https://berrydashboard.io/free",
     "dependencies": {
-        "@emotion/react": "^11.4.0",
-        "@emotion/styled": "^11.3.0",
-        "@material-ui/core": "^5.0.0-beta.0",
-        "@material-ui/data-grid": "^4.0.0-alpha.33",
-        "@material-ui/icons": "^5.0.0-beta.0",
-        "@material-ui/lab": "^5.0.0-alpha.39",
-        "@material-ui/styles": "^5.0.0-beta.0",
-        "@material-ui/utils": "^5.0.0-beta.0",
-        "@tabler/icons": "^1.39.1",
-        "@testing-library/jest-dom": "^5.11.10",
-        "@testing-library/react": "^11.2.6",
-        "@testing-library/user-event": "^12.8.3",
-        "apexcharts": "^3.26.1",
-        "axios": "^0.21.1",
-        "clsx": "^1.1.1",
-        "formik": "^2.2.6",
-        "framer-motion": "^4.1.13",
-        "material-ui-popup-state": "^1.8.0",
-        "react": "^17.0.2",
-        "react-apexcharts": "^1.3.7",
-        "react-device-detect": "^1.17.0",
-        "react-dom": "^17.0.2",
+        "@emotion/cache": "^11.10.1",
+        "@emotion/react": "^11.10.0",
+        "@emotion/styled": "^11.10.0",
+        "@mui/icons-material": "^5.8.4",
+        "@mui/lab": "^5.0.0-alpha.93",
+        "@mui/material": "^5.9.3",
+        "@mui/styles": "^5.9.3",
+        "@mui/system": "^5.9.3",
+        "@mui/utils": "^5.9.3",
+        "@tabler/icons": "^1.79.0",
+        "apexcharts": "^3.35.4",
+        "formik": "^2.2.9",
+        "framer-motion": "^7.0.0",
+        "material-ui-popup-state": "^4.0.1",
+        "prop-types": "^15.8.1",
+        "react": "^18.2.0",
+        "react-apexcharts": "^1.4.0",
+        "react-device-detect": "^2.2.2",
+        "react-dom": "^18.2.0",
         "react-perfect-scrollbar": "^1.5.8",
-        "react-redux": "^7.2.3",
-        "react-router": "^5.2.0",
-        "react-router-dom": "^5.2.0",
-        "react-scripts": "^4.0.3",
-        "redux": "^4.0.5",
-        "redux-persist": "^6.0.0",
-        "yup": "^0.32.9"
+        "react-redux": "^8.0.2",
+        "react-router": "6.3.0",
+        "react-router-dom": "6.3.0",
+        "react-scripts": "^5.0.1",
+        "redux": "^4.2.0",
+        "yup": "^0.32.11"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --passWithNoTests",
+        "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": [
+            "react-app"
+        ]
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-react"
+        ]
     },
     "browserslist": {
         "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
+            "defaults",
+            "not IE 11"
         ],
         "development": [
             "last 1 chrome version",
@@ -57,7 +59,23 @@
         ]
     },
     "devDependencies": {
-        "@material-ui/codemod": "^5.0.0-alpha.35",
-        "sass": "^1.32.11"
+        "@babel/core": "^7.18.10",
+        "@babel/eslint-parser": "^7.18.9",
+        "@babel/preset-react": "^7.18.6",
+        "eslint": "^8.21.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-config-react-app": "7.0.1",
+        "eslint-import-resolver-typescript": "3.4.0",
+        "eslint-plugin-flowtype": "^8.0.3",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "6.6.1",
+        "eslint-plugin-markdown": "^3.0.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.30.1",
+        "eslint-plugin-react-hooks": "4.6.0",
+        "prettier": "^2.7.1",
+        "sass": "^1.54.3"
     }
 }
