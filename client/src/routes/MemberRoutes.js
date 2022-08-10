@@ -22,6 +22,12 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 //test routes
 const AdminHome = Loadable(lazy(() => import('views/Admin')));
 const CoordinatorHome = Loadable(lazy(() => import('views/Coordinator')));
+
+const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
+const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
+const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
+const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
+
 const MemberRoutes = {
     path: '/',
     element: <MainLayout />,
@@ -58,35 +64,40 @@ const MemberRoutes = {
             ]
         },
         {
-            path: 'utils',
+            path: 'member',
             children: [
                 {
-                    path: 'util-shadow',
-                    element: <UtilsShadow />
+                    path: 'home',
+                    element: <MemberHome />
                 }
             ]
         },
         {
-            path: 'icons',
+            path: 'member',
             children: [
                 {
-                    path: 'tabler-icons',
-                    element: <UtilsTablerIcons />
+                    path: 'leave',
+                    element: <MemberLeave />
                 }
             ]
         },
         {
-            path: 'icons',
+            path: 'member',
             children: [
                 {
-                    path: 'material-icons',
-                    element: <UtilsMaterialIcons />
+                    path: 'profile',
+                    element: <MemberProfile />
                 }
             ]
         },
         {
-            path: 'sample-page',
-            element: <SamplePage />
+            path: 'member',
+            children: [
+                {
+                    path: 'projects',
+                    element: <MemberProjects />
+                }
+            ]
         }
     ]
 };
