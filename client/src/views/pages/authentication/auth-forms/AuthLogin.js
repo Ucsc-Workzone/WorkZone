@@ -259,7 +259,7 @@ const FirebaseLogin = ({ ...others }) => {
                                     size="large"
                                     type="submit"
                                     variant="contained"
-                                    color="secondary"
+                                    color="primary"
                                     onClick={handleLogin}
                                 >
                                     Sign in

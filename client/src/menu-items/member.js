@@ -24,8 +24,7 @@ const pagesMember = {
             type: 'item',
             url: '/member/home',
             icon: icons.IconHome,
-            breadcrumbs: false,
-            target: true
+            breadcrumbs: false
         },
         {
             id: 'memberLeave',
@@ -33,8 +32,7 @@ const pagesMember = {
             type: 'item',
             url: '/member/leave',
             icon: icons.IconAccessibleOff,
-            breadcrumbs: false,
-            target: true
+            breadcrumbs: false
         },
         {
             id: 'memberProfile',
@@ -42,8 +40,7 @@ const pagesMember = {
             type: 'item',
             url: '/member/profile',
             icon: icons.IconUser,
-            breadcrumbs: false,
-            target: true
+            breadcrumbs: false
         },
         {
             id: 'memberProjects',
@@ -51,8 +48,7 @@ const pagesMember = {
             type: 'item',
             url: '/member/projects',
             icon: icons.IconDeviceLaptop,
-            breadcrumbs: false,
-            target: true
+            breadcrumbs: false
         }
     ]
 };
