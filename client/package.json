@@ -1,6 +1,6 @@
 {
-    "name": "berry-material-react-free",
-    "version": "3.2.0",
+    "name": "ucsc-work-zone",
+    "version": "1.0.0",
     "private": true,
     "homepage": "https://berrydashboard.io/workzone",
     "dependencies": {
