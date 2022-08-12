@@ -1,0 +1,37 @@
+.main-container{
+    width: 100%;
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.today-container{
+    width: 60%;
+    background-color: #fff;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.right-container{
+    width: 35%;
+    /* background-color: #fff; */
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.calender-container{
+    width: 100%;
+    background-color: #fff;
+    height: 300px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.annouce-container{
+    width: 100%;
+    background-color: #fff;
+    /* height: 300px; */
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
