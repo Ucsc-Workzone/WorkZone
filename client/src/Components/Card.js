@@ -1,7 +1,7 @@
 const CardStyle = {
-    width:'300px',
-    backgroundColor:'white',
-
+    width: '300px',
+    backgroundColor: 'white',
+    height: '300px'
 };
 const mainContent = {};
 
@@ -10,8 +10,8 @@ const Card = () => {
     return (
         <>
             <div style={CardStyle}>
-                <div style={mainContent}></div>
-                <div style={subContent}></div>
+                {/* <div style={mainContent}></div>
+                <div style={subContent}></div> */}
             </div>
         </>
     );
