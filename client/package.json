@@ -2,7 +2,7 @@
     "name": "ucsc-work-zone",
     "version": "1.0.0",
     "private": true,
-    "homepage": "https://berrydashboard.io/free",
+    "homepage": "https://berrydashboard.io/workzone",
     "dependencies": {
         "@emotion/cache": "^11.10.1",
         "@emotion/react": "^11.10.0",
