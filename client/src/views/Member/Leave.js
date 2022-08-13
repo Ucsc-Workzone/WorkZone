@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TotalIncomeLightCard from 'views/dashboard/Default/TotalIncomeLightCard';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,7 +52,8 @@ const MemberLeave = () => {
                 </div>
 
                 <div className="card-section">
-                    <Card />
+                    <TotalIncomeLightCard />
+                    <TotalIncomeLightCard />
                     <Card />
                 </div>
                 <div className="table-section">

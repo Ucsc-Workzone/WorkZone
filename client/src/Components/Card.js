@@ -1,8 +1,10 @@
 import { Typography } from '@mui/material';
 import { padding } from '@mui/system';
+// material-ui
+import { Card, List, ListItem, ListItemAvatar, ListItemText, Skeleton } from '@mui/material';
 const CardStyle = {
     width: '250px',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     height: '120px',
     borderRadius: '10px',
     padding: '20px'
@@ -21,23 +23,27 @@ const subContent = {
     padding: '5px',
     color: '#1E4084'
 };
-const Card = () => {
+const Cards = () => {
     return (
         <>
             <div style={CardStyle}>
-                <div style={mainContent}>
-                    <Typography variant="h3" component="h2" style={mainContent}>
-                        No. of Leaves
-                    </Typography>
-                </div>
-                <div style={subContent}>
-                    <Typography variant="h3" component="h2" style={subContent}>
-                        10
-                    </Typography>
-                </div>
+                <Card sx={{ p: 2 }}>
+                    <List sx={{ py: 0 }}>
+                        <ListItem alignItems="center" disableGutters sx={{ py: 0 }}>
+                            <ListItemAvatar>
+                                <Skeleton variant="rectangular" width={44} height={44} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                sx={{ py: 0 }}
+                                primary={<Skeleton variant="rectangular" height={20} />}
+                                secondary={<Skeleton variant="text" />}
+                            />
+                        </ListItem>
+                    </List>
+                </Card>
             </div>
         </>
     );
 };
 
-export default Card;
+export default Cards;
