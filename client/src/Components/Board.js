@@ -1,24 +1,19 @@
-import React, { useState,useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 // import {CheckSquare, Clock, MoreHorizontal,Calendar,List,Tag,Trash,Type,X, } from "react-feather";
-
 
 import './styles/board.css';
 
-
-  function Board(PropTypes) {
+function Board(PropTypes) {
     const [showDropdown, setShowDropdown] = useState(false);
-  
+
     return (
-      <div className="board">
-        <div className="board_header">
-          <p className="board_header_title">
-            {PropTypes.board?.title}
-            <span>{PropTypes.board?.cards?.length || 0}</span>
-          </p>
-          <div
-            className="board_header_title_more"
-            onClick={() => setShowDropdown(true)}
-          >
+        <div className="board">
+            <div className="board_header">
+                <p className="board_header_title">
+                    {PropTypes.board?.title}
+                    <span>{PropTypes.board?.cards?.length || 0}</span>
+                </p>
+                <div className="board_header_title_more" onClick={() => setShowDropdown(true)}>
            
             {showDropdown && (
               <Dropdown
