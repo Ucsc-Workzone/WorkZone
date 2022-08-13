@@ -24,9 +24,11 @@ const AdminHome = Loadable(lazy(() => import('views/Admin')));
 const CoordinatorHome = Loadable(lazy(() => import('views/Coordinator')));
 
 const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
-const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
+const MemberLeave = Loadable(lazy(() => import('views/Member/Todo')));
 const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
 const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
+
+const Todo = Loadable(lazy(() => import('views/Member/Leave')));
 
 const MemberRoutes = {
     path: '/',
@@ -96,6 +98,15 @@ const MemberRoutes = {
                 {
                     path: 'projects',
                     element: <MemberProjects />
+                }
+            ]
+        },
+        {
+            path: 'member',
+            children: [
+                {
+                    path: 'todo ',
+                    element: <Todo />
                 }
             ]
         }
