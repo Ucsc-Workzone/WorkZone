@@ -18,7 +18,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     '&:after': {
         content: '""',
         position: 'absolute',
-        width: 210,
+        width: 250,
         height: 210,
         background: `linear-gradient(210.04deg, ${theme.palette.warning.dark} -50.94%, rgba(144, 202, 249, 0) 83.49%)`,
         borderRadius: '50%',

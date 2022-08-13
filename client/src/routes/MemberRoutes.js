@@ -17,11 +17,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/Home')));
 
-// ==============================|| MAIN ROUTING ||============================== //
-
-//test routes
-const AdminHome = Loadable(lazy(() => import('views/Admin')));
-const CoordinatorHome = Loadable(lazy(() => import('views/Coordinator')));
+// ==============================|| MEMBER ROUTING ||============================== //
 
 const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
 const MemberLeave = Loadable(lazy(() => import('views/Member/Todo')));
@@ -44,24 +40,6 @@ const MemberRoutes = {
                 {
                     path: 'default',
                     element: <DashboardDefault />
-                }
-            ]
-        },
-        {
-            path: 'admin',
-            children: [
-                {
-                    path: 'home',
-                    element: <AdminHome />
-                }
-            ]
-        },
-        {
-            path: 'coordinator',
-            children: [
-                {
-                    path: 'home',
-                    element: <CoordinatorHome />
                 }
             ]
         },

@@ -1,12 +1,13 @@
 // assets
-import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop } from '@tabler/icons';
+import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard } from '@tabler/icons';
 
 // constant
 const icons = {
     IconHome,
     IconAccessibleOff,
     IconUser,
-    IconDeviceLaptop
+    IconDeviceLaptop,
+    IconLayoutDashboard
 };
 
 // ==============================|| Mmebr PAGES MENU ITEMS ||============================== //
@@ -14,16 +15,23 @@ const icons = {
 const pagesMember = {
     id: 'member',
     title: 'General',
-    caption: 'General Settings',
     type: 'group',
 
     children: [
         {
-            id: 'memberHome',
+            id: 'mainhome',
             title: 'Home',
             type: 'item',
-            url: '/member/home',
+            url: '/',
             icon: icons.IconHome,
+            breadcrumbs: false
+        },
+        {
+            id: 'memberHome',
+            title: 'Dashborad',
+            type: 'item',
+            url: '/member/home',
+            icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
         {
