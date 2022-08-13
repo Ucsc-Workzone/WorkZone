@@ -54,7 +54,6 @@ const MemberLeave = () => {
                 <div className="card-section">
                     <TotalIncomeLightCard />
                     <TotalIncomeLightCard />
-                    <Card />
                 </div>
                 <div className="table-section">
                     <Divider>
