@@ -49,6 +49,14 @@ const pagesMember = {
             url: '/member/projects',
             icon: icons.IconDeviceLaptop,
             breadcrumbs: false
+        },
+        {
+            id: 'todo',
+            title: 'Todo',
+            type: 'item',
+            url: '/member/todo',
+            icon: icons.IconDeviceLaptop,
+            breadcrumbs: false
         }
     ]
 };
