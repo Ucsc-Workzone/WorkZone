@@ -3,7 +3,7 @@ const router = require("express").Router();
 const{createToken,validToken}=require('./JWT')
 const {db}=require('../models/Index')
 const jwt_token=require('jwt-decode')
-const {sendRegMail}=require('./Mail')
+const {sendRegMail,sendforgetMail}=require('./Mail')
 
 router.post('/login',async(req,res)=>{
     
@@ -77,6 +77,30 @@ router.post('/profile',(req,res)=>{
 
     res.json(decoded);
 
+
+})
+
+router.post('/forgetpass',(req,res)=>{
+   
+    const mail=req.body.username;
+    const sqlGet=`SELECT * from user WHERE username='${mail}'`;
+    db.query(sqlGet,(error,result)=>{
+        if(error){
+            res.send(error)
+        }
+        else{
+            if(result.length!=0){
+                const status=sendforgetMail(mail);
+                res.json('success')
+            }
+         else{
+            res.json('unsuccess');
+         }
+            
+          
+        }
+    })
+   
 
 })
 

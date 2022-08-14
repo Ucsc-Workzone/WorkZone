@@ -30,4 +30,34 @@ const sendRegMail=((req,res,next)=>{
     })
   
 })
-module.exports={sendRegMail}
+const sendforgetMail=((req,res,next)=>{
+    const email=req;
+    console.log(email)
+    var token = randtoken.generate(20);
+    const transport=nodemailer.createTransport({
+        service:'gmail',
+        auth:{
+            user:'malithiperera1998@gmail.com',
+            pass:'pztoeiikalwcgnhv'
+        }
+    });
+ 
+
+    var mailOptions={
+        from:'malithiperera1998@gmail.com',
+        to:email,
+        subject:"Confirmation Link For Forget Passowrd",
+        html: '<p>Your requested for password Change  Link, kindly use this <a href="http://localhost:3000/workzone/pages/forgetpassword">link</a> to Change Your Password</p>'
+    };
+     transport.sendMail(mailOptions,function(error,info){
+        if(error){
+            console.log(error)
+        }
+        else{
+           return next();
+        }
+    })
+   
+  
+})
+module.exports={sendRegMail,sendforgetMail}
