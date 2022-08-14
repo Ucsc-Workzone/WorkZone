@@ -50,10 +50,23 @@ const MenuList = () => {
                 );
         }
     });
+    const navItems3= menuItem.items3.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
 
     return <>
     {userRole == 'member' && navItems1}
     {userRole == 'admin' && navItems2}
+    {userRole == 'coordinator' && navItems3}
     {userRole == 'sar' && navItems}
     
     </>;

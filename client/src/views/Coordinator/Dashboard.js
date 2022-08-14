@@ -38,10 +38,10 @@ var CountList = {
 
 const Home = () => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
                 <div className="container-left">
-                    <HeaderCounter headlist={HeadList}  countlist={CountList} />
+                    <HeaderCounter headlist={HeadList} countlist={CountList} />
                     <div className="annouce-container">
                         <Typography variant="h3" component="h2" className="">
                             Site Annoucements
@@ -52,22 +52,15 @@ const Home = () => {
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                                 </ListItemAvatar>
                                 <ListItemText
-                                    primary={
-                                        <Typography variant="h4" component="h3" className="">
-                                            New Year Vacation
+                                    primary={<Typography variant="h4" component="h3" className="">
+                                        New Year Vacation
+                                    </Typography>}
+                                    secondary={<React.Fragment>
+                                        <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
+                                            by Admin User - Thursday, 4 August 2022, 3:29 PM
                                         </Typography>
-                                    }
-                                    secondary={
-                                        <React.Fragment>
-                                            <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
-                                                by Admin User - Thursday, 4 August 2022, 3:29 PM
-                                            </Typography>
-                                            {
-                                                ' — Dear students,You have been issued the Official Student Registration Number and Index Number for the degree programme. Please follow the steps below to view your official Student Registration Number and the Index Number.You are strongly advised to use your  official Student Registration Number and Index Number Number for all academic activities including examinations and assignments of the programme with effect from 8th August 2022.IMPORTANT: The Temporary Student Registration Number issued will be considered invalid from 15th August 2022.Should you need further assistance, please do not hesitate to contact us through the email, exam@ucsc.cmb.ac.lk Senior Assistant Registrar Examinations & Registration Division2022.08.04'
-                                            }
-                                        </React.Fragment>
-                                    }
-                                />
+                                        {' — Dear students,You have been issued the Official Student Registration Number and Index Number for the degree programme. Please follow the steps below to view your official Student Registration Number and the Index Number.You are strongly advised to use your  official Student Registration Number and Index Number Number for all academic activities including examinations and assignments of the programme with effect from 8th August 2022.IMPORTANT: The Temporary Student Registration Number issued will be considered invalid from 15th August 2022.Should you need further assistance, please do not hesitate to contact us through the email, exam@ucsc.cmb.ac.lk Senior Assistant Registrar Examinations & Registration Division2022.08.04'}
+                                    </React.Fragment>} />
                             </ListItem>
                             <Divider variant="inset" component="li" />
                             <ListItem alignItems="flex-start">
@@ -75,22 +68,15 @@ const Home = () => {
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                                 </ListItemAvatar>
                                 <ListItemText
-                                    primary={
-                                        <Typography variant="h4" component="h3" className="">
-                                            New Year Vacation
+                                    primary={<Typography variant="h4" component="h3" className="">
+                                        New Year Vacation
+                                    </Typography>}
+                                    secondary={<React.Fragment>
+                                        <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
+                                            by Admin User - Thursday, 4 August 2022, 3:29 PM
                                         </Typography>
-                                    }
-                                    secondary={
-                                        <React.Fragment>
-                                            <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
-                                                by Admin User - Thursday, 4 August 2022, 3:29 PM
-                                            </Typography>
-                                            {
-                                                ' — Dear students,You have been issued the Official Student Registration Number and Index Number for the degree programme. Please follow the steps below to view your official Student Registration Number and the Index Number.You are strongly advised to use your  official Student Registration Number and Index Number Number for all academic activities including examinations and assignments of the programme with effect from 8th August 2022.IMPORTANT: The Temporary Student Registration Number issued will be considered invalid from 15th August 2022.Should you need further assistance, please do not hesitate to contact us through the email, exam@ucsc.cmb.ac.lk Senior Assistant Registrar Examinations & Registration Division2022.08.04'
-                                            }
-                                        </React.Fragment>
-                                    }
-                                />
+                                        {' — Dear students,You have been issued the Official Student Registration Number and Index Number for the degree programme. Please follow the steps below to view your official Student Registration Number and the Index Number.You are strongly advised to use your  official Student Registration Number and Index Number Number for all academic activities including examinations and assignments of the programme with effect from 8th August 2022.IMPORTANT: The Temporary Student Registration Number issued will be considered invalid from 15th August 2022.Should you need further assistance, please do not hesitate to contact us through the email, exam@ucsc.cmb.ac.lk Senior Assistant Registrar Examinations & Registration Division2022.08.04'}
+                                    </React.Fragment>} />
                             </ListItem>
                             <Divider variant="inset" component="li" />
                         </List>
@@ -103,13 +89,15 @@ const Home = () => {
                     </div>
                     <div className="onlineuser-container">
                         <Typography variant="h3" component="h4" className="">
-                           Center Members
+                            Center Members
                         </Typography>
                         <OnlineUser />
                     </div>
                 </div>
             </div>
-        </Box>
+            </Box>
+        </>
+        
     );
 };
 
