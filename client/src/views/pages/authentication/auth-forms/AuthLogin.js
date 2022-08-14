@@ -83,6 +83,7 @@ const FirebaseLogin = ({ ...others }) => {
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userRole']);
+                    localStorage.setItem('name', data['firstName']+data['lastName']);
                     localStorage.setItem('loginStatus', true);
                     const userrole=data['userRole'];
                      
