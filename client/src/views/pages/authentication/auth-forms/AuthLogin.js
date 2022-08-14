@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // material-ui
@@ -40,6 +41,7 @@ import Google from 'assets/images/icons/social-google.svg';
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const FirebaseLogin = ({ ...others }) => {
+    const navigate = useNavigate();
     const theme = useTheme();
     const scriptedRef = useScriptRef();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
@@ -72,16 +74,25 @@ const FirebaseLogin = ({ ...others }) => {
                 const data = response.data;
                 console.log(data);
                 if (!data['accessToken']) {
-                    // navigate('/register')
+                   
                     alert(data['error']);
                 } else {
                     setLogin(true);
-                    //  window.open('http://localhost:3000/#/register');
+                    
 
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userRole']);
                     localStorage.setItem('loginStatus', true);
+                   
+                     
+                    {userrole=='member' &&  navigate('/member/home')}
+                    {userrole=='admin' &&  navigate('/admin/home')}
+                    {userrole=='director' &&  navigate('/director/home')}
+                    {userrole=='sar' &&  navigate('/sar/home')}
+                    {userrole=='coordinator' &&  navigate('/coordinator/home')}
+                   
+                    
                 }
             });
     };
