@@ -8,7 +8,8 @@ import member from './member';
 
 const menuItems = {
     items: [member],
-    items1: [dashboard, pages, utilities, other]
+    items1: [dashboard, pages, utilities, other],
+    items2: [dashboard, pages, utilities]
 };
 
 export default menuItems;
