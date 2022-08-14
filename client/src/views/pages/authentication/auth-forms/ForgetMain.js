@@ -99,7 +99,7 @@ const ForgetMain = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
+                    email: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -143,11 +143,7 @@ const ForgetMain = ({ ...others }) => {
                             )}
                         </FormControl>
 
-                        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
-                            <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }}>
-                                <Link to="/pages/login/login3">Go Back</Link>
-                            </Typography>
-                        </Stack>
+
                         {errors.submit && (
                             <Box sx={{ mt: 3 }}>
                                 <FormHelperText error>{errors.submit}</FormHelperText>

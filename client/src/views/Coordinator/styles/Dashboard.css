@@ -54,7 +54,7 @@ border-radius: 10px;
 .annouce-container{
     width: 100%;
     background-color: #fff;
-    height: 500px;
+    /* height: 500px; */
     margin-top: 20px;
     border-radius: 10px;
     padding: 20px;
@@ -62,7 +62,7 @@ border-radius: 10px;
 
 .onlineuser-container{
     width: 100%;
-    height: 500px;
+    /* height: 500px; */
     background-color: #fff;
     margin-top: 20px;
     border-radius: 10px;

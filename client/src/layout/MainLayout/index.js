@@ -10,6 +10,8 @@ import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material'
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Footer from 'Components/Footer';
+
 import Customization from '../Customization';
 import navigation from 'menu-items';
 import { drawerWidth } from 'store/constant';
@@ -22,8 +24,8 @@ import { IconChevronRight } from '@tabler/icons';
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
     ...theme.typography.mainContent,
     ...(!open && {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
+        marginBottom:'20px',
+        minHeight: '1500px',
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
@@ -50,8 +52,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
             duration: theme.transitions.duration.enteringScreen
         }),
         marginLeft: 0,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
+        marginBottom:'20px',
+        minHeight: '1500px',
         width: `calc(100% - ${drawerWidth}px)`,
         [theme.breakpoints.down('md')]: {
             marginLeft: '20px'
@@ -81,7 +83,7 @@ const MainLayout = () => {
     }, [matchDownMd]);
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <><Box sx={{ display: 'flex' }}>
             <CssBaseline />
             {/* header */}
             <AppBar
@@ -109,7 +111,8 @@ const MainLayout = () => {
                 <Outlet />
             </Main>
             <Customization />
-        </Box>
+            {/* Footer */}
+        </Box><Footer /></>
     );
 };
 
