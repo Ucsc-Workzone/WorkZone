@@ -78,13 +78,13 @@ const FirebaseLogin = ({ ...others }) => {
                     alert(data['error']);
                 } else {
                     setLogin(true);
-                    
+                    //  window.open('http://localhost:3000/#/register');
 
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userRole']);
                     localStorage.setItem('loginStatus', true);
-                   
+                    const userrole=data['userRole'];
                      
                     {userrole=='member' &&  navigate('/member/home')}
                     {userrole=='admin' &&  navigate('/admin/home')}
