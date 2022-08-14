@@ -13,7 +13,7 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 // ==============================|| MEMBER ROUTING ||============================== //
 
 const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
-const MemberLeave = Loadable(lazy(() => import('views/Member/Todo')));
+const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
 const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
 const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
 

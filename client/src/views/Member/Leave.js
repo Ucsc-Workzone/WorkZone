@@ -10,6 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TotalIncomeLightCard from 'views/dashboard/Default/TotalIncomeLightCard';
+import HeaderCounter from 'Components/HeaderCounter2';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -40,6 +41,18 @@ const rows = [
     createData('2', '2022.10.05', '01', 'pending', 'M.R. Herath'),
     createData('3', '2022.10.05', '01', 'pending', 'M.R. Herath')
 ];
+
+const HeadList = {
+    head1:"No. of Leaves in July",
+    head2:"No of Leaves in 2022"
+  
+}
+var CountList = {
+    count1:2,
+    count2:3,
+    
+}
+
 const MemberLeave = () => {
     return (
         <>
@@ -51,10 +64,9 @@ const MemberLeave = () => {
                     </Button>
                 </div>
 
-                <div className="card-section">
-                    <TotalIncomeLightCard />
-                    <TotalIncomeLightCard />
-                </div>
+                {/* <div className="card-section"> */}
+                <HeaderCounter headlist={HeadList}  countlist={CountList} />
+                {/* </div> */}
                 <div className="table-section">
                     <Divider>
                         <h2>Recent Leave History</h2>
