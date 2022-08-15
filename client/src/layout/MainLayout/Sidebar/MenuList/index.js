@@ -14,6 +14,18 @@ const MenuList = () => {
         setuserRole(userRole);
     });
 
+    const navItems0 = menuItem.items0.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
     const navItems = menuItem.items1.map((item) => {
         switch (item.type) {
             case 'group':
@@ -64,6 +76,7 @@ const MenuList = () => {
     });
 
     return <>
+    {userRole == null && navItems0}
     {userRole == 'member' && navItems1}
     {userRole == 'admin' && navItems2}
     {userRole == 'coordinator' && navItems3}

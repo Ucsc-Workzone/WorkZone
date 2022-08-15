@@ -32,7 +32,7 @@ const pagesCoordinator = {
             id: 'coordinatorHome',
             title: 'Dashborad',
             type: 'item',
-            url: '/coordinator/home',
+            url: '/coordinator/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
