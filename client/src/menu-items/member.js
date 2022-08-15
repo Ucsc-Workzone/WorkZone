@@ -10,7 +10,7 @@ const icons = {
     IconLayoutDashboard
 };
 
-// ==============================|| Mmebr PAGES MENU ITEMS ||============================== //
+// ==============================|| Member PAGES MENU ITEMS ||============================== //
 
 const pagesMember = {
     id: 'member',

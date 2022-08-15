@@ -1,7 +1,7 @@
 .leavecontainer{
     width: 100%;
     /* background-color: #fff; */
-    height: 500px;
+    /* height: 500px; */
     display: flex;
     flex-direction: column;
 }

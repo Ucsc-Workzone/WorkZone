@@ -21,7 +21,7 @@ const ForgetpassMain = () => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <AuthWrapper1>
+        <><AuthWrapper1>
             <Grid container direction="column" justifyContent="flex-end" sx={{ minHeight: '100vh' }}>
                 <Grid item xs={12}>
                     <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: 'calc(100vh - 68px)' }}>
@@ -69,10 +69,14 @@ const ForgetpassMain = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-                    <AuthFooter />
+                        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
+                            <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }}>
+                                <Link to="/pages/login/login3" style={{ textDecoration:'none',fontSize:16 }}>Go Back</Link>
+                            </Typography>
+                        </Stack>
                 </Grid>
             </Grid>
-        </AuthWrapper1>
+        </AuthWrapper1><AuthFooter /></>
     );
 };
 
