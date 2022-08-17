@@ -65,7 +65,8 @@ const pagesMember = {
             url: '/member/todo',
             icon: icons.IconDeviceLaptop,
             breadcrumbs: false
-        }
+        },
+       
     ]
 };
 
