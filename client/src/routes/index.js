@@ -5,9 +5,11 @@ import MainRoutes from './MainRoutes';
 import AuthenticationRoutes from './AuthenticationRoutes';
 import MemberRoutes from './MemberRoutes';
 import CoordinatorRoutes from './CoordinatorRoutes';
+import DirectorRoutes from './DirectorRoutes';
+import SARRoutes from './SARRoutes';
 
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
-    return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes]);
+    return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes]);
 }
