@@ -13,7 +13,11 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import OnlineUser from 'Components/Onlineusers';
 import HeaderCounter from 'Components/HeaderCounter3';
-import CoordinatorRoutes from 'routes/CoordinatorRoutes';
+import Annoucements from 'Components/RecentAnnouncements';
+import PendingCounter from 'Components/PendingCounter';
+import PendingList from 'Components/PendingList';
+import UpcomingList from 'Components/UpcomingsList';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -36,51 +40,26 @@ var CountList = {
     count3:15
 }
 
-const Home = () => {
+const Dashboard = () => {
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
                 <div className="container-left">
+                    <stack>
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
-                    <div className="annouce-container">
-                        <Typography variant="h3" component="h2" className="">
-                            Site Annoucements
-                        </Typography>
-                        <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                </ListItemAvatar>
-                                <ListItemText
-                                    primary={<Typography variant="h4" component="h3" className="">
-                                        New Year Vacation
-                                    </Typography>}
-                                    secondary={<React.Fragment>
-                                        <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
-                                            by Admin User - Thursday, 4 August 2022, 3:29 PM
-                                        </Typography>
-                                        {' — Dear students,You have been issued the Official Student Registration Number and Index Number for the degree programme. Please follow the steps below to view your official Student Registration Number and the Index Number.You are strongly advised to use your  official Student Registration Number and Index Number Number for all academic activities including examinations and assignments of the programme with effect from 8th August 2022.IMPORTANT: The Temporary Student Registration Number issued will be considered invalid from 15th August 2022.Should you need further assistance, please do not hesitate to contact us through the email, exam@ucsc.cmb.ac.lk Senior Assistant Registrar Examinations & Registration Division2022.08.04'}
-                                    </React.Fragment>} />
-                            </ListItem>
-                            <Divider variant="inset" component="li" />
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                </ListItemAvatar>
-                                <ListItemText
-                                    primary={<Typography variant="h4" component="h3" className="">
-                                        New Year Vacation
-                                    </Typography>}
-                                    secondary={<React.Fragment>
-                                        <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
-                                            by Admin User - Thursday, 4 August 2022, 3:29 PM
-                                        </Typography>
-                                        {' — Dear students,You have been issued the Official Student Registration Number and Index Number for the degree programme. Please follow the steps below to view your official Student Registration Number and the Index Number.You are strongly advised to use your  official Student Registration Number and Index Number Number for all academic activities including examinations and assignments of the programme with effect from 8th August 2022.IMPORTANT: The Temporary Student Registration Number issued will be considered invalid from 15th August 2022.Should you need further assistance, please do not hesitate to contact us through the email, exam@ucsc.cmb.ac.lk Senior Assistant Registrar Examinations & Registration Division2022.08.04'}
-                                    </React.Fragment>} />
-                            </ListItem>
-                            <Divider variant="inset" component="li" />
-                        </List>
-                    </div>
+                        <div className="annouce-container">s
+                            <Annoucements />
+                        </div>
+                        <Typography variant="h3" component="p" className="" fontSize="1.5vw" marginBottom={"10px"}>Upcomings</Typography>
+                        <div className="upcoming-container"> 
+                            <UpcomingList/>
+                        </div>  
+                        <Typography variant="h3" component="p" className="" fontSize="1.5vw" marginTop={"20px"} marginBottom={"10px"}>Recent Leave Requests</Typography>
+                        <div className="pending-container"> 
+                            <PendingCounter headlist2={"Pending"} countlist2={'5'}/>
+                            <PendingList/>
+                        </div>     
+                    </stack>
                 </div>
 
                 <div className="container-right">
@@ -101,4 +80,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Dashboard;

@@ -10,19 +10,19 @@ const HeaderCounter3 = ({headlist, countlist}) => {
     return (
         <div className="header-counter">
             <Grid container spacing={2} minHeight={160}>
-                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column" >
+                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column">
                     <Box xs display="block">
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw">
                             {headlist.head1}
                         </Typography>
                     </Box>
-                    <Box xs display="block" >
+                    <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
                             {countlist.count1}
                         </Typography>
                     </Box>
                 </Grid>
-                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column" >
+                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column">
                     <Box xs display="block">
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw">
                             {headlist.head2}
@@ -34,7 +34,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                         </Typography>
                     </Box>
                 </Grid>
-                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column" >
+                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column">
                     <Box xs display="block">
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw">
                             {headlist.head3}
@@ -47,7 +47,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                 </Grid>
             </Grid>
-        </div> 
+        </div>
         );
 }
  

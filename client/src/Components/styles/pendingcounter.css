@@ -1,5 +1,6 @@
-.header-counter{
-    width: 100%;
+.pending-counter{
+    width: 20%;
+    height: 100%;
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
@@ -7,4 +8,3 @@
     justify-content: center;
     align-items: center;
 }
-

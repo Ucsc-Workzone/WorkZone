@@ -10,7 +10,7 @@ const MainFooter = ({headlist, countlist}) => {
     return (
 			<Box className="copy-right-sec">  
                 <Typography>
-                    &copy; 2020, All rights reserved by University of Colombo School of Computing<br />
+                    &copy; 2022, All rights reserved by University of Colombo School of Computing<br />
                     No: 35, Reid Avenue, Colombo 7, Sri Lanka.
                 </Typography>
 			</Box>
