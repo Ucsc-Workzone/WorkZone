@@ -1,0 +1,54 @@
+
+/*====================== 404 page =======================*/
+body {
+    color: black;
+    line-height: normal;
+    margin: 10px;
+}
+
+.main_content{
+    margin-top: 0px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+ .main_content .text-section  h3{
+    margin-top: 0px;
+    font-size:8vh;
+    margin-bottom: 0px;
+ }
+ .text-section{
+    font-family:'Poppins';
+    text-decoration: none;
+    text-align: right;
+    /* width: 45%; */
+    text-decoration: none;
+    margin-bottom: 0px;
+ }
+.text-center{
+    margin-top: 0px;
+    font-size: 30vh;
+    color: #0c518a;
+    margin-bottom: 0px;
+
+} 		 
+.link_404{			 
+	color: #ffffff!important;
+    padding: 10px 20px;
+    background: #1565c0;
+    margin: 20px 0;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.four_zero_four_bg{
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: auto;
+    width: 55%;
+    /* background-position: center; */
+    border-radius: 10px;
+    background-repeat: no-repeat;
+ }
+
+

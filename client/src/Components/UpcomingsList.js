@@ -1,6 +1,9 @@
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { Pie, defaults } from 'react';
+import Chart from 'Components/chart';
+import { Doughnut } from 'react-chartjs-2';
 
 function createData(name, date) {
   return { name, date };
@@ -15,9 +18,12 @@ const rows = [
 import './styles/upcoming.css';
 import { Typography } from '@mui/material';
 
+defaults.global.tooltips.enabled = false
+defaults.global.legend.position = 'bottom'
 
 const UpcomingList = () => {
     return ( 
+
     
         <div className="upcomings">
              <Box style={{display: 'flex', justifyContent: 'right'}}>
@@ -30,9 +36,20 @@ const UpcomingList = () => {
                 <Typography variant="p" component="p" fontSize="1.0vw"paddingBottom={"6px"}>4 Days Remaining</Typography>
                 <Typography variant="h4" component="p"  fontSize="1.2vw" paddingBottom={"10px"}>Due Date:27/03/2022</Typography>
                 </stack>
+
+                
               </Box>
               <Box style={{display:"flex", justifyContent: 'right', width:'40%'}}>
-                
+
+              <div>
+                <Doughnut data={{
+                  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+              
+              }} />
+                  {/* 
+                   */}
+              </div>
+              
               </Box>
             </Box>
 
