@@ -71,11 +71,13 @@ router.post('/reguser',(req,res)=>{
     })
 })
 router.post('/profile',(req,res)=>{
+    const data=req.body;
    
-    const token=req.cookies["access-Token"];
-    var decoded = jwt_token(token)
+  const x=validToken(data.token);
+ const decoded = jwt_token(data.token);
 
-    res.json(decoded);
+
+res.json(decoded)
 
 
 })
@@ -103,6 +105,8 @@ router.post('/forgetpass',(req,res)=>{
    
 
 })
+
+
 
 router.post('/sendmail',async(req,res)=>{
     

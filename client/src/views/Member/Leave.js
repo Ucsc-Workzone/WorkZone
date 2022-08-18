@@ -1,4 +1,5 @@
 import Card from 'Components/Card';
+import * as React from 'react';
 import './styles/leave.css';
 import { Button, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -11,10 +12,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TotalIncomeLightCard from 'views/dashboard/Default/TotalIncomeLightCard';
 import HeaderCounter from 'Components/HeaderCounter2';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import LeaveForm from './LeaveForm';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: '#0C518A',
         color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -43,29 +50,54 @@ const rows = [
 ];
 
 const HeadList = {
-    head1:"No. of Leaves in July",
-    head2:"No of Leaves in 2022"
-  
-}
+    head1: 'No. of Leaves in July',
+    head2: 'No of Leaves in 2022'
+};
 var CountList = {
-    count1:2,
-    count2:3,
-    
-}
+    count1: 2,
+    count2: 3
+};
 
 const MemberLeave = () => {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <>
             <div className="leavecontainer">
                 <div>
-                    <Button color="primary" variant="contained">
-                        {' '}
+                    <Button variant="contained" onClick={handleClickOpen} color="primary">
                         Request a Leave
                     </Button>
+                    <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                     
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                               <LeaveForm />
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Request</Button>
+                            <Button onClick={handleClose} autoFocus>
+                                Cancel
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 </div>
 
                 {/* <div className="card-section"> */}
-                <HeaderCounter headlist={HeadList}  countlist={CountList} />
+                <HeaderCounter headlist={HeadList} countlist={CountList} />
                 {/* </div> */}
                 <div className="table-section">
                     <Divider>
