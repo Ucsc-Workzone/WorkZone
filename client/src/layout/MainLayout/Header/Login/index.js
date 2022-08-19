@@ -7,15 +7,13 @@ const LoginButton = () => {
     useEffect(() => {
         const loginState = localStorage.getItem('loginStatus');
         setLog(loginState);
-        console.log(log);
+ 
     });
     return (
         <>
-            {log == false && (
-                <Button variant="contained" component={Link} to="/pages/login/login3">
-                    Login
-                </Button>
-            )}
+            <Button variant="contained" component={Link} to="/pages/login/login3">
+                Login
+            </Button>
         </>
     );
 };
