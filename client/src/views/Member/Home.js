@@ -78,8 +78,6 @@ const MemberHome = () => {
                         <div>
                         <TotalIncomeDarkCard title={'Pending Reports'} count="3" />
                         </div>
-                   
-                   
                     </div>
                 </div>
 

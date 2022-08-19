@@ -3,6 +3,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import {Typography } from '@mui/material';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import FaceIcon from '@mui/icons-material/Face';
+import CircleIcon from '@mui/icons-material/Circle';
 
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
@@ -27,7 +31,8 @@ const OnlineUser = () => {
                         <ListItemAvatar>
                             <Avatar src={require(`../assets/images/Profile/${user[2]}`)} >B</Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={user[1]} secondary="online" />
+                        <ListItemText primary={user[1]} />
+                        <Chip icon={<FaceIcon />} label="Online" variant="outlined" style={{color:'green'}} />
                     </ListItem>
                 ))}
             </List>

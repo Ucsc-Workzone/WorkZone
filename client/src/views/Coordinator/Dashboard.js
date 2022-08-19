@@ -14,7 +14,7 @@ import Annoucements from 'Components/RecentAnnouncements';
 import PendingCounter from 'Components/PendingCounter';
 import PendingList from 'Components/PendingList';
 import UpcomingList from 'Components/UpcomingsList';
-
+import TotalIncomeDarkCard from 'views/dashboard/Default/TotalIncomeDarkCard';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -43,9 +43,20 @@ const Dashboard = () => {
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
+            
                 <div className="container-left">
                     <Stack>
-                    <HeaderCounter headlist={HeadList} countlist={CountList} />
+                    <Box className='summary-card'>
+                        <Box>
+                            <TotalIncomeDarkCard title={HeadList.head1} count={CountList.count1} />
+                        </Box>
+                        <Box>
+                            <TotalIncomeDarkCard title={HeadList.head2} count={CountList.count2} />
+                        </Box>
+                        <Box>
+                            <TotalIncomeDarkCard title={HeadList.head3} count={CountList.count3} />
+                        </Box>
+                    </Box>
                         <div className="annouce-container">
                             <Annoucements />
                         </div>

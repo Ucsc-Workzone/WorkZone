@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Typography, Stack } from '@mui/material';
 
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import DoughtChart from 'Components/DoughtChart';
 
@@ -49,20 +52,25 @@ const UpcomingList = () => {
              <Box style={{display: 'flex', justifyContent: 'right'}}>
                 <Box ><Button variant="contained" ><Typography className="seeall" >Other Projects</Typography></Button></Box>
             </Box>
+            <Card variant="outlined">
             <Box style={{display:"flex", width:'100%'}}>
-              <Box style={{display:"flex", justifyContent: 'left', width:'60%', paddingLeft:'40px', paddingTop:"40px", paddingBottom:"20px"}}>
+              <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                
+              </Box>
+              <Box style={{display:"flex", justifyContent: 'left', width:'60%', paddingLeft:'40px'}}>
                 <Stack >
                 <Typography variant="h3" component="p" fontSize="2vw" paddingTop={"15px"} paddingBottom={"15px"}>{projects.name}</Typography>
-                <Typography variant="p" component="p" fontSize="1.3vw" paddingBottom={"6px"} colour="yellow">{projects.pending} Remaining</Typography>
+                <Typography variant="p" component="p" fontSize="1.2vw" paddingBottom={"6px"}>{projects.pending} Remaining</Typography>
                 <Typography variant="h4" component="p"  fontSize="1.5vw" paddingBottom={"15px"}>Due Date:{projects.date}</Typography>
                 </Stack>
               </Box>
-              <Box style={{display:"flex", justifyContent: 'center', width:'60%', top: "50%"}}>
-                <div style={{ width: "45%"}}>
+              <Box style={{display:"flex", justifyContent: 'left', width:'60%', top: "50%"}}>
+                <div style={{ width: "38%"}}>
                   <DoughtChart chartData={userData} percentage={"80"}/>
                 </div>             
               </Box>
             </Box>
+            </Card>
 
         </div>
      );
