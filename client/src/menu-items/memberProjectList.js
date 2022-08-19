@@ -28,7 +28,7 @@ const ProjectListMember = {
             id: ProjectsList[0][0],
             title: ProjectsList[0][1],
             type: 'item',
-            url: '/member/home',
+            url: '/member/project/1',
             icon: ProjectsList[0][2],
             breadcrumbs: false
         },
@@ -36,7 +36,7 @@ const ProjectListMember = {
             id: ProjectsList[1][0],
             title: ProjectsList[1][1],
             type: 'item',
-            url: '/member/home',
+            url: '/member/project/2',
             icon: ProjectsList[1][2],
             breadcrumbs: false
         },

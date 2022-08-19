@@ -89,11 +89,24 @@ const MemberHome = () => {
                         <Divider textAlign="left"><h3>On going Projects</h3> </Divider>
                        <MemberProjectCard 
                        title={'Skelton Mobile App'}
-                       date={'20.10.2022'}
+                       date={'24.08.2022'}
+                       subtask={'Prototype Design'}
+                       days={'Today'}
+                       color={'#8bc34a'}
                        />
                        <MemberProjectCard 
                        title={'UCSC Bit Web App'}
-                       date={'15.12.2022'}
+                       date={'04.09.2022'}
+                       subtask={'Admin Component design'}
+                       days={'10 days remaining'}
+                       color={'#ffc107'}
+                       />
+                        <Divider textAlign="left"><h3>Today</h3> </Divider>
+                        <MemberProjectCard 
+                       title={'Skelton Mobile App'}
+                       date={'20.10.2022'}
+                       
+                       
                        />
                     
                     </div>
