@@ -1,6 +1,7 @@
 // assets
 import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard ,IconUsers ,IconReport} from '@tabler/icons';
-import FeedbackIcon from '@mui/icons-material/Feedback';
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+
 // constant
 const icons = {
     IconHome,
@@ -65,7 +66,7 @@ const pagesCoordinator = {
             title: 'Feedbacks',
             type: 'item',
             url: '/coordinator/feedbacks',
-            icon: FeedbackIcon,
+            icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         }
        

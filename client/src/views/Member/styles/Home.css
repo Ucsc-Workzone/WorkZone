@@ -78,11 +78,27 @@
 }
 
 .css-1xkn43h-MuiTypography-root{
-    font-size: 35px;
+    font-size: 45px;
 }
 
 .css-1gytxn5-MuiTypography-root{
     font-size: 15px;
+}
+
+.css-13wtusx-MuiAvatar-root{
+    background-color: #7187de;
+}
+
+.css-19midj6{
+    padding: 20px;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root{
+    background-color: #045da6;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root:before{
+    position: unset;
 }
 
 @media only screen and (max-width: 900px) {

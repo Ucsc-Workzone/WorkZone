@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid  from '@mui/material/Grid';
-import { CardMedia, Card, Typography, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { Typography, Stack  } from '@mui/material';
 import './styles/Dashboard.css';
 
 import Calender from 'Components/Calender';
@@ -14,7 +14,7 @@ import Annoucements from 'Components/RecentAnnouncements';
 import PendingCounter from 'Components/PendingCounter';
 import PendingList from 'Components/PendingList';
 import UpcomingList from 'Components/UpcomingsList';
-
+import TotalIncomeDarkCard from 'views/dashboard/Default/TotalIncomeDarkCard';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -43,9 +43,20 @@ const Dashboard = () => {
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
+            
                 <div className="container-left">
-                    <stack>
-                    <HeaderCounter headlist={HeadList} countlist={CountList} />
+                    <Stack>
+                    <Box className='summary-card'>
+                        <Box>
+                            <TotalIncomeDarkCard title={HeadList.head1} count={CountList.count1} />
+                        </Box>
+                        <Box>
+                            <TotalIncomeDarkCard title={HeadList.head2} count={CountList.count2} />
+                        </Box>
+                        <Box>
+                            <TotalIncomeDarkCard title={HeadList.head3} count={CountList.count3} />
+                        </Box>
+                    </Box>
                         <div className="annouce-container">
                             <Annoucements />
                         </div>
@@ -58,7 +69,7 @@ const Dashboard = () => {
                             <PendingCounter headlist2={"Pending"} countlist2={'5'}/>
                             <PendingList/>
                         </div>     
-                    </stack>
+                    </Stack>
                 </div>
                 <div className="container-right">
                     <div className="calender-container">

@@ -45,7 +45,7 @@ const Dashboard = () => {
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
                 <div className="container-left">
-                    <stack>
+                    <Stack>
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
                         <div className="annouce-container">s
                             <Annoucements />
@@ -59,7 +59,7 @@ const Dashboard = () => {
                             <PendingCounter headlist2={"Pending"} countlist2={'5'}/>
                             <PendingList/>
                         </div>     
-                    </stack>
+                    </Stack>
                 </div>
 
                 <div className="container-right">
