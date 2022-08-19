@@ -74,11 +74,23 @@ const MenuList = () => {
                 );
         }
     });
+    const navItems4= menuItem.items4.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
 
     return <>
     {userRole == null && navItems0}
     {userRole == 'member' && navItems1}
-    {userRole == 'admin' && navItems2}
+    {userRole == 'admin' && navItems4}
     {userRole == 'coordinator' && navItems3}
     {userRole == 'sar' && navItems}
     

@@ -1,6 +1,6 @@
 // assets
 import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard } from '@tabler/icons';
-import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+
 // constant
 const icons = {
     IconHome,
@@ -18,7 +18,14 @@ const pagesMember = {
     type: 'group',
 
     children: [
-        
+        {
+            id: 'mainhome',
+            title: 'Home',
+            type: 'item',
+            url: '/',
+            icon: icons.IconHome,
+            breadcrumbs: false
+        },
         {
             id: 'memberHome',
             title: 'Dashborad',
@@ -35,7 +42,14 @@ const pagesMember = {
             icon: icons.IconAccessibleOff,
             breadcrumbs: false
         },
-       
+        {
+            id: 'memberProfile',
+            title: 'Profile',
+            type: 'item',
+            url: '/member/profile',
+            icon: icons.IconUser,
+            breadcrumbs: false
+        },
         {
             id: 'memberProjects',
             title: 'Projects',
@@ -50,14 +64,6 @@ const pagesMember = {
             type: 'item',
             url: '/member/todo',
             icon: icons.IconDeviceLaptop,
-            breadcrumbs: false
-        },
-        {
-            id: 'todo',
-            title: 'System Feedbacks',
-            type: 'item',
-            url: '/member/feedback',
-            icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
        

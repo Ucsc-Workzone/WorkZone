@@ -9,8 +9,6 @@ const AuthLogin3 = Loadable(lazy(() => import('views/pages/authentication/authen
 const AuthRegister3 = Loadable(lazy(() => import('views/pages/authentication/authentication3/Register3')));
 const ForgetPassword = Loadable(lazy(() => import('views/pages/authentication/authentication3/ForgetPassword')));
 const ForgetPasswordMain = Loadable(lazy(() => import('views/pages/authentication/authentication3/ForgetPassMain')));
-const NotFound = Loadable(lazy(() => import('views/pages/authentication/authentication3/404Page')));
-
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
 const AuthenticationRoutes = {
@@ -32,10 +30,6 @@ const AuthenticationRoutes = {
         {
             path: '/pages/forgetpassword/main',
             element: <ForgetPasswordMain />
-        },
-        {
-            path: '/pages/404page',
-            element: <NotFound />
         }
     ]
 };
