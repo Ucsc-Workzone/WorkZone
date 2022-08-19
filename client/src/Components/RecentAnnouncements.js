@@ -26,9 +26,9 @@ const RecentAnnoucements = () => {
 
     return (
         <>
-            <box style={{display: 'flex', justifyContent: 'right'}}>
+            <Box style={{display: 'flex', justifyContent: 'right'}}>
                 <Button variant="contained"><Typography className="seeall">All Annoucements</Typography></Button>
-            </box>
+            </Box>
             <Typography variant="h2" component="h3" className="" textAlign="center">
                 Annoucements
             </Typography>

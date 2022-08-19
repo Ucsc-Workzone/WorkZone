@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 function createData(name, date) {
   return { name, date };
@@ -14,8 +15,8 @@ function createData(name, date) {
 
 const rows = [
   createData('Malithi Perera', '27/08/2022'),
-  createData('Malithi Perera', '27/08/2022'),
-  createData('Malithi Perera', '27/08/2022')
+  createData('Bimsara Kulasekara', '27/08/2022'),
+  createData('Hiruni Guruge', '27/08/2022')
 ];
 
 import './styles/pendinglist.css';
@@ -26,9 +27,9 @@ const LeavePendingList = () => {
     return ( 
     
         <div className="pending-list">
-            <box style={{display: 'flex', justifyContent: 'right'}}>
+            <Box style={{display: 'flex', justifyContent: 'right'}}>
                 <Button variant="contained"><Typography className="seeall" >All Requests</Typography></Button>
-            </box>
+            </Box>
             <TableContainer component={Paper} style={{padding:'0px'}}>
                 <Table sx={{ padding:"0px" }} aria-label="simple table" style={{textAlign:'right'}}>
                     <TableHead></TableHead>

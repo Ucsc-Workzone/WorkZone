@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid  from '@mui/material/Grid';
-import { CardMedia, Card, Typography, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 import './styles/Dashboard.css';
 
 import Calender from 'Components/Calender';
@@ -45,7 +45,7 @@ const Dashboard = () => {
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
                 <div className="container-left">
-                    <stack>
+                    <Stack>
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
                         <div className="annouce-container">s
                             <Annoucements />
@@ -59,7 +59,7 @@ const Dashboard = () => {
                             <PendingCounter headlist2={"Pending"} countlist2={'5'}/>
                             <PendingList/>
                         </div>     
-                    </stack>
+                    </Stack>
                 </div>
 
                 <div className="container-right">

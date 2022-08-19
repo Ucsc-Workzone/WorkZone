@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Typography, Stack } from '@mui/material';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -23,7 +24,6 @@ const projects ={
   date:"27/03/2022"
 }
 import './styles/upcoming.css';
-import { Typography } from '@mui/material';
 
 const UpcomingList = () => {
 
@@ -51,11 +51,11 @@ const UpcomingList = () => {
             </Box>
             <Box style={{display:"flex", width:'100%'}}>
               <Box style={{display:"flex", justifyContent: 'left', width:'60%', paddingLeft:'40px', paddingTop:"40px", paddingBottom:"20px"}}>
-                <stack >
+                <Stack >
                 <Typography variant="h3" component="p" fontSize="2vw" paddingTop={"15px"} paddingBottom={"15px"}>{projects.name}</Typography>
                 <Typography variant="p" component="p" fontSize="1.3vw" paddingBottom={"6px"} colour="yellow">{projects.pending} Remaining</Typography>
                 <Typography variant="h4" component="p"  fontSize="1.5vw" paddingBottom={"15px"}>Due Date:{projects.date}</Typography>
-                </stack>
+                </Stack>
               </Box>
               <Box style={{display:"flex", justifyContent: 'center', width:'60%', top: "50%"}}>
                 <div style={{ width: "45%"}}>

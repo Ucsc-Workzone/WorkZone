@@ -2,6 +2,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import {Typography } from '@mui/material';
+
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
@@ -14,43 +16,43 @@ const OnlineUser = () => {
                     <ListItemAvatar>
                         <Avatar>M</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Malithi Perera" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Malithi Perera</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>}  />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>B</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Bimsara Kulasekara" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Bimsara Kulasekara</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>h1</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Hiruni Guruge" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Hiruni Guruge</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>P</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Pamodha Mahagamage" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Pamodha Mahagamage</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>k</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Kavindu Galagedara" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Kavindu Galagedara</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>D</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Dulanjana Weerasinghe" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Dulanajana Weerasinghe</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>}/>
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>M</Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Manoj Hertah" secondary="online" />
+                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Manoj Herath</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
                 </ListItem>
             </List>
         </>
