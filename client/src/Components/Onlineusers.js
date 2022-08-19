@@ -8,52 +8,28 @@ import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import user1 from '../assets/images/Profile/member1.jpg'
+const picArray = [
+    [1,'Malithi Perera', 'member1.jpg'],
+    [2,'Bimsara Kulasekara', 'member2.jpg'],
+    [3,'Pamodha Mahagamage', 'member3.jpg'],
+    [3,'Hiruni Guruge', 'member6.jpg'],
+    [3,'Kavindu Galagedara', 'member4.jpg'],
+    [3,'Dulanjana Weerasigne', 'member5.jpg'],
+    [3,'Pamodya Ranaweera', 'member7.jpg']
+];
 const OnlineUser = () => {
     return (
         <>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>M</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Malithi Perera</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>}  />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>B</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Bimsara Kulasekara</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>h1</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Hiruni Guruge</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>P</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Pamodha Mahagamage</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>k</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Kavindu Galagedara</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>D</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Dulanajana Weerasinghe</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>}/>
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>M</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={<Typography type="body2" style={{ color: '#000000' }}>Manoj Herath</Typography>} secondary={<Typography type="body3" style={{ color: '#13d013' }}>online</Typography>} />
-                </ListItem>
+            <List sx={{ width: '100%', maxWidth: 580, bgcolor: 'background.paper' }}>
+                {picArray.map((user) => (
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar src={require(`../assets/images/Profile/${user[2]}`)} >B</Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={user[1]} secondary="online" />
+                    </ListItem>
+                ))}
             </List>
         </>
     );
