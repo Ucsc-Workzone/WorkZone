@@ -1,5 +1,9 @@
 import Calender from 'Components/Calender';
 import SiteAnnoucements from 'Components/SiteAnnoucements';
+import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
+import DevicesOutlinedIcon from '@mui/icons-material/DevicesOutlined';
+import NoAccountsOutlinedIcon from '@mui/icons-material/NoAccountsOutlined';
+import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 import App_todo from '../../App_todo';
 import RoutesRes from 'hooks/routeRes';
 import './styles/Home.css';
@@ -70,13 +74,13 @@ const MemberHome = () => {
                     </div>
                     <div className='summary-card'>
                         <div>
-                        <TotalIncomeDarkCard title={'Ongoing Projects'} count="3" />
+                        <TotalIncomeDarkCard title={'Ongoing Projects'} count="3" icon={<DevicesOutlinedIcon fontSize="inherit" />} />
                         </div>
                         <div>
-                        <TotalIncomeDarkCard title={'Pending Leaves'} count="2" />
+                        <TotalIncomeDarkCard title={'Pending Leaves'} count="2"  icon={<NoAccountsOutlinedIcon fontSize="inherit" />}/>
                         </div>
                         <div>
-                        <TotalIncomeDarkCard title={'Pending Reports'} count="3" />
+                        <TotalIncomeDarkCard title={'Pending Reports'} count="3"  icon={<SummarizeOutlinedIcon fontSize="inherit" />}/>
                         </div>
                     </div>
                 </div>

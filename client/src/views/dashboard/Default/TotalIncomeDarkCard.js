@@ -64,7 +64,7 @@ const TotalIncomeDarkCard = ({ isLoading,title,count,icon }) => {
                                             color: '#fff'
                                         }}
                                     >
-                                        <TableChartOutlinedIcon fontSize="inherit" />
+                                        {icon}
                                     </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText

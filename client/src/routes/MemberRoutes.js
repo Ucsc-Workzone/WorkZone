@@ -38,7 +38,7 @@ const MemberRoutes = {
             path: 'member',
             children: [
                 {
-                    path: 'home',
+                    path: 'dashboard',
                     element: <MemberHome />
                 }
             ]

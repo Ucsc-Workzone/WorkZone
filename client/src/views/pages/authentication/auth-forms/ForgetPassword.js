@@ -75,8 +75,9 @@ const ForgetPassword = ({ ...others }) => {
 
     return (
         <>
-        {true && 
-        <Grid container direction="column" justifyContent="center" spacing={2}>
+        {false && 
+        <div>
+             <Grid container direction="column" justifyContent="center" spacing={2}>
                 <Grid item xs={12}>
                     <AnimateButton>
                      
@@ -102,7 +103,7 @@ const ForgetPassword = ({ ...others }) => {
                 </Grid>
             </Grid>
             
-        }
+        
             
 
             <Formik
@@ -224,6 +225,8 @@ const ForgetPassword = ({ ...others }) => {
                     </form>
                 )}
             </Formik>
+        </div>
+        }
         </>
     );
 };

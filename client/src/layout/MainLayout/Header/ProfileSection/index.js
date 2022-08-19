@@ -94,6 +94,7 @@ const ProfileSection = () => {
 
         const name = localStorage.getItem('name');
         const role = localStorage.getItem('userRole');
+        const image=localStorage.getItem('image');
         SVGAnimateTransformElement;
         setName(name);
         setRole(role);

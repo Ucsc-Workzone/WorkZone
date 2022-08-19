@@ -70,22 +70,26 @@ router.post('/registerUser',(req,res)=>{
     })
   })
 
-router.post('/reguser',(req,res)=>{
-    const {userid,username,userrole}=req.body;
-    const sqlGet=`INSERT INTO user(userid,username,userrole) VALUES(${userid},'${username}','${userrole}')`;
-
+  router.post('/reguser',(req,res)=>{
+    const {username,password}=req.body;
+    
+    bycrypt.hash(password,10).then((hash)=>{
+ const sqlGet=`INSERT INTO user(username,password,userRole) VALUES('${username}','${hash}','coordinator')`;
     db.query(sqlGet,(error,result)=>{
         if(error){
             res.send(error)
         }
         else{
-            const status=sendRegMail(username);
+            // const status=sendRegMail(username);
          
             res.json("Email semt")
           
         }
+   
     })
 })
+})
+
 router.post('/profile',(req,res)=>{
     const data=req.body;
    

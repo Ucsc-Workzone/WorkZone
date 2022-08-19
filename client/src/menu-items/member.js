@@ -23,7 +23,7 @@ const pagesMember = {
             id: 'memberHome',
             title: 'Dashborad',
             type: 'item',
-            url: '/member/home',
+            url: '/member/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
@@ -36,14 +36,7 @@ const pagesMember = {
             breadcrumbs: false
         },
        
-        {
-            id: 'memberProjects',
-            title: 'Projects',
-            type: 'item',
-            url: '/member/projects',
-            icon: icons.IconDeviceLaptop,
-            breadcrumbs: false
-        },
+        
         {
             id: 'todo',
             title: 'Todo',
@@ -53,10 +46,10 @@ const pagesMember = {
             breadcrumbs: false
         },
         {
-            id: 'todo',
+            id: 'memberfeedback',
             title: 'System Feedbacks',
             type: 'item',
-            url: '/member/feedback',
+            url: '/member/feedbacks',
             icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
