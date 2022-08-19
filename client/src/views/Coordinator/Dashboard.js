@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from "react";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -7,10 +8,6 @@ import { CardMedia, Card, Typography, List, ListItem, ListItemText, ListItemButt
 import './styles/Dashboard.css';
 
 import Calender from 'Components/Calender';
-import { IconMessageDots } from '@tabler/icons';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Divider from '@mui/material/Divider';
 import OnlineUser from 'Components/Onlineusers';
 import HeaderCounter from 'Components/HeaderCounter3';
 import Annoucements from 'Components/RecentAnnouncements';
@@ -41,18 +38,20 @@ var CountList = {
 }
 
 const Dashboard = () => {
+    
+    
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
                 <div className="container-left">
                     <stack>
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
-                        <div className="annouce-container">s
+                        <div className="annouce-container">
                             <Annoucements />
                         </div>
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw" marginBottom={"10px"}>Upcomings</Typography>
                         <div className="upcoming-container"> 
-                            <UpcomingList/>
+                            <UpcomingList/> 
                         </div>  
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw" marginTop={"20px"} marginBottom={"10px"}>Recent Leave Requests</Typography>
                         <div className="pending-container"> 
@@ -61,7 +60,6 @@ const Dashboard = () => {
                         </div>     
                     </stack>
                 </div>
-
                 <div className="container-right">
                     <div className="calender-container">
                         <Calender />
@@ -74,8 +72,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            </Box>
-        </>
+        </Box></>
         
     );
 };

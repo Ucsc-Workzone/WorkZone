@@ -21,14 +21,6 @@ const pagesCoordinator = {
 
     children: [
         {
-            id: 'mainhome',
-            title: 'Home',
-            type: 'item',
-            url: '/',
-            icon: icons.IconHome,
-            breadcrumbs: false
-        },
-        {
             id: 'coordinatorHome',
             title: 'Dashborad',
             type: 'item',
@@ -66,14 +58,6 @@ const pagesCoordinator = {
             type: 'item',
             url: '/coordinator/leaves',
             icon: icons.IconAccessibleOff,
-            breadcrumbs: false
-        },
-        {
-            id: 'coordinatorProfile',
-            title: 'Profile',
-            type: 'item',
-            url: '/coordinator/profile',
-            icon: icons.IconUser,
             breadcrumbs: false
         },
         {
