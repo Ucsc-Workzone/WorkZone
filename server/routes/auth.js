@@ -40,9 +40,9 @@ router.post('/login',async(req,res)=>{
 })
 
 router.post('/register',(req,res)=>{
-  const {userid,username,password,userrole}=req.body;
+  const {username,password,userrole,firstName,lastName}=req.body;
   bycrypt.hash(password,10).then((hash)=>{
-    const sqlGet=`INSERT INTO user(userid,username,password,userrole) VALUES(${userid},'${username}','${hash}','${userrole}')`;
+    const sqlGet=`INSERT INTO user(username,password,userRole,firstName,lastName) VALUES(${userid},'${username}','${hash}','${userrole}','${firstName}','${lastName}')`;
     db.query(sqlGet,(error,result)=>{
         if(error){
             res.send(error)
@@ -53,6 +53,22 @@ router.post('/register',(req,res)=>{
     })
   })
 })
+router.post('/registerUser',(req,res)=>{
+    const {username,role,firstName,lastName}=req.body;
+    
+      const sqlGet=`INSERT INTO user(username,userRole,firstrName,lastName) VALUES('${username}','${role}','${firstName}','${lastName}')`;
+      db.query(sqlGet,(error,result)=>{
+          if(error){
+              res.send(error)
+          }
+          else{
+            const status=sendRegMail(username);
+         
+            res.json(status)
+          }
+      
+    })
+  })
 
 router.post('/reguser',(req,res)=>{
     const {userid,username,userrole}=req.body;
