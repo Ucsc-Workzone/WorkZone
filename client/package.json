@@ -18,11 +18,11 @@
         "@tabler/icons": "^1.79.0",
         "apexcharts": "^3.35.4",
         "axios": "^0.27.2",
-<<<<<<< HEAD
+
         "date-fns": "^2.29.1",
-=======
+
         "chart.js": "^3.9.1",
->>>>>>> eb4af57be7123dd2ec5889178e0595b936c2cd45
+
         "formik": "^2.2.9",
         "framer-motion": "^7.0.0",
         "material-ui-popup-state": "^4.0.1",
