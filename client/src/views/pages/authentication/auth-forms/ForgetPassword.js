@@ -67,15 +67,10 @@ const ForgetPassword = ({ ...others }) => {
       
     };
 
- useEffect=(()=>{
-        const search = useLocation().search;
-        const id=new URLSearchParams(search).get("token");
-        
-    })
 
     return (
         <>
-        {false && 
+     
         <div>
              <Grid container direction="column" justifyContent="center" spacing={2}>
                 <Grid item xs={12}>
@@ -226,7 +221,7 @@ const ForgetPassword = ({ ...others }) => {
                 )}
             </Formik>
         </div>
-        }
+        
         </>
     );
 };
