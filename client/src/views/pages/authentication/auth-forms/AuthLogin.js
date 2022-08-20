@@ -83,11 +83,12 @@ const FirebaseLogin = ({ ...others }) => {
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userRole']);
                     localStorage.setItem('name', data['firstrName'] + ' ' + data['lastName']);
+                    localStorage.setItem('image', data['image']);
                     localStorage.setItem('loginStatus', true);
                     const userrole = data['userRole'];
 
                     {
-                        userrole == 'member' && navigate('/member/home');
+                        userrole == 'member' && navigate('/member/dashboard');
                     }
                     {
                         userrole == 'admin' && navigate('/admin/home');

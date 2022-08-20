@@ -10,6 +10,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import DoughtChart from 'Components/DoughtChart';
+import Chip from '@mui/material/Chip';
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,7 @@ const cardStyle = {
 };
 const dueTime={
     marginTop: '40px',
-    marginRight:'40px',
+    marginRight:'30px',
     textAlign:'center',
     fontSize:'15px'
 };
@@ -58,12 +59,12 @@ export default function MemberProjectCard({ title, date,subtask,color,days }) {
                 </CardContent>
             </Box>
            
-                <Box style={{ display: 'flex', justifyContent: 'right', width: '50%', top: '50%' }}>
+                <Box style={{ display: 'flex', justifyContent: 'right', width: '53%'}}>
                 <Typography variant="subtitle12" color={color} component="div" style={dueTime}>
                         {days}
                     </Typography>
                     
-                    <div style={{ width: '30%' }}>
+                    <div style={{ width: '29%' ,marginRight:'-35px'}}>
                         <DoughtChart chartData={userData} percentage={'75'} />
                     </div>
                 </Box>

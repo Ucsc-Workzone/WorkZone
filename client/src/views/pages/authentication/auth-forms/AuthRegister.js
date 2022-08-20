@@ -8,6 +8,7 @@ import * as React from 'react';
 import FormLabel from '@mui/material/FormLabel';
 // material-ui
 import { useTheme } from '@mui/material/styles';
+import axios from 'axios';
 import {
     Box,
     Button,
@@ -44,9 +45,19 @@ const MenuProps = {
 
 const FirebaseRegister = ({ ...others }) => {
     const [value, setValue] = React.useState('female');
+    const [date,setDate]=useState('');
+    const [add,setAdd]=useState('');
+    const [fname,setFname]=useState('');
+    const [lname,setLname]=useState('');
+    const handleChangeDOB = (event) => {
+        setDate(event.target.value)
+    };
 
     const handleChangeGender = (event) => {
         setValue(event.target.value);
+    };
+    const handleChangeAdd = (event) => {
+        setAdd(event.target.value);
     };
 
     const handleSubmit=(()=>{})
@@ -54,6 +65,13 @@ const FirebaseRegister = ({ ...others }) => {
 
     const handleChangeAge = (event) => {
         setAge(event.target.value);
+    };
+
+    const handleChangFname = (event) => {
+        setFname(event.target.value);
+    };
+    const handleChangeLname = (event) => {
+        setLname(event.target.value);
     };
     const theme = useTheme();
     const scriptedRef = useScriptRef();
@@ -86,6 +104,21 @@ const FirebaseRegister = ({ ...others }) => {
                     
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+
+                    axios
+                    .post('http://localhost:5000/api/auth/registerUser', {
+                        username: values.email,
+                        role:age,
+                        dob:date,
+                        address:add,
+                        firstName:fname,
+                        lastName:lname
+                    })
+                    .then((response) => {
+                        
+                        console.log(response)
+                    });
+                   
                     // try {
                     //     if (scriptedRef.current) {
                     //         setStatus({ success: true });
@@ -115,14 +148,12 @@ const FirebaseRegister = ({ ...others }) => {
                                         onChange={handleChangeAge}
                                         MenuProps={MenuProps}
                                     >
-                                        <MenuItem value="">
-                                            <em>None</em>
-                                        </MenuItem>
+                                       
 
-                                        <MenuItem value={20}>Coordinator</MenuItem>
-                                        <MenuItem value={30}>Member</MenuItem>
+                                        <MenuItem value={1}>Coordinator</MenuItem>
+                                        <MenuItem value={2}>Member</MenuItem>
 
-                                        <MenuItem value={30}>Management Assistant</MenuItem>
+                                        <MenuItem value={3}>Management Assistant</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -139,6 +170,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     name="fname"
                                     type="text"
                                     defaultValue=""
+                                    onChange={handleChangFname}
                                     sx={{ ...theme.typography.customInput }}
                                 />
                             </Grid>
@@ -150,6 +182,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     name="lname"
                                     type="text"
                                     defaultValue=""
+                                    onChange={handleChangeLname}
                                     sx={{ ...theme.typography.customInput }}
                                 />
                             </Grid>
@@ -162,6 +195,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     name="dob"
                                     type="date"
                                     defaultValue=""
+                                    onChange={handleChangeDOB}
                                     sx={{ ...theme.typography.customInput }}
                                 />
                             </Grid>
@@ -173,6 +207,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     name="lname"
                                     type="text"
                                     defaultValue=""
+                                    onChange={handleChangeAdd}
                                     sx={{ ...theme.typography.customInput }}
                                 />
                             </Grid>

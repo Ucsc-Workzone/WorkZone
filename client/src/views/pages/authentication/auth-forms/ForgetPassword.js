@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -27,7 +28,7 @@ import {
 // third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
+import { useEffect } from 'react';
 // project imports
 import useScriptRef from 'hooks/useScriptRef';
 import AnimateButton from 'ui-component/extended/AnimateButton';
@@ -48,9 +49,7 @@ const ForgetPassword = ({ ...others }) => {
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
 
-    const googleHandler = async () => {
-        console.error('Login');
-    };
+   
 
     const [showPassword, setShowPassword] = useState(false);
     const [login, setLogin] = useState(false);
@@ -63,29 +62,22 @@ const ForgetPassword = ({ ...others }) => {
     };
     const resetPass = async () => {
         const email = document.getElementById('outlined-adornment-email-login').value;
-        const password = document.getElementById('outlined-adornment-password-login').value;
+       
         console.log(email);
-        axios
-            .post('http://localhost:5000/api/auth/login', {
-                username: email,
-                password: password
-            })
-            .then((response) => {
-                const data = response.data;
-                console.log(data);
-                if (!data['accessToken']) {
-                   
-                    alert(data['error']);
-                } else {
-                    
-                    
-                }
-            });
+      
     };
+
+ useEffect=(()=>{
+        const search = useLocation().search;
+        const id=new URLSearchParams(search).get("token");
+        
+    })
 
     return (
         <>
-            <Grid container direction="column" justifyContent="center" spacing={2}>
+        {false && 
+        <div>
+             <Grid container direction="column" justifyContent="center" spacing={2}>
                 <Grid item xs={12}>
                     <AnimateButton>
                      
@@ -110,13 +102,12 @@ const ForgetPassword = ({ ...others }) => {
                   
                 </Grid>
             </Grid>
+            
+        
+            
 
             <Formik
-                initialValues={{
-                    // email: 'info@codedthemes.com',
-                    // password: '123456',
-                    // submit: null
-                }}
+               
                 validationSchema={Yup.object().shape({
                     pass: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                     password: Yup.string().max(255).required('Password is required')
@@ -144,7 +135,6 @@ const ForgetPassword = ({ ...others }) => {
                             <OutlinedInput
                                 id="outlined-adornment-password-login"
                                 type={showPassword ? 'text' : 'password'}
-                                value={values.password}
                                 name=" confirm password"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
@@ -180,7 +170,7 @@ const ForgetPassword = ({ ...others }) => {
                             <OutlinedInput
                                 id="outlined-adornment-password-login"
                                 type={showPassword ? 'text' : 'password'}
-                                value={values.password}
+
                                 name=" confirm password"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
@@ -228,13 +218,15 @@ const ForgetPassword = ({ ...others }) => {
                                     color="primary"
                                     onClick={resetPass}
                                 >
-                                    Reset Password
+                                    Create Password
                                 </Button>
                             </AnimateButton>
                         </Box>
                     </form>
                 )}
             </Formik>
+        </div>
+        }
         </>
     );
 };

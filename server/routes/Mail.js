@@ -1,10 +1,20 @@
 const randtoken = require('rand-token');
 const {db}=require('../models/Index');
 const nodemailer=require("nodemailer") ;
-
+const crypto = require("crypto")
 
 const sendRegMail=((req,res,next)=>{
-    var token = randtoken.generate(20);
+// Defining the algorithm
+let algorithm = "sha256"
+
+// Defining the key
+let key = "GeeksForGeeks"
+
+// Creating the digest in hex encoding
+
+
+// Creating the digest in base64 encoding
+let digest2 = crypto.createHash(algorithm).update(key).digest("base64")
     const transport=nodemailer.createTransport({
         service:'gmail',
         auth:{
@@ -17,15 +27,15 @@ const sendRegMail=((req,res,next)=>{
     var mailOptions={
         from:'malithiperera1998@gmail.com',
         to:"malithiperera1998@gmail.com",
-        subject:"Test Mail",
-        html: '<p>You requested for email verification, kindly use this <a href="http://localhost:3000/?#/leave?token=' + token + '">link</a> to verify your email address</p>'
+        subject:"Registartion Confirmation",
+        html: '<h2>Welome to the WorkZone Community<h2/><p>You requested for email verification, kindly use this <a href="http://localhost:3000/workzone/pages/forgetpassword?token=' + digest2 + '">link</a> to verify your email address</p>'
     };
      transport.sendMail(mailOptions,function(error,info){
         if(error){
             console.log(error)
         }
         else{
-           return next();
+           return 1;
         }
     })
   
