@@ -66,7 +66,7 @@ const UpcomingList = () => {
               </Box>
               <Box style={{display:"flex", justifyContent: 'left', width:'60%', top: "50%"}}>
                 <div style={{ width: "38%"}}>
-                  <DoughtChart chartData={userData} percentage={"80"}/>
+                  <DoughtChart chartData={userData} percentage={"85"}/>
                 </div>             
               </Box>
             </Box>
