@@ -1,0 +1,35 @@
+.main-conatiner{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.todo-conatiner{
+    width: 65%;
+    background-color: aqua;
+    height: 500px;
+}
+.sub-conatiner{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.project-summary{
+ 
+   background-color: rgb(255, 255, 255);
+   border-radius: 20px;
+   margin-bottom: 10px;
+}
+
+.member-summary{
+   background-color: #fff;
+   border-radius: 10px;
+}
+/* .task-summary{
+    height: 400px;
+    background-color: rgb(25, 38, 56);
+} */
+.css-18z6q0m-MuiList-root{
+    border-radius: 10px;
+}
