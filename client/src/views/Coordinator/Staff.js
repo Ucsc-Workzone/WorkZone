@@ -44,7 +44,7 @@ const CoordinatorStaff = () => {
                     </div>
                 </div>
 
-                <div className="container-right">
+                {/* <div className="container-right">
                     <div className="calender-container">
                         <Calender />
                     </div>
@@ -54,7 +54,7 @@ const CoordinatorStaff = () => {
                         </Typography>
                         <OnlineUser />
                     </div>
-                </div>
+                </div> */}
             </div>
             </Box>
         </>

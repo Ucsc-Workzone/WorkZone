@@ -9,7 +9,7 @@
 
 .container-left{
 /* background-color: #fff; */
-width: 65%;
+width: 100%;
 height: 100vh;
 display: flex;
 flex-direction: column;
@@ -67,4 +67,8 @@ border-radius: 10px;
     margin-top: 20px;
     border-radius: 10px;
     padding: 20px;
+}
+
+.css-kmcnl7-MuiTypography-root{
+    padding-bottom: 10px;
 }
