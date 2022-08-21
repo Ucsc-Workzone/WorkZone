@@ -10,7 +10,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
     return (
         <div className="header-counter">
             <Grid container spacing={2} minHeight={160}>
-            <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column">
+                <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column">
                     <Box xs display="block">
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw">
                             {headlist.head2}

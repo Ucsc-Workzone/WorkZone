@@ -8,6 +8,8 @@ import { Typography, Stack  } from '@mui/material';
 import './styles/Dashboard.css';
 
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
+import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutlined';
 import Calender from 'Components/Calender';
 import OnlineUser from 'Components/Onlineusers';
 import HeaderCounter from 'Components/HeaderCounter3';
@@ -49,13 +51,13 @@ const Dashboard = () => {
                     <Stack>
                     <Box className='summary-card'>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head1} count={CountList.count1} />
+                            <TotalIncomeDarkCard title={HeadList.head1} count={CountList.count1} icon={<GroupsOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head2} count={CountList.count2} />
+                            <TotalIncomeDarkCard title={HeadList.head2} count={CountList.count2} icon={<HourglassBottomOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head3} count={CountList.count3} />
+                            <TotalIncomeDarkCard title={HeadList.head3} count={CountList.count3} icon={<AssignmentTurnedInOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                     </Box>
                         <div className="annouce-container">
@@ -67,8 +69,8 @@ const Dashboard = () => {
                         </div>  
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw" marginTop={"20px"} marginBottom={"10px"}>Recent Leave Requests</Typography>
                         <div className="pending-container"> 
-                            <PendingCounter headlist2={"Pending"} countlist2={'5'}/>
-                            <PendingList/>
+                            <PendingCounter headlist2={"Pending"} countlist2={'3'}/>
+                            <PendingList flag={true} />
                         </div>     
                     </Stack>
                 </div>

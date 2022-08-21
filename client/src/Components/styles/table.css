@@ -1,0 +1,14 @@
+
+/* .css-yzdopk-MuiButtonBase-root-MuiButton-root{
+    border-radius: 20px;
+
+} */
+.css-yzdopk-MuiButtonBase-root-MuiButton-root:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+.css-34jq5g-MuiCardActions-root{
+    padding: 8px;
+    justify-content: right;
+}
