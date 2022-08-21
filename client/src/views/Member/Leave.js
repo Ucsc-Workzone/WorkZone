@@ -42,14 +42,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createData(id, date, ndate, status, amember) {
+    return { id, date, ndate, status, amember };
 }
 
 const rows = [
-    createData('1', '2022.10.05', '01', 'pending', 'M.R. Herath'),
-    createData('2', '2022.10.05', '01', 'pending', 'M.R. Herath'),
-    createData('3', '2022.10.05', '01', 'pending', 'M.R. Herath')
+    createData('1', '2022.10.05', '02', 'Pending', 'M.R. Herath'),
+    createData('2', '2022.08.05', '01', 'Accepted', 'S.D Bandara'),
+    createData('3', '2022.07.04', '01', 'Accepted', 'J.K Rathnayake'),
+    createData('4', '2022.06.14', '01', 'Rejected', 'J.K Rathnayake')
 ];
 
 const HeadList = {
@@ -130,11 +131,25 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {rows.map((row) => (
                                         <StyledTableRow key={row.name}>
-                                            <StyledTableCell align="right">{row.name}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                            <StyledTableCell align="right">{<Chip variant="outlined" color="warning" label="pending" />}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.id}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.date}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.ndate}</StyledTableCell>
+                                            {row.status=='Pending' &&
+                                                <StyledTableCell align="right">{<Chip variant="contained" color="warning" label="Pending " />}</StyledTableCell>
+
+                                            }
+                                             {row.status=='Accepted' &&
+                                                <StyledTableCell align="right">{<Chip variant="contained" color="success" label="Accepted" />}</StyledTableCell>
+
+                                                
+                                            }
+                                              {row.status=='Rejected' &&
+                                                <StyledTableCell align="right">{<Chip variant="contained" color="error" label="Rejected" />}</StyledTableCell>
+
+                                                
+                                            }
+                                            
+                                            <StyledTableCell align="center">{row.amember}</StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>

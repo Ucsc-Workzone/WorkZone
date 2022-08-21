@@ -12,7 +12,7 @@ const icons = {
 
 // ==============================|| Member PAGES MENU ITEMS ||============================== //
 
-const pagesMember = {
+const pagesAdmin = {
     id: 'member',
     title: 'General',
     type: 'group',
@@ -20,36 +20,45 @@ const pagesMember = {
     children: [
         
         {
-            id: 'memberHome',
+            id: 'adminHome',
             title: 'Dashborad',
             type: 'item',
-            url: '/member/dashboard',
+            url: '/admin/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
-        {
-            id: 'memberLeave',
-            title: 'Leave',
-            type: 'item',
-            url: '/member/leave',
-            icon: icons.IconAccessibleOff,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'memberLeave',
+        //     title: 'Leave',
+        //     type: 'item',
+        //     url: '/member/leave',
+        //     icon: icons.IconAccessibleOff,
+        //     breadcrumbs: false
+        // },
        
         
-        {
-            id: 'workreports',
-            title: 'Work Reports',
-            type: 'item',
-            url: '/member/workreports',
-            icon: icons.IconDeviceLaptop,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'workreports',
+        //     title: 'Work Reports',
+        //     type: 'item',
+        //     url: '/member/workreports',
+        //     icon: icons.IconDeviceLaptop,
+        //     breadcrumbs: false
+        // },
         {
             id: 'memberfeedback',
             title: 'System Feedbacks',
             type: 'item',
-            url: '/member/feedbacks',
+            url: '/admin/feedbacks',
+            icon: FeedbackOutlinedIcon,
+            breadcrumbs: false
+        },
+       
+        {
+            id: 'adminreg',
+            title: 'Register',
+            type: 'item',
+            url: '/admin/register',
             icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
@@ -57,4 +66,4 @@ const pagesMember = {
     ]
 };
 
-export default pagesMember;
+export default pagesAdmin;

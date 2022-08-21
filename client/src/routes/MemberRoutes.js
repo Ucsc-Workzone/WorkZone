@@ -21,7 +21,7 @@ const SystemFeedback = Loadable(lazy(() => import('views/sample-page/SystemFeedb
 const ProjectPage = Loadable(lazy(() => import('views/Member/Projects/[id]')));
 
 const Todo = Loadable(lazy(() => import('views/Member/Todo')));
-
+const MemberReport = Loadable(lazy(() => import('views/Member/MemberReports')));
 const MemberRoutes = {
     path: '/',
     element: <MainLayout />,
@@ -75,8 +75,8 @@ const MemberRoutes = {
             path: 'member',
             children: [
                 {
-                    path: 'todo',
-                    element: <Todo />
+                    path: 'workreports',
+                    element: <MemberReport />
                 }
             ]
         },
