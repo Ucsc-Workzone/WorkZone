@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
@@ -53,6 +54,7 @@ const ProfileSection = () => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
+    const [image,setImage]=useState('')
     /**
      * anchorRef is used on different componets and specifying one type leads to other components throwing an error
      * */
@@ -98,6 +100,7 @@ const ProfileSection = () => {
         SVGAnimateTransformElement;
         setName(name);
         setRole(role);
+        setImage(image)
     }, [open]);
 
     return (
@@ -123,8 +126,10 @@ const ProfileSection = () => {
                     // }
                 }}
                 icon={
+                    
                     <Avatar
-                        src={User1}
+                   
+                    // src={require(`../../../../assets/images/Profile/${image}`)} 
                         sx={{
                             ...theme.typography.mediumAvatar,
                             margin: '8px 0 8px 8px !important',

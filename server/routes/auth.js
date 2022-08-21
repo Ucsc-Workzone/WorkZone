@@ -90,6 +90,29 @@ router.post('/registerUser',(req,res)=>{
 })
 })
 
+router.post('/validateregmail',(req,res)=>{
+    const token1=req.body.token;
+    const sqlGet=`SELECT * FROM user WHERE isVerified='${token1}'`;
+    db.query(sqlGet,(error,result)=>{
+        if(error){
+            res.send(error)
+        }
+        else{
+            if(result.length==0){
+                res.json(0)
+            }
+            else{
+                res.json(1)
+            }
+          
+        }
+   
+    })
+    
+ 
+})
+
+
 router.post('/profile',(req,res)=>{
     const data=req.body;
    

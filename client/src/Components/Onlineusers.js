@@ -9,10 +9,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import CircleIcon from '@mui/icons-material/Circle';
 
 import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import user1 from '../assets/images/Profile/member1.jpg'
+
 const picArray = [
     [1,'Malithi Perera', 'member1.jpg'],
     [2,'Bimsara Kulasekara', 'member2.jpg'],

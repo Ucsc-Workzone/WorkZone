@@ -16,6 +16,7 @@ const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
 const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
 const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
 const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
+
 const SystemFeedback = Loadable(lazy(() => import('views/sample-page/SystemFeedbacks')));
 const ProjectPage = Loadable(lazy(() => import('views/Member/Projects/[id]')));
 
@@ -96,7 +97,8 @@ const MemberRoutes = {
                     element: <ProjectPage />
                 }
             ]
-        }
+        },
+       
     ]
 };
 

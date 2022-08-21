@@ -11,13 +11,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TotalIncomeLightCard from 'views/dashboard/Default/TotalIncomeLightCard';
-import HeaderCounter from 'Components/HeaderCounter2';
+import HeaderCounter from 'Components/HeaderCounter3';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import LeaveForm from './LeaveForm';
+import NotificationList from 'layout/MainLayout/Header/NotificationSection/NotificationList';
+import NotificationListLeave from 'Components/LeaveNotification';
+import Chip from '@mui/material/Chip';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -51,11 +54,13 @@ const rows = [
 
 const HeadList = {
     head1: 'No. of Leaves in July',
-    head2: 'No of Leaves in 2022'
+    head2: 'No of Leaves in 2022',
+    head3: 'Pending Assignments'
 };
 var CountList = {
     count1: 2,
-    count2: 3
+    count2: 3,
+    count3: 0
 };
 
 const MemberLeave = () => {
@@ -81,52 +86,67 @@ const MemberLeave = () => {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                     
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                               <LeaveForm />
+                                <LeaveForm />
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose}>Request</Button>
-                            <Button onClick={handleClose} autoFocus>
+                            <Button onClick={handleClose}  variant="contained">Request</Button>
+                            <Button onClick={handleClose} autoFocus  variant="outlined">
                                 Cancel
                             </Button>
                         </DialogActions>
                     </Dialog>
                 </div>
 
-                {/* <div className="card-section"> */}
-                <HeaderCounter headlist={HeadList} countlist={CountList} />
-                {/* </div> */}
-                <div className="table-section">
-                    <Divider>
-                        <h2>Recent Leave History</h2>
-                    </Divider>
-                    <TableContainer component={Paper} className="table-data">
-                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                            <TableHead>
-                                <TableRow>
-                                    <StyledTableCell align="right">Leave No</StyledTableCell>
-                                    <StyledTableCell align="right">Request Date</StyledTableCell>
-                                    <StyledTableCell align="right">No of Days</StyledTableCell>
-                                    <StyledTableCell align="right">Status</StyledTableCell>
-                                    <StyledTableCell align="right">Assign Member</StyledTableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map((row) => (
-                                    <StyledTableRow key={row.name}>
-                                        <StyledTableCell align="right">{row.name}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                                    </StyledTableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                <div className="card-section">
+                    <HeaderCounter headlist={HeadList} countlist={CountList} />
+                    {/* <TotalIncomeLightCard 
+                title={'Leaves in August'}
+                count={1}
+                />
+                <TotalIncomeLightCard 
+                  title={'Leaves in 2022'}
+                  count={8}
+                /> */}
+                </div>
+                <div className="table-section-head">
+                    <div className="table-section">
+                        <Divider>
+                            <h2>Recent Leave History</h2>
+                        </Divider>
+                        <TableContainer component={Paper} className="table-data">
+                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                                <TableHead>
+                                    <TableRow>
+                                        <StyledTableCell align="right">Leave No</StyledTableCell>
+                                        <StyledTableCell align="right">Request Date</StyledTableCell>
+                                        <StyledTableCell align="right">No of Days</StyledTableCell>
+                                        <StyledTableCell align="right">Status</StyledTableCell>
+                                        <StyledTableCell align="right">Assign Member</StyledTableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {rows.map((row) => (
+                                        <StyledTableRow key={row.name}>
+                                            <StyledTableCell align="right">{row.name}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                                            <StyledTableCell align="right">{<Chip variant="outlined" color="warning" label="pending" />}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                        </StyledTableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </div>
+                    <div className='notification-List'>
+                    {/* <Divider>
+                            <h2>Leave Notifications</h2>
+                        </Divider> */}
+                        <NotificationListLeave ></NotificationListLeave>
+                    </div>
                 </div>
             </div>
         </>
