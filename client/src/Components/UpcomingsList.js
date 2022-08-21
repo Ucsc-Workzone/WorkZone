@@ -64,7 +64,7 @@ const UpcomingList = () => {
                 <Typography variant="h4" component="p"  fontSize="1.5vw" paddingBottom={"15px"}>Due Date:{projects.date}</Typography>
                 </Stack>
               </Box>
-              <Box style={{display:"flex", justifyContent: 'left', width:'60%', top: "50%"}}>
+              <Box style={{display:"flex", justifyContent: 'center', width:'60%', top: "50%"}}>
                 <div style={{ width: "38%"}}>
                   <DoughtChart chartData={userData} percentage={"85"}/>
                 </div>             

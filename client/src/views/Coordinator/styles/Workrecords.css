@@ -1,0 +1,52 @@
+.main-record-container{
+    justify-content: space-between;
+}
+
+.workcontainer-up{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.workcontainer-down{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+.record-container{
+    width: 100%;
+    margin: 10px;
+}
+
+.up-left-container{
+    width:65%;
+}
+
+.up-right-container{
+    width:30%;
+}
+
+.record-pending-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.calender-container{
+    width:100%;
+
+}
+
+.textCon{
+    font-size: 30px;
+}
+.textname,.textmail{
+    margin-left: 70px;
+
+ }
+.textteam{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+ 

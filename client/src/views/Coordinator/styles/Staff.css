@@ -1,24 +1,27 @@
-.main-container{
+.main-staff-container{
     width: 100%;
     /* background-color: rgb(194, 187, 187); */
-    /* height: 100vh; */
-    display: flex;
+    height: 100vh;
+    display: block;
     justify-content: space-between;
 
 }
 
-.container-left{
-/* background-color: #fff; */
-width: 100%;
-height: 100vh;
-display: flex;
-flex-direction: column;
-/* justify-content: space-between; */
-}
-.container-right{
+.container-up{
     /* background-color: #fff; */
-    width: 30%;
-    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    /* justify-content: space-between; */
+}
+.container-down{
+    /* background-color: #fff; */
+    width: 100%;
+    height: 120vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .heading-content{
@@ -31,11 +34,12 @@ flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.calender-container{
-width: 100%;
-background-color: #fff;
-/* height: 400px; */
-border-radius: 10px;
+.staff-container{
+    width: 100%;
+    background-color: #fff;
+    /* height: 400px; */
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .mainmenu-container{
@@ -50,6 +54,15 @@ border-radius: 10px;
 .textCon{
     font-size: 30px;
 }
+.textname,.textmail{
+    margin-left: 70px;
+
+ }
+.textteam{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+ 
 
 .annouce-container{
     width: 100%;
@@ -60,15 +73,20 @@ border-radius: 10px;
     padding: 20px;
 }
 
-.onlineuser-container{
-    width: 100%;
+.team-container{
+    width: 25%;
     /* height: 500px; */
     background-color: #fff;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     border-radius: 10px;
     padding: 20px;
 }
 
 .css-kmcnl7-MuiTypography-root{
     padding-bottom: 10px;
+}
+
+.css-1mwgaio-MuiInputBase-root-MuiOutlinedInput-root{
+    padding-bottom: 6px;
+    padding-top: 6px;
 }
