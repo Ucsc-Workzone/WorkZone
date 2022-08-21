@@ -15,9 +15,9 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
 const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
 const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
-const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
+const MemberProjects = Loadable(lazy(() => import('views/Member/Projects')));
 
-const SystemFeedback = Loadable(lazy(() => import('views/sample-page/SystemFeedbacks')));
+const SystemFeedback = Loadable(lazy(() => import('views/Member/Feedback')));
 const ProjectPage = Loadable(lazy(() => import('views/Member/Projects/[id]')));
 
 const Todo = Loadable(lazy(() => import('views/Member/Todo')));
