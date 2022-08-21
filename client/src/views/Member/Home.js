@@ -18,11 +18,15 @@ import React from 'react';
 
 import TotalIncomeDarkCard from 'views/dashboard/Default/TotalIncomeDarkCard';
 import MemberProjectCard from 'Components/MemberProjects';
+import OnlineUser from 'Components/Onlineusers';
 
 const MemberHome = () => {
     
     const [open, setOpen] = React.useState(false);
     const [state, setStatus] = useState('');
+    const [messege,setMessege]=useState('Your Attendenece has been reported')
+    const [stat,setStat]=useState(false);
+    const [button,setButton]=useState(true)
     const handleClose = () => {
         setOpen(false);
     };
@@ -39,6 +43,19 @@ const MemberHome = () => {
         }
         setOpen(true);
     };
+
+    const handleReport=()=>{
+        console.log(stat)
+        if(!stat){
+            setMessege('Please submit your workreport at the end of the day to complete your attendence')
+            setStat(true)
+        }
+        else{
+            setMessege('You have alreday report your attendence')
+        }
+
+setButton(false)
+    }
 
     return (
         <>
@@ -59,13 +76,20 @@ const MemberHome = () => {
                             <DialogContent>
                                 <DialogContentText id="alert-dialog-description">
                                     <h2>{state}</h2>
-                                    <h3>Your attendence has been reported</h3>
+                                    <h3>{messege}</h3>
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleClose} color="primary" variant="contained">
-                                    Continue
-                                </Button>
+                                {button &&
+                                     <Button onClick={handleReport} color="primary" variant="contained">
+                                     Continue
+                                 </Button>
+                                }
+                                {!button &&
+                                     <Button onClick={handleClose} color="primary" variant="contained">
+                                     Continue
+                                 </Button>
+                                }
                                 <Button onClick={handleClose} color="primary" variant="outlined" autoFocus>
                                     Cancel
                                 </Button>
@@ -103,13 +127,10 @@ const MemberHome = () => {
                        days={'10 days remaining'}
                        color={'#ffc107'}
                        />
-                        <Divider textAlign="left"><h3>Today</h3> </Divider>
-                        <MemberProjectCard 
-                       title={'Skelton Mobile App'}
-                       date={'20.10.2022'}
+                        <Divider textAlign="left"><h2>Site Annoucments</h2> </Divider>
+                        <SiteAnnoucements />
                        
-                       
-                       />
+                    
                     
                     </div>
                     <div className="right-container">
@@ -117,7 +138,7 @@ const MemberHome = () => {
                             <Calender />
                         </div>
                         <div className="annouce-container">
-                            <SiteAnnoucements />
+                           <OnlineUser />
                         </div>
                     </div>
                 </div>

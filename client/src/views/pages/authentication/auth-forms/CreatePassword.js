@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import { strengthColor, strengthIndicator } from 'utils/password-strength';
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {

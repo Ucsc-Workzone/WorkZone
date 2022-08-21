@@ -34,10 +34,21 @@ export default function LeaveForm() {
     };
     const [value1, setValue1] = React.useState(new Date());
     const [value, setValue] = React.useState('one');
+    const [render,setRender]=React.useState(true);
 
     const handleChangeType = (event) => {
         setValue(event.target.value);
-        console.log(event.target.value);
+        if(event.target.value=='short')
+        {
+            setRender(false)
+        }
+        else if(event.target.value=='long'){
+            setRender(false)
+        }
+        else{
+            setRender(true)
+        }
+        console.log(event.target.value)
     };
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -95,6 +106,50 @@ export default function LeaveForm() {
                                     <FormControlLabel value="long" control={<Radio />} label="long term" />
                                 </RadioGroup>
                             </Grid>
+                            {render &&
+                                <Grid item xs={12}>
+                                    <TextField
+                                        id="date"
+                                        label="Date"
+                                        type="date"
+                                        defaultValue="2017-05-24"
+                                        sx={{ width: 220 }}
+                                        InputLabelProps={{
+                                            shrink: true
+                                        }}
+                                    />
+                                </Grid>
+                            }
+                            {!render &&
+                                <>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        id="date"
+                                        label="Date"
+                                        type="date"
+                                        defaultValue="2017-05-24"
+                                        sx={{ width: 220 }}
+                                        InputLabelProps={{
+                                            shrink: true
+                                        }}
+                                    />
+                                   
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                <TextField
+                                    id="date"
+                                    label="Date"
+                                    type="date"
+                                    defaultValue="2017-05-24"
+                                    sx={{ width: 220 }}
+                                    InputLabelProps={{
+                                        shrink: true
+                                    }}
+                                />
+                               
+                            </Grid></>
+                                
+                            }
 
                             <Grid item xs={12}>
                                 <TextField required fullWidth id="email" label="Reason" name="email" autoComplete="email" />
@@ -105,10 +160,9 @@ export default function LeaveForm() {
                                     <Select
                                         labelId="demo-simple-select-filled-label"
                                         id="demo-simple-select-filled"
-                                        value=''
+                                        value=""
                                         // onChange={handleChange}
                                     >
-                                        
                                         <MenuItem value={10}>M.S Herath</MenuItem>
                                         <MenuItem value={20}>M.C Perera</MenuItem>
                                         <MenuItem value={30}>M.N. Dias</MenuItem>

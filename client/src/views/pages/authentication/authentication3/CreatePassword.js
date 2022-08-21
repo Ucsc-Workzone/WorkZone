@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 // project imports
 import AuthWrapper1 from '../AuthWrapper1';
 import AuthCardWrapper from '../AuthCardWrapper';
-import AuthLogin from '../auth-forms/ForgetPassword';
+import AuthLogin from '../auth-forms/CreatePassword';
 import Logo from 'ui-component/Logo';
 import AuthFooter from 'ui-component/cards/AuthFooter';
 import logo from '../../../../assets/images/workzone.png';
