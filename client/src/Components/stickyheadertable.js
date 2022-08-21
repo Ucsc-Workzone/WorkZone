@@ -28,23 +28,24 @@ const columns = [
   { id: 'no', 
     label: 'No.',
     align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   },
   { id: 'pic', 
     label: '',
     align: 'center',
+    format: (value) => value.toString('en-US'),
   },
   { id: 'name', 
     label: 'Name',
     align: 'left',
     fontsize: "15px",
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   },
   {    
     id: 'age', 
     label: 'Age', 
     align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   
   },
   {
@@ -52,21 +53,21 @@ const columns = [
     label: 'Gender',
     // minWidth: 170,
     align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'phone',
     label: 'Mobile',
     // minWidth: 170,
     align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'email',
     label: 'Email',
     // minWidth: 170,
     align: 'left',
-    format: (value) => value.toLocaleString('en-US'),
+    // format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'action',
@@ -214,9 +215,9 @@ const StickyHeadTable = () => {
                       if(!column.format){
                         return ( 
                           <StyledTableCell key={column.id} align={column.align}>
-                              <Avatar >B</Avatar>
-                              {/* <Avatar src={require(`../assets/images/Profile/${img}`)} >B</Avatar> */}
+                            {value}
                           </StyledTableCell>
+                          
                         );
                       }else if (typeof value == 'number'){
                         return (
@@ -227,7 +228,8 @@ const StickyHeadTable = () => {
                       }else{
                         return (
                           <StyledTableCell key={column.id} align={column.align}>
-                            {value}
+                              {/* <Avatar >B</Avatar> */}
+                              <Avatar src={require(`../assets/images/Profile/${value}`)} >B</Avatar>
                           </StyledTableCell>
                         );
                       }
