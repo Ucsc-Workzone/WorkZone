@@ -40,12 +40,12 @@
 .report-conatiner{
     margin: 10px;
     width: 15%;
-    /* background-color: beige; */
+    
 }
 
 .card-container{
     width: 100%;
-    /* background-color: red; */
+    
     display: flex;
     flex-wrap: wrap;
 }
@@ -54,8 +54,7 @@
     width: 75%;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* background-color: antiquewhite;
-} */
+    
 
 }
 
@@ -75,6 +74,19 @@
     background-color: #fff;
     height: 100px;
     border-radius: 10px;
+}
+.projectCard{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(238, 238, 238);
+    margin-bottom: 20px;
+}
+.siteAnnouce{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(238, 238, 238);
 }
 
 .css-1xkn43h-MuiTypography-root{

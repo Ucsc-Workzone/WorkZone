@@ -24,7 +24,7 @@ import Chip from '@mui/material/Chip';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#0C518A',
+        backgroundColor: '#1E88E5',
         color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -119,7 +119,7 @@ const MemberLeave = () => {
                         </Divider>
                         <TableContainer component={Paper} className="table-data">
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                <TableHead>
+                                <TableHead className='tableHead'>
                                     <TableRow>
                                         <StyledTableCell align="right">Leave No</StyledTableCell>
                                         <StyledTableCell align="right">Request Date</StyledTableCell>

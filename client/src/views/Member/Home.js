@@ -112,8 +112,9 @@ setButton(false)
                 <div className='conatiner-down'>
 
                     <div className="online-container">
-                        <Divider textAlign="left"><h3>On going Projects</h3> </Divider>
-                       <MemberProjectCard 
+                        <div className='projectCard'>
+                        <h2>On Going Projects</h2> 
+                        <MemberProjectCard 
                        title={'Skelton Mobile App'}
                        date={'24.08.2022'}
                        subtask={'Prototype Design'}
@@ -127,8 +128,13 @@ setButton(false)
                        days={'10 days remaining'}
                        color={'#ffc107'}
                        />
-                        <Divider textAlign="left"><h2>Site Annoucments</h2> </Divider>
+                        </div>
+                       
+                     <div className='siteAnnouce'>
+                     <h2>Site Annoucments</h2> 
                         <SiteAnnoucements />
+                     </div>
+                        
                        
                     
                     

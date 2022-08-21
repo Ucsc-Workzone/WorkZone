@@ -1,5 +1,5 @@
 // assets
-import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard } from '@tabler/icons';
+import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard,IconUserPlus,IconBellRinging2 } from '@tabler/icons';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 // constant
 const icons = {
@@ -35,16 +35,23 @@ const pagesAdmin = {
         //     icon: icons.IconAccessibleOff,
         //     breadcrumbs: false
         // },
-       
+        {
+            id: 'adminreg',
+            title: 'Register',
+            type: 'item',
+            url: '/admin/register',
+            icon: IconUserPlus,
+            breadcrumbs: false
+        },
         
-        // {
-        //     id: 'workreports',
-        //     title: 'Work Reports',
-        //     type: 'item',
-        //     url: '/member/workreports',
-        //     icon: icons.IconDeviceLaptop,
-        //     breadcrumbs: false
-        // },
+        {
+            id: 'manageuser',
+            title: 'Manage User',
+            type: 'item',
+            url: '/admin/manageuser',
+            icon: icons.IconUser,
+            breadcrumbs: false
+        },
         {
             id: 'memberfeedback',
             title: 'System Feedbacks',
@@ -53,15 +60,16 @@ const pagesAdmin = {
             icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
-       
         {
-            id: 'adminreg',
-            title: 'Register',
+            id: 'adminnot',
+            title: 'Annoucements',
             type: 'item',
-            url: '/admin/register',
-            icon: FeedbackOutlinedIcon,
+            url: '/admin/annoucements',
+            icon: IconBellRinging2,
             breadcrumbs: false
         },
+       
+        
        
     ]
 };
