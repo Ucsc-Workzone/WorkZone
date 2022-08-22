@@ -7,6 +7,7 @@ import coordinator from './coordinator';
 import visitor from './visitor';
 import admin from './admin';
 import ProjectListMember from './memberProjectList';
+import MA from './ma';
 
 
 // ==============================|| MENU ITEMS ||============================== //
@@ -17,7 +18,8 @@ const menuItems = {
     items2: [dashboard, pages, utilities],
     items3: [coordinator],
     items0: [visitor],
-    item4:[admin]
+    item4: [admin],
+    item5: [MA]
 };
 
 export default menuItems;
