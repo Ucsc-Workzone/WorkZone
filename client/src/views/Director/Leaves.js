@@ -41,7 +41,7 @@ var CountList = {
     count3:3
 }
 
-const CoordinatorLeaves = () => {
+const DirectorLeaves = () => {
 
 
     const [userData, setUserData] = useState({
@@ -115,5 +115,5 @@ const CoordinatorLeaves = () => {
     );
 };
 
-export default CoordinatorLeaves;
+export default DirectorLeaves;
 
