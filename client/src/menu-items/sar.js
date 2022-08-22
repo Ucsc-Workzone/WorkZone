@@ -1,6 +1,7 @@
 // assets
 import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard, IconUserPlus, IconBellRinging2 } from '@tabler/icons';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+
 // constant
 const icons = {
     IconHome,
@@ -10,45 +11,37 @@ const icons = {
     IconLayoutDashboard
 };
 
-// ==============================|| MA PAGES MENU ITEMS ||============================== //
+// ==============================|| SAR PAGES MENU ITEMS ||============================== //
 
-const pagesMA = {
-    id: 'member',
+const pagesSAR = {
+    id: 'sar',
     title: 'General',
     type: 'group',
 
     children: [
 
         {
-            id: 'MADashboard',
+            id: 'SARDashboard',
             title: 'Dashborad',
             type: 'item',
-            url: '/ma/dashboard',
+            url: '/sar/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
-        // {
-        //     id: 'memberLeave',
-        //     title: 'Leave',
-        //     type: 'item',
-        //     url: '/member/leave',
-        //     icon: icons.IconAccessibleOff,
-        //     breadcrumbs: false
-        // },
         {
-            id: 'MAReports',
+            id: 'SARReports',
             title: 'Reports',
             type: 'item',
-            url: '/ma/rports',
+            url: '/sar/rports',
             icon: IconUserPlus,
             breadcrumbs: false
         },
 
         {
-            id: 'MAFeedback',
+            id: 'SARFeedback',
             title: 'Feedback',
             type: 'item',
-            url: '/ma/feedback',
+            url: '/sar/feedback',
             icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
@@ -59,4 +52,4 @@ const pagesMA = {
     ]
 };
 
-export default pagesMA;
+export default pagesSAR;
