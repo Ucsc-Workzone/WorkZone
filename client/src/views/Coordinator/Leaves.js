@@ -15,6 +15,7 @@ import Divider from '@mui/material/Divider';
 import OnlineUser from 'Components/Onlineusers';
 import HeaderCounter from 'Components/HeaderCounter3';
 import PendingLeaves from 'Components/PendingLeaves';
+import PendingLeavescard from 'Components/PendingLeavecard';
 import LeaveHistory from 'Components/LeaveHistory';
 
 import BarChart from 'Components/BarChart';
@@ -35,7 +36,7 @@ const HeadList = {
     head3:"Rejected"
 }
 var CountList = {
-    count1:5,
+    count1:3,
     count2:7,
     count3:3
 }
@@ -103,7 +104,7 @@ const CoordinatorLeaves = () => {
                             Pending Leave Requests
                         </Typography>
                         <Box style={{display:"flex", justifyContent: 'left', width:'100', top: "50%"}}>
-                          <PendingLeaves />        
+                          <PendingLeavescard />        
                         </Box>
                     </div>
                 </div>

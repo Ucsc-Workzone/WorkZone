@@ -85,13 +85,13 @@ function createData( no, pic, name, age, phone, gender, email, action) {
 }
 
 const rows = [
-  createData('1', 'member1.jpg', 'Pamodha Mahagamage', '27', '776712245', 'Male', 'pamodhamahagamage19@gmail.com', 1),
-  createData('2', 'member2.jpg', 'Bimsara Kulasekara', '27', '776712245', 'Male', 'bimsarakulasekara19@gmail.com', 2  ),
-  createData('3', 'member3.jpg', 'Malithi Perera', '27', '776712245', 'Female', 'malithiperera1998@gmail.com', 3  ),
+  createData('1', 'member2.jpg', 'Pamodha Mahagamage', '27', '776712245', 'Male', 'pamodhamahagamage19@gmail.com', 1),
+  createData('2', 'member3.jpg', 'Bimsara Kulasekara', '27', '776712245', 'Male', 'bimsarakulasekara19@gmail.com', 2  ),
+  createData('3', 'member1.jpg', 'Malithi Perera', '27', '776712245', 'Female', 'malithiperera1998@gmail.com', 3  ),
   createData('4', 'member4.jpg', 'Kavindu Gunawardana', '27', '776712245', 'Male', 'kavindugunawaradana1997@gmail.com', 4  ),
-  createData('5', 'member5.jpg', 'Hiruni Guruge', '27', '776712245', 'Female', 'hiruniguruge99@gmail.com', 5  ),
-  createData('6', 'member6.jpg', 'Dulanjana Weerasinghe', '27', '776712245', 'Male', 'dulanajanaweerasinghe98@gmail.com', 6  ),
-  createData('7', 'member7.jpg', 'Chamara Amaraweera', '27', '776712245', 'Male', 'chamaraamraweera9@gmail.com', 7  ),
+  createData('5', 'member6.jpg', 'Hiruni Guruge', '27', '776712245', 'Female', 'hiruniguruge99@gmail.com', 5  ),
+  createData('6', 'member5.jpg', 'Dulani Weerasinghe', '27', '776712245', 'Male', 'dulanajanaweerasinghe98@gmail.com', 6  ),
+  createData('7', 'member7.jpg', 'Chathuri Amaraweera', '27', '776712245', 'Male', 'chamaraamraweera9@gmail.com', 7  ),
   // createData('8', 'member8.jpg', 'Pramaodya Gamage', '27', '776712245', 'Female', 'prmogamage19@gmail.com', 8  ),
   // createData('9', 'member9.jpg', 'Dhanika Herath', '27', '776712245', 'Male', 'dhanikaherath19@gmail.com', 9  ),
   // createData('10', 'member10.jpg', 'Nadun Sathsara', '27', '776712245', 'Male', 'nadunsathsara19@gmail.com', 10  ),
