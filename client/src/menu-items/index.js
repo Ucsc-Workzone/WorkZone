@@ -5,7 +5,9 @@ import other from './other';
 import member from './member';
 import coordinator from './coordinator';
 import visitor from './visitor';
+import admin from './admin';
 import ProjectListMember from './memberProjectList';
+
 
 // ==============================|| MENU ITEMS ||============================== //
 
@@ -14,7 +16,8 @@ const menuItems = {
     items1: [dashboard, pages, utilities, other],
     items2: [dashboard, pages, utilities],
     items3: [coordinator],
-    items0: [visitor]
+    items0: [visitor],
+    item4:[admin]
 };
 
 export default menuItems;

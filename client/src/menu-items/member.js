@@ -38,10 +38,10 @@ const pagesMember = {
        
         
         {
-            id: 'todo',
-            title: 'Todo',
+            id: 'workreports',
+            title: 'Work Reports',
             type: 'item',
-            url: '/member/todo',
+            url: '/member/workreports',
             icon: icons.IconDeviceLaptop,
             breadcrumbs: false
         },

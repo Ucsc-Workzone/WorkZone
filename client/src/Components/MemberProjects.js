@@ -15,7 +15,10 @@ import Chip from '@mui/material/Chip';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 const cardStyle = {
-    marginTop: '20px'
+    marginTop: '20px',
+    backgroundColor:'#fff',
+    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px'
+   
 };
 const dueTime={
     marginTop: '40px',

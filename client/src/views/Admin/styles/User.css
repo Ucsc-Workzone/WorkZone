@@ -1,0 +1,14 @@
+.mainConatainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.cardContainer{
+    width: 100%;
+    background-color: #fff;
+}
+.tableContainer{
+    width: 100%;
+    background-color: antiquewhite;
+}
