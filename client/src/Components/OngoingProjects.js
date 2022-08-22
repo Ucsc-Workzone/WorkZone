@@ -134,7 +134,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }
 }));
 
-const LeaveHistoryTable = () => {
+const LeaveHistoryTable = ({flag}) => {
   
 const [userData, setUserData] = useState({
     // labels: ["CM", "NC"],
@@ -206,7 +206,7 @@ const [userData, setUserData] = useState({
                 <IconButton type="submit" aria-label="search">
                     <SearchIcon style={{ fill: "blue" ,marginLeft:"30px",marginBottom:"20px"}} />
                 </IconButton>
-                <Box style={{width:"100%", display:"flex", justifyContent:"right", align:"right", marginTop:"10px", marginBottom:"10px"}}><Button variant="outlined">+ Create Project</Button></Box>
+                <Box style={{width:"100%", display:"flex", justifyContent:"right", align:"right", marginTop:"10px", marginBottom:"10px"}}>{flag && <Button variant="outlined">+ Create Project</Button>}</Box>
                 <List sx={{padding:"10px",display:"block", justifyContent:'center', maxHeight:"500px", overflow:'auto',}}>
                       <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
                         <Card variant="outlined" className="project-card">

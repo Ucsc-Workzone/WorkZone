@@ -95,7 +95,7 @@ const CoordinatorProjects = () => {
                     </Box>
                 </div>   */}
                 <div className="Leavehistory-container">
-                    <OngoingProjects />  
+                    <OngoingProjects flag={true}/>  
                 </div>
                 <div className="Leavehistory-container">
                     <ProjectHistory />  

@@ -31,7 +31,7 @@ var CountList = {
     count2:15
 }
 
-const CoordinatorStaff = () => {
+const DirectorStaff = () => {
 
     return ( 
         <><Box sx={{ flexGrow: 1 }}>
@@ -62,4 +62,4 @@ const CoordinatorStaff = () => {
     );
 };
 
-export default CoordinatorStaff;
+export default DirectorStaff;
