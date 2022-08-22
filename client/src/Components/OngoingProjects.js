@@ -207,7 +207,28 @@ const [userData, setUserData] = useState({
                     <SearchIcon style={{ fill: "blue" ,marginLeft:"30px",marginBottom:"20px"}} />
                 </IconButton>
                 <Box style={{width:"100%", display:"flex", justifyContent:"right", align:"right", marginTop:"10px", marginBottom:"10px"}}><Button variant="outlined">+ Create Project</Button></Box>
-                <List sx={{padding:"10px",display:"block", justifyContent:'center' }}>
+                <List sx={{padding:"10px",display:"block", justifyContent:'center', maxHeight:"500px", overflow:'auto',}}>
+                      <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
+                        <Card variant="outlined" className="project-card">
+                            <Box style={{display:"flex", width:'100%'}}>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                          
+                                </Box>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'70%', paddingLeft:'70px'}}>
+                                  <Stack >
+                                    <Typography variant="h3" component="p" fontSize="1.5vw" paddingTop={"15px"} paddingBottom={"15px"}>{projects.name}</Typography>
+                                    <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={"6px"}>{projects.pending} Remaining</Typography>
+                                    <Typography variant="h4" component="p"  fontSize="1.0vw" paddingBottom={"15px"}>Due Date:{projects.date}</Typography>
+                                  </Stack>
+                                </Box>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'60%', top: "50%"}}>
+                                <div style={{ width: "38%"}}>
+                                    <DoughtChart chartData={userData} percentage={"85"}/>
+                                </div>             
+                                </Box>
+                            </Box>
+                      </Card>
+                      </ListItem>
                       <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
                         <Card variant="outlined" className="project-card">
                             <Box style={{display:"flex", width:'100%'}}>
@@ -272,87 +293,6 @@ const [userData, setUserData] = useState({
                       </Card>
                       </ListItem>
                   </List>
-               
-             
-
-                {/* <div className="upcoming-container"> 
-                    <UpcomingList /> 
-                </div>
-                <div className="upcoming-container"> 
-                    <UpcomingList /> 
-                </div>
-                <div className="upcoming-container"> 
-                    <UpcomingList /> 
-                </div> */}
-
-      {/* <TableContainer sx={{ maxHeight: 600 }} >
-        <Table stickyHeader aria-label="sticky table" >
-          <TableHead>
-            <TableRow className="tablehead" >
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth, backgroundColor:'#0C518A' ,color:'white'}}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-            <TableRow className="tablehead" ></TableRow>
-          </TableHead>
-          <TableBody sx={{fontSize:'16px'}}>
-            
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
-                    {columns.map((column) => {
-                      const value = row[column.id];
-  
-                      if(!column.format){
-                        if(value == 1){
-                          return (
-                            <StyledTableCell align={column.align}><Chip label="Accepted" color="success" style={{width:"90px"}} /></StyledTableCell>
-                          );
-                        }else if(value == 2){
-                          return (
-                          <StyledTableCell align={column.align}><Chip label="Rejected" color="error"  /></StyledTableCell>
-                          );}
-                      }else if (typeof value === 'number'){
-                       
-                        return (
-                          <StyledTableCell><Button variant="contained" >Details</Button></StyledTableCell>
-                        );
-                      }else{
-                        return (
-                          <StyledTableCell key={column.id} align={column.align}>
-                            {value}
-                          </StyledTableCell>
-                        );
-                      }
-                    })}
-
-    
-                  </StyledTableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-
- 
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        style={{backgroundColor:"lightblue"}}
-      /> */}
     </Paper>
     </React.Fragment>
   );
