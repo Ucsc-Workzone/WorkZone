@@ -13,12 +13,12 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                 <Grid xs display="flex" justifyContent="center" alignItems="center" direction="column">
                     <Box xs display="block">
                         <Typography variant="h3" component="p" className="" fontSize="1.5vw">
-                            {headlist.head2}
+                            {headlist.head1}
                         </Typography>
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {countlist.count2}
+                            {countlist.count1}
                         </Typography>
                     </Box>
                 </Grid>
