@@ -72,7 +72,7 @@ border-radius: 10px;
 
 .pending-container{
     width: 100%;
-    height: 21%;
+    height: 200px;
     /* background-color: #fff; */
     border-radius: 10px;
     display: flex;
@@ -88,3 +88,55 @@ border-radius: 10px;
     justify-content: center;
     align-items: center;
 }
+.summary-card{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.projectCards{
+    width: 100%;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.css-1xkn43h-MuiTypography-root{
+    font-size: 45px;
+}
+
+.css-1gytxn5-MuiTypography-root{
+    font-size: 15px;
+}
+
+.css-13wtusx-MuiAvatar-root{
+    background-color: #7187de;
+}
+
+.css-19midj6{
+    padding: 20px;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root{
+    background-color: #045da6;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root:before{
+    position: unset;
+}
+.css-1jlqp7m-MuiTypography-root{
+    color: orange;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .summary-card{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    
+    }
+    .MuiBox-root css-19midj6{
+        margin: 20px;
+    }
+  }
