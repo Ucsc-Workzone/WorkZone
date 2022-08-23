@@ -1,18 +1,10 @@
 
-import { useState } from "react";
-import { Typography, Stack } from '@mui/material';
-
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import DoughtChart from 'Components/DoughtChart';
 
 function createData(name, date) {
   return { name, date };
 }
-
 
 const rows = [
   createData('Malithi Perera', '27/08/2022'),
@@ -20,38 +12,29 @@ const rows = [
   createData('Malithi Perera', '27/08/2022')
 ];
 
-const projects ={
-  id:1,
-  name:"Mobile App",
-  pending:"4 Days",
-  date:"27/03/2022"
-}
 import './styles/upcoming.css';
+import { Typography } from '@mui/material';
+
 
 const UpcomingList = () => {
-
-  const [userData, setUserData] = useState({
-    // labels: ["CM", "NC"],
-    datasets: [
-      {
-        label: "Users Gained",
-        data: [85, 15],
-        backgroundColor: [
-          "#0f65fa",
-          "#c2c6d1",
-        ],
-        borderColor: "white",
-        borderWidth: 2,
-      },
-    ],
-  });
-
     return ( 
     
         <div className="upcomings">
              <Box style={{display: 'flex', justifyContent: 'right'}}>
-                <Box ><Button variant="contained" ><Typography className="seeall" >Other Projects</Typography></Button></Box>
+                <Button variant="contained"><Typography className="seeall" >Other Projects</Typography></Button>
             </Box>
+<<<<<<< HEAD
+            <Box>
+              <Box style={{display:"flex", justifyContent: 'left', width:'60%', paddingLeft:'10px'}}>
+                <stack >
+                <Typography variant="h3" component="p" fontSize="1.5vw" paddingTop={"15px"} paddingBottom={"15px"}>Mobile App</Typography>
+                <Typography variant="p" component="p" fontSize="1.0vw"paddingBottom={"6px"}>4 Days Remaining</Typography>
+                <Typography variant="h4" component="p"  fontSize="1.2vw" paddingBottom={"10px"}>Due Date:27/03/2022</Typography>
+                </stack>
+              </Box>
+              <Box style={{display:"flex", justifyContent: 'right', width:'40%'}}>
+                
+=======
 
             <Box className="tag-container">
               <Card variant="outlined" className="project-card">
@@ -71,6 +54,7 @@ const UpcomingList = () => {
                     <DoughtChart chartData={userData} percentage={"85"}/>
                   </div>             
                 </Box>
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
               </Box>
               
               </Card>

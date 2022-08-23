@@ -2,13 +2,12 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import {Typography } from '@mui/material';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import FaceIcon from '@mui/icons-material/Face';
-import CircleIcon from '@mui/icons-material/Circle';
-
 import Avatar from '@mui/material/Avatar';
+<<<<<<< HEAD
+import ImageIcon from '@mui/icons-material/Image';
+import WorkIcon from '@mui/icons-material/Work';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+=======
 
 const picArray = [
     [1,'Malithi Perera', 'member1.jpg'],
@@ -19,19 +18,53 @@ const picArray = [
     [3,'Dulanjana Weerasigne', 'member5.jpg'],
     [3,'Pamodya Ranaweera', 'member7.jpg']
 ];
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
 const OnlineUser = () => {
     return (
         <>
-            <List sx={{ width: '100%', maxWidth: 580, bgcolor: 'background.paper' }}>
-                {picArray.map((user) => (
-                    <ListItem>
-                        <ListItemAvatar>
-                            <Avatar src={require(`../assets/images/Profile/${user[2]}`)} >B</Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary={user[1]} />
-                        <Chip icon={<FaceIcon />} label="Online" variant="outlined" style={{color:'green'}} />
-                    </ListItem>
-                ))}
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>M</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Malithi Perera" secondary="online" />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>B</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Bimsara Kulasekara" secondary="online" />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>h1</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Hiruni Guruge" secondary="online" />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>P</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Pamodha Mahagamage" secondary="online" />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>k</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Kavindu Galagedara" secondary="online" />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>D</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Dulanjana Weerasinghe" secondary="online" />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>M</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Manoj Hertah" secondary="online" />
+                </ListItem>
             </List>
         </>
     );
