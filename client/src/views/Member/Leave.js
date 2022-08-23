@@ -44,7 +44,7 @@ import { resolveConfig } from 'prettier';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#1E88E5',
+        backgroundColor: '#0C518A',
         color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -156,6 +156,7 @@ const MemberLeave = () => {
             .then((response) => {
                 console.log(response.data);
                if(response.data){
+                
                 window.location.reload(false);
                }
             });
@@ -362,13 +363,15 @@ const MemberLeave = () => {
                 <div className="table-section-head">
                     <div className="table-section">
                         <Divider>
-                            <h2>Recent Leave History</h2>
+                        <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                       Recent Leave History
+                    </Typography>
                         </Divider>
                         <TableContainer component={Paper} className="table-data">
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead className="tableHead">
                                     <TableRow>
-                                        <StyledTableCell align="right">No</StyledTableCell>
+                                       
                                         <StyledTableCell align="right">Start Date</StyledTableCell>
                                         <StyledTableCell align="right">End Date</StyledTableCell>
                                         <StyledTableCell align="right">No of Days</StyledTableCell>
@@ -380,7 +383,7 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {tdata.map((row) => (
                                         <StyledTableRow key={row['leaveId']}>
-                                            <StyledTableCell align="right">{row['leaveId']}</StyledTableCell>
+                                            
                                             <StyledTableCell align="right">{row['fromDate']}</StyledTableCell>
                                            <StyledTableCell align="right">{row['toDate']}</StyledTableCell>
 
