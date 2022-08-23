@@ -1,29 +1,26 @@
 const {sign,verify}=require('jsonwebtoken')
 
 const createToken=(user)=>{
-const accessToken=sign({username:user.username,userid:user.userid,userrole:user.userRole},"Secret web Token",{
-    expiresIn: '1h' // expires in 24 hours
-     });
+const accessToken=sign({username:user.username,userid:user.userid},"Secret web Token");
 return accessToken;
 };
 
 const validToken=(req,res,next)=>{
-   const accessToken=req;
-  
+    const accessToken=req.cookies["access-Token"];
     if(!accessToken){
-        return 1;
+        return res.status(400).json({error:"User Not Authenticated"})
     }
     else{
         try{
             const validToken=verify(accessToken,"Secret web Token");
             if(validToken){
                 req.authenticated=true;
-                return 3;
+                return next();
             }
 
         }
         catch(err){
-            return 2;
+            return res.status(400).json({error:err});
 
         }
     }
@@ -59,4 +56,4 @@ function sendEmail(email, token) {
     });
 }
 
-module.exports={createToken,validToken};
+module.exports={createToken,validToken,sendEmail};

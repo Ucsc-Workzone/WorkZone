@@ -16,6 +16,9 @@
 }
 .table-data{
     margin-top: 20px;
+<<<<<<< HEAD
+}
+=======
 }
 
 .but-container{
@@ -33,6 +36,7 @@
 .notification-List{
     background-color: #fff;
     border-radius: 10px;
+    height: auto;
 }
 .table-header{
     background-color: aqua;
@@ -87,3 +91,4 @@ margin-left: -9px;
     ::-webkit-scrollbar-thumb:hover {
     background: rgb(5, 151, 236); 
     }
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
