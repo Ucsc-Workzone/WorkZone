@@ -1,0 +1,21 @@
+.pending-list{
+    width: 80%;
+    height: 100%;
+    margin-left: 5%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    display: block;
+    align-items: center;
+}
+.css-16nc44l-MuiTableCell-root{
+    text-align: left;
+    padding: 5px;
+    border-bottom: 0px;
+}
+
+.small-avatar{
+    width: 35px;
+    height: 35px;
+    
+}

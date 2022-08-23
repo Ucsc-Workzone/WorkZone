@@ -1,29 +1,30 @@
 // assets
-import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop } from '@tabler/icons';
-
+import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard } from '@tabler/icons';
+import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 // constant
 const icons = {
     IconHome,
     IconAccessibleOff,
     IconUser,
-    IconDeviceLaptop
+    IconDeviceLaptop,
+    IconLayoutDashboard
 };
 
-// ==============================|| Mmebr PAGES MENU ITEMS ||============================== //
+// ==============================|| Member PAGES MENU ITEMS ||============================== //
 
 const pagesMember = {
     id: 'member',
     title: 'General',
-    caption: 'General Settings',
     type: 'group',
 
     children: [
+        
         {
             id: 'memberHome',
-            title: 'Home',
+            title: 'Dashborad',
             type: 'item',
-            url: '/member/home',
-            icon: icons.IconHome,
+            url: '/member/dashboard',
+            icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
         {
@@ -34,22 +35,25 @@ const pagesMember = {
             icon: icons.IconAccessibleOff,
             breadcrumbs: false
         },
+       
+        
         {
-            id: 'memberProfile',
-            title: 'Profile',
+            id: 'workreports',
+            title: 'Work Reports',
             type: 'item',
-            url: '/member/profile',
-            icon: icons.IconUser,
+            url: '/member/workreports',
+            icon: icons.IconDeviceLaptop,
             breadcrumbs: false
         },
         {
-            id: 'memberProjects',
-            title: 'Projects',
+            id: 'memberfeedback',
+            title: 'System Feedbacks',
             type: 'item',
-            url: '/member/projects',
-            icon: icons.IconDeviceLaptop,
+            url: '/member/feedbacks',
+            icon: FeedbackOutlinedIcon,
             breadcrumbs: false
-        }
+        },
+       
     ]
 };
 

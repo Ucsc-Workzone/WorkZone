@@ -3,7 +3,9 @@ const config = {
     // like '/berry-material-react/react/default'
     basename: '/workzone',
     defaultPath: '/dashboard/default',
-    fontFamily: `'poppins', sans-serif`,
+
+    fontFamily: `'Poppins', sans-serif`,
+
     borderRadius: 12
 };
 

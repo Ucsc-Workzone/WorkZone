@@ -1,0 +1,29 @@
+.addone{
+    color: blue;
+    font-size: 16px;
+}
+.seeall{
+    color: white;
+    font-size: 16px;
+    width: 120px;
+}
+.css-1yvzr6j-MuiTypography-root{
+    color: #1b1a1a;
+}
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root{
+    background-color: rgb(103, 155, 204);
+    border-radius: 5px;
+}
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root:hover{
+    background-color: rgb(0, 102, 255);
+}
+
+.css-1yvzr6j-MuiTypography-root:hover{
+    color: white;
+}
+.css-15v22id-MuiAccordionDetails-root{
+    margin: 0px;
+    background-color: #ece8e8;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

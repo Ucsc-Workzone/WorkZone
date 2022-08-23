@@ -1,0 +1,9 @@
+.unsuccessdiv{
+    text-align: center;
+    color: red;
+}
+
+.successdiv{
+    text-align: center;
+    color: rgb(5, 94, 42);
+}

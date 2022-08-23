@@ -7,35 +7,25 @@ import Loadable from 'ui-component/Loadable';
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
-// utilities routing
-const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
-const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
-const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
-const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
-const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/Home')));
 
-// ==============================|| MAIN ROUTING ||============================== //
-
-//test routes
-const AdminHome = Loadable(lazy(() => import('views/Admin')));
-const CoordinatorHome = Loadable(lazy(() => import('views/Coordinator')));
+// ==============================|| MEMBER ROUTING ||============================== //
 
 const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
 const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
 const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
-const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
+const MemberProjects = Loadable(lazy(() => import('views/Member/Projects')));
 
+const SystemFeedback = Loadable(lazy(() => import('views/Member/Feedback')));
+const ProjectPage = Loadable(lazy(() => import('views/Member/Projects/[id]')));
+
+const Todo = Loadable(lazy(() => import('views/Member/Todo')));
+const MemberReport = Loadable(lazy(() => import('views/Member/MemberReports')));
 const MemberRoutes = {
     path: '/',
     element: <MainLayout />,
     children: [
-        {
-            path: '/',
-            element: <SamplePage />
-        },
         {
             path: 'dashboard',
             children: [
@@ -46,28 +36,10 @@ const MemberRoutes = {
             ]
         },
         {
-            path: 'admin',
-            children: [
-                {
-                    path: 'home',
-                    element: <AdminHome />
-                }
-            ]
-        },
-        {
-            path: 'coordinator',
-            children: [
-                {
-                    path: 'home',
-                    element: <CoordinatorHome />
-                }
-            ]
-        },
-        {
             path: 'member',
             children: [
                 {
-                    path: 'home',
+                    path: 'dashboard',
                     element: <MemberHome />
                 }
             ]
@@ -98,7 +70,35 @@ const MemberRoutes = {
                     element: <MemberProjects />
                 }
             ]
-        }
+        },
+        {
+            path: 'member',
+            children: [
+                {
+                    path: 'workreports',
+                    element: <MemberReport />
+                }
+            ]
+        },
+        {
+            path: 'member',
+            children: [
+                {
+                    path: 'feedbacks',
+                    element: <SystemFeedback />
+                }
+            ]
+        },
+        {
+            path: 'member',
+            children: [
+                {
+                    path: 'project/:proid',
+                    element: <ProjectPage />
+                }
+            ]
+        },
+       
     ]
 };
 

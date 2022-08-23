@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // material-ui
@@ -39,6 +41,7 @@ import Google from 'assets/images/icons/social-google.svg';
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const FirebaseLogin = ({ ...others }) => {
+    const navigate = useNavigate();
     const theme = useTheme();
     const scriptedRef = useScriptRef();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
@@ -71,7 +74,6 @@ const FirebaseLogin = ({ ...others }) => {
                 const data = response.data;
                 console.log(data);
                 if (!data['accessToken']) {
-                    // navigate('/register')
                     alert(data['error']);
                 } else {
                     setLogin(true);
@@ -79,8 +81,27 @@ const FirebaseLogin = ({ ...others }) => {
 
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
-                    localStorage.setItem('userRole', data['userrole']);
+                    localStorage.setItem('userRole', data['userRole']);
+                    localStorage.setItem('name', data['firstrName'] + ' ' + data['lastName']);
+                    localStorage.setItem('image', data['image']);
                     localStorage.setItem('loginStatus', true);
+                    const userrole = data['userRole'];
+
+                    {
+                        userrole == 'member' && navigate('/member/dashboard');
+                    }
+                    {
+                        userrole == 'admin' && navigate('/admin/home');
+                    }
+                    {
+                        userrole == 'director' && navigate('/director/home');
+                    }
+                    {
+                        userrole == 'sar' && navigate('/sar/home');
+                    }
+                    {
+                        userrole == 'coordinator' && navigate('/coordinator/home');
+                    }
                 }
             });
     };
@@ -148,8 +169,8 @@ const FirebaseLogin = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: '',
+                    password: null,
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -241,7 +262,9 @@ const FirebaseLogin = ({ ...others }) => {
                                 label="Remember me"
                             />
                             <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }}>
-                                Forgot Password?
+                                <Link to="/pages/forgetpassword/main" style={{ textDecoration: 'none' }}>
+                                    Forget password?
+                                </Link>
                             </Typography>
                         </Stack>
                         {errors.submit && (

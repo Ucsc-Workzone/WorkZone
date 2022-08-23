@@ -1,0 +1,89 @@
+.leavecontainer{
+    width: 100%;
+    /* background-color: #fff; */
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+}
+.card-section{
+    /* background-color: #fff; */
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px;
+    /* height: 200px; */
+    display: flex;
+    justify-content: space-evenly;
+}
+.table-data{
+    margin-top: 20px;
+}
+
+.but-container{
+    margin: 20px;
+}
+.table-section-head{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.table-section{
+    width: 65%;
+    /* background-color: #fff; */
+}
+.notification-List{
+    background-color: #fff;
+    border-radius: 10px;
+}
+.table-header{
+    background-color: aqua;
+}
+.css-19midj6{
+    width: 260px;
+}
+.css-166fo7-MuiPaper-root-MuiCard-root:after{
+    width: 0px;
+}
+.css-166fo7-MuiPaper-root-MuiCard-root:before{
+    width: 100px;
+}
+.css-13b961h-MuiTypography-root{
+    font-size: 25px;
+}
+
+.css-1p2ecxs-MuiTypography-root{
+    font-size: 20px;
+}
+.css-d9oaum-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input.MuiSelect-select{
+width: 370px;
+border: 1px solid rgb(133, 133, 133);
+background-color: #fff;
+margin-left: -9px;
+}
+.css-ag7rrr-MuiTypography-root{
+    font-family:'Poppins',sans-serif;
+    margin-top: -40px;
+}
+.css-17qs7qr:hover{
+    background-color: #e8e8e9;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar {
+    background-color: #474141;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: rgb(2, 95, 202);
+    border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 151, 236); 
+    }

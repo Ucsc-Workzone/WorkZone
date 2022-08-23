@@ -1,0 +1,147 @@
+.main-container{
+    width: 100%;
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.today-container{
+    width: 60%;
+    background-color: #fff;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.right-container{
+    width: 35%;
+    /* background-color: #fff; */
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.calender-container{
+    width: 100%;
+    background-color: #fff;
+    height: 300px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.annouce-container{
+    width: 100%;
+    background-color: #fff;
+    /* height: 300px; */
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.report-conatiner{
+    margin: 10px;
+    width: 15%;
+    
+}
+
+.card-container{
+    width: 100%;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.summary-card{
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+
+}
+
+.conatiner-down{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.online-container{
+    width: 60%;
+    /* background-color: #fff; */
+}
+.projectCards{
+    width: 100%;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 10px;
+}
+.projectCard{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(238, 238, 238);
+    margin-bottom: 20px;
+}
+.siteAnnouce{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(238, 238, 238);
+}
+
+.css-1xkn43h-MuiTypography-root{
+    font-size: 45px;
+}
+
+.css-1gytxn5-MuiTypography-root{
+    font-size: 15px;
+}
+
+.css-13wtusx-MuiAvatar-root{
+    background-color: #7187de;
+}
+
+.css-19midj6{
+    padding: 20px;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root{
+    background-color: #045da6;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root:before{
+    position: unset;
+}
+
+@media only screen and (max-width: 900px) {
+    .summary-card{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    
+    }
+    .MuiBox-root css-19midj6{
+        margin: 20px;
+    }
+  }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar {
+    background-color: #474141;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: rgb(2, 95, 202);
+    border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 151, 236); 
+    }

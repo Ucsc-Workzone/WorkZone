@@ -8,7 +8,7 @@ const TotalIncomeCard = () => (
         <List sx={{ py: 0 }}>
             <ListItem alignItems="center" disableGutters sx={{ py: 0 }}>
                 <ListItemAvatar>
-                    <Skeleton variant="rectangular" width={44} height={44} />
+                    <Skeleton variant="rectangular" width={100} height={44} />
                 </ListItemAvatar>
                 <ListItemText
                     sx={{ py: 0 }}

@@ -1,0 +1,9 @@
+.main-container{
+    width: 100%;
+    display: flex;
+    background-color: red;
+    flex-direction: column;
+}
+.tag-conatiner{
+    
+}

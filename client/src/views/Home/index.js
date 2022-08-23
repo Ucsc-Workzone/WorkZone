@@ -2,7 +2,6 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
 import { CardMedia, Card, Typography, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import './home.css';
 import logo from '../../assets/images/logo.png';
@@ -152,6 +151,8 @@ const Home = () => {
                 </div>
             </div>
         </Box>
+    
+
     );
 };
 
