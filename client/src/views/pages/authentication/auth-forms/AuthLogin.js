@@ -74,6 +74,7 @@ const FirebaseLogin = ({ ...others }) => {
                 const data = response.data;
                 console.log(data);
                 if (!data['accessToken']) {
+                   
                     alert(data['error']);
                 } else {
                     setLogin(true);
@@ -82,6 +83,19 @@ const FirebaseLogin = ({ ...others }) => {
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userRole']);
+<<<<<<< HEAD
+                    localStorage.setItem('name', data['firstName']+data['lastName']);
+                    localStorage.setItem('loginStatus', true);
+                    const userrole=data['userRole'];
+                     
+                    {userrole=='member' &&  navigate('/member/home')}
+                    {userrole=='admin' &&  navigate('/admin/home')}
+                    {userrole=='director' &&  navigate('/director/home')}
+                    {userrole=='sar' &&  navigate('/sar/home')}
+                    {userrole=='coordinator' &&  navigate('/coordinator/home')}
+                   
+                    
+=======
                     localStorage.setItem('name', data['firstrName'] + ' ' + data['lastName']);
                     localStorage.setItem('image', data['image']);
                     localStorage.setItem('loginStatus', true);
@@ -102,6 +116,7 @@ const FirebaseLogin = ({ ...others }) => {
                     {
                         userrole == 'coordinator' && navigate('/coordinator/home');
                     }
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             });
     };
@@ -262,9 +277,7 @@ const FirebaseLogin = ({ ...others }) => {
                                 label="Remember me"
                             />
                             <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }}>
-                                <Link to="/pages/forgetpassword/main" style={{ textDecoration: 'none' }}>
-                                    Forget password?
-                                </Link>
+                               <Link to='/pages/forgetpassword/main'style={{textDecoration:"none"}}>Forget password?</Link>
                             </Typography>
                         </Stack>
                         {errors.submit && (

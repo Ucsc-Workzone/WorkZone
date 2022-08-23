@@ -5,8 +5,23 @@ import DevicesOutlinedIcon from '@mui/icons-material/DevicesOutlined';
 import NoAccountsOutlinedIcon from '@mui/icons-material/NoAccountsOutlined';
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 import App_todo from '../../App_todo';
-import RoutesRes from 'hooks/routeRes';
 import './styles/Home.css';
+<<<<<<< HEAD
+const MemberHome = () => {
+    return (
+        <>
+            <div className="main-container">
+                <div className="today-container"></div>
+                <div className="right-container">
+                    <div className="calender-container">
+                        <Calender />
+                    </div>
+                    <div className="annouce-container">
+                        <SiteAnnoucements />
+                    </div>
+                </div>
+
+=======
 import { useState, useEffect } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -159,6 +174,7 @@ const MemberHome = () => {
                         </div>
                     </div>
                 </div>
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
             </div>
         </>
     );
