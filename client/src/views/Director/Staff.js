@@ -5,15 +5,13 @@ import Paper from '@mui/material/Paper';
 import Grid  from '@mui/material/Grid';
 import { CardMedia, Card, Typography, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import './styles/Staff.css';
-
-import Calender from 'Components/Calender';
 import { IconMessageDots } from '@tabler/icons';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
-import OnlineUser from 'Components/Onlineusers';
 import HeaderCounter from 'Components/HeaderCounter2';
-
+import StaffTable from 'Components/stickyheadertable';
+import TeamTable from 'Components/TeamList';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -34,26 +32,28 @@ var CountList = {
 }
 
 const DirectorStaff = () => {
-    return (
+
+    return ( 
         <><Box sx={{ flexGrow: 1 }}>
-            <div className="main-container">
-                <div className="container-left">
-                    <Typography variant="h3" component="h4" className="" colour="blue" >Center of E-Learning</Typography>
+            <div className="main-staff-container">
+                <div className="container-up">
+                    <Typography variant="h3" component="h4" className="" coloir="blue" paddingBottom={"10px"} >Center of E-Learning</Typography>
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
-                    <div className="annouce-container">
-                    </div>
                 </div>
 
-                <div className="container-right">
-                    <div className="calender-container">
-                        <Calender />
-                    </div>
-                    <div className="onlineuser-container">
+                <div className="container-down">
+                    <div className="staff-container">
                         <Typography variant="h3" component="h4" className="">
-                            Center Members
+                                Members       
                         </Typography>
-                        <OnlineUser />
+                        <StaffTable />  
                     </div>
+                    {/* <div className="team-container">
+                        <Typography variant="h3" component="h4" className="">
+                            Teams
+                        </Typography>
+                        <TeamTable />
+                    </div> */}
                 </div>
             </div>
             </Box>

@@ -66,3 +66,24 @@ margin-left: -9px;
 .css-17qs7qr:hover{
     background-color: #e8e8e9;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar {
+    background-color: #474141;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: rgb(2, 95, 202);
+    border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 151, 236); 
+    }

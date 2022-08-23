@@ -17,6 +17,8 @@
 }
 .project-card{
     width: 90%;
+    box-shadow: 1px 3px #e0e0e0;
+
 }
 .project-card:hover{
    transform: scale(1.05);

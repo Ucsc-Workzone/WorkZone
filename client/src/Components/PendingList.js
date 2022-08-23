@@ -47,6 +47,9 @@ const LeavePendingList = ({flag}) => {
                         <TableCell align="right"><Avatar className='small-avatar' src={require(`../assets/images/Profile/${row.id}`)}>M</Avatar></TableCell>
                         <TableCell align="right">{row.name}</TableCell>
                         <TableCell align="right">{row.date}</TableCell>
+                        {!(flag)  &&
+                            <Button variant="contained" className="process"><Typography >Process</Typography></Button>
+                        }
                         </TableRow>
                     ))}
                     </TableBody>
