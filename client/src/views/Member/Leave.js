@@ -1,5 +1,4 @@
 import Card from 'Components/Card';
-import * as React from 'react';
 import './styles/leave.css';
 import axios from 'axios';
 import { Button, Divider } from '@mui/material';
@@ -12,6 +11,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TotalIncomeLightCard from 'views/dashboard/Default/TotalIncomeLightCard';
+<<<<<<< HEAD
+import HeaderCounter from 'Components/HeaderCounter2';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+=======
 import HeaderCounter from 'Components/HeaderCounter3';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -45,6 +51,7 @@ import { resolveConfig } from 'prettier';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: '#1E88E5',
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
         color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -74,6 +81,19 @@ const rows = [
 ];
 
 const HeadList = {
+<<<<<<< HEAD
+    head1:"No. of Leaves in July",
+    head2:"No of Leaves in 2022"
+  
+}
+var CountList = {
+    count1:2,
+    count2:3,
+    
+}
+
+const MemberLeave = () => {
+=======
     head1: 'No. of Leaves in July',
     head2: 'No of Leaves in 2022',
     head3: 'Pending Assignments'
@@ -185,13 +205,50 @@ const MemberLeave = () => {
     const handleClose = () => {
         setOpen(false);
     };
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
     return (
         <>
             <div className="leavecontainer">
                 <div>
-                    <Button variant="contained" onClick={handleClickOpen} color="primary">
+                    <Button color="primary" variant="contained">
+                        {' '}
                         Request a Leave
                     </Button>
+<<<<<<< HEAD
+                </div>
+
+                {/* <div className="card-section"> */}
+                <HeaderCounter headlist={HeadList}  countlist={CountList} />
+                {/* </div> */}
+                <div className="table-section">
+                    <Divider>
+                        <h2>Recent Leave History</h2>
+                    </Divider>
+                    <TableContainer component={Paper} className="table-data">
+                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell align="right">Leave No</StyledTableCell>
+                                    <StyledTableCell align="right">Request Date</StyledTableCell>
+                                    <StyledTableCell align="right">No of Days</StyledTableCell>
+                                    <StyledTableCell align="right">Status</StyledTableCell>
+                                    <StyledTableCell align="right">Assign Member</StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rows.map((row) => (
+                                    <StyledTableRow key={row.name}>
+                                        <StyledTableCell align="right">{row.name}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                    </StyledTableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+=======
                     <Dialog
                         open={open}
                         onClose={handleClose}
@@ -429,6 +486,7 @@ const MemberLeave = () => {
                         </Divider> */}
                         <NotificationListLeave></NotificationListLeave>
                     </div>
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 </div>
             </div>
         </>
