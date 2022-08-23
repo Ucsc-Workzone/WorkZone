@@ -11,13 +11,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TotalIncomeLightCard from 'views/dashboard/Default/TotalIncomeLightCard';
-<<<<<<< HEAD
+
 import HeaderCounter from 'Components/HeaderCounter2';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
-=======
+
 import HeaderCounter from 'Components/HeaderCounter3';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -50,8 +50,11 @@ import { resolveConfig } from 'prettier';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
+
+        backgroundColor: '#0C518A',
+
         backgroundColor: '#1E88E5',
->>>>>>> ba7068b973084811839542c6e429a372cbd31afc
+
         color: theme.palette.common.white
     },
     [`&.${tableCellClasses.body}`]: {
@@ -81,7 +84,7 @@ const rows = [
 ];
 
 const HeadList = {
-<<<<<<< HEAD
+
     head1:"No. of Leaves in July",
     head2:"No of Leaves in 2022"
   
@@ -93,7 +96,7 @@ var CountList = {
 }
 
 const MemberLeave = () => {
-=======
+
     head1: 'No. of Leaves in July',
     head2: 'No of Leaves in 2022',
     head3: 'Pending Assignments'
@@ -176,6 +179,7 @@ const MemberLeave = () => {
             .then((response) => {
                 console.log(response.data);
                if(response.data){
+                
                 window.location.reload(false);
                }
             });
@@ -205,7 +209,7 @@ const MemberLeave = () => {
     const handleClose = () => {
         setOpen(false);
     };
->>>>>>> ba7068b973084811839542c6e429a372cbd31afc
+
     return (
         <>
             <div className="leavecontainer">
@@ -214,7 +218,7 @@ const MemberLeave = () => {
                         {' '}
                         Request a Leave
                     </Button>
-<<<<<<< HEAD
+
                 </div>
 
                 {/* <div className="card-section"> */}
@@ -248,7 +252,7 @@ const MemberLeave = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-=======
+
                     <Dialog
                         open={open}
                         onClose={handleClose}
@@ -419,13 +423,15 @@ const MemberLeave = () => {
                 <div className="table-section-head">
                     <div className="table-section">
                         <Divider>
-                            <h2>Recent Leave History</h2>
+                        <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                       Recent Leave History
+                    </Typography>
                         </Divider>
                         <TableContainer component={Paper} className="table-data">
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead className="tableHead">
                                     <TableRow>
-                                        <StyledTableCell align="right">No</StyledTableCell>
+                                       
                                         <StyledTableCell align="right">Start Date</StyledTableCell>
                                         <StyledTableCell align="right">End Date</StyledTableCell>
                                         <StyledTableCell align="right">No of Days</StyledTableCell>
@@ -437,7 +443,7 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {tdata.map((row) => (
                                         <StyledTableRow key={row['leaveId']}>
-                                            <StyledTableCell align="right">{row['leaveId']}</StyledTableCell>
+                                            
                                             <StyledTableCell align="right">{row['fromDate']}</StyledTableCell>
                                            <StyledTableCell align="right">{row['toDate']}</StyledTableCell>
 
@@ -486,7 +492,7 @@ const MemberLeave = () => {
                         </Divider> */}
                         <NotificationListLeave></NotificationListLeave>
                     </div>
->>>>>>> ba7068b973084811839542c6e429a372cbd31afc
+
                 </div>
             </div>
         </>

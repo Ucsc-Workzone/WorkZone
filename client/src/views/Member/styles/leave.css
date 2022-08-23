@@ -36,6 +36,7 @@
 .notification-List{
     background-color: #fff;
     border-radius: 10px;
+    height: auto;
 }
 .table-header{
     background-color: aqua;
