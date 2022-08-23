@@ -1,6 +1,7 @@
 import Card from 'Components/Card';
 import * as React from 'react';
 import './styles/leave.css';
+import axios from 'axios';
 import { Button, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -21,6 +22,25 @@ import LeaveForm from './LeaveForm';
 import NotificationList from 'layout/MainLayout/Header/NotificationSection/NotificationList';
 import NotificationListLeave from 'Components/LeaveNotification';
 import Chip from '@mui/material/Chip';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
+import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { resolveConfig } from 'prettier';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -66,7 +86,98 @@ var CountList = {
 
 const MemberLeave = () => {
     const [open, setOpen] = React.useState(false);
+    const [tdata, setTdata] = useState([]);
+    const [age, setAge] = React.useState('');
+    const [name, setName] = React.useState('');
+    const [file, setFile] = React.useState(false);
 
+    const [member, assignMember] = React.useState(1);
+    const handleChangeA = (event) => {
+        setAge(event.target.value);
+    };
+
+    const [value, setValue] = React.useState('one');
+    const [render, setRender] = React.useState(true);
+
+    const handleChangeType = (event) => {
+        setValue(event.target.value);
+        if (event.target.value == 'short') {
+            setRender(false);
+            setFile(false)
+        } else if (event.target.value == 'long') {
+            setRender(false);
+            setFile(true)
+        } else {
+            setRender(true);
+            setFile(false)
+        }
+        console.log(event.target.value);
+    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+            email: data.get('email'),
+            password: data.get('password')
+        });
+    };
+    const handleSubmitLeave = () => {
+       
+        const userid = localStorage.getItem('userid');
+        const type=value;
+        const member='H.R Herath'
+        const reason=document.getElementById('reason').value
+        console.log(type)
+      
+        // if(value=='long'){
+            // const toDate=document.getElementById('todate').value;
+        //     const fromDate=document.getElementById('fromdate').value;
+
+        // }
+        // else{
+            const toDate=document.getElementById('date').value
+        //     const fromDate=document.getElementById('date').value
+        // }
+
+        axios
+            .post('http://localhost:5000/api/leave/submitLeave', {
+                
+                userid:userid,
+                type:'short',
+                member:member,
+                reason:reason,
+                toDate:toDate,
+                endDate:toDate,
+               
+
+
+
+            })
+            .then((response) => {
+                console.log(response.data);
+               if(response.data){
+                window.location.reload(false);
+               }
+            });
+    };
+
+    const handleChangeMember = (e) => {
+        console.log(event.target.value);
+        assignMember(event.target.value);
+    };
+    useEffect(() => {
+        const name = localStorage.getItem('name');
+        setName(name);
+        const userId = localStorage.getItem('userid');
+        axios
+            .post('http://localhost:5000/api/leave/getLeave', {
+                userId: userId
+            })
+            .then((response) => {
+                console.log(response.data);
+                setTdata(response.data);
+            });
+    }, []);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -89,12 +200,148 @@ const MemberLeave = () => {
                     >
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                <LeaveForm />
+                                <Container component="main" maxWidth="xs">
+                                    <CssBaseline />
+                                    <Box
+                                        sx={{
+                                            marginTop: 8,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center'
+                                        }}
+                                    >
+                                        <Typography component="h1" variant="h5">
+                                            Request Form
+                                        </Typography>
+                                        <Divider />
+                                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                                            <Grid container spacing={2}>
+                                                <Grid item xs={12}>
+                                                    <TextField
+                                                        autoComplete="given-name"
+                                                        name="firstName"
+                                                        required
+                                                        fullWidth
+                                                        id="firstName"
+                                                        label="Name"
+                                                        autoFocus
+                                                        value={name}
+                                                        disabled={true}
+                                                    />
+                                                </Grid>
+
+                                                <Grid item xs={12}>
+                                                    <FormLabel id="demo-row-radio-buttons-group-label">Leave Type</FormLabel>
+                                                    <RadioGroup
+                                                        row
+                                                        aria-labelledby="demo-row-radio-buttons-group-label"
+                                                        name="row-radio-buttons-group"
+                                                        value={value}
+                                                        onChange={handleChangeType}
+                                                    >
+                                                        <FormControlLabel value="one" control={<Radio />} label="one day" />
+                                                        <FormControlLabel value="short" control={<Radio />} label="short term" />
+                                                        <FormControlLabel value="long" control={<Radio />} label="long term" />
+                                                    </RadioGroup>
+                                                </Grid>
+                                               
+                                                
+                                                {render && (
+                                                    <Grid item xs={12}>
+                                                        <TextField
+                                                            id="date"
+                                                            label="Date"
+                                                            type="date"
+                                                            defaultValue="2022-08-24"
+                                                            sx={{ width: 220 }}
+                                                            InputLabelProps={{
+                                                                shrink: true
+                                                            }}
+                                                        />
+                                                    </Grid>
+                                                )}
+                                                {!render && (
+                                                    <>
+                                                        <Grid item xs={12} >
+                                                            <TextField
+                                                                id="fromdate"
+                                                                label="From Date"
+                                                                type="date"
+                                                                defaultValue="2017-05-24"
+                                                                sx={{ width: 220 }}
+                                                                InputLabelProps={{
+                                                                    shrink: true
+                                                                }}
+                                                            />
+                                                        </Grid>
+                                                        <Grid item xs={12} >
+                                                            <TextField
+                                                                id="todate"
+                                                                label=" To Date"
+                                                                type="date"
+                                                                defaultValue="2022-08-24"
+                                                                sx={{ width: 220 }}
+                                                                InputLabelProps={{
+                                                                    shrink: true
+                                                                }}
+                                                            />
+                                                        </Grid>
+                                                    </>
+                                                )}
+
+                                                <Grid item xs={12}>
+                                                    <TextField
+                                                        required
+                                                        fullWidth
+                                                        id="reason"
+                                                        label="Reason"
+                                                        name="email"
+                                                        autoComplete="email"
+                                                    />
+                                                </Grid>
+                                                {file &&
+                                                    <Grid item xs={12}>
+                                                        <TextField
+                                                            autoComplete="given-name"
+                                                            name="firstName"
+                                                            required
+                                                            fullWidth
+                                                            id="firstName"
+                                                            label="Proof"
+                                                            autoFocus
+                                                            
+                                                            type='file'
+                                                            
+                                                        />
+                                                    </Grid>
+                                                }
+                                                <Grid item xs={12}>
+                                                    <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                                                        <InputLabel id="demo-simple-select-filled-label">Memeber Assign</InputLabel>
+                                                        <Select
+                                                            labelId="demo-simple-select-filled-label"
+                                                            id="demo-simple-select-filled"
+                                                            value={member}
+                                                            onChange={handleChangeMember}
+                                                        >
+                                                            <MenuItem value={1}>M.S Herath</MenuItem>
+                                                            <MenuItem value={2}>M.C Perera</MenuItem>
+                                                            <MenuItem value={3}>M.N. Dias</MenuItem>
+                                                        </Select>
+                                                    </FormControl>
+                                                </Grid>
+                                                <Grid item xs={12}></Grid>
+                                            </Grid>
+                                        </Box>
+                                    </Box>
+                                </Container>
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose}  variant="contained">Request</Button>
-                            <Button onClick={handleClose} autoFocus  variant="outlined">
+                            <Button onClick={handleSubmitLeave} variant="contained">
+                                Request
+                            </Button>
+                            <Button onClick={handleClose} autoFocus variant="outlined">
                                 Cancel
                             </Button>
                         </DialogActions>
@@ -119,48 +366,68 @@ const MemberLeave = () => {
                         </Divider>
                         <TableContainer component={Paper} className="table-data">
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                <TableHead className='tableHead'>
+                                <TableHead className="tableHead">
                                     <TableRow>
-                                        <StyledTableCell align="right">Leave No</StyledTableCell>
-                                        <StyledTableCell align="right">Request Date</StyledTableCell>
+                                        <StyledTableCell align="right">No</StyledTableCell>
+                                        <StyledTableCell align="right">Start Date</StyledTableCell>
+                                        <StyledTableCell align="right">End Date</StyledTableCell>
                                         <StyledTableCell align="right">No of Days</StyledTableCell>
+
                                         <StyledTableCell align="right">Status</StyledTableCell>
                                         <StyledTableCell align="right">Assign Member</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {rows.map((row) => (
-                                        <StyledTableRow key={row.name}>
-                                            <StyledTableCell align="right">{row.id}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.date}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.ndate}</StyledTableCell>
-                                            {row.status=='Pending' &&
-                                                <StyledTableCell align="right">{<Chip variant="contained" color="warning" label="Pending " />}</StyledTableCell>
+                                    {tdata.map((row) => (
+                                        <StyledTableRow key={row['leaveId']}>
+                                            <StyledTableCell align="right">{row['leaveId']}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['fromDate']}</StyledTableCell>
+                                           <StyledTableCell align="right">{row['toDate']}</StyledTableCell>
 
-                                            }
-                                             {row.status=='Accepted' &&
-                                                <StyledTableCell align="right">{<Chip variant="contained" color="success" label="Accepted" />}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['nodays']}</StyledTableCell>
 
-                                                
-                                            }
-                                              {row.status=='Rejected' &&
-                                                <StyledTableCell align="right">{<Chip variant="contained" color="error" label="Rejected" />}</StyledTableCell>
+                                            {row['status'] == 'Pending' && (
+                                                <StyledTableCell align="right">
+                                                    {
+                                                        <Chip
+                                                            variant="contained"
+                                                            color="warning"
+                                                            label="Pending "
+                                                            style={{ width: '100%' }}
+                                                        />
+                                                    }
+                                                </StyledTableCell>
+                                            )}
+                                            {row['status'] == 'Accepted' && (
+                                                <StyledTableCell align="right">
+                                                    {
+                                                        <Chip
+                                                            variant="contained"
+                                                            color="success"
+                                                            label="Accepted"
+                                                            style={{ width: '100%' }}
+                                                        />
+                                                    }
+                                                </StyledTableCell>
+                                            )}
+                                            {row['status'] == 'Rejected' && (
+                                                <StyledTableCell align="right">
+                                                    {<Chip variant="contained" color="error" label="Rejected" style={{ width: '100%' }} />}
+                                                </StyledTableCell>
+                                            )}
 
-                                                
-                                            }
-                                            
-                                            <StyledTableCell align="center">{row.amember}</StyledTableCell>
+                                            <StyledTableCell align="center">{row['assignMember']}</StyledTableCell>
                                         </StyledTableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
                     </div>
-                    <div className='notification-List'>
-                    {/* <Divider>
+                    <div className="notification-List">
+                        {/* <Divider>
                             <h2>Leave Notifications</h2>
                         </Divider> */}
-                        <NotificationListLeave ></NotificationListLeave>
+                        <NotificationListLeave></NotificationListLeave>
                     </div>
                 </div>
             </div>
