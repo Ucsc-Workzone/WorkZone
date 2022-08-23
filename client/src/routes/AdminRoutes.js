@@ -3,6 +3,7 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
+<<<<<<< HEAD
 
 
 
@@ -22,6 +23,16 @@ const adminFeedback = Loadable(lazy(() => import('views/Admin/Feedback')));
 const adminReports = Loadable(lazy(() => import('views/Admin/Reports')));
 const adminProfile = Loadable(lazy(() => import('views/Admin/Profile')));
 
+=======
+// sample page routing
+const SamplePage = Loadable(lazy(() => import('views/Home')));
+// ==============================|| admin ROUTING ||============================== //
+const AdminDashboard = Loadable(lazy(() => import('views/Admin/Dashboard')));
+const AdminFeedback = Loadable(lazy(() => import('views/Admin/Feedback')));
+const AdminRegister = Loadable(lazy(() => import('views/Admin/Register')));
+const ManageUser = Loadable(lazy(() => import('views/Admin/ManageUser')));
+const Annoucements = Loadable(lazy(() => import('views/Admin/Annoucements')));
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
 const adminRoutes = {
     path: '/',
     element: <MainLayout />,
@@ -30,6 +41,7 @@ const adminRoutes = {
             path: '/',
             element: <SamplePage />
         },
+<<<<<<< HEAD
         {
             path: 'dashboard',
             children: [
@@ -47,11 +59,15 @@ const adminRoutes = {
                 }
             ]
         },
+=======
+      
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
         {
             path: 'admin',
             children: [
                 {
                     path: 'dashboard',
+<<<<<<< HEAD
                     element: <adminDashboard />
                 }
             ]
@@ -71,6 +87,9 @@ const adminRoutes = {
                 {
                     path: 'staff',
                     element: <adminStaff />
+=======
+                    element: <AdminDashboard />
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             ]
         },
@@ -78,8 +97,13 @@ const adminRoutes = {
             path: 'admin',
             children: [
                 {
+<<<<<<< HEAD
                     path: 'workrecords',
                     element: <adminWorkrecords />
+=======
+                    path: 'manageuser',
+                    element: <ManageUser />
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             ]
         },
@@ -87,8 +111,13 @@ const adminRoutes = {
             path: 'admin',
             children: [
                 {
+<<<<<<< HEAD
                     path: 'leaves',
                     element: <adminLeaves />
+=======
+                    path: 'annoucements',
+                    element: <Annoucements />
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             ]
         },
@@ -97,7 +126,11 @@ const adminRoutes = {
             children: [
                 {
                     path: 'feedbacks',
+<<<<<<< HEAD
                     element: <adminFeedback />
+=======
+                    element: <AdminFeedback />
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             ]
         },
@@ -105,7 +138,11 @@ const adminRoutes = {
             path: 'admin',
             children: [
                 {
+<<<<<<< HEAD
                     path: 'reports',
+=======
+                    path: 'annoucements',
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                     element: <adminReports />
                 }
             ]
@@ -114,12 +151,21 @@ const adminRoutes = {
             path: 'admin',
             children: [
                 {
+<<<<<<< HEAD
                     path: 'profile',
                     element: <adminProfile />
+=======
+                    path: 'register',
+                    element: <AdminRegister />
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             ]
         }
     ]
 };
 
+<<<<<<< HEAD
 export default adminRoutes;
+=======
+export default adminRoutes;
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc

@@ -63,7 +63,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ==============================|| DASHBOARD - TOTAL ORDER LINE CHART CARD ||============================== //
 
-const TotalOrderLineChartCard = ({ isLoading }) => {
+const TotalOrderLineChartCard = ({ isLoading ,title,count,icon}) => {
     const theme = useTheme();
 
     const [timeValue, setTimeValue] = useState(false);
@@ -96,7 +96,7 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                         </Avatar>
                                     </Grid>
                                     <Grid item>
-                                        <Button
+                                        {/* <Button
                                             disableElevation
                                             variant={timeValue ? 'contained' : 'text'}
                                             size="small"
@@ -104,8 +104,8 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                             onClick={(e) => handleChangeTime(e, true)}
                                         >
                                             Month
-                                        </Button>
-                                        <Button
+                                        </Button> */}
+                                        {/* <Button
                                             disableElevation
                                             variant={!timeValue ? 'contained' : 'text'}
                                             size="small"
@@ -113,7 +113,7 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                             onClick={(e) => handleChangeTime(e, false)}
                                         >
                                             Year
-                                        </Button>
+                                        </Button> */}
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -122,15 +122,11 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                     <Grid item xs={6}>
                                         <Grid container alignItems="center">
                                             <Grid item>
-                                                {timeValue ? (
+                                                
                                                     <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                                        $108
+                                                       {count}
                                                     </Typography>
-                                                ) : (
-                                                    <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                                        $961
-                                                    </Typography>
-                                                )}
+                                                
                                             </Grid>
                                             <Grid item>
                                                 <Avatar
@@ -152,14 +148,12 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                                                         color: theme.palette.primary[200]
                                                     }}
                                                 >
-                                                    Total Order
+                                                   {title}
                                                 </Typography>
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid item xs={6}>
-                                        {timeValue ? <Chart {...ChartDataMonth} /> : <Chart {...ChartDataYear} />}
-                                    </Grid>
+                                    
                                 </Grid>
                             </Grid>
                         </Grid>

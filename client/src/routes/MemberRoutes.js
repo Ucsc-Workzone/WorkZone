@@ -15,11 +15,18 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 const MemberHome = Loadable(lazy(() => import('views/Member/Home')));
 const MemberLeave = Loadable(lazy(() => import('views/Member/Leave')));
 const MemberProfile = Loadable(lazy(() => import('views/Member/Profile')));
+<<<<<<< HEAD
 const MemberProjects = Loadable(lazy(() => import('views/Member/Profile')));
 
+=======
+const MemberProjects = Loadable(lazy(() => import('views/Member/Projects')));
+
+const SystemFeedback = Loadable(lazy(() => import('views/Member/Feedback')));
+const ProjectPage = Loadable(lazy(() => import('views/Member/Projects/[id]')));
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
 
 const Todo = Loadable(lazy(() => import('views/Member/Todo')));
-
+const MemberReport = Loadable(lazy(() => import('views/Member/MemberReports')));
 const MemberRoutes = {
     path: '/',
     element: <MainLayout />,
@@ -37,7 +44,7 @@ const MemberRoutes = {
             path: 'member',
             children: [
                 {
-                    path: 'home',
+                    path: 'dashboard',
                     element: <MemberHome />
                 }
             ]
@@ -73,11 +80,34 @@ const MemberRoutes = {
             path: 'member',
             children: [
                 {
-                    path: 'todo',
-                    element: <Todo />
+                    path: 'workreports',
+                    element: <MemberReport />
                 }
             ]
+<<<<<<< HEAD
         }
+=======
+        },
+        {
+            path: 'member',
+            children: [
+                {
+                    path: 'feedbacks',
+                    element: <SystemFeedback />
+                }
+            ]
+        },
+        {
+            path: 'member',
+            children: [
+                {
+                    path: 'project/:proid',
+                    element: <ProjectPage />
+                }
+            ]
+        },
+       
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
     ]
 };
 

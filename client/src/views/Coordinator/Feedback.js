@@ -1,7 +1,15 @@
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import { Box } from "@mui/system";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+import Feedback from "Components/Feedback";
 const CoordinatorFeedback = () => {
     return (
         <>
-            <h2>This is Coordinator Feedback</h2>
+            <Box style = {{width:"100%" , justifyContent:"space-between"}}><Feedback></Feedback></Box>
         </>
     );
 };

@@ -1,0 +1,35 @@
+.mainConatainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.cardContainer{
+    width: 100%;
+    background-color: #fff;
+}
+.tableContainer{
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar {
+    background-color: #474141;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: rgb(2, 95, 202);
+    border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 151, 236); 
+    }

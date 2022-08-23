@@ -1,6 +1,7 @@
 const randtoken = require('rand-token');
 const {db}=require('../models/Index');
 const nodemailer=require("nodemailer") ;
+<<<<<<< HEAD
 
 
 const sendRegMail=((req,res,next)=>{
@@ -29,6 +30,39 @@ const sendRegMail=((req,res,next)=>{
         }
     })
   
+=======
+const crypto = require("crypto")
+const bycrypt=require('bcrypt')
+const sendRegMail=((req,res,next)=>{
+
+    bycrypt.hash(req,10).then((hash)=>{
+        const transport=nodemailer.createTransport({
+            service:'gmail',
+            auth:{
+                user:'malithiperera1998@gmail.com',
+                pass:'pztoeiikalwcgnhv'
+            }
+        });
+     
+    
+        var mailOptions={
+            from:'malithiperera1998@gmail.com',
+            to:"malithiperera1998@gmail.com",
+            subject:"Registartion Confirmation",
+            html: '<h2>Welome to the WorkZone Community<h2/><p>You requested for email verification, kindly use this <a href="http://localhost:3000/workzone/pages/forgetpassword?token=' + hash + '">link</a> to verify your email address</p>'
+        };
+         transport.sendMail(mailOptions,function(error,info){
+            if(error){
+                console.log(error)
+            }
+            else{
+               return 1;
+            }
+        })
+      
+      })
+   
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
 })
 const sendforgetMail=((req,res,next)=>{
     const email=req;

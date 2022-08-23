@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 gitimport * as React from 'react';
+=======
+import * as React from 'react';
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';

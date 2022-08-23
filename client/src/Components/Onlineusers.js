@@ -3,9 +3,22 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+<<<<<<< HEAD
 import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+=======
+
+const picArray = [
+    [1,'Malithi Perera', 'member1.jpg'],
+    [2,'Bimsara Kulasekara', 'member2.jpg'],
+    [3,'Pamodha Mahagamage', 'member3.jpg'],
+    [3,'Hiruni Guruge', 'member6.jpg'],
+    [3,'Kavindu Galagedara', 'member4.jpg'],
+    [3,'Dulanjana Weerasigne', 'member5.jpg'],
+    [3,'Pamodya Ranaweera', 'member7.jpg']
+];
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
 const OnlineUser = () => {
     return (
         <>

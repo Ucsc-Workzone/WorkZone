@@ -30,7 +30,7 @@ const pagesMember = {
             id: 'memberHome',
             title: 'Dashborad',
             type: 'item',
-            url: '/member/home',
+            url: '/member/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
@@ -42,6 +42,7 @@ const pagesMember = {
             icon: icons.IconAccessibleOff,
             breadcrumbs: false
         },
+<<<<<<< HEAD
         {
             id: 'memberProfile',
             title: 'Profile',
@@ -50,22 +51,29 @@ const pagesMember = {
             icon: icons.IconUser,
             breadcrumbs: false
         },
+=======
+       
+        
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
         {
-            id: 'memberProjects',
-            title: 'Projects',
+            id: 'workreports',
+            title: 'Work Reports',
             type: 'item',
-            url: '/member/projects',
+            url: '/member/workreports',
             icon: icons.IconDeviceLaptop,
             breadcrumbs: false
         },
+<<<<<<< HEAD
+=======
         {
-            id: 'todo',
-            title: 'Todo',
+            id: 'memberfeedback',
+            title: 'System Feedbacks',
             type: 'item',
-            url: '/member/todo',
-            icon: icons.IconDeviceLaptop,
+            url: '/member/feedbacks',
+            icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
        
     ]
 };

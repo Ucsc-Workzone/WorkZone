@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
 import axios from 'axios';
+=======
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -36,8 +39,6 @@ import AnimateButton from 'ui-component/extended/AnimateButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-
-
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const ForgetPassword = ({ ...others }) => {
@@ -47,11 +48,21 @@ const ForgetPassword = ({ ...others }) => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
+    const [strength, setStrength] = useState(0);
+    const [level, setLevel] = useState();
+    const [pass, newPass] = useState('');
+    const [cpass, newCpass] = useState('');
 
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
     const googleHandler = async () => {
         console.error('Login');
     };
 
+=======
+    const handleSubmit = (e) => {
+        console.log('pass');
+    };
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
     const [showPassword, setShowPassword] = useState(false);
     const [login, setLogin] = useState(false);
     const handleClickShowPassword = () => {
@@ -61,6 +72,7 @@ const ForgetPassword = ({ ...others }) => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
     const resetPass = async () => {
         const email = document.getElementById('outlined-adornment-email-login').value;
         const password = document.getElementById('outlined-adornment-password-login').value;
@@ -83,14 +95,26 @@ const ForgetPassword = ({ ...others }) => {
             });
     };
 
+=======
+    const resetPassword = (e) => {
+        console.log('pass');
+    };
+
+    const handleChangenewPassword = (e) => {
+        newPass(event.target.value);
+        console.log(pass);
+    };
+    const handleChangeconfirmPassword = (e) => {
+        newCpass(event.target.value);
+        console.log(cpass);
+    };
+
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
     return (
         <>
             <Grid container direction="column" justifyContent="center" spacing={2}>
                 <Grid item xs={12}>
-                    <AnimateButton>
-                     
-                       
-                    </AnimateButton>
+                    <AnimateButton></AnimateButton>
                 </Grid>
                 <Grid item xs={12}>
                     <Box
@@ -101,22 +125,21 @@ const ForgetPassword = ({ ...others }) => {
                     >
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
 
-                       
-
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                     </Box>
                 </Grid>
-                <Grid item xs={12} container alignItems="center" justifyContent="center">
-                  
-                </Grid>
+                <Grid item xs={12} container alignItems="center" justifyContent="center"></Grid>
             </Grid>
 
             <Formik
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
                 initialValues={{
                     // email: 'info@codedthemes.com',
                     // password: '123456',
                     // submit: null
                 }}
+=======
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
                 validationSchema={Yup.object().shape({
                     pass: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                     password: Yup.string().max(255).required('Password is required')
@@ -137,17 +160,20 @@ const ForgetPassword = ({ ...others }) => {
                     }
                 }}
             >
-                {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+                {({ errors, handleBlur, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
                         <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>
                             <InputLabel htmlFor="outlined-adornment-email-login">Password </InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password-login"
                                 type={showPassword ? 'text' : 'password'}
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
                                 value={values.password}
                                 name=" confirm password"
+=======
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
                                 onBlur={handleBlur}
-                                onChange={handleChange}
+                                onChange={handleChangenewPassword}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
@@ -176,14 +202,17 @@ const ForgetPassword = ({ ...others }) => {
                             error={Boolean(touched.password && errors.password)}
                             sx={{ ...theme.typography.customInput }}
                         >
-                            <InputLabel htmlFor="outlined-adornment-password-login">Confirm Password</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-password-confirm">Confirm Password</InputLabel>
                             <OutlinedInput
-                                id="outlined-adornment-password-login"
+                                id="outlined-adornment-password-confirm"
                                 type={showPassword ? 'text' : 'password'}
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
                                 value={values.password}
+=======
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
                                 name=" confirm password"
                                 onBlur={handleBlur}
-                                onChange={handleChange}
+                                onChange={handleChangeconfirmPassword}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
@@ -206,17 +235,15 @@ const ForgetPassword = ({ ...others }) => {
                                 </FormHelperText>
                             )}
                         </FormControl>
-                        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}>
-                            
-                            
-                        </Stack>
-                        {errors.submit && (
+                        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1}></Stack>
+                        {/* {errors.submit && (
                             <Box sx={{ mt: 3 }}>
                                 <FormHelperText error>{errors.submit}</FormHelperText>
                             </Box>
-                        )}
+                        )} */}
 
                         <Box sx={{ mt: 2 }}>
+<<<<<<< HEAD:client/src/views/pages/authentication/auth-forms/ForgetPassword.js
                             <AnimateButton>
                                 <Button
                                     disableElevation
@@ -231,6 +258,22 @@ const ForgetPassword = ({ ...others }) => {
                                     Reset Password
                                 </Button>
                             </AnimateButton>
+=======
+                            {/* <AnimateButton> */}
+                            <Button
+                                // disableElevation
+                                // disabled={isSubmitting}
+                                fullWidth
+                                size="large"
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                onClick={resetPassword}
+                            >
+                                Create Password
+                            </Button>
+                            {/* </AnimateButton> */}
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc:client/src/views/pages/authentication/auth-forms/CreatePassword.js
                         </Box>
                     </form>
                 )}

@@ -83,6 +83,7 @@ const FirebaseLogin = ({ ...others }) => {
                     localStorage.setItem('token', data['accessToken']);
                     localStorage.setItem('userid', data['userid']);
                     localStorage.setItem('userRole', data['userRole']);
+<<<<<<< HEAD
                     localStorage.setItem('name', data['firstName']+data['lastName']);
                     localStorage.setItem('loginStatus', true);
                     const userrole=data['userRole'];
@@ -94,6 +95,28 @@ const FirebaseLogin = ({ ...others }) => {
                     {userrole=='coordinator' &&  navigate('/coordinator/home')}
                    
                     
+=======
+                    localStorage.setItem('name', data['firstrName'] + ' ' + data['lastName']);
+                    localStorage.setItem('image', data['image']);
+                    localStorage.setItem('loginStatus', true);
+                    const userrole = data['userRole'];
+
+                    {
+                        userrole == 'member' && navigate('/member/dashboard');
+                    }
+                    {
+                        userrole == 'admin' && navigate('/admin/home');
+                    }
+                    {
+                        userrole == 'director' && navigate('/director/home');
+                    }
+                    {
+                        userrole == 'sar' && navigate('/sar/home');
+                    }
+                    {
+                        userrole == 'coordinator' && navigate('/coordinator/home');
+                    }
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
                 }
             });
     };

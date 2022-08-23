@@ -50,7 +50,7 @@ const MenuList = () => {
                 );
         }
     });
-    const navItems2= menuItem.items2.map((item) => {
+    const navItems2 = menuItem.items2.map((item) => {
         switch (item.type) {
             case 'group':
                 return <NavGroup key={item.id} item={item} />;
@@ -62,7 +62,7 @@ const MenuList = () => {
                 );
         }
     });
-    const navItems3= menuItem.items3.map((item) => {
+    const navItems3 = menuItem.items3.map((item) => {
         switch (item.type) {
             case 'group':
                 return <NavGroup key={item.id} item={item} />;
@@ -87,13 +87,78 @@ const MenuList = () => {
         }
     });
 
+    const navItems4 = menuItem.item4.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
+    const navItems5 = menuItem.item5.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
+
+
+    const navItems6 = menuItem.item6.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
+
+    const navItems7 = menuItem.item7.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
+
+
     return <>
+<<<<<<< HEAD
     {userRole == null && navItems0}
     {userRole == 'member' && navItems1}
     {userRole == 'admin' && navItems4}
     {userRole == 'coordinator' && navItems3}
     {userRole == 'sar' && navItems}
     
+=======
+        {userRole == null && navItems0}
+        {userRole == 'member' && navItems1}
+        {userRole == 'admin' && navItems4}
+        {userRole == 'coordinator' && navItems3}
+        {userRole == 'ma' && navItems5}
+        {userRole == 'director' && navItems6}
+        {userRole == 'sar' && navItems7}
+
+
+>>>>>>> ba7068b973084811839542c6e429a372cbd31afc
     </>;
 };
 
