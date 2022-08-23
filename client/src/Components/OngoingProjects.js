@@ -38,6 +38,15 @@ import CommentIcon from '@mui/icons-material/Comment';
 
 import Chip from '@mui/material/Chip';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+import ProjectForm from '../views/Coordinator/ProjectForm';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 import { Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import './styles/table.css';
@@ -87,10 +96,21 @@ const columns = [
 ];
 
 const projects ={
-    id:1,
-    name:"Mobile App",
+    id1:{name:"Mobile App",
     pending:"4 Days",
-    date:"27/03/2022"
+    date:"27/03/2022"},
+    id2:{name:"Mobile App",
+    pending:"4 Days",
+    date:"27/03/2022"},
+    id3:{name:"Mobile App",
+    pending:"4 Days",
+    date:"27/03/2022"},
+    id4:{name:"Mobile App",
+    pending:"4 Days",
+    date:"27/03/2022"},
+    id5:{name:"Mobile App",
+    pending:"4 Days",
+    date:"27/03/2022"}
   }
 function createData( no, name, date, duration, status, action) {
   return { no, name, date, duration, status, action };
@@ -176,6 +196,16 @@ const [userData, setUserData] = useState({
     setValue(newValue);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
   return (
     <React.Fragment>
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
@@ -206,12 +236,34 @@ const [userData, setUserData] = useState({
                 <IconButton type="submit" aria-label="search">
                     <SearchIcon style={{ fill: "blue" ,marginLeft:"30px",marginBottom:"20px"}} />
                 </IconButton>
-                <Box style={{width:"100%", display:"flex", justifyContent:"right", align:"right", marginTop:"10px", marginBottom:"10px"}}>{flag && <Button variant="outlined">+ Create Project</Button>}</Box>
+                <Box style={{width:"100%", display:"flex", justifyContent:"right", align:"right", marginTop:"10px", marginBottom:"10px"}}>{flag && <Button variant="outlined" onClick={handleClickOpen}>+ Create Project</Button>}</Box>
+                <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogContent >
+                            <DialogContentText id="alert-dialog-description" >
+                              <Box style={{width:"100%", display:"flex", justifyContent:"right",  marginTop:"10px", marginBottom:"10px"}}>
+                                <HighlightOffIcon style={{color:'blue',justifyContent:'right'}}/>
+                              </Box>
+                                <ProjectForm />
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}  variant="contained">Create</Button>
+                            <Button onClick={handleClose} autoFocus  variant="outlined">
+                                Cancel
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                
                 <List sx={{padding:"10px",display:"block", justifyContent:'center', maxHeight:"500px", overflow:'auto',}}>
                       <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
                         <Card variant="outlined" className="project-card">
                             <Box style={{display:"flex", width:'100%'}}>
-                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'rgb(5 161 189)'}}>
                           
                                 </Box>
                                 <Box style={{display:"flex", justifyContent: 'left', width:'70%', paddingLeft:'70px'}}>
@@ -232,7 +284,7 @@ const [userData, setUserData] = useState({
                       <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
                         <Card variant="outlined" className="project-card">
                             <Box style={{display:"flex", width:'100%'}}>
-                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'rgb(5 161 189)'}}>
                           
                                 </Box>
                                 <Box style={{display:"flex", justifyContent: 'left', width:'70%', paddingLeft:'70px'}}>
@@ -253,7 +305,7 @@ const [userData, setUserData] = useState({
                       <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
                         <Card variant="outlined" className="project-card">
                             <Box style={{display:"flex", width:'100%'}}>
-                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'rgb(5 161 189)'}}>
                           
                                 </Box>
                                 <Box style={{display:"flex", justifyContent: 'left', width:'70%', paddingLeft:'70px'}}>
@@ -274,7 +326,7 @@ const [userData, setUserData] = useState({
                       <ListItem sx={{ padding:"10px",display:"flex", justifyContent:'center' }}>
                         <Card variant="outlined" className="project-card">
                             <Box style={{display:"flex", width:'100%'}}>
-                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'rgb(5 161 189)'}}>
                           
                                 </Box>
                                 <Box style={{display:"flex", justifyContent: 'left', width:'70%', paddingLeft:'70px'}}>

@@ -49,7 +49,7 @@ const CoordinatorLeaves = () => {
         datasets: [
           {
             label: "Accepted",
-            data: [10, 15, 16, 8, 6, 20, 15, 16, 11, 12, 16, 13],
+            data: [10, 15, 16, 8, 6, 20, 15, 0, 0, 0, 0, 0],
             backgroundColor: [
               "#0f65fa",
             ],
@@ -58,7 +58,7 @@ const CoordinatorLeaves = () => {
           },
           {
             label: "Rejected",
-            data: [8, 7, 6, 2, 3, 5, 6, 8, 10, 5, 6, 12],
+            data: [8, 7, 6, 2, 3, 5, 6, 0, 0, 0, 0, 0],
             backgroundColor: [
               "#c2c6d1",
             ],

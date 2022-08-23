@@ -86,6 +86,10 @@ border-radius: 10px;
 }
 
 
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root #form-calender{
+    width:100%;
+    margin: 0px;
+}
 .css-kmcnl7-MuiTypography-root{
     padding-bottom: 10px;
 }

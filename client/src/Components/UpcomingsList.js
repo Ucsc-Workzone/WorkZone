@@ -56,7 +56,7 @@ const UpcomingList = () => {
             <Box className="tag-container">
               <Card variant="outlined" className="project-card">
               <Box style={{display:"flex", width:'100%'}}>
-                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'#5e35b1'}}>
+                <Box style={{display:"flex", justifyContent: 'left', width:'5%',backgroundColor:'rgb(5 161 189)'}}>
                   
                 </Box>
                 <Box style={{display:"flex", justifyContent: 'left', width:'70%', paddingLeft:'70px'}}>

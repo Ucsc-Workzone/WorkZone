@@ -18,6 +18,13 @@ import PendingLeaves from 'Components/PendingLeaves';
 import TeamsCardvieward from 'Components/TeamsCardview';
 import ProjectHistory from 'Components/ProjectHistory';
 import OngoingProjects from 'Components/OngoingProjects';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+import ProjectForm from './ProjectForm';
 
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
@@ -48,52 +55,12 @@ var CountList = {
 
 const CoordinatorProjects = () => {
 
-    // const [userData, setUserData] = useState({
-    //     labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
-    //     datasets: [
-    //       {
-    //         label: "Accepted",
-    //         data: [10, 15, 16, 8, 6, 20, 15, 16, 11, 12, 16, 13],
-    //         backgroundColor: [
-    //           "#0f65fa",
-    //         ],
-    //         borderColor: "white",
-    //         borderWidth: 1,
-    //       },
-    //       {
-    //         label: "Rejected",
-    //         data: [8, 7, 6, 2, 3, 5, 6, 8, 10, 5, 6, 12],
-    //         backgroundColor: [
-    //           "#c2c6d1",
-    //         ],
-    //         borderColor: "white",
-    //         borderWidth: 1,
-    //       },
-    //     ],
-    //   });
+
 
     return (
         <><Box sx={{ flexGrow: 1 }}>
         <div className="main-leave-container">
             <div className="leavecontainer-left">
-                {/* <Typography variant="h2" component="h4" className="" colour="blue" textAlign={'center'}>AUGUST</Typography> */}
-                {/* <HeaderCounter headlist={HeadList} countlist={CountList} /> */}
-                {/* <div className='chart-container'>
-                    <Typography variant="h2" component="h3" textAlign={'center'} style={{color:'#0C518A'}}>
-                        2022
-                    </Typography>
-                    <Typography variant="h3" component="h4" textAlign={'center'}>
-                        Monthly View
-                    </Typography>
-                    <Typography variant="h4" component="h5" textAlign={'center'} color='grey'>
-                        (For Leave Requests)
-                    </Typography>
-                    <Box style={{display:"flex", justifyContent: 'left', width:'100', top: "50%"}}>
-                            <div style={{ width: "100%"}}>
-                            <BarChart chartData={userData}/>
-                            </div>             
-                    </Box>
-                </div>   */}
                 <div className="Leavehistory-container">
                     <OngoingProjects flag={true}/>  
                 </div>
