@@ -1,0 +1,23 @@
+.pendingwork{
+    width: 100%;
+    /* background-color: #fff; */
+   
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cardpending{
+    width: 30%;
+    /* height: 40px; */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+
+}
+.summarywork{
+    width: 60%;
+    background-color: #fff;
+    border-radius: 10px;
+}

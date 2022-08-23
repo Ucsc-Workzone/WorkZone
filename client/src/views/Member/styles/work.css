@@ -1,0 +1,78 @@
+.main-record-container{
+    justify-content: space-between;
+}
+
+.workcontainer-up{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.workcontainer-down{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+.record-container{
+    width: 100%;
+    margin: 10px;
+}
+
+.up-left-container{
+    width:65%;
+}
+
+.up-right-container{
+    width:30%;
+}
+
+.record-pending-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.calender-container{
+    width:100%;
+
+}
+
+.textCon{
+    font-size: 30px;
+}
+.textname,.textmail{
+    margin-left: 70px;
+
+ }
+.textteam{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.process{
+    width: auto;
+    background-color: #2b72ba;
+    border-radius: 30px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar {
+    background-color: #474141;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: rgb(2, 95, 202);
+    border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 151, 236); 
+    }
