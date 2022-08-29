@@ -2,6 +2,7 @@
     width: 100%;
     /* background-color: #fff; */
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
@@ -34,9 +35,6 @@
     border-radius: 10px;
     margin-top: 20px;
     padding: 20px;
-<<<<<<< HEAD
-}
-=======
 }
 
 .report-conatiner{
@@ -147,4 +145,3 @@
     ::-webkit-scrollbar-thumb:hover {
     background: rgb(5, 151, 236); 
     }
->>>>>>> ba7068b973084811839542c6e429a372cbd31afc

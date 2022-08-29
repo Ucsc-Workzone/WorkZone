@@ -102,7 +102,7 @@ const Home = () => {
                 </div>
 
                 <div className="container-right">
-                    <div className="calender-container"> 
+                    <div className="calender-container">
                         <Calender />
                     </div>
                     <div className="mainmenu-container">

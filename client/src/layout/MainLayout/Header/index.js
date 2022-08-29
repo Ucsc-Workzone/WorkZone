@@ -19,11 +19,12 @@ import { useState } from 'react';
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
-    const [login, setLogin] = useState('');
+    const [login, setLogin] = useState(false);
     const theme = useTheme();
     useEffect(() => {
         const loginStat = localStorage.getItem('loginStatus');
         setLogin(loginStat);
+        console.log(login)
     });
 
     return (
@@ -73,7 +74,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
             <Box sx={{ flexGrow: 1 }} />
 
             {/* notification & profile */}
-            <LoginButton />
+            
+            {!login && <LoginButton />}
             {login && <NotificationSection />}
             {login && <ProfileSection />}
         </>

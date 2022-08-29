@@ -26,9 +26,9 @@ const RecentAnnoucements = () => {
 
     return (
         <>
-            <box style={{display: 'flex', justifyContent: 'right'}}>
+            <Box style={{display: 'flex', justifyContent: 'right'}}>
                 <Button variant="contained"><Typography className="seeall">All Annoucements</Typography></Button>
-            </box>
+            </Box>
             <Typography variant="h2" component="h3" className="" textAlign="center">
                 Annoucements
             </Typography>
@@ -36,7 +36,7 @@ const RecentAnnoucements = () => {
                 Recently Published
             </Typography>
             <Box style={{display: 'flex', justifyContent: 'right'}}>
-                <Button variant="outlined"   ><Typography className="addone" >+ NEW</Typography></Button>
+                <Button variant="outlined"><Typography className="addone" >+ NEW</Typography></Button>
             </Box>
             <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
                 <ListItem alignItems="flex-start">
@@ -51,13 +51,22 @@ const RecentAnnoucements = () => {
                         }
                         secondary={
                             <React.Fragment>
-                                <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
-                                    {Annoucementlist.by}
-                                </Typography>
-                                <Box display="flex" justifyContent="center"><Typography justifyContent="center">
-                                    {Annoucementlist.description}
-                                </Typography> 
-                                </Box>  
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
+                                            {Annoucementlist.by}
+                                        </Typography>
+                                    </AccordionSummary>
+                                        <AccordionDetails>
+                                            <Typography justifyContent="center">
+                                                {Annoucementlist.description}
+                                            </Typography> 
+                                        </AccordionDetails>
+                                </Accordion>
                             </React.Fragment>
                         }
                     />
@@ -65,8 +74,6 @@ const RecentAnnoucements = () => {
 
                 
                 <Divider variant="inset" component="li" />
-
-                {/* <Divider variant="inset" component="li" /> */}
             </List>
 
         </>

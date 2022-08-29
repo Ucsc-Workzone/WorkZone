@@ -12,7 +12,7 @@ router.post('/login',async(req,res)=>{
     const sqlGet=`SELECT * FROM user where username='${username}'`;
     db.query(sqlGet,(error,result)=>{
        
-      res.json('result')
+      
        if(result.length==0){
         res.json({error:"User Doent Exist"})
        }
@@ -40,9 +40,9 @@ router.post('/login',async(req,res)=>{
 })
 
 router.post('/register',(req,res)=>{
-  const {userid,username,password,userrole}=req.body;
+  const {username,password,userrole,firstName,lastName}=req.body;
   bycrypt.hash(password,10).then((hash)=>{
-    const sqlGet=`INSERT INTO user(userid,username,password,userrole) VALUES(${userid},'${username}','${hash}','${userrole}')`;
+    const sqlGet=`INSERT INTO user(username,password,userRole,firstName,lastName) VALUES(${userid},'${username}','${hash}','${userrole}','${firstName}','${lastName}')`;
     db.query(sqlGet,(error,result)=>{
         if(error){
             res.send(error)
@@ -53,6 +53,22 @@ router.post('/register',(req,res)=>{
     })
   })
 })
+router.post('/registerUser',(req,res)=>{
+    const {username,role,firstName,lastName}=req.body;
+    
+      const sqlGet=`INSERT INTO user(username,userRole,firstrName,lastName) VALUES('${username}','${role}','${firstName}','${lastName}')`;
+      db.query(sqlGet,(error,result)=>{
+          if(error){
+              res.send(error)
+          }
+          else{
+            const status=sendRegMail(username);
+         
+            res.json(status)
+          }
+      
+    })
+  })
 
   router.post('/reguser',(req,res)=>{
     const {username,password}=req.body;
@@ -98,11 +114,13 @@ router.post('/validateregmail',(req,res)=>{
 
 
 router.post('/profile',(req,res)=>{
+    const data=req.body;
    
-    const token=req.cookies["access-Token"];
-    var decoded = jwt_token(token)
+  const x=validToken(data.token);
+ const decoded = jwt_token(data.token);
 
-    res.json(decoded);
+
+res.json(decoded)
 
 
 })
@@ -131,35 +149,37 @@ router.post('/forgetpass',(req,res)=>{
 
 })
 
+
+
 router.post('/sendmail',async(req,res)=>{
     
     const {text}=req.body
-     res.json(text)
+    // res.json(text)
 
-    var token = randtoken.generate(20);
-    const transport=nodemailer.createTransport({
-        service:'gmail',
-        auth:{
-            user:'malithiperera1998@gmail.com',
-            pass:'pztoeiikalwcgnhv'
-        }
-    });
+    // var token = randtoken.generate(20);
+    // const transport=nodemailer.createTransport({
+    //     service:'gmail',
+    //     auth:{
+    //         user:'malithiperera1998@gmail.com',
+    //         pass:'pztoeiikalwcgnhv'
+    //     }
+    // });
  
 
-    var mailOptions={
-        from:'malithiperera1998@gmail.com',
-        to:"malithiperera1998@gmail.com",
-        subject:"Test Mail",
-        html: '<p>You requested for email verification, kindly use this <a href="http://localhost:3000/?#/leave?token=' + token + '">link</a> to verify your email address</p>'
-    };
-     transport.sendMail(mailOptions,function(error,info){
-        if(error){
-            console.log(error)
-        }
-        else{
-            console.log("email send")
-        }
-    })
+    // var mailOptions={
+    //     from:'malithiperera1998@gmail.com',
+    //     to:"malithiperera1998@gmail.com",
+    //     subject:"Test Mail",
+    //     html: '<p>You requested for email verification, kindly use this <a href="http://localhost:3000/?#/leave?token=' + token + '">link</a> to verify your email address</p>'
+    // };
+    //  transport.sendMail(mailOptions,function(error,info){
+    //     if(error){
+    //         console.log(error)
+    //     }
+    //     else{
+    //         console.log("email send")
+    //     }
+    // })
 
 })
 

@@ -1,6 +1,7 @@
 // assets
-import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard,IconUserPlus,IconBellRinging2 } from '@tabler/icons';
-import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
+// assets
+import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard } from '@tabler/icons';
+
 // constant
 const icons = {
     IconHome,
@@ -10,68 +11,24 @@ const icons = {
     IconLayoutDashboard
 };
 
-// ==============================|| Admin PAGES MENU ITEMS ||============================== //
 
-const pagesAdmin = {
-    id: 'admin',
-    title: 'General',
+
+// ==============================|| DASHBOARD MENU ITEMS ||============================== //
+
+const AdminRoute = {
+    id: 'dashboard',
+    title: 'Dashboard',
     type: 'group',
-
     children: [
-        
         {
-            id: 'adminHome',
-            title: 'Dashborad',
+            id: 'default',
+            title: 'Dashboard',
             type: 'item',
-            url: '/admin/dashboard',
+            url: '/admin/home',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
-        },
-        // {
-        //     id: 'memberLeave',
-        //     title: 'Leave',
-        //     type: 'item',
-        //     url: '/member/leave',
-        //     icon: icons.IconAccessibleOff,
-        //     breadcrumbs: false
-        // },
-        {
-            id: 'adminreg',
-            title: 'Register',
-            type: 'item',
-            url: '/admin/register',
-            icon: IconUserPlus,
-            breadcrumbs: false
-        },
-        
-        {
-            id: 'manageuser',
-            title: 'Manage User',
-            type: 'item',
-            url: '/admin/manageuser',
-            icon: icons.IconUser,
-            breadcrumbs: false
-        },
-        {
-            id: 'memberfeedback',
-            title: 'System Feedbacks',
-            type: 'item',
-            url: '/admin/feedbacks',
-            icon: FeedbackOutlinedIcon,
-            breadcrumbs: false
-        },
-        {
-            id: 'adminnot',
-            title: 'Annoucements',
-            type: 'item',
-            url: '/admin/annoucements',
-            icon: IconBellRinging2,
-            breadcrumbs: false
-        },
-       
-        
-       
+        }
     ]
 };
 
-export default pagesAdmin;
+export default AdminRoute;

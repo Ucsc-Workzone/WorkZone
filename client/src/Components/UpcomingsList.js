@@ -1,10 +1,18 @@
 
+import { useState } from "react";
+import { Typography, Stack } from '@mui/material';
+
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import DoughtChart from 'Components/DoughtChart';
 
 function createData(name, date) {
   return { name, date };
 }
+
 
 const rows = [
   createData('Malithi Perera', '27/08/2022'),
@@ -12,17 +20,38 @@ const rows = [
   createData('Malithi Perera', '27/08/2022')
 ];
 
+const projects ={
+  id:1,
+  name:"Mobile App",
+  pending:"4 Days",
+  date:"27/03/2022"
+}
 import './styles/upcoming.css';
-import { Typography } from '@mui/material';
-
 
 const UpcomingList = () => {
+
+  const [userData, setUserData] = useState({
+    // labels: ["CM", "NC"],
+    datasets: [
+      {
+        label: "Users Gained",
+        data: [85, 15],
+        backgroundColor: [
+          "#0f65fa",
+          "#c2c6d1",
+        ],
+        borderColor: "white",
+        borderWidth: 2,
+      },
+    ],
+  });
+
     return ( 
     
         <div className="upcomings">
              <Box style={{display: 'flex', justifyContent: 'right'}}>
-                <Button variant="contained"><Typography className="seeall" >Other Projects</Typography></Button>
-            </Box>        
+                <Box ><Button variant="contained" ><Typography className="seeall" >Other Projects</Typography></Button></Box>
+            </Box>
 
             <Box className="tag-container">
               <Card variant="outlined" className="project-card">

@@ -21,7 +21,6 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 
 //test routes
 const AdminHome = Loadable(lazy(() => import('views/Admin')));
-const AdminDashboard = Loadable(lazy(() => import('views/Admin/Dashboard')));
 
 const MainRoutes = {
     path: '/',
@@ -46,15 +45,6 @@ const MainRoutes = {
                 {
                     path: 'home',
                     element: <AdminHome />
-                }
-            ]
-        },
-        {
-            path: 'admin',
-            children: [
-                {
-                    path: 'dashboard',
-                    element: <AdminDashboard />
                 }
             ]
         },
