@@ -10,10 +10,10 @@ const icons = {
     IconLayoutDashboard
 };
 
-// ==============================|| Member PAGES MENU ITEMS ||============================== //
+// ==============================|| Admin PAGES MENU ITEMS ||============================== //
 
 const pagesAdmin = {
-    id: 'member',
+    id: 'admin',
     title: 'General',
     type: 'group',
 

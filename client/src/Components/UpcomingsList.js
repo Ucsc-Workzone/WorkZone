@@ -22,19 +22,7 @@ const UpcomingList = () => {
         <div className="upcomings">
              <Box style={{display: 'flex', justifyContent: 'right'}}>
                 <Button variant="contained"><Typography className="seeall" >Other Projects</Typography></Button>
-            </Box>
-<<<<<<< HEAD
-            <Box>
-              <Box style={{display:"flex", justifyContent: 'left', width:'60%', paddingLeft:'10px'}}>
-                <stack >
-                <Typography variant="h3" component="p" fontSize="1.5vw" paddingTop={"15px"} paddingBottom={"15px"}>Mobile App</Typography>
-                <Typography variant="p" component="p" fontSize="1.0vw"paddingBottom={"6px"}>4 Days Remaining</Typography>
-                <Typography variant="h4" component="p"  fontSize="1.2vw" paddingBottom={"10px"}>Due Date:27/03/2022</Typography>
-                </stack>
-              </Box>
-              <Box style={{display:"flex", justifyContent: 'right', width:'40%'}}>
-                
-=======
+            </Box>        
 
             <Box className="tag-container">
               <Card variant="outlined" className="project-card">
@@ -54,7 +42,6 @@ const UpcomingList = () => {
                     <DoughtChart chartData={userData} percentage={"85"}/>
                   </div>             
                 </Box>
->>>>>>> ba7068b973084811839542c6e429a372cbd31afc
               </Box>
               
               </Card>
