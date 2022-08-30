@@ -6,7 +6,7 @@ const jwt_token=require('jwt-decode')
 const {sendRegMail,sendforgetMail}=require('./Mail')
 
 router.post('/getLeave',async(req,res)=>{
-    const userid=req.userId;
+   
   
     // const token=req.token;
     const sqlGet=`SELECT * from leaverequest WHERE memberId= 5  `;
@@ -49,5 +49,12 @@ router.post('/submitLeave',async(req,res)=>{
   
 
 })
+
+router.post('/project',async(req,res)=>{
+    res.json("jelelel")
+  
+ 
+ })
+ 
 
 module.exports=router;

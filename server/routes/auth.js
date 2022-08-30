@@ -4,54 +4,59 @@ const{createToken,validToken}=require('./JWT')
 const {db}=require('../models/Index')
 const jwt_token=require('jwt-decode')
 const {sendRegMail,sendforgetMail}=require('./Mail')
+const Auth=require('../models/Auth')
 
 router.post('/login',async(req,res)=>{
     
     const username=req.body.username;
     const password=req.body.password;
-    const sqlGet=`SELECT * FROM user where username='${username}'`;
-    db.query(sqlGet,(error,result)=>{
+    const result=Auth.login(username,password);
+
+   console.log(result)
+  res.json('hhhh')
+//     const sqlGet=`SELECT * FROM user where username='${username}'`;
+//     db.query(sqlGet,(error,result)=>{
        
       
-       if(result.length==0){
-        res.json({error:"User Doent Exist"})
-       }
-       else{
+//        if(result.length==0){
+//         res.json({error:"User Doent Exist"})
+//        }
+//        else{
        
-        const dbpassword=result[0].password;
-       bycrypt.compare(password,dbpassword).then((match)=>{
-            if(!match){
-                res.json({error:"Invalid Credentials"})
-            }
-            else{
-                const accessToken=createToken(result[0]);
-             res.cookie("access-Token",accessToken,{
-                maxAge:60*60*24*1000*30
-             });
-             const { password, ...others } = result[0];
-             res.json({...others,accessToken})
-            }
+//         const dbpassword=result[0].password;
+//        bycrypt.compare(password,dbpassword).then((match)=>{
+//             if(!match){
+//                 res.json({error:"Invalid Credentials"})
+//             }
+//             else{
+//                 const accessToken=createToken(result[0]);
+//              res.cookie("access-Token",accessToken,{
+//                 maxAge:60*60*24*1000*30
+//              });
+//              const { password, ...others } = result[0];
+//              res.json({...others,accessToken})
+//             }
             
-        })
-       }
-    })
+//         })
+//        }
+//     })
 
       
-})
+// })
 
-router.post('/register',(req,res)=>{
-  const {username,password,userrole,firstName,lastName}=req.body;
-  bycrypt.hash(password,10).then((hash)=>{
-    const sqlGet=`INSERT INTO user(username,password,userRole,firstName,lastName) VALUES(${userid},'${username}','${hash}','${userrole}','${firstName}','${lastName}')`;
-    db.query(sqlGet,(error,result)=>{
-        if(error){
-            res.send(error)
-        }
-        else{
-            res.json("User Registered")
-        }
-    })
-  })
+// router.post('/register',(req,res)=>{
+//   const {username,password,userrole,firstName,lastName}=req.body;
+//   bycrypt.hash(password,10).then((hash)=>{
+//     const sqlGet=`INSERT INTO user(username,password,userRole,firstName,lastName) VALUES(${userid},'${username}','${hash}','${userrole}','${firstName}','${lastName}')`;
+//     db.query(sqlGet,(error,result)=>{
+//         if(error){
+//             res.send(error)
+//         }
+//         else{
+//             res.json("User Registered")
+//         }
+//     })
+//   })
 })
 router.post('/registerUser',(req,res)=>{
     const {username,role,firstName,lastName}=req.body;
