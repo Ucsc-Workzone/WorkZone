@@ -1,12 +1,18 @@
 var dbconnection = require("../utils/index");
+const bycrypt = require("bcrypt");
+const{createToken,validToken}=require('../utils/JWT')
 module.exports = {
-  
-  async createProject(username) {
+  async login(username, password) {
     try {
-      sql = "SELECT * FROM user";
-      const rows = await dbconnection.query(sql);
+      const sqlGet = `SELECT * FROM user where username='${username}'`;
+      const rows = await dbconnection.query(sqlGet);
 
-      return rows[0];
+      if (rows.length == 0) {
+        return "user Doesent exists";
+      } else {
+        const result = rows[0][0];
+        return result;
+      }
     } catch (err) {
       throw err;
     }

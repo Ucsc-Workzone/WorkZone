@@ -1,7 +1,7 @@
 const bycrypt=require('bcrypt')
 const router = require("express").Router();
 const{createToken,validToken}=require('./JWT')
-const {db}=require('../models/Index')
+const {db}=require('../utils/index')
 const jwt_token=require('jwt-decode')
 const {sendRegMail,sendforgetMail}=require('./Mail')
 
