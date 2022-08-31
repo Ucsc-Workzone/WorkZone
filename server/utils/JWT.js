@@ -10,23 +10,21 @@ return accessToken;
 const validToken=(req,res,next)=>{
    const accessToken=req;
   
-    if(!accessToken){
-        return 1;
-    }
-    else{
+   
+  
         try{
             const validToken=verify(accessToken,"Secret web Token");
             if(validToken){
                 req.authenticated=true;
-                return 3;
+                return true;
             }
 
         }
         catch(err){
-            return 2;
+            return false;
 
         }
-    }
+    
 }
 
 function sendEmail(email, token) {

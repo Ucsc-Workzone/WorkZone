@@ -4,7 +4,7 @@ const { createToken, validToken } = require("./JWT");
 const { db } = require("../utils/index");
 const jwt_token = require("jwt-decode");
 const { sendRegMail, sendforgetMail } = require("./Mail");
-const Auth = require("../models/model_Auth");
+
 const { login } = require("../models/model_Auth");
 
 router.post("/login", async (req, res) => {
