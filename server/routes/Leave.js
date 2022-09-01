@@ -1,6 +1,7 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
 const { createToken, validToken } = require("../utils/JWT");
+const {verifyuserRole,verifyuser}=require("../utils/authenticate")
 const { db } = require("../utils/index");
 const { getLeave } = require("../models/model_Leave");
 const jwt_token = require("jwt-decode");
@@ -35,7 +36,11 @@ router.post("/submitLeave", async (req, res) => {
 });
 
 router.post("/project", async (req, res) => {
-  res.json("jelelel");
+  const accessToken=req.body['accessToken']
+
+
+ const result=verifyuserRole(accessToken)
+ res.json(result)
 });
 
 module.exports = router;
