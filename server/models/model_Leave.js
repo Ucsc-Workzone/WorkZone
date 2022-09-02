@@ -11,7 +11,8 @@ module.exports = {
           const result = rows[0];
           return result;
         }
-      } catch (err) {
+      } 
+      catch (err) {
         throw err;
       }
   },
