@@ -1,0 +1,94 @@
+.mainContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.leftConatiner{
+    width: 60%;
+   
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.rightContainer{
+    width: 30%;
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column; 
+}
+.summary-card{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.calenConatiner{
+    background-color: #fff;
+    width: 100%;
+   
+    margin-bottom: 30px;
+}
+.cardConatiner{
+    width: 100%;
+    /* background-color:#fff; */
+    height: 300px;
+    margin-bottom: 30px;
+display: flex;
+    margin-bottom: 20px;
+}
+.css-mwemxw-MuiPaper-root{
+    width: 90%;
+}
+.annouceContainer{
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.subCard{
+    width: 45%;
+    margin-right: 20px;
+
+}
+
+.css-1xkn43h-MuiTypography-root{
+    font-size: 45px;
+}
+
+.css-1gytxn5-MuiTypography-root{
+    font-size: 15px;
+}
+
+.css-13wtusx-MuiAvatar-root{
+    background-color: #7187de;
+}
+
+.css-19midj6{
+    padding: 20px;
+}
+
+.css-9eqgmp-MuiPaper-root-MuiCard-root{
+    background-color: #045da6;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    }
+      
+    /* Track */
+    ::-webkit-scrollbar {
+    background-color: #474141;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: rgb(2, 95, 202);
+    border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(5, 151, 236); 
+    }

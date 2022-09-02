@@ -6,12 +6,12 @@ import Loadable from 'ui-component/Loadable';
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/Home')));
 // ==============================|| admin ROUTING ||============================== //
-const AdminDashboard = Loadable(lazy(() => import('views/Admin/Dashboard')));
-const AdminFeedback = Loadable(lazy(() => import('views/Admin/Feedback')));
-const AdminRegister = Loadable(lazy(() => import('views/Admin/Register')));
-const ManageUser = Loadable(lazy(() => import('views/Admin/ManageUser')));
-const Annoucements = Loadable(lazy(() => import('views/Admin/Annoucements')));
-const adminRoutes = {
+const SysAdminDashboard = Loadable(lazy(() => import('views/SysAdmin/Dashboard')));
+const SysAdminFeedback = Loadable(lazy(() => import('views/SysAdmin/Feedback')));
+const SysAdminRegister = Loadable(lazy(() => import('views/SysAdmin/Register')));
+const ManageUser = Loadable(lazy(() => import('views/SysAdmin/ManageUser')));
+const Annoucements = Loadable(lazy(() => import('views/SysAdmin/Annoucements')));
+const SysAdminRoutes = {
     path: '/',
     element: <MainLayout />,
     children: [
@@ -21,16 +21,16 @@ const adminRoutes = {
         },
       
         {
-            path: 'admin',
+            path: 'sysadmin',
             children: [
                 {
                     path: 'dashboard',
-                    element: <AdminDashboard />
+                    element: <SysAdminDashboard />
                 }
             ]
         },
         {
-            path: 'admin',
+            path: 'sysadmin',
             children: [
                 {
                     path: 'manageuser',
@@ -39,7 +39,7 @@ const adminRoutes = {
             ]
         },
         {
-            path: 'admin',
+            path: 'sysadmin',
             children: [
                 {
                     path: 'annoucements',
@@ -48,33 +48,24 @@ const adminRoutes = {
             ]
         },
         {
-            path: 'admin',
+            path: 'sysadmin',
             children: [
                 {
                     path: 'feedbacks',
-                    element: <AdminFeedback />
+                    element: <SysAdminFeedback />
                 }
             ]
         },
         {
-            path: 'admin',
-            children: [
-                {
-                    path: 'annoucements',
-                    element: <adminReports />
-                }
-            ]
-        },
-        {
-            path: 'admin',
+            path: 'sysadmin',
             children: [
                 {
                     path: 'register',
-                    element: <AdminRegister />
+                    element: <SysAdminRegister />
                 }
             ]
         }
     ]
 };
 
-export default adminRoutes;
+export default SysAdminRoutes;
