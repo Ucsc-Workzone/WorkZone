@@ -92,13 +92,13 @@ router.post("/validateregmail", (req, res) => {
   });
 });
 
-router.post("/profile", (req, res) => {
-  const data = req.body;
+router.post("/roleconfig", (req, res) => {
+  const data = req.body['accessToken'];
 
-  const x = validToken(data.token);
-  const decoded = jwt_token(data.token);
+  const x = validToken(data);
+  const decoded = jwt_token(data);
 
-  res.json(decoded);
+  res.json(decoded['userrole']);
 });
 
 router.post("/forgetpass", (req, res) => {

@@ -11,13 +11,14 @@ module.exports = {
       throw err;
     }
   },
-  async list() {
+  async createTeam(data) {
+    const TeamList=data;
     try {
-      conn = await pool.getConnection();
-      sql = "SELECT id,username,email,role FROM USERS";
-      const rows = await conn.query(sql);
-      conn.end();
-      return rows;
+      // sql = "SELECT * FROM user";
+      // const rows = await dbconnection.query(sql);
+
+      return TeamList;
+  
     } catch (err) {
       throw err;
     }
