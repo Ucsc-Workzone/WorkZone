@@ -1,5 +1,5 @@
 const randtoken = require('rand-token');
-const {db}=require('../models/Index');
+const {db}=require('../utils/index');
 const nodemailer=require("nodemailer") ;
 const crypto = require("crypto")
 const bycrypt=require('bcrypt')
