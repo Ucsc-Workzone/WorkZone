@@ -35,7 +35,7 @@ const AuthenticationRoutes = {
             element: <ForgetPasswordMain />
         },
         {
-            path: '/pages/404page',
+            path: '*',
             element: <NotFound />
         },
         {
