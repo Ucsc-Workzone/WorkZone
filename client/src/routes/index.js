@@ -1,5 +1,6 @@
 import { useRoutes } from 'react-router-dom';
-
+import { useEffect,useState } from 'react';
+import axios from 'axios';
 // routes
 import MainRoutes from './MainRoutes';
 import AuthenticationRoutes from './AuthenticationRoutes';
@@ -11,6 +12,35 @@ import adminRoutes from './AdminRoutes';
 import MARoutes from './ManagementAssistantRoutes';
 // ==============================|| ROUTING RENDER ||============================== //
 
+
 export default function ThemeRoutes() {
-    return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
+    const [role,setRole]=useState('')
+
+    useEffect(()=>{
+        const token=localStorage.getItem('token');
+        axios
+                .post('http://localhost:5000/api/auth/roleconfig', {
+                    accessToken: token
+                })
+                .then((response) => {
+                    const data = response.data;
+                    setRole(data)
+                    console.log(data);
+                  
+                });
+    
+    
+    },[])
+    if(role=='member'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes]);
+    }
+
+    if(role=='coordinator'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
+    }
+
+    if(role=='admin'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
+    }
+    
 }

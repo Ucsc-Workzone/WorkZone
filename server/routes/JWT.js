@@ -24,7 +24,7 @@ const validToken = (req, res, next) => {
         return false;
     }
   } catch (err) {
-    return err
+    return false
   }
 };
 
