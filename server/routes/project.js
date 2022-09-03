@@ -18,9 +18,11 @@ router.post("/project", async (req, res) => {
 router.post("/createteam",async(req,res)=>{
   const accessToken=req.body['accessToken'];
   const team=req.body['TeamList']
+  const id=req.body['TeamId']
   const result=validToken(accessToken)
 if(result){
-const status=createTeam(team)
+  
+const status=await createTeam(team,id)
   res.json(status)
 }
 else{

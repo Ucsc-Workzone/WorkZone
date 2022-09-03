@@ -11,14 +11,15 @@ module.exports = {
       throw err;
     }
   },
-  async createTeam(data) {
+  async createTeam(data,id) {
     const TeamList=data;
     try {
-      // sql = "SELECT * FROM user";
-      // const rows = await dbconnection.query(sql);
-
-      return TeamList;
-  
+      
+for(i=0;i<data.length;i++){
+ sql = `INSERT INTO teamassign values(${id},${data[i]})`;
+  const rows = await dbconnection.query(sql);
+}
+    return 'sucess';
     } catch (err) {
       throw err;
     }

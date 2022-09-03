@@ -35,12 +35,14 @@ export default function ThemeRoutes() {
         return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes]);
     }
 
-    if(role=='coordinator'){
+   if(role=='coordinator'){
         return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
     }
 
-    if(role=='admin'){
+   if(role=='admin'){
         return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
     }
+   
+    return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
     
 }
