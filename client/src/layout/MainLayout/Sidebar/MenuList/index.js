@@ -14,6 +14,18 @@ const MenuList = () => {
         setuserRole(userRole);
     });
 
+    const navItems = menuItem.items.map((item) => {
+        switch (item.type) {
+            case 'group':
+                return <NavGroup key={item.id} item={item} />;
+            default:
+                return (
+                    <Typography key={item.id} variant="h6" color="error" align="center">
+                        Menu Items Error
+                    </Typography>
+                );
+        }
+    });
     const navItems0 = menuItem.items0.map((item) => {
         switch (item.type) {
             case 'group':
@@ -26,19 +38,7 @@ const MenuList = () => {
                 );
         }
     });
-    const navItems = menuItem.items1.map((item) => {
-        switch (item.type) {
-            case 'group':
-                return <NavGroup key={item.id} item={item} />;
-            default:
-                return (
-                    <Typography key={item.id} variant="h6" color="error" align="center">
-                        Menu Items Error
-                    </Typography>
-                );
-        }
-    });
-    const navItems1 = menuItem.items.map((item) => {
+    const navItems1 = menuItem.items1.map((item) => {
         switch (item.type) {
             case 'group':
                 return <NavGroup key={item.id} item={item} />;
@@ -129,14 +129,13 @@ const MenuList = () => {
 
 
     return <>
-        {userRole == null && navItems0}
-        {userRole == 'member' && navItems1}
-        {userRole == 'admin' && navItems4}
+        {userRole == null && navItems1}
+        {userRole == 'member' && navItems2}
         {userRole == 'coordinator' && navItems3}
-        {userRole == 'ma' && navItems5}
+        {userRole == 'sysadmin' && navItems4}
+        {userRole == 'orgadmin' && navItems5}
         {userRole == 'director' && navItems6}
         {userRole == 'sar' && navItems7}
-
 
     </>;
 };

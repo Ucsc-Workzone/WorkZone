@@ -16,11 +16,11 @@ import SAR from './sar';
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [member, ProjectListMember],
-    items1: [dashboard, pages, utilities, other],
-    items2: [dashboard, pages, utilities],
+    items: [dashboard, pages, utilities, other],
+    items0: [dashboard, pages, utilities],
+    items1: [visitor],
+    items2: [member, ProjectListMember],
     items3: [coordinator],
-    items0: [visitor],
     item4: [sadmin],
     item5: [oadmin],
     item6: [director],

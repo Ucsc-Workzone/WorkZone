@@ -9,7 +9,7 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 const SysAdminDashboard = Loadable(lazy(() => import('views/SysAdmin/Dashboard')));
 const SysAdminFeedback = Loadable(lazy(() => import('views/SysAdmin/Feedback')));
 const SysAdminRegister = Loadable(lazy(() => import('views/SysAdmin/Register')));
-const ManageUser = Loadable(lazy(() => import('views/SysAdmin/ManageUser')));
+// const ManageUser = Loadable(lazy(() => import('views/SysAdmin/ManageUser')));
 const Annoucements = Loadable(lazy(() => import('views/SysAdmin/Annoucements')));
 const SysAdminRoutes = {
     path: '/',
@@ -29,15 +29,15 @@ const SysAdminRoutes = {
                 }
             ]
         },
-        {
-            path: 'sysadmin',
-            children: [
-                {
-                    path: 'manageuser',
-                    element: <ManageUser />
-                }
-            ]
-        },
+        // {
+        //     path: 'sysadmin',
+        //     children: [
+        //         {
+        //             path: 'manageuser',
+        //             element: <ManageUser />
+        //         }
+        //     ]
+        // },
         {
             path: 'sysadmin',
             children: [
