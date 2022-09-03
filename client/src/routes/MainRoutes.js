@@ -20,7 +20,7 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 //test routes
-const AdminHome = Loadable(lazy(() => import('views/Admin')));
+const AdminHome = Loadable(lazy(() => import('views/SysAdmin')));
 
 const MainRoutes = {
     path: '/',
@@ -39,15 +39,24 @@ const MainRoutes = {
                 }
             ]
         },
-        {
-            path: 'admin',
-            children: [
-                {
-                    path: 'home',
-                    element: <AdminHome />
-                }
-            ]
-        },
+        // {
+        //     path: 'sysadmin',
+        //     children: [
+        //         {
+        //             path: 'home',
+        //             element: <SysAdminHome />
+        //         }
+        //     ]
+        // },
+        // {
+        //     path: 'orgadmin',
+        //     children: [
+        //         {
+        //             path: 'home',
+        //             element: <OrgAdminHome />
+        //         }
+        //     ]
+        // },
         {
             path: 'utils',
             children: [

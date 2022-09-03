@@ -8,12 +8,13 @@ import MemberRoutes from './MemberRoutes';
 import CoordinatorRoutes from './CoordinatorRoutes';
 import DirectorRoutes from './DirectorRoutes';
 import SARRoutes from './SARRoutes';
-import adminRoutes from './AdminRoutes';
-import MARoutes from './ManagementAssistantRoutes';
+import SysAdminRoutes from './SysAdminRoutes';
+import OrgAdminRoutes from './OrgAdminRoutes';
 // ==============================|| ROUTING RENDER ||============================== //
 
 
 export default function ThemeRoutes() {
+
     const [role,setRole]=useState('')
 
     useEffect(()=>{
@@ -36,11 +37,23 @@ export default function ThemeRoutes() {
     }
 
     if(role=='coordinator'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
+        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes]);
     }
 
-    if(role=='admin'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes, DirectorRoutes, SARRoutes, adminRoutes, MARoutes]);
+    if(role=='SAR'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, SARRoutes]);
+    }
+
+    if(role=='director'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, DirectorRoutes]);
+    }
+
+    if(role=='sysadmin'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, SysAdminRoutes]);
+    }
+    
+    if(role=='orgadmin'){
+        return useRoutes([MainRoutes, AuthenticationRoutes, OrgAdminRoutes]);
     }
     
 }
