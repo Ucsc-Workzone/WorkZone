@@ -10,26 +10,45 @@ import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
-
+import axios from 'axios';
 // assets
 import { IconMenu2 } from '@tabler/icons';
-import LoginButton from './Login';
+import LoginButton from './MemberReport.js';
 import { useState } from 'react';
+import SubmitReport from './MemberReport.js/SubmitReport';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
     const [login, setLogin] = useState(false);
+    const [user,setUser]=useState('');
+    const [checkreport,setCheckreport]=useState(false)
     const theme = useTheme();
     useEffect(() => {
         const loginStat = localStorage.getItem('loginStatus');
+        const userrole=localStorage.getItem('userRole');
+        const token=localStorage.getItem('token')
+
+        setUser(userrole)
+        if(user=="member"){
+            axios
+        .post('http://localhost:5000/api/member/checkduty', {
+            accessToken: token
+        })
+        .then((response) => {
+           if(response.data){
+setCheckreport(true);
+           }
+           
+        });
+        }
         setLogin(loginStat);
         console.log(login)
     });
 
     return (
         <>
-            {/* logo & toggler button */}
+            
             <Box
                 sx={{
                     width: 228,
@@ -75,7 +94,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
             {/* notification & profile */}
             
-            {!login && <LoginButton />}
+            {user=='member' && checkreport==false && <LoginButton />}
+            {user=='member' && checkreport==true && <SubmitReport />}
             {login && <NotificationSection />}
             {login && <ProfileSection />}
         </>
