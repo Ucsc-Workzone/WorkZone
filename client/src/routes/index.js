@@ -55,5 +55,8 @@ export default function ThemeRoutes() {
     if(role=='orgadmin'){
         return useRoutes([MainRoutes, AuthenticationRoutes, OrgAdminRoutes]);
     }
-    
+    else{
+        return useRoutes([MainRoutes, AuthenticationRoutes]);
+    }
+   
 }
