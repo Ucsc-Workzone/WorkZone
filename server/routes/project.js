@@ -6,8 +6,8 @@ const { db } = require("../utils/index");
 
 router.post("/create", async (req,res,next) => {
  
-  const result=await createProject(req.body)
-  console.log(result)
+   const result=await createProject(req.body)
+
   res.json(result)
 });
 

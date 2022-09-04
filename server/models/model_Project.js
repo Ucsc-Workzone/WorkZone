@@ -1,12 +1,13 @@
 var dbconnection = require("../utils/index");
 module.exports = {
   
-  async createProject(username) {
+  async createProject(data) {
     try {
-      sql = "SELECT * FROM user";
+      const {center_id,project_name,description,start_date,estend_date,team}=data;
+      sql = `INSERT INTO projects (centerId,projectName,description,startDate,estendDate,teamAssign) VALUES (${center_id},'${project_name}','${description}','${start_date}','${estend_date}',${team})`;
       const rows = await dbconnection.query(sql);
 
-      return rows[0];
+      return rows;
     } catch (err) {
       throw err;
     }
