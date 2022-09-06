@@ -5,6 +5,7 @@ const loginRoute = require("./routes/auth");
 const testRoute = require("./routes/project");
 const leaveRoute = require("./routes/Leave");
 const proRoute = require("./routes/project");
+const MemberRoutes=require("./routes/Member")
 const bycrypt = require("bcrypt");
 const cors = require("cors");
 require("dotenv").config();
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/api/auth", loginRoute);
 app.use("/api/leave", leaveRoute);
-
+app.use("/api/member", MemberRoutes);
 app.use("/api/project", testRoute);
 
 

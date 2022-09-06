@@ -6,22 +6,23 @@ import member from './member';
 import coordinator from './coordinator';
 import director from './director';
 import visitor from'./visitor';
-import admin from './admin';
+import sadmin from './sadmin';
+import oadmin from './oadmin';
 import ProjectListMember from './memberProjectList';
-import MA from './ma';
+// import MA from './ma';
 import SAR from './sar';
 
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [member, ProjectListMember],
-    items1: [dashboard, pages, utilities, other],
-    items2: [dashboard, pages, utilities],
+    items: [dashboard, pages, utilities, other],
+    items0: [dashboard, pages, utilities],
+    items1: [visitor],
+    items2: [member, ProjectListMember],
     items3: [coordinator],
-    items0: [visitor],
-    item4: [admin],
-    item5: [MA],
+    item4: [sadmin],
+    item5: [oadmin],
     item6: [director],
     item7: [SAR]
 };

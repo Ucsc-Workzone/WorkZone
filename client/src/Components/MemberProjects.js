@@ -1,84 +1,95 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
+import { useState, useEffect } from 'react';
+import { Typography, Stack, List } from '@mui/material';
+
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
+import Button from '@mui/material/Button';
 import DoughtChart from 'Components/DoughtChart';
-import Chip from '@mui/material/Chip';
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-const cardStyle = {
-    marginTop: '20px',
-    backgroundColor:'#fff',
-    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px'
-   
-};
-const dueTime={
-    marginTop: '40px',
-    marginRight:'30px',
-    textAlign:'center',
-    fontSize:'15px'
-};
-const linkComponent={
-    textDecoration:'none'
+import axios from 'axios';
+function createData(name, date) {
+    return { name, date };
 }
-export default function MemberProjectCard({ title, date,subtask,color,days }) {
+
+const rows = [
+    createData('Malithi Perera', '27/08/2022'),
+    createData('Malithi Perera', '27/08/2022'),
+    createData('Malithi Perera', '27/08/2022')
+];
+
+const projects = {
+    id: 1,
+    name: 'Mobile App',
+    pending: '4 Days',
+    date: '27/03/2022'
+};
+import './styles/upcoming.css';
+
+const UpcomingList = () => {
     const [userData, setUserData] = useState({
         // labels: ["CM", "NC"],
         datasets: [
             {
                 label: 'Users Gained',
-                data: [75, 25],
+                data: [85, 15],
                 backgroundColor: ['#0f65fa', '#c2c6d1'],
                 borderColor: 'white',
                 borderWidth: 2
             }
         ]
     });
-    const theme = useTheme();
-
-    return (
-        <Link  to='/member/project/1' style={linkComponent}
-        >
-        <Card sx={{ display: 'flex' }} style={cardStyle}>
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flex: '1 0 auto' }}>
-                    <Typography component="div" variant="h3">
-                        {title}
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.primary" component="div">
-                        Due Date:{date}
-                    </Typography>
-                    <Typography variant="subtitle12" color="primary" component="div">
-                        {subtask}
-                    </Typography>
-                </CardContent>
-            </Box>
-           
-                <Box style={{ display: 'flex', justifyContent: 'right', width: '53%'}}>
-                <Typography variant="subtitle12" color={color} component="div" style={dueTime}>
-                        {days}
-                    </Typography>
+    const [list,setList]=useState([]);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        axios
+            .post('http://localhost:5000/api/member/projectList', {
+                accessToken: token
+            })
+            .then((response) => {
+               
+                if (response.data) {
+                   const array=response.data[0]
+                 
+              setList(list=>[...list, ])
                     
-                    <div style={{ width: '29%' ,marginRight:'-35px'}}>
-                        <DoughtChart chartData={userData} percentage={'75'} />
-                    </div>
-                </Box>
-       
-            {/* <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image="/static/images/cards/live-from-space.jpg"
-        alt="Live from space album cover"
-      /> */}
-        </Card></Link>
-        
+                }
+                console.log(list)
+            });
+    }, []);
+    return (
+        <div className="upcomings">
+            {list.map((item)=>{
+                <Box className="tag-container" key={item['projectId']}>
+                <Card variant="outlined" className="project-card">
+                    <Box style={{ display: 'flex', width: '100%' }}>
+                        <Box style={{ display: 'flex', justifyContent: 'left', width: '5%', backgroundColor: '#5e35b1' }}></Box>
+                        <Box style={{ display: 'flex', justifyContent: 'left', width: '70%', paddingLeft: '70px' }}>
+                            <Stack>
+                                <Typography variant="h3" component="p" fontSize="1.5vw" paddingTop={'15px'} paddingBottom={'15px'}>
+                                {item['projectId']}
+                                </Typography>
+                                <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
+                                    {projects.pending} Remaining
+                                </Typography>
+                                <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
+                                    Due Date:{projects.date}
+                                </Typography>
+                            </Stack>
+                        </Box>
+                        <Box style={{ display: 'flex', justifyContent: 'left', width: '60%', top: '50%' }}>
+                            <div style={{ width: '38%' }}>
+                                <DoughtChart chartData={userData} percentage={'85'} />
+                            </div>
+                        </Box>
+                    </Box>
+                </Card>
+            </Box>
+            })}
+            
+            
+        </div>
     );
-}
+};
+
+export default UpcomingList;
