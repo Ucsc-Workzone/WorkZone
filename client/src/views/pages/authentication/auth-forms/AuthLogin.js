@@ -94,7 +94,7 @@ const FirebaseLogin = ({ ...others }) => {
                         userrole == 'sysadmin' && navigate('/sysadmin/dashboard');
                     }
                     {
-                        userrole == 'orgadmin' && navigate('/sysadmin/dashboard');
+                        userrole == 'orgadmin' && navigate('/orgadmin/dashboard');
                     }
                     {
                         userrole == 'director' && navigate('/director/dashboard');
