@@ -25,20 +25,7 @@ module.exports = {
     }
   },
 
-  async areValidCredentials(username, password) {
-    try {
-      conn = await pool.getConnection();
-      sql = "SELECT pass FROM USERS WHERE username = ?";
-      const rows = await conn.query(sql, username);
-      conn.end();
-
-      if (rows.length == 1 && rows[0].pass === password) {
-        return true;
-      } else {
-        return false;
-      }
-    } catch (err) {
-      throw err;
-    }
-  },
+  async gethistory(userid){
+return userid;
+  }
 };
