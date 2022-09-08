@@ -91,16 +91,19 @@ const FirebaseLogin = ({ ...others }) => {
                         userrole == 'member' && navigate('/member/dashboard');
                     }
                     {
-                        userrole == 'admin' && navigate('/admin/home');
+                        userrole == 'sysadmin' && navigate('/sysadmin/dashboard');
                     }
                     {
-                        userrole == 'director' && navigate('/director/home');
+                        userrole == 'orgadmin' && navigate('/orgadmin/dashboard');
                     }
                     {
-                        userrole == 'sar' && navigate('/sar/home');
+                        userrole == 'director' && navigate('/director/dashboard');
                     }
                     {
-                        userrole == 'coordinator' && navigate('/coordinator/home');
+                        userrole == 'sar' && navigate('/sar/dashboard');
+                    }
+                    {
+                        userrole == 'coordinator' && navigate('/coordinator/dashboard');
                     }
                 }
             });

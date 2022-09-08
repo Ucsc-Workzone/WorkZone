@@ -46,15 +46,15 @@ const CoordinatorRoutes = {
                 }
             ]
         },
-        {
-            path: 'coordinator',
-            children: [
-                {
-                    path: 'home',
-                    element: <CoordinatorHome />
-                }
-            ]
-        },
+        // {
+        //     path: 'coordinator',
+        //     children: [
+        //         {
+        //             path: 'home',
+        //             element: <CoordinatorHome />
+        //         }
+        //     ]
+        // },
         {
             path: 'coordinator',
             children: [
