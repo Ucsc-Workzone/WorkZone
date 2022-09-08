@@ -23,7 +23,7 @@ const pagesDirector = {
     children: [
         {
             id: 'directorHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/director/dashboard',
             icon: icons.IconLayoutDashboard,

@@ -22,7 +22,7 @@ const pagesOrgAdmin = {
         
         {
             id: 'orgadminHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/orgadmin/dashboard',
             icon: icons.IconLayoutDashboard,
