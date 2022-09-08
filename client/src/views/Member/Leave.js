@@ -44,7 +44,6 @@ import { resolveConfig } from 'prettier';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-
         backgroundColor: '#0C518A',
 
         backgroundColor: '#1E88E5',
@@ -93,7 +92,7 @@ const MemberLeave = () => {
     const [age, setAge] = React.useState('');
     const [name, setName] = React.useState('');
     const [file, setFile] = React.useState(false);
-
+    const [count, setCount] = React.useState([]);
     const [member, assignMember] = React.useState(1);
     const handleChangeA = (event) => {
         setAge(event.target.value);
@@ -106,13 +105,13 @@ const MemberLeave = () => {
         setValue(event.target.value);
         if (event.target.value == 'short') {
             setRender(false);
-            setFile(false)
+            setFile(false);
         } else if (event.target.value == 'long') {
             setRender(false);
-            setFile(true)
+            setFile(true);
         } else {
             setRender(true);
-            setFile(false)
+            setFile(false);
         }
         console.log(event.target.value);
     };
@@ -125,43 +124,37 @@ const MemberLeave = () => {
         });
     };
     const handleSubmitLeave = () => {
-       
         const userid = localStorage.getItem('userid');
-        const type=value;
-        const member='H.R Herath'
-        const reason=document.getElementById('reason').value
-        console.log(type)
-      
+        const type = value;
+        const member = 'H.R Herath';
+        const reason = document.getElementById('reason').value;
+        console.log(type);
+
         // if(value=='long'){
-            // const toDate=document.getElementById('todate').value;
+        // const toDate=document.getElementById('todate').value;
         //     const fromDate=document.getElementById('fromdate').value;
 
         // }
         // else{
-            const toDate=document.getElementById('date').value
+        const toDate = document.getElementById('date').value;
         //     const fromDate=document.getElementById('date').value
         // }
 
         axios
             .post('http://localhost:5000/api/leave/submitLeave', {
-                
-                userid:userid,
-                type:'short',
-                member:member,
-                reason:reason,
-                toDate:toDate,
-                endDate:toDate,
-               
-
-
-
+                userid: userid,
+                type: 'short',
+                member: member,
+                reason: reason,
+                toDate: toDate,
+                endDate: toDate
             })
             .then((response) => {
                 console.log(response.data);
-               if(response.data){
-                
-                window.location.reload(false);
-               }
+                if (response.data) {
+                    // window.location.reload(false);
+                    console.log(response.data)
+                }
             });
     };
 
@@ -171,15 +164,20 @@ const MemberLeave = () => {
     };
     useEffect(() => {
         const name = localStorage.getItem('name');
+        const accessToken = localStorage.getItem('token');
         setName(name);
         const userId = localStorage.getItem('userid');
         axios
             .post('http://localhost:5000/api/leave/getLeave', {
-                userId: userId
+                userId: userId,
+                accessToken: accessToken
             })
             .then((response) => {
                 console.log(response.data);
-                setTdata(response.data);
+                setTdata(response.data[1]);
+                console.log(response.data[0]);
+                setCount(response.data[0]);
+                console.log(count);
             });
     }, []);
     const handleClickOpen = () => {
@@ -248,8 +246,7 @@ const MemberLeave = () => {
                                                         <FormControlLabel value="long" control={<Radio />} label="long term" />
                                                     </RadioGroup>
                                                 </Grid>
-                                               
-                                                
+
                                                 {render && (
                                                     <Grid item xs={12}>
                                                         <TextField
@@ -266,7 +263,7 @@ const MemberLeave = () => {
                                                 )}
                                                 {!render && (
                                                     <>
-                                                        <Grid item xs={12} >
+                                                        <Grid item xs={12}>
                                                             <TextField
                                                                 id="fromdate"
                                                                 label="From Date"
@@ -278,7 +275,7 @@ const MemberLeave = () => {
                                                                 }}
                                                             />
                                                         </Grid>
-                                                        <Grid item xs={12} >
+                                                        <Grid item xs={12}>
                                                             <TextField
                                                                 id="todate"
                                                                 label=" To Date"
@@ -303,7 +300,7 @@ const MemberLeave = () => {
                                                         autoComplete="email"
                                                     />
                                                 </Grid>
-                                                {file &&
+                                                {file && (
                                                     <Grid item xs={12}>
                                                         <TextField
                                                             autoComplete="given-name"
@@ -313,12 +310,10 @@ const MemberLeave = () => {
                                                             id="firstName"
                                                             label="Proof"
                                                             autoFocus
-                                                            
-                                                            type='file'
-                                                            
+                                                            type="file"
                                                         />
                                                     </Grid>
-                                                }
+                                                )}
                                                 <Grid item xs={12}>
                                                     <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
                                                         <InputLabel id="demo-simple-select-filled-label">Memeber Assign</InputLabel>
@@ -353,7 +348,7 @@ const MemberLeave = () => {
                 </div>
 
                 <div className="card-section">
-                    <HeaderCounter headlist={HeadList} countlist={CountList} />
+                    <HeaderCounter headlist={HeadList} countlist={count} />
                     {/* <TotalIncomeLightCard 
                 title={'Leaves in August'}
                 count={1}
@@ -366,15 +361,14 @@ const MemberLeave = () => {
                 <div className="table-section-head">
                     <div className="table-section">
                         <Divider>
-                        <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                       Recent Leave History
-                    </Typography>
+                            <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                                Recent Leave History
+                            </Typography>
                         </Divider>
                         <TableContainer component={Paper} className="table-data">
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead className="tableHead">
                                     <TableRow>
-                                       
                                         <StyledTableCell align="right">Start Date</StyledTableCell>
                                         <StyledTableCell align="right">End Date</StyledTableCell>
                                         <StyledTableCell align="right">No of Days</StyledTableCell>
@@ -386,9 +380,8 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {tdata.map((row) => (
                                         <StyledTableRow key={row['leaveId']}>
-                                            
                                             <StyledTableCell align="right">{row['fromDate']}</StyledTableCell>
-                                           <StyledTableCell align="right">{row['toDate']}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['toDate']}</StyledTableCell>
 
                                             <StyledTableCell align="right">{row['nodays']}</StyledTableCell>
 

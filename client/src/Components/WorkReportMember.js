@@ -10,23 +10,20 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import {Typography} from '@mui/material';
-
+import {useState,useEffect} from 'react';
+import axios from 'axios';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
-
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-
 import Chip from '@mui/material/Chip';
-
 import { styled } from '@mui/material/styles';
 import './styles/table.css';
 
@@ -137,6 +134,21 @@ const WorkReportMember = () => {
     setValue(newValue);
   };
 
+  useEffect(()=>{
+    const accessToken=localStorage.getItem('token');
+
+    axios
+            .post('http://localhost:5000/api/project/gethistory', {
+                accessToken:accessToken
+            })
+            .then((response) => {
+                console.log(response.data);
+                if (response.data) {
+                    // window.location.reload(false);
+                    console.log(response.data)
+                }
+            });
+  })
 
   return (
     <React.Fragment>
