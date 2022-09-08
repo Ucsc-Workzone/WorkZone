@@ -3,6 +3,7 @@ const router = require("express").Router();
 const {createProject,createTeam}=require('../models/model_Project')
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");
+const { verify } = require("crypto");
 
 router.post("/create", async (req,res,next) => {
  
@@ -11,8 +12,9 @@ router.post("/create", async (req,res,next) => {
   res.json(result)
 });
 
-router.post("/project", async (req, res) => {
-  res.json("jelelel");
+router.post("/workreportget", async (req, res) => {
+  const token=req.body['accessToken'];
+  res.json(token)
 });
 
 router.post("/createteam",async(req,res)=>{
@@ -27,5 +29,7 @@ else{
   res.json("Invalid user")
 }
 });
+
+
 
 module.exports = router;
