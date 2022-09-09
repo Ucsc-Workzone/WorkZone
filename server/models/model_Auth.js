@@ -1,6 +1,6 @@
 var dbconnection = require("../utils/index");
 const bycrypt = require("bcrypt");
-const{createToken,validToken}=require('../utils/JWT')
+const { createToken, validToken } = require("../utils/JWT");
 module.exports = {
   async login(username, password) {
     try {
@@ -43,6 +43,20 @@ module.exports = {
       }
     } catch (err) {
       throw err;
+    }
+  },
+
+  async signUpUser(req) {
+    var todayDate = new Date().toISOString().slice(0, 10);
+   
+    try {
+      const { firstrName, lastName, username, address, image, dob, org } = req;
+      const sqlGet = `INSERT INTO user (username,userRole,joinDate,firstrname,lastName,image) VALUES ('${username}','member','${todayDate}','${firstrName}','${lastName}','${image}')`;
+      const rows = await dbconnection.query(sqlGet);
+    
+      return rows;
+    } catch(err) {
+      return  err;
     }
   },
 };

@@ -6,7 +6,7 @@ const testRoute = require("./routes/project");
 const leaveRoute = require("./routes/Leave");
 const proRoute = require("./routes/project");
 const MemberRoutes=require("./routes/Member")
-
+const RegisterRoutes=require("./routes/Register")
 const bycrypt = require("bcrypt");
 const cors = require("cors");
 require("dotenv").config();
@@ -22,6 +22,7 @@ app.use("/api/auth", loginRoute);
 app.use("/api/leave", leaveRoute);
 app.use("/api/member", MemberRoutes);
 app.use("/api/project", testRoute);
+app.use("api/register",RegisterRoutes);
 
 
 app.listen(process.env.PORT || 5000, () => {
