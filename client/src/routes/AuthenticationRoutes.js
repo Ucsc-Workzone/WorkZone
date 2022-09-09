@@ -11,7 +11,7 @@ const CreatePassword = Loadable(lazy(() => import('views/pages/authentication/au
 const ForgetPasswordMain = Loadable(lazy(() => import('views/pages/authentication/authentication3/ForgetPassMain')));
 const NotFound = Loadable(lazy(() => import('views/pages/authentication/authentication3/404Page')));
 const EmailPage = Loadable(lazy(() => import('views/EmailConfirmation')));
-
+const Landing = Loadable(lazy(() => import('views/pages/authentication/authentication3/Landing')));
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
 const AuthenticationRoutes = {
@@ -41,6 +41,11 @@ const AuthenticationRoutes = {
         {
             path: '/pages/email',
             element: <EmailPage />
+        },
+        
+        {
+            path: '/pages/landing',
+            element: <Landing />
         },
         
 
