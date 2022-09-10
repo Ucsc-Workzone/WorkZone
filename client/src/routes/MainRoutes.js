@@ -13,18 +13,16 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-
+const Landing = Loadable(lazy(() => import('views/pages/authentication/authentication3/Landing')));
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/Home')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
-//test routes
-const AdminHome = Loadable(lazy(() => import('views/SysAdmin')));
 
 const MainRoutes = {
     path: '/',
-    element: <MainLayout />,
+    element: <Landing />,
     children: [
         {
             path: '/',
@@ -39,24 +37,6 @@ const MainRoutes = {
                 }
             ]
         },
-        // {
-        //     path: 'sysadmin',
-        //     children: [
-        //         {
-        //             path: 'home',
-        //             element: <SysAdminHome />
-        //         }
-        //     ]
-        // },
-        // {
-        //     path: 'orgadmin',
-        //     children: [
-        //         {
-        //             path: 'home',
-        //             element: <OrgAdminHome />
-        //         }
-        //     ]
-        // },
         {
             path: 'utils',
             children: [
