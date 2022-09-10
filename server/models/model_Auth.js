@@ -50,8 +50,8 @@ module.exports = {
     var todayDate = new Date().toISOString().slice(0, 10);
    
     try {
-      const { firstrName, lastName, username, address, image, dob, org } = req;
-      const sqlGet = `INSERT INTO user (username,userRole,joinDate,firstrname,lastName,image) VALUES ('${username}','member','${todayDate}','${firstrName}','${lastName}','${image}')`;
+      const { firstrName, lastName, username, address, image, dob, org,gender } = req;
+      const sqlGet = `INSERT INTO user (username,userRole,joinDate,firstrname,lastName,image,orgid,address,dob,gender) VALUES ('${username}','member','${todayDate}','${firstrName}','${lastName}','${image}',${org},'${address}','${dob}','${gender}')`;
       const rows = await dbconnection.query(sqlGet);
     
       return rows;
