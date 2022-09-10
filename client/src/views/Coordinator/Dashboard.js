@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from "react";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -18,6 +17,8 @@ import PendingCounter from 'Components/PendingCounter';
 import PendingList from 'Components/PendingList';
 import UpcomingList from 'Components/UpcomingsList';
 import TotalIncomeDarkCard from 'views/dashboard/Default/TotalIncomeDarkCard';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -41,8 +42,32 @@ var CountList = {
 }
 
 const Dashboard = () => {
+    const [open, setOpen] = React.useState(false);
+    const [state, setStatus] = useState('');
+    const [messege, setMessege] = useState('Your Attendenece has been reported');
+    const [stat, setStat] = useState(false);
+    const [button, setButton] = useState(true);
+    const [project,setProject]=useState('');
+    const [leave,setLeave]=useState('');
     
-    
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        axios
+            .post('http://localhost:5000/api/member/getData', {
+                accessToken: token
+            })
+            .then((response) => {
+                console.log(response.data);
+                if (response.data) {
+
+                    const projectCount=response.data[0]['project_count']
+                    setProject(projectCount)
+
+                    const leaveCount=response.data[1]['leavecount']                   
+                    setLeave(leaveCount)
+                }
+            });
+    }, []);
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
@@ -51,10 +76,10 @@ const Dashboard = () => {
                     <Stack>
                     <Box className='summary-card'>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head1} count={CountList.count1} icon={<GroupsOutlinedIcon fontSize="inherit" />}/>
+                            <TotalIncomeDarkCard title={HeadList.head1} count={project} icon={<GroupsOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head2} count={CountList.count2} icon={<HourglassBottomOutlinedIcon fontSize="inherit" />}/>
+                            <TotalIncomeDarkCard title={HeadList.head2} count={leave} icon={<HourglassBottomOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                         <Box>
                             <TotalIncomeDarkCard title={HeadList.head3} count={CountList.count3} icon={<AssignmentTurnedInOutlinedIcon fontSize="inherit" />}/>

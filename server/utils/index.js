@@ -1,27 +1,27 @@
 // const mysql = require("mysql2");
 
-// let pool = mysql.createPool({
-//   connectionLimit: 100,
-//   host: "localhost",
-//   user: "root",
-//   password: "1234",
-//   database: "crud_contact",
-// });
-
 // module.exports=pool;
 var mysql = require('mysql2/promise');
 
 // connect to the db
+
+// dbConnectionInfo = {
+//   host: "localhost",
+//   port: "3306",
+//   user: "root",
+//   password: "1234",
+//   connectionLimit: 5, //mysql connection pool length
+//   database: "crud_contact"
+// };
+
 dbConnectionInfo = {
-  host: "localhost",
+  host: "workzone.c6yaihe9lzwl.us-west-2.rds.amazonaws.com",
   port: "3306",
-  user: "root",
-  password: "1234",
+  user: "workzone",
+  password: "qwer1234",
   connectionLimit: 5, //mysql connection pool length
   database: "crud_contact"
 };
-
-
 
 //create mysql connection pool
 var dbconnection = mysql.createPool(
