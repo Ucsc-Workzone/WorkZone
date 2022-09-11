@@ -21,7 +21,7 @@ const pagesMember = {
         
         {
             id: 'memberHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/member/dashboard',
             icon: icons.IconLayoutDashboard,

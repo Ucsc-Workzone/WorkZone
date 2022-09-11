@@ -443,8 +443,10 @@ header .container {
 }
 
 .cta-text {
-    color: var(--white);
-    font-size: var(--fs-6);
+    color: #000000;
+    line-height: 1.2;
+    font-weight: var(--fw-500);
+    font-size: 20px;
     margin-bottom: 50px;
 }
 
@@ -538,6 +540,7 @@ footer .logo {
 .footer-text {
     color: var(--rythm);
     font-size: var(--fs-6);
+    padding-left: 20px;
     margin-bottom: 20px;
 }
 
