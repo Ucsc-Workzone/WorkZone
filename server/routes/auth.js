@@ -5,7 +5,8 @@ const { db } = require("../utils/index");
 const jwt_token = require("jwt-decode");
 const { sendRegMail, sendforgetMail } = require("./Mail");
 
-const { login } = require("../models/model_Auth");
+const { login, signUpUser } = require("../models/model_Auth");
+const { getnotification } = require("../models/model_Notification");
 
 router.post("/login", async (req, res) => {
   const username = req.body.username;
@@ -145,6 +146,22 @@ router.post("/sendmail", async (req, res) => {
   //         console.log("email send")
   //     }
   // })
+});
+router.post("/signupuser", async (req, res) => {
+  // const {firstrName,lastName,address,image,dob,org}=req.body;
+  const result=await signUpUser(req.body);
+  // const data = req.body['accessToken'];
+
+  // const x = validToken(data);
+  // const decoded = jwt_token(data);
+
+  res.json(result);
+});
+
+router.post("/getnotification", async (req, res) => {
+
+const result=await getnotification(req.body);
+  res.json(result);
 });
 
 module.exports = router;
