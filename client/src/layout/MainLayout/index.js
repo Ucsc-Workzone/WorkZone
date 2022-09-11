@@ -26,6 +26,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
     ...(!open && {
         marginBottom:'20px',
         minHeight: '1500px',
+        height:'auto',
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
@@ -109,9 +110,9 @@ const MainLayout = () => {
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />
+              
             </Main>
             <Customization />
-            {/* Footer */}
         </Box><Footer /></>
     );
 };
