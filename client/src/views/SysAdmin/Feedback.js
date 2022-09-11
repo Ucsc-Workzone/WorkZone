@@ -5,11 +5,12 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-import Feedback from "Components/Feedback";
+import AllFeedbacks from 'Components/AllFeedbacks';
+
 const SysAdminFeedback = () => {
     return (
         <>
-            <Box style = {{width:"100%" , justifyContent:"space-between"}}><Feedback></Feedback></Box>
+           <AllFeedbacks />
         </>
     );
 };

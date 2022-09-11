@@ -9,8 +9,9 @@ const SamplePage = Loadable(lazy(() => import('views/Home')));
 const SysAdminDashboard = Loadable(lazy(() => import('views/SysAdmin/Dashboard')));
 const SysAdminFeedback = Loadable(lazy(() => import('views/SysAdmin/Feedback')));
 const SysAdminRegister = Loadable(lazy(() => import('views/SysAdmin/Register')));
-// const ManageUser = Loadable(lazy(() => import('views/SysAdmin/ManageUser')));
+const SysAdminManageOrg = Loadable(lazy(() => import('views/SysAdmin/ManageOrg')));
 const Annoucements = Loadable(lazy(() => import('views/SysAdmin/Annoucements')));
+
 const SysAdminRoutes = {
     path: '/',
     element: <MainLayout />,
@@ -62,6 +63,15 @@ const SysAdminRoutes = {
                 {
                     path: 'register',
                     element: <SysAdminRegister />
+                }
+            ]
+        },
+        {
+            path: 'sysadmin',
+            children: [
+                {
+                    path: 'manageorganizaton',
+                    element: <SysAdminManageOrg />
                 }
             ]
         }
