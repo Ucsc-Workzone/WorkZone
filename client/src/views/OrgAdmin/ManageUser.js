@@ -8,7 +8,7 @@ const ManageUser = () => {
 
             </div>
             <div className="tableConatiner">
-<StickyHeadTable />
+                <StickyHeadTable />
             </div>
         </div>
         </>

@@ -5,6 +5,14 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import * as React from 'react';
 
+
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+
 import FormLabel from '@mui/material/FormLabel';
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -45,10 +53,27 @@ const MenuProps = {
 
 const UserRegister = ({ ...others }) => {
 
+    function subtractYears(numOfYears, date = new Date()) {
+        date.setFullYear(date.getFullYear() - numOfYears);
+    
+        return date;
+      }
+      
+      //subtract 16 year from current Date - max date
+      const result = subtractYears(16);
+         
+      //subtract 60 year from current Date - max date
+      const result2 = subtractYears(60);
+
+      // Date of today
+      const today = new Date();
+
+      //console.log(subtractYears(16, today));
 
     const [fname,setFname]=useState('');
     const [lname,setLname]=useState('');
     const [date,setDate]=useState('');
+    const [picdate, setDateDB] = React.useState(result);
     const [add,setAdd]=useState('');
     const [value, setValue] = React.useState('female');
 
@@ -61,6 +86,12 @@ const UserRegister = ({ ...others }) => {
 
     const handleChangeDOB = (event) => {
         setDate(event.target.value)
+    };
+
+  
+
+    const handleDateChange = (newValue) => {
+      setDateDB(newValue);
     };
 
     const handleChangeAdd = (event) => {
@@ -155,10 +186,10 @@ const UserRegister = ({ ...others }) => {
                                         onChange={handleChangeRole}
                                         MenuProps={MenuProps}
                                     >
-                                        <MenuItem value={1}>Member</MenuItem>
-                                        <MenuItem value={2}>Coordinator</MenuItem>
-                                        <MenuItem value={3}>Director</MenuItem>
-                                        <MenuItem value={4}>Senior Assitant Registar</MenuItem>
+                                        {/* <MenuItem value={1}>Member</MenuItem> */}
+                                        <MenuItem value={1}>Coordinator</MenuItem>
+                                        <MenuItem value={2}>Director</MenuItem>
+                                        <MenuItem value={3}>Senior Assitant Registar</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -193,16 +224,22 @@ const UserRegister = ({ ...others }) => {
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="DOB"
-                                    margin="normal"
-                                    name="dob"
-                                    type="date"
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <DesktopDatePicker
+                                    maxDate={result}
+                                    minDate={result2}
+                                    label="Date of Birth"
+                                    inputFormat="MM/dd/yyyy"
+                                    openTo="Year"
+                                    views={['year', 'month', 'day']}
                                     defaultValue=""
-                                    onChange={handleChangeDOB}
-                                    sx={{ ...theme.typography.customInput }}
-                                />
+                                    value={picdate}
+                                    sx={{ ...theme.typography.customInput}}
+                                    onChange={handleDateChange}
+                                    renderInput={(params) => <TextField {...params} fullWidth />
+                                }
+                            />
+                                </LocalizationProvider>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
