@@ -61,6 +61,9 @@ const FirebaseLogin = ({ ...others }) => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+
+
     const handleLogin = async () => {
         const email = document.getElementById('outlined-adornment-email-login').value;
         const password = document.getElementById('outlined-adornment-password-login').value;
@@ -173,7 +176,7 @@ const FirebaseLogin = ({ ...others }) => {
             <Formik
                 initialValues={{
                     email: '',
-                    password: null,
+                    password: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({

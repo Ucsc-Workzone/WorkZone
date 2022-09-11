@@ -1,6 +1,11 @@
 .copy-right-sec{
 	padding: 25px;
-    background: #006EDC;
     color: #fff;
     text-align: center;
+    display: block;
+}
+.copy-right-main{
+    background: #006EDC;
+    color: #fff;
+    /* display: flex; */
 }

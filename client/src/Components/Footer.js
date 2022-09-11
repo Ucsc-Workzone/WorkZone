@@ -8,7 +8,8 @@ import './styles/footer.css';
 
 const MainFooter = ({headlist, countlist}) => {
     return (
-			<Box className="copy-right-sec" sx={{display:"flex",textAlign:"center", alignItems:"center",width:"100%"}}>  
+        <Box className="copy-right-main">
+			<Box className="copy-right-sec">  
                 <Typography>
                     &copy; 2022, All rights reserved by
                 </Typography>
@@ -16,6 +17,7 @@ const MainFooter = ({headlist, countlist}) => {
                     &nbsp; WORKZONE
                 </Typography>
 			</Box>
+        </Box>
         );
 }
  
