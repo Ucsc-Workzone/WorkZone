@@ -1,0 +1,58 @@
+
+
+.maincontainer{
+    width: 100%;
+    display: flex;
+}
+.leftcontainer{   
+    width: 50%;
+}
+.rightcontainer{
+    width: 50%;
+}
+.leftupcontainer{
+    width: 100%;
+    height: 25vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: center;
+}
+.leftmidcontainer{
+    background-image: url("../../../../../assets/images/signup.jpg");
+    width: 100%;
+    justify-content: center;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: '50px';
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.leftdowncontainer{
+    width: 100%;
+    height: 25vh;
+    display: flex; 
+    align-items: end;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    /* text-align: left; */
+}
+
+.singup-title{
+    font-size: 50px;
+}
+
+.css-919fip-MuiGrid-root>.MuiGrid-item{
+    padding-top: 3px;
+}
+
+.css-1170vc-MuiGrid-root>.MuiGrid-item{
+    padding-left: 3px;
+}
+.css-dra8ea-MuiTypography-root{
+    line-height: 1;
+}
+#orgspan{
+    color: rgba(0, 140, 255, 0.928);
+    font-size: 40px;
+}
