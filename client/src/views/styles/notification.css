@@ -1,0 +1,28 @@
+.mainnotContainer{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+
+}
+
+.badgesArea{
+    display: flex;
+    margin: 10px;
+}
+
+.all-not{
+    padding: 10px;
+    width: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: antiquewhite; */
+    cursor: pointer;
+}
+.allcat{
+    border-bottom: 1px solid black;
+}
+.serchArea{
+    width: 100%;
+    background-color: rgb(208, 226, 220);
+    padding: 20px;
+}
