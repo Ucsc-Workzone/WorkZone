@@ -204,15 +204,15 @@ const ProfileSection = () => {
                                                 }
                                             }}
                                         >
-                                            <ListItemButton
+                                            {/* <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 0}
                                                 onClick={(event) => handleListItemClick(event, 0, '/user/account-profile/profile1')}
-                                            ></ListItemButton>
+                                            ></ListItemButton> */}
                                             <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 1}
-                                                onClick={(event) => handleListItemClick(event, 1, '/user/social-profile/posts')}
+                                                onClick={(event) => handleListItemClick(event, 1, '/user/profile/1')}
                                             >
                                                 <ListItemIcon>
                                                     <IconUser stroke={1.5} size="1.3rem" />

@@ -1,5 +1,5 @@
 // assets
-import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard,IconUserPlus,IconBellRinging2 } from '@tabler/icons';
+import { IconHome, IconAccessibleOff, IconUser, IconDeviceLaptop, IconLayoutDashboard,IconUserPlus,IconBellRinging2, IconTool } from '@tabler/icons';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 import CorporateFareOutlinedIcon from '@mui/icons-material/CorporateFareOutlined';
 
@@ -9,7 +9,8 @@ const icons = {
     IconAccessibleOff,
     IconUser,
     IconDeviceLaptop,
-    IconLayoutDashboard
+    IconLayoutDashboard,
+    IconTool
 };
 
 // ==============================|| System Admin PAGES MENU ITEMS ||============================== //
@@ -51,6 +52,14 @@ const pagesSysAdmin = {
             type: 'item',
             url: '/sysadmin/register',
             icon: CorporateFareOutlinedIcon,
+            breadcrumbs: false
+        },
+        {
+            id: 'ManageOrg',
+            title: 'Manage Organizations',
+            type: 'item',
+            url: '/sysadmin/manageorganizaton',
+            icon: icons.IconTool,
             breadcrumbs: false
         },
         

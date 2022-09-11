@@ -1,10 +1,10 @@
-import Register3 from '../pages/authentication/authentication3/Register3';
-const Register = () => {
+import Registerorgform from '../pages/authentication/authentication3/RegisterCom';
+const Registerorg = () => {
     return ( 
         <>
-        <Register3 />
+        <Registerorgform />
         </>
      );
 }
  
-export default Register;
+export default Registerorg;
