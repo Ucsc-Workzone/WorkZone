@@ -380,8 +380,8 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {tdata.map((row) => (
                                         <StyledTableRow key={row['leaveId']}>
-                                            <StyledTableCell align="right">{row['fromDate']}</StyledTableCell>
-                                            <StyledTableCell align="right">{row['toDate']}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['fromDate'].substring(0,10)}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['toDate'].substring(0,10)}</StyledTableCell>
 
                                             <StyledTableCell align="right">{row['nodays']}</StyledTableCell>
 

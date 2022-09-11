@@ -6,6 +6,7 @@ const jwt_token = require("jwt-decode");
 const { sendRegMail, sendforgetMail } = require("./Mail");
 
 const { login, signUpUser } = require("../models/model_Auth");
+const { getnotification } = require("../models/model_Notification");
 
 router.post("/login", async (req, res) => {
   const username = req.body.username;
@@ -154,6 +155,12 @@ router.post("/signupuser", async (req, res) => {
   // const x = validToken(data);
   // const decoded = jwt_token(data);
 
+  res.json(result);
+});
+
+router.post("/getnotification", async (req, res) => {
+
+const result=await getnotification(req.body);
   res.json(result);
 });
 

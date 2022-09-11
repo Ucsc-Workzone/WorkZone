@@ -31,7 +31,14 @@ dbConnectionInfo = {
   database: "crud_contact"
 };
 
-
+// dbConnectionInfo = {
+//   host: "localhost",
+//   port: "3306",
+//   user: "root",
+//   password: "1234",
+//   connectionLimit: 5, //mysql connection pool length
+//   database: "crud_contact"
+// };
 
 //create mysql connection pool
 var dbconnection = mysql.createPool(dbConnectionInfo);

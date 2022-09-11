@@ -50,8 +50,9 @@ const UpcomingList = () => {
                
                 if (response.data) {
                    const array=response.data[0]
+                   console.log(array)
                  
-              setList(list=>[...list, ])
+              setList(array)
                     
                 }
                 console.log(list)
@@ -59,21 +60,26 @@ const UpcomingList = () => {
     }, []);
     return (
         <div className="upcomings">
+       
             {list.map((item)=>{
-                <Box className="tag-container" key={item['projectId']}>
+                return(
+                    <>
+                     <Box className="tag-container" key={item['projectId']}>
                 <Card variant="outlined" className="project-card">
                     <Box style={{ display: 'flex', width: '100%' }}>
                         <Box style={{ display: 'flex', justifyContent: 'left', width: '5%', backgroundColor: '#5e35b1' }}></Box>
                         <Box style={{ display: 'flex', justifyContent: 'left', width: '70%', paddingLeft: '70px' }}>
                             <Stack>
                                 <Typography variant="h3" component="p" fontSize="1.5vw" paddingTop={'15px'} paddingBottom={'15px'}>
-                                {item['projectId']}
+                                {item['projectName']}
                                 </Typography>
                                 <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
                                     {projects.pending} Remaining
                                 </Typography>
                                 <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
-                                    Due Date:{projects.date}
+                                    Due Date:
+                                  
+                                    {item['estendDate'].substring(0,10)}
                                 </Typography>
                             </Stack>
                         </Box>
@@ -85,6 +91,9 @@ const UpcomingList = () => {
                     </Box>
                 </Card>
             </Box>
+                    </>
+                );
+               
             })}
             
             
