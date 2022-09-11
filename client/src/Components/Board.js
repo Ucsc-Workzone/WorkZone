@@ -12,12 +12,15 @@ function Board(PropTypes) {
   const [date, updateDate] = useState("");
 
   const addCard = () => {
-    axios.post("http://localhost:3001/create", {
+    axios.post("http://localhost:5000/api/member/createtodo", {
       id: title,
       name: desc,
       age: date,
       
-    })
+    }).then((response) => {
+      console.log(response.data)
+  });
+    
   };
     return (
         <div className="board">
