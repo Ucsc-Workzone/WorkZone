@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Radio from '@mui/material/Radio';
@@ -26,7 +28,9 @@ import {
     Typography,
     useMediaQuery,
     MenuItem,
-    Select
+    Select,
+    Alert,
+    AlertTitle
 } from '@mui/material';
 
 import * as Yup from 'yup';
@@ -44,25 +48,26 @@ const MenuProps = {
 };
 
 const FirebaseRegister = ({ ...others }) => {
-    const [orgcode,setCode]=useState('#1000');
-    const [value, setValue] = React.useState('female');
-    const [date,setDate]=useState('');
-    const [add,setAdd]=useState('');
-    const [fname,setFname]=useState('');
-    const [lname,setLname]=useState('');
-    const [contactno,setPhone]=useState('');
-
+    const navigate = useNavigate();
+    const [orgcode, setCode] = useState('#1000');
+    const [gender, setGender] = React.useState('female');
+    const [date, setDate] = useState('');
+    const [add, setAdd] = useState('');
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [contactno, setPhone] = useState('');
+    const [alert, setAlert] = useState('');
 
     const handleChangCode = (event) => {
-        setCode(event.target.value)
+        setCode(event.target.value);
     };
 
     const handleChangeDOB = (event) => {
-        setDate(event.target.value)
+        setDate(event.target.value);
     };
 
     const handleChangeGender = (event) => {
-        setValue(event.target.value);
+        setGender(event.target.value);
     };
     const handleChangeAdd = (event) => {
         setAdd(event.target.value);
@@ -72,7 +77,7 @@ const FirebaseRegister = ({ ...others }) => {
         setPhone(event.target.value);
     };
 
-    const handleSubmit=(()=>{})
+    const handleSubmit = () => {};
     const [age, setAge] = React.useState('');
 
     const handleChangeAge = (event) => {
@@ -112,27 +117,36 @@ const FirebaseRegister = ({ ...others }) => {
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    
+                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-
                     axios
-                    .post('http://localhost:5000/api/auth/registerUser', {
-                        username: values.email,
-                        orgcode:orgcode,
-                        role:age,
-                        dob:date,
-                        address:add,
-                        firstName:fname,
-                        lastName:lname,
-                        contactNo:contactno
-                    })
-                    .then((response) => {
-                        
-                        console.log(response)
-                    });
-                   
+                        .post('http://localhost:5000/api/auth/signupuser', {
+                            username: values.email,
+                            orgcode: orgcode,
+                            address: 'kandy',
+                            firstName: fname,
+                            lastName: lname,
+                            gender: gender,
+                            contactNo: contactno
+                            // orgcode:'orgcode',
+                            // address:add,
+                            // firstName:fname,
+                            // lastName:lname,
+                            // gender:'male',
+                            // contactNo:contactno
+                        })
+                        .then((response) => {
+                            console.log(response.data);
+                            setAlert(response.data);
+                            if(response.data=='success'){
+                                setTimeout(()=>{
+                                    navigate('/')
+
+                                },3000)
+                            }
+                        });
+
                     // try {
                     //     if (scriptedRef.current) {
                     //         setStatus({ success: true });
@@ -146,27 +160,36 @@ const FirebaseRegister = ({ ...others }) => {
                     //         setSubmitting(false);
                     //     }
                     // }
-                    console.log("najbaj")
+                    console.log('najbaj');
                 }}
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
                         <Grid container spacing={matchDownSM ? 0 : 2}>
-                            {/* <Grid item xs={12}>
-                                <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-                                <TextField
-                                    fullWidth
-                                    label="Organization Code"
-                                    margin="normal"
-                                    name="orgcode"
-                                    type="text"
-                                    defaultValue=""
-                                    onChange={handleChangFname}
-                                    sx={{ ...theme.typography.customInput }}
-                                />
-                                </FormControl>
-                            </Grid> */}
-
+                            {alert == 'success' && (
+                                <Grid item xs={12}>
+                                    <Alert severity="success">
+                                        <AlertTitle>Registartion Success</AlertTitle>
+                                        You have been suceessfully registered — <strong>You will recieve confimation mail after approval by Your orgnization admin</strong>
+                                    </Alert>
+                                </Grid>
+                            )}
+                            {alert == 'orgerror' && (
+                                <Grid item xs={12}>
+                                    <Alert severity="warning">
+                                        <AlertTitle>Invalid Orginization code</AlertTitle>
+                                        Organization Code is invalid — <strong>Try again or contact your Organizarion admin!</strong>
+                                    </Alert>
+                                </Grid>
+                            )}
+                            {alert == 'exist' && (
+                                <Grid item xs={12}>
+                                    <Alert severity="warning">
+                                        <AlertTitle>User already exist</AlertTitle>
+                                        Please enter a another email address — <strong>Try again!</strong>
+                                    </Alert>
+                                </Grid>
+                            )}
                             <Grid item xs={12}>
                                 <TextField
                                     fullWidth
@@ -184,7 +207,7 @@ const FirebaseRegister = ({ ...others }) => {
 
                                 <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                             </Box>
-                           
+
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
@@ -270,7 +293,7 @@ const FirebaseRegister = ({ ...others }) => {
                                 row
                                 aria-labelledby="demo-controlled-radio-buttons-group"
                                 name="controlled-radio-buttons-group"
-                                value={value}
+                                value={gender}
                                 onChange={handleChangeGender}
                             >
                                 <FormControlLabel value="female" control={<Radio />} label="Female" />

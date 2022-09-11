@@ -21,7 +21,7 @@ const pagesMA = {
 
         {
             id: 'MADashboard',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/ma/dashboard',
             icon: icons.IconLayoutDashboard,

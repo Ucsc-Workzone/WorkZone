@@ -24,7 +24,7 @@ const pagesSysAdmin = {
         
         {
             id: 'sysadminHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/sysadmin/dashboard',
             icon: icons.IconLayoutDashboard,

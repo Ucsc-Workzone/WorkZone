@@ -5,7 +5,7 @@ import logo from './styles/images/logo-final.png'
 import img3 from './styles/images/feature-1.png'
 import img4 from './styles/images/contact.png'
 import img5 from './styles/images/feature-2.png'
-import {IconAccessibleOff,IconChartInfographic,IconUserCheck,IconBrandFacebook,IconBrandGithub, IconBrandInstagram, IconBrandYoutube} from '@tabler/icons'
+import {IconAccessibleOff,IconChartInfographic,IconUserCheck,IconBrandFacebook,IconBrandLinkedIn,IconBrandGithub, IconBrandInstagram, IconBrandYoutube, IconBrandLinkedin, IconBrandTwitter} from '@tabler/icons'
 // import './test.js'
 const Landing = () => {
 
@@ -90,13 +90,13 @@ const Landing = () => {
                                 <li>
                                     <div class="about-card">
                                         <div class="card-icon">
-                                            <IconChartInfographic />
+                                            <IconChartInfographic width={50} height={50}/>
                                         </div>
 
                                         <h3 class="h3 card-title">Progress Tracking</h3>
 
                                         <p class="card-text">
-                                            Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back
+                                        Track the progress of projects and activities more easily. Split the work and submit individual work records without much effort.
                                         </p>
                                     </div>
                                 </li>
@@ -104,13 +104,13 @@ const Landing = () => {
                                 <li>
                                     <div class="about-card">
                                         <div class="card-icon">
-                                           <IconUserCheck />
+                                           <IconUserCheck width={50} height={50}/>
                                         </div>
 
-                                        <h3 class="h3 card-title">Attendace Tracking</h3>
+                                        <h3 class="h3 card-title">Attendance Tracking</h3>
 
                                         <p class="card-text">
-                                            Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back
+                                        Track member attendance and prepare reports of the staff members without any delay.
                                         </p>
                                     </div>
                                 </li>
@@ -118,13 +118,13 @@ const Landing = () => {
                                 <li>
                                     <div class="about-card">
                                         <div class="card-icon">
-                                           <IconAccessibleOff />
+                                           <IconAccessibleOff width={50} height={50}/>
                                         </div>
 
                                         <h3 class="h3 card-title">Leave Management</h3>
 
                                         <p class="card-text">
-                                            Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back
+                                            This is a special feature in our system where organization can manage their employee's leaves.  
                                         </p>
                                     </div>
                                 </li>
@@ -137,14 +137,13 @@ const Landing = () => {
                             </figure>
 
                             <div class="about-bottom-content">
-                                <h2 class="h2 section-title">We’re obsessed with growth</h2>
+                                <h2 class="h2 section-title">Generate reports</h2>
 
                                 <p class="section-text">
-                                    Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back into the
-                                    development of the asset through its charitable foundation.
+                                    Attendance Reports will be available for the administrative staff of the registered organizations. 
                                 </p>
 
-                                <button class="btn btn-secondary">Sign Up For Free</button>
+                                {/* <button class="btn btn-secondary">Sign Up For Free</button> */}
                             </div>
                         </div>
                     </div>
@@ -152,13 +151,7 @@ const Landing = () => {
 
                 <section class="features" id="features">
                     <div class="container">
-                        <h2 class="h2 section-title">We are offer Fully customized options to increse the productivity of your employess.</h2>
-
-                        <p class="section-text">
-                            Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back into the
-                            development of the asset through its charitable foundation.
-                        </p>
-
+                        
                         <ul class="features-list">
                             <li class="features-item">
                                 <figure class="features-item-banner">
@@ -166,11 +159,10 @@ const Landing = () => {
                                 </figure>
 
                                 <div class="feature-item-content">
-                                    <h3 class="h2 item-title">Efficient Leave Management System</h3>
+                                    <h3 class="h2 item-title">WorkZone offers customization</h3>
 
                                     <p class="item-text">
-                                        Inspiration comes in many ways and you like to save everything from. sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
+                                    WorkZone offer customization for certain features to increase the working productivity within the organization.
                                     </p>
                                 </div>
                             </li>
@@ -181,11 +173,10 @@ const Landing = () => {
                                 </figure>
 
                                 <div class="feature-item-content">
-                                    <h3 class="h2 item-title">Less Paper works </h3>
+                                    <h3 class="h2 item-title">Efficiency and Flexibility</h3>
 
                                     <p class="item-text">
-                                        Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back into
-                                        the development of the asset through its charitable foundation.
+                                        Since most off the tasks will be recorded within the system, there won't be any need to update the progress in excel sheets. 
                                     </p>
                                 </div>
                             </li>
@@ -199,14 +190,14 @@ const Landing = () => {
                             <h3 class="cta-title">Try the WorkZone</h3>
 
                             <p class="cta-text">
-                                Each time a digital asset is purchased or sold, Sequoir donates a percentage of the fees back.
+                                So without looking out for more, try out WorkZone today and ease tracking and maintaining workloads within your organization
                             </p>
 
                             <form action="" class="cta-form">
 
-            <input type="email" name="email" placeholder="Your email address" />
+            {/* <input type="email" name="email" placeholder="Your email address" />
 
-            <button type="submit" class="btn btn-secondary">Try It Now</button>
+            <button type="submit" class="btn btn-secondary">Try It Now</button> */}
 
           </form>
                         </div>
@@ -216,7 +207,7 @@ const Landing = () => {
                 <section class="contact" id="contact">
                     <div class="container">
                         <div class="contact-content">
-                            <h2 class="h2 contact-title">Let’s scale , Your Productivity together</h2>
+                            <h2 class="h2 contact-title">Ask us anything regarding WorkZone</h2>
 
                             <figure class="contact-banner">
                          <img src={img4} alt="contact banner" /> </figure>
@@ -225,7 +216,7 @@ const Landing = () => {
                         <form action="" class="contact-form">
                             <div class="input-wrapper">
                                 <label for="name" class="input-label">
-                                    Name *
+                                    Company/Organization Name *
                                 </label>
 
               <input type="text" name="name" id="name" required placeholder="Type Name" class="input-field" /> 
@@ -263,7 +254,7 @@ const Landing = () => {
                             </div>
 
                             <button type="submit" class="btn btn-primary">
-                                Send Message
+                                Send a Message
                             </button>
                         </form>
                     </div>
@@ -281,15 +272,15 @@ const Landing = () => {
                             <p class="footer-text">Follow us on</p>
 
                             <ul class="social-list">
-                                <li>
+                                {/* <li>
                                     <a href="https://github.com/codewithsadee" class="social-link">
                                        <IconBrandGithub />
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="https://instagram.com/codewithsadee" class="social-link">
-                                       <IconBrandInstagram />
+                                    <a href="https://linkedin.com/codewithsadee" class="social-link">
+                                       <IconBrandLinkedIn />
                                     </a>
                                 </li>
 
@@ -297,20 +288,33 @@ const Landing = () => {
                                     <a href="https://youtube.com/c/codewithsadee" class="social-link">
                                        <IconBrandYoutube />
                                     </a>
-                                </li>
+                                </li> */}
 
                                 <li>
                                     <a href="#" class="social-link">
-                                        <IconBrandFacebook />
+                                        <IconBrandFacebook width={35} height={35}/>
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a href="https://linkedin.com/codewithsadee" class="social-link">
+                                        <IconBrandLinkedin width={35} height={35}/>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://twitter.com/codewithsadee" class="social-link">
+                                        <IconBrandTwitter width={35} height={35}/>
+                                    </a>
+                                </li>
+                                
                             </ul>
                         </div>
 
                         <div class="footer-link-box">
                             <ul class="footer-link-list">
                                 <li>
-                                    <h3 class="h4 link-title">Company</h3>
+                                    <h3 class="h4 link-title">WorkZone</h3>
                                 </li>
 
                                 <li>
@@ -325,14 +329,14 @@ const Landing = () => {
                                     </a>
                                 </li>
 
-                                <li>
+                                {/* <li>
                                     <a href="#" class="footer-link">
                                         Pricing
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
 
-                            <ul class="footer-link-list">
+                            {/* <ul class="footer-link-list">
                                 <li>
                                     <h3 class="h4 link-title">Products</h3>
                                 </li>
@@ -354,7 +358,7 @@ const Landing = () => {
                                         Contact
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> */}
 
                             <ul class="footer-link-list">
                                 <li>
@@ -367,11 +371,11 @@ const Landing = () => {
                                     </a>
                                 </li>
 
-                                <li>
+                                {/* <li>
                                     <a href="#" class="footer-link">
                                         Testimonial
                                     </a>
-                                </li>
+                                </li> */}
 
                                 <li>
                                     <a href="#" class="footer-link">
@@ -391,15 +395,38 @@ const Landing = () => {
                                     </a>
                                 </li>
 
-                                <li>
+                                {/* <li>
                                     <a href="#" class="footer-link">
                                         Products
                                     </a>
-                                </li>
+                                </li> */}
 
                                 <li>
                                     <a href="#" class="footer-link">
                                         Customers
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="footer-link-list">
+                                <li>
+                                    <h3 class="h4 link-title">Contact Us</h3>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="footer-link">
+                                        +94117278956
+                                    </a>
+                                </li>
+
+                                {/* <li>
+                                    <a href="#" class="footer-link">
+                                        Products
+                                    </a>
+                                </li> */}
+
+                                <li>
+                                    <a href="#" class="footer-link">
+                                        workzoneforyou@gmail.com
                                     </a>
                                 </li>
                             </ul>
