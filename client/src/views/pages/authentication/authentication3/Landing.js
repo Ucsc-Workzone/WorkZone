@@ -68,7 +68,7 @@ const Landing = () => {
                               Welcome to the WorkZone Community
                             </p>
 
-                            <button class="btn btn-primary" >Get Started</button>
+                            <a href="http://localhost:3000/workzone/signup3"> <button class="btn btn-primary" >Get Started</button></a>
                         </div>
 
                         <div class="hero-banner"></div>

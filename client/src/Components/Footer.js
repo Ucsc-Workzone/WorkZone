@@ -8,10 +8,12 @@ import './styles/footer.css';
 
 const MainFooter = ({headlist, countlist}) => {
     return (
-			<Box className="copy-right-sec">  
+			<Box className="copy-right-sec" sx={{display:"flex",textAlign:"center", alignItems:"center",width:"100%"}}>  
                 <Typography>
-                    &copy; 2022, All rights reserved by University of Colombo School of Computing<br />
-                    No: 35, Reid Avenue, Colombo 7, Sri Lanka.
+                    &copy; 2022, All rights reserved by
+                </Typography>
+                <Typography variant='h3' sx={{colour:"white"}}>
+                    &nbsp; WORKZONE
                 </Typography>
 			</Box>
         );

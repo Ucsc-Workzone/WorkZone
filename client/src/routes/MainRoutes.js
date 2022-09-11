@@ -14,8 +14,9 @@ const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 const Landing = Loadable(lazy(() => import('views/pages/authentication/authentication3/Landing')));
+const Signup = Loadable(lazy(() => import('views/pages/authentication/authentication3/signup')));
 // sample page routing
-const SamplePage = Loadable(lazy(() => import('views/Home')));
+// const SamplePage = Loadable(lazy(() => import('views/Home')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -24,10 +25,10 @@ const MainRoutes = {
     path: '/',
     element: <Landing />,
     children: [
-        {
-            path: '/',
-            element: <SamplePage />
-        },
+        // {
+        //     path: '/',
+        //     element: <SamplePage />
+        // },
         {
             path: 'dashboard',
             children: [
@@ -64,10 +65,15 @@ const MainRoutes = {
                 }
             ]
         },
+        // {
+        //     path: 'sample-page',
+        //     element: <SamplePage />
+        // },
         {
-            path: 'sample-page',
-            element: <SamplePage />
-        }
+            path: 'signup',
+            element: <Signup />
+          
+        },
     ]
 };
 
