@@ -11,6 +11,7 @@ import Logo from 'ui-component/Logo';
 import AuthRegister from '../auth-forms/AuthRegisterUsers';
 import AuthFooter from 'ui-component/cards/AuthFooter';
 import logo from '../../../../assets/images/workzone.png';
+
 // assets
 
 // ===============================|| AUTH3 - REGISTER ||=============================== //

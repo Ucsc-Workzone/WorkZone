@@ -224,21 +224,21 @@ const UserRegister = ({ ...others }) => {
                             </Grid>
 
                             <Grid item xs={12}>
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DesktopDatePicker
-                                    maxDate={result}
-                                    minDate={result2}
-                                    label="Date of Birth"
-                                    inputFormat="MM/dd/yyyy"
-                                    openTo="Year"
-                                    views={['year', 'month', 'day']}
-                                    defaultValue=""
-                                    value={picdate}
-                                    sx={{ ...theme.typography.customInput}}
-                                    onChange={handleDateChange}
-                                    renderInput={(params) => <TextField {...params} fullWidth />
-                                }
-                            />
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DesktopDatePicker
+                                        maxDate={result}
+                                        minDate={result2}
+                                        label="Date of Birth"
+                                        inputFormat="MM/dd/yyyy"
+                                        openTo="Year"
+                                        views={['year', 'month', 'day']}
+                                        defaultValue=""
+                                        value={picdate}
+                                        sx={{ ...theme.typography.customInput}}
+                                        onChange={handleDateChange}
+                                        renderInput={(params) => <TextField {...params} fullWidth />
+                                    }
+                                />
                                 </LocalizationProvider>
                             </Grid>
                             <Grid item xs={12}>
