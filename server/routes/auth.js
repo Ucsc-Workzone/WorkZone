@@ -32,13 +32,13 @@ router.post("/login", async (req, res) => {
 // })
 
 router.post('/registerorg',async (req,res)=>{
-  try{
- const status=await registerorg(req.body);
- return status;
-  }
-  catch(err){
-    res.json("malithu")
-  }
+
+ const status=await registerorg(req.body.email,req.body.orgName,req.body.des);
+ res.json(status) ;
+  
+  // catch(err){
+  //   res.json("malithu")
+  // }
   
  
   })

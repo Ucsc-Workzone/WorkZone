@@ -1,6 +1,6 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
-const {createProject,createTeam}=require('../models/model_Project')
+const {createProject,createTeam, getorg}=require('../models/model_Project')
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");
 const { verify } = require("crypto");
@@ -28,6 +28,21 @@ const status=createTeam(team)
 else{
   res.json("Invalid user")
 }
+});
+
+
+router.post("/getorg",async(req,res)=>{
+//   const accessToken=req.body['accessToken'];
+//   const team=req.body['TeamList']
+//   const result=validToken(accessToken)
+// if(result){
+const status=getorg();
+return status;
+//   res.json(status)
+// }
+// else{
+//   res.json("Invalid user")
+// }
 });
 
 

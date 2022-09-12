@@ -35,5 +35,9 @@ module.exports = {
 
   async gethistory(userid) {
     return userid;
+  },
+
+  async getorg(data){
+return "Malithi"
   }
 };
