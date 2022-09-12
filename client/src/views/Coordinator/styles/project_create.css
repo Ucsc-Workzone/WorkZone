@@ -1,0 +1,19 @@
+.projectmain {
+    width: 100%;
+    /* background-color: #fff; */
+    display: flex;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.memberAssign {
+    /* width: 40%; */
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.todoContainer {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
