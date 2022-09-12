@@ -1,10 +1,23 @@
-import RegisterUsers from '../pages/authentication/authentication3/RegisterUsers';
-const RegisterUser = () => {
+import NoLeaveConfig from '../../Components/NoLeaveConfig';
+import CreateLeaveConfig from '../../Components/CreateLeaveConfig';
+import HaveLeaveConfig from '../../Components/HaveLeaveConfig';
+
+const ConfigLeaves = () => {
+    const states = 0;
+
     return ( 
         <>
-        <RegisterUsers />
+           { 
+                states== 0 && <NoLeaveConfig />      
+           } 
+           { 
+                states== 1 && <HaveLeaveConfig />
+           } 
+
+
+
         </>
      );
 }
  
-export default RegisterUser;
+export default ConfigLeaves;
