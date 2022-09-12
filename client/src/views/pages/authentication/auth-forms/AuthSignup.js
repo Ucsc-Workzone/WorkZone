@@ -7,6 +7,10 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import * as React from 'react';
 
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+
 import FormLabel from '@mui/material/FormLabel';
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -48,9 +52,26 @@ const MenuProps = {
 };
 
 const FirebaseRegister = ({ ...others }) => {
+
+    function subtractYears(numOfYears, date = new Date()) {
+        date.setFullYear(date.getFullYear() - numOfYears);
+    
+        return date;
+      }
+      
+      //subtract 16 year from current Date - max date
+      const result = subtractYears(16);
+         
+      //subtract 60 year from current Date - max date
+      const result2 = subtractYears(60);
+
+      // Date of today
+      const today = new Date();
+
     const navigate = useNavigate();
     const [orgcode, setCode] = useState('#1000');
     const [gender, setGender] = React.useState('female');
+    const [picdate, setDateDB] = React.useState(result);
     const [date, setDate] = useState('');
     const [add, setAdd] = useState('');
     const [fname, setFname] = useState('');
@@ -64,6 +85,10 @@ const FirebaseRegister = ({ ...others }) => {
 
     const handleChangeDOB = (event) => {
         setDate(event.target.value);
+    };
+
+    const handleDateChange = (newValue) => {
+        setDateDB(newValue);
     };
 
     const handleChangeGender = (event) => {
@@ -234,7 +259,23 @@ const FirebaseRegister = ({ ...others }) => {
                             </Grid>
 
                             <Grid item xs={6}>
-                                <TextField
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DesktopDatePicker
+                                        maxDate={result}
+                                        minDate={result2}
+                                        label="Date of Birth"
+                                        inputFormat="MM/dd/yyyy"
+                                        openTo="Year"
+                                        views={['year', 'month', 'day']}
+                                        name="picdate"
+                                        value={picdate}
+                                        sx={{ ...theme.typography.customInput }}
+                                        onChange={handleDateChange}
+                                        renderInput={(params) => <TextField {...params} fullWidth fullHeight/>
+                                    }
+                                />
+                                </LocalizationProvider>
+                                {/* <TextField
                                     fullWidth
                                     label="DOB"
                                     margin="normal"
@@ -243,7 +284,7 @@ const FirebaseRegister = ({ ...others }) => {
                                     defaultValue=""
                                     onChange={handleChangeDOB}
                                     sx={{ ...theme.typography.customInput }}
-                                />
+                                /> */}
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField

@@ -10,9 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Avatar from '@mui/material/Avatar';
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import { useEffect } from 'react';
 
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
@@ -100,7 +98,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }
 }));
 
-const StickyHeadTable = () => {
+const StickyHeadTable = (data) => {
+console.log("Malithi",data)
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

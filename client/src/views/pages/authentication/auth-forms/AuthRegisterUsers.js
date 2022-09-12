@@ -5,6 +5,14 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import * as React from 'react';
 
+
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+
 import FormLabel from '@mui/material/FormLabel';
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -43,22 +51,66 @@ const MenuProps = {
     }
 };
 
-const OrganizationRegister = ({ ...others }) => {
-    const [orgname, setOrgname] = useState('');
-    const [des, setDes] = useState('');
-    const [email, setEmail] = useState('');
+const UserRegister = ({ ...others }) => {
+
+    function subtractYears(numOfYears, date = new Date()) {
+        date.setFullYear(date.getFullYear() - numOfYears);
+    
+        return date;
+      }
+      
+      //subtract 16 year from current Date - max date
+      const result = subtractYears(16);
+         
+      //subtract 60 year from current Date - max date
+      const result2 = subtractYears(60);
+
+      // Date of today
+      const today = new Date();
+
+      //console.log(subtractYears(16, today));
+
+    const [fname,setFname]=useState('');
+    const [lname,setLname]=useState('');
+    const [date,setDate]=useState('');
+    const [picdate, setDateDB] = React.useState(result);
+    const [add,setAdd]=useState('');
+    const [value, setValue] = React.useState('female');
+
+    const handleChangFname = (event) => {
+        setFname(event.target.value);
+    };
+    const handleChangeLname = (event) => {
+        setLname(event.target.value);
+    };
+
+    const handleChangeDOB = (event) => {
+        setDate(event.target.value)
+    };
+
+  
+
+    const handleDateChange = (newValue) => {
+      setDateDB(newValue);
+    };
+
+    const handleChangeAdd = (event) => {
+        setAdd(event.target.value);
+    };
 
     const handleChangeGender = (event) => {
         setValue(event.target.value);
     };
-    const handleChangeDes = (event) => {
-        setDes(event.target.value);
+
+
+    const handleSubmit=(()=>{})
+    const [role, setRole] = React.useState('');
+
+    const handleChangeRole = (event) => {
+        setRole(event.target.value);
     };
 
-    const handleChangOrgname = (event) => {
-        setOrgname(event.target.value);
-    };
-
+   
     const theme = useTheme();
     const scriptedRef = useScriptRef();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
@@ -86,24 +138,25 @@ const OrganizationRegister = ({ ...others }) => {
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required')
+                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+                    
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-                  
+
                     axios
-                        .post('http://localhost:5000/api/auth/registerorg', {
-                            email: values.email,
-
-                            orgName: orgname,
-                            des: des
-                         
-                        })
-                        .then((response) => {
-                            console.log(response.data);
-                        });
-
+                    .post('http://localhost:5000/api/auth/registerUser', {
+                        username: values.email,
+                        role:role,
+                        dob:date,
+                        address:add,
+                        firstName:fname,
+                        lastName:lname,
+                    })
+                    .then((response) => {
                         
-
+                        console.log(response)
+                    });
+                   
                     // try {
                     //     if (scriptedRef.current) {
                     //         setStatus({ success: true });
@@ -117,48 +170,47 @@ const OrganizationRegister = ({ ...others }) => {
                     //         setSubmitting(false);
                     //     }
                     // }
+                    console.log("najbaj")
                 }}
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
                         <Grid container spacing={matchDownSM ? 0 : 2}>
-                            {/* <Grid item xs={12}>
+                            <Grid item xs={12}>
                                 <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
                                     <InputLabel id="demo-simple-select-filled-label">Role</InputLabel>
                                     <Select
                                         labelId="demo-simple-select-filled-label"
                                         id="demo-simple-select-filled"
-                                        value={age}
-                                        onChange={handleChangeAge}
+                                        value={role}
+                                        onChange={handleChangeRole}
                                         MenuProps={MenuProps}
                                     >
-                                       
-
+                                        {/* <MenuItem value={1}>Member</MenuItem> */}
                                         <MenuItem value={1}>Coordinator</MenuItem>
-                                        <MenuItem value={2}>Member</MenuItem>
-
-                                        <MenuItem value={3}>Management Assistant</MenuItem>
+                                        <MenuItem value={2}>Director</MenuItem>
+                                        <MenuItem value={3}>Senior Assitant Registar</MenuItem>
                                     </Select>
                                 </FormControl>
-                            </Grid> */}
+                            </Grid>
                             <Box sx={{ alignItems: 'center', display: 'flex' }}>
                                 <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
 
                                 <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                             </Box>
-                            <Grid item xs={12}>
+                            <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
-                                    label="Orgnaization Name"
+                                    label="First Name"
                                     margin="normal"
-                                    name="orgname"
+                                    name="fname"
                                     type="text"
-                                    value={orgname}
-                                    onChange={handleChangOrgname}
+                                    defaultValue=""
+                                    onChange={handleChangFname}
                                     sx={{ ...theme.typography.customInput }}
                                 />
                             </Grid>
-                            {/* <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
                                     label="Last Name"
@@ -169,29 +221,35 @@ const OrganizationRegister = ({ ...others }) => {
                                     onChange={handleChangeLname}
                                     sx={{ ...theme.typography.customInput }}
                                 />
-                            </Grid> */}
+                            </Grid>
 
-                            {/* <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="DOB"
-                                    margin="normal"
-                                    name="dob"
-                                    type="date"
-                                    defaultValue=""
-                                    onChange={handleChangeDOB}
-                                    sx={{ ...theme.typography.customInput }}
+                            <Grid item xs={12}>
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DesktopDatePicker
+                                        maxDate={result}
+                                        minDate={result2}
+                                        label="Date of Birth"
+                                        inputFormat="MM/dd/yyyy"
+                                        openTo="Year"
+                                        views={['year', 'month', 'day']}
+                                        defaultValue=""
+                                        value={picdate}
+                                        sx={{ ...theme.typography.customInput}}
+                                        onChange={handleDateChange}
+                                        renderInput={(params) => <TextField {...params} fullWidth />
+                                    }
                                 />
-                            </Grid> */}
+                                </LocalizationProvider>
+                            </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     fullWidth
-                                    label="Description about the organization"
+                                    label="Address"
                                     margin="normal"
-                                    name="descript"
+                                    name="lname"
                                     type="text"
-                                    value={des}
-                                    onChange={handleChangeDes}
+                                    defaultValue=""
+                                    onChange={handleChangeAdd}
                                     sx={{ ...theme.typography.customInput }}
                                 />
                             </Grid>
@@ -213,7 +271,7 @@ const OrganizationRegister = ({ ...others }) => {
                                 </FormHelperText>
                             )}
                         </FormControl>
-                        {/* <FormControl>
+                        <FormControl>
                             <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
                             <RadioGroup
                                 row
@@ -225,7 +283,7 @@ const OrganizationRegister = ({ ...others }) => {
                                 <FormControlLabel value="female" control={<Radio />} label="Female" />
                                 <FormControlLabel value="male" control={<Radio />} label="Male" />
                             </RadioGroup>
-                        </FormControl> */}
+                        </FormControl>
 
                         <Grid container alignItems="center" justifyContent="space-between">
                             <Grid item></Grid>
@@ -258,4 +316,4 @@ const OrganizationRegister = ({ ...others }) => {
     );
 };
 
-export default OrganizationRegister;
+export default UserRegister;

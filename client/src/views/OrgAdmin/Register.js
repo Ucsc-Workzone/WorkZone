@@ -1,10 +1,10 @@
-import Register3 from '../pages/authentication/authentication3/Register3';
-const Register = () => {
+import RegisterUsers from '../pages/authentication/authentication3/RegisterUsers';
+const RegisterUser = () => {
     return ( 
         <>
-        <Register3 />
+        <RegisterUsers />
         </>
      );
 }
  
-export default Register;
+export default RegisterUser;
