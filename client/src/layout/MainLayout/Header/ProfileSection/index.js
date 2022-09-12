@@ -60,14 +60,17 @@ const ProfileSection = () => {
      * */
     const anchorRef = useRef(null);
     const handleLogout = async () => {
-        localStorage.removeItem('token');
+        try{  localStorage.removeItem('token');
         localStorage.removeItem('userid');
         localStorage.removeItem('name');
         localStorage.removeItem('userRole');
         localStorage.removeItem('image');
         localStorage.removeItem('loginStatus');
         localStorage.removeItem('prac-kanban');
-        navigate('/');
+        navigate('/');}
+      catch{
+
+      }
     };
 
     const handleClose = (event) => {

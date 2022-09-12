@@ -77,12 +77,27 @@ module.exports = {
         } else {
           return "exist";
         }
-      } 
-      else {
+      } else {
         return "orgerror";
       }
     } catch (err) {
       return err;
+    }
+  },
+
+  async registerorg(orgName, des, email) {
+    try {
+      const sQuery1 = `INSERT INTO org (orgName,description,orgmail) VALUES ('${orgName}','${des}','${email}') `;
+      const row = await dbconnection.query(sQuery1);
+      if(row){
+        return row;
+      }
+      else{
+        return "Thaaha"
+      }
+    } 
+    catch (error) {
+      return error;
     }
   },
 };

@@ -35,5 +35,17 @@ module.exports = {
 
   async gethistory(userid) {
     return userid;
+  },
+
+  async getorg(data){
+    const Sql=`SELECT * from org`;
+    const rows = await dbconnection.query(Sql);
+    if(rows){
+      return rows;
+    }
+    else{
+      return 'error'
+    }
+
   }
 };
