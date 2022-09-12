@@ -36,8 +36,8 @@ router.post("/getorg",async(req,res)=>{
 //   const team=req.body['TeamList']
 //   const result=validToken(accessToken)
 // if(result){
-const status=getorg();
-return status;
+ const status= await getorg();
+res.json(status[0]);
 //   res.json(status)
 // }
 // else{

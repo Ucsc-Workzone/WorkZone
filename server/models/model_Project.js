@@ -38,6 +38,14 @@ module.exports = {
   },
 
   async getorg(data){
-return "Malithi"
+    const Sql=`SELECT * from org`;
+    const rows = await dbconnection.query(Sql);
+    if(rows){
+      return rows;
+    }
+    else{
+      return 'error'
+    }
+
   }
 };
