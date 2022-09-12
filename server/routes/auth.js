@@ -5,7 +5,7 @@ const { db } = require("../utils/index");
 const jwt_token = require("jwt-decode");
 const { sendRegMail, sendforgetMail } = require("./Mail");
 
-const { login, signUpUser } = require("../models/model_Auth");
+const { login, signUpUser,registerorg } = require("../models/model_Auth");
 const { getnotification } = require("../models/model_Notification");
 
 router.post("/login", async (req, res) => {
@@ -31,19 +31,17 @@ router.post("/login", async (req, res) => {
 
 // })
 
-// router.post('/register',(req,res)=>{
-//   const {username,password,userrole,firstName,lastName}=req.body;
-//   bycrypt.hash(password,10).then((hash)=>{
-//     const sqlGet=`INSERT INTO user(username,password,userRole,firstName,lastName) VALUES(${userid},'${username}','${hash}','${userrole}','${firstName}','${lastName}')`;
-//     db.query(sqlGet,(error,result)=>{
-//         if(error){
-//             res.send(error)
-//         }
-//         else{
-//             res.json("User Registered")
-//         }
-//     })
-//   })
+router.post('/registerorg',async (req,res)=>{
+
+ const status=await registerorg(req.body.email,req.body.orgName,req.body.des);
+ res.json(status) ;
+  
+  // catch(err){
+  //   res.json("malithu")
+  // }
+  
+ 
+  })
 
 router.post("/registerUser", (req, res) => {
   const { username, role, firstName, lastName } = req.body;
