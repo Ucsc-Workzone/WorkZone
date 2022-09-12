@@ -85,4 +85,15 @@ module.exports = {
       return err;
     }
   },
+
+  async registerorg(data){
+    try{
+      const [orgName,des,email]=data;
+      return orgName;
+    }
+    catch(error){
+return err;
+    }
+    
+  }
 };

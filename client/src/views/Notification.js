@@ -3,7 +3,7 @@ import NotificationList from 'layout/MainLayout/Header/NotificationSection/Notif
 // material-ui
 import InputBase from '@mui/material/InputBase';
 import './styles/notification.css';
-import SearchBar from 'material-ui-search-bar';
+
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { useTheme } from '@emotion/react';
