@@ -6,9 +6,27 @@
     padding: 20px 20px 0 0;
   }
   
-  .birthdayContainer {
+  
+  .mainContainer {
     display: flex;
-    align-items: center;
+    width: 100%;
+    
+  }
+
+  .rightContainer {
+    width: 70%;
+    background-color: white;
+    margin-left: 10px;
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .leftContainer {
+    width: 30%;
+    background-color: white;
+    margin-right: 10px;
+    border-radius: 15px;
+    padding: 10px;
   }
   
   .birthdayImg {
