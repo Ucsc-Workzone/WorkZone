@@ -80,26 +80,33 @@ const HeadList = {
     head2: 'No of Leaves in 2022',
     head3: 'Pending Assignments'
 };
-var CountList = {
-    count1: 2,
-    count2: 3,
-    count3: 0
-};
 
 const MemberLeave = () => {
+
+    let countval = {};
     const [open, setOpen] = React.useState(false);
     const [tdata, setTdata] = useState([]);
     const [age, setAge] = React.useState('');
     const [name, setName] = React.useState('');
     const [file, setFile] = React.useState(false);
-    const [count, setCount] = React.useState([]);
+    const [count1, setCount1] = React.useState('');
+    const [count2, setCount2] = React.useState('');
+    const [count3, setCount3] = React.useState('');
     const [member, assignMember] = React.useState(1);
+
     const handleChangeA = (event) => {
         setAge(event.target.value);
     };
 
+    var CountList = {
+        count1: count1,
+        count2: count2,
+        count3: count3
+    };
+
     const [value, setValue] = React.useState('one');
     const [render, setRender] = React.useState(true);
+
 
     const handleChangeType = (event) => {
         setValue(event.target.value);
@@ -176,8 +183,12 @@ const MemberLeave = () => {
                 console.log(response.data);
                 setTdata(response.data[1]);
                 console.log(response.data[0]);
-                setCount(response.data[0]);
-                console.log(count);
+                setCount1(response.data[0][0].pendingcount);
+                setCount2(response.data[0][1].monthCount);
+                setCount3(response.data[0][2].monthCount);
+                console.log(count1);
+                console.log(count2);
+                console.log(count3);
             });
     }, []);
     const handleClickOpen = () => {
@@ -348,7 +359,7 @@ const MemberLeave = () => {
                 </div>
 
                 <div className="card-section">
-                    <HeaderCounter headlist={HeadList} countlist={count} />
+                    <HeaderCounter headlist={HeadList} countlist={CountList} />
                     {/* <TotalIncomeLightCard 
                 title={'Leaves in August'}
                 count={1}
