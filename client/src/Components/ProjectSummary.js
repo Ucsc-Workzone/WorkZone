@@ -10,12 +10,12 @@ import DevicesIcon from '@mui/icons-material/Devices';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import './styles/projectSummary.css';
-
+import Image from '../../src/assets/images/Profile/member1.jpg'
 const ProjectSummary = () => {
     return ( 
         <>
         <div className="main-conatiner">
-        <List >
+        <List className="listItem">
       <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -40,6 +40,22 @@ const ProjectSummary = () => {
         </ListItemAvatar>
         <ListItemText primary="No of Members" secondary="5" />
       </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar src={Image}>
+            {/* <GroupAddIcon /> */}
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Team Leader" secondary="Malithi Perera" />
+      </ListItem>
+      {/* <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <GroupAddIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="No of Members" secondary="5" />
+      </ListItem> */}
     </List>
         </div>
         </>

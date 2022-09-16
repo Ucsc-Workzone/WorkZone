@@ -49,6 +49,7 @@ class KanbanBoard extends React.Component {
 						<KanbanColumn
 							name={ column.name }
 							stage={ column.stage }
+							weight={column.weigh}
 							projects={ this.state.projects.filter((project) => {return parseInt(project.project_stage, 10) === column.stage;}) }
 							onDragEnter={ this.handleOnDragEnter }
 							onDragEnd={ this.handleOnDragEnd }
@@ -63,38 +64,45 @@ class KanbanBoard extends React.Component {
 export default KanbanBoard;
 let projectList = [
     {
-      name: 'Project 1',
+      name: 'UI Protitype',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 1
+      project_stage: 1,
+	  weigh:'High',
     },
     {
-      name: 'Project 2',
+      name: 'Admin UI Design',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 1
+      project_stage: 1,
+	  weigh:'Med',
     },
     {
-      name: 'Project 3',
+      name: 'Designing the Photos',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 1
+      project_stage: 1,
+	  weigh:'Low',
     },
     {
-      name: 'Project 4',
+      name: 'Sketch the design',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 2
+      project_stage: 2,
+	  weigh:'High',
     },
     {
-      name: 'Project 5',
+      name: 'Collectiong the components',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 3
+      project_stage: 3,
+	  weigh:'Med',
     },
     {
-      name: 'Project 6',
+      name: 'Shortlist the components',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 3
+      project_stage: 3,
+	  weigh:'Low',
     },
     {
-      name: 'Project 7',
+      name: '',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-      project_stage: 4
+      project_stage: 4,
+	  weigh:'Med',
     },
   ];

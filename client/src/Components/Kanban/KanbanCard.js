@@ -1,4 +1,7 @@
+import { Chip } from "@mui/material";
 import React from "react";
+import './styles.css'
+
 class KanbanCard extends React.Component {
 	constructor(props) {
 		super(props);
@@ -16,7 +19,8 @@ class KanbanCard extends React.Component {
 			'marginLeft': '0px',
 			'marginRight': '5px',
 			'marginBottom': '5px',
-            'borderRadius':'10px'
+            'borderRadius':'10px',
+			'textAlign':'left'
 		};
 
 		return (
@@ -25,7 +29,11 @@ class KanbanCard extends React.Component {
 				draggable={true}
 				onDragEnd={(e) => {this.props.onDragEnd(e, this.props.project);}}
 			>
-				<div><h4>{this.props.project.name}</h4></div>
+				 {this.props.project.weigh=='High' && <Chip label={this.props.project.weigh}color="success"  className="chipcon"/>} 
+				 {this.props.project.weigh=='Med' && <Chip label={this.props.project.weigh} color="primary" className="chipcon1" />} 
+				 {this.props.project.weigh=='Low' && <Chip label={this.props.project.weigh} color="warning" className="chipcon2" />} 
+				<div className="card-contetnt"><h4>{this.props.project.name}</h4></div>
+				
 				{(this.state.collapsed)
 					? null
 					: (<div><strong>Description: </strong>{ this.props.project.description }<br/></div>)
