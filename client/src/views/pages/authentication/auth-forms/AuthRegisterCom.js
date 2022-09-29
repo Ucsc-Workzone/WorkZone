@@ -44,9 +44,9 @@ const MenuProps = {
 };
 
 const OrganizationRegister = ({ ...others }) => {
-    const [value, setValue] = React.useState('female');
-    const [descript,setDes]=useState('');
-    const [orgname,setFname]=useState('');
+    const [orgname, setOrgname] = useState('');
+    const [des, setDes] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleChangeGender = (event) => {
         setValue(event.target.value);
@@ -56,7 +56,7 @@ const OrganizationRegister = ({ ...others }) => {
     };
 
     const handleChangOrgname = (event) => {
-        setFname(event.target.value);
+        setOrgname(event.target.value);
     };
 
     const theme = useTheme();
@@ -86,25 +86,24 @@ const OrganizationRegister = ({ ...others }) => {
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    
+                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-
+                  
                     axios
-                    .post('http://localhost:5000/api/auth/registerUser', {
-                        username: values.email,
-                        role:age,
-                        dob:date,
-                        description:descript,
-                        orgName:orgname,
-                        lastName:lname
-                    })
-                    .then((response) => {
+                        .post('http://localhost:5000/api/auth/registerorg', {
+                            email: values.email,
+
+                            orgName: orgname,
+                            des: des
+                         
+                        })
+                        .then((response) => {
+                            console.log(response.data);
+                        });
+
                         
-                        console.log(response)
-                    });
-                   
+
                     // try {
                     //     if (scriptedRef.current) {
                     //         setStatus({ success: true });
@@ -118,7 +117,6 @@ const OrganizationRegister = ({ ...others }) => {
                     //         setSubmitting(false);
                     //     }
                     // }
-                    console.log("najbaj")
                 }}
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
@@ -155,7 +153,7 @@ const OrganizationRegister = ({ ...others }) => {
                                     margin="normal"
                                     name="orgname"
                                     type="text"
-                                    defaultValue=""
+                                    value={orgname}
                                     onChange={handleChangOrgname}
                                     sx={{ ...theme.typography.customInput }}
                                 />
@@ -192,7 +190,7 @@ const OrganizationRegister = ({ ...others }) => {
                                     margin="normal"
                                     name="descript"
                                     type="text"
-                                    defaultValue=""
+                                    value={des}
                                     onChange={handleChangeDes}
                                     sx={{ ...theme.typography.customInput }}
                                 />
