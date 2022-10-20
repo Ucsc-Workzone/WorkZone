@@ -348,7 +348,7 @@ const MemberLeave = () => {
                 </div>
 
                 <div className="card-section">
-                    <HeaderCounter headlist={HeadList} countlist={count} />
+                    <HeaderCounter headlist={HeadList} countlist={CountList} />
                     {/* <TotalIncomeLightCard 
                 title={'Leaves in August'}
                 count={1}

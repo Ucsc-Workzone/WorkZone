@@ -67,7 +67,7 @@ export default function ProjectForm() {
             .then((response) => {
                 console.log(response.data);
                 const projectid = response.data['LAST_INSERT_ID()'];
-                navigate('/coordinator/projectinit/' + `${projectid}`)
+                navigate('/coordinator/projectinit/' + projectid)
 
 
             });
