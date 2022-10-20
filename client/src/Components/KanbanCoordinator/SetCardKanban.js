@@ -32,8 +32,12 @@ class KanbanCard extends React.Component {
 				 {this.props.project.weigh=='High' && <Chip label={this.props.project.weigh}color="success"  className="chipcon"/>} 
 				 {this.props.project.weigh=='Med' && <Chip label={this.props.project.weigh} color="primary" className="chipcon1" />} 
 				 {this.props.project.weigh=='Low' && <Chip label={this.props.project.weigh} color="warning" className="chipcon2" />} 
-				<div className="card-contetnt"><h4>{this.props.project.subActName}</h4></div>
-				
+				<div className="card-contetnt"><h4>{this.props.project.name}</h4></div>
+				<div>
+					<input placeholder="Set Date"></input>
+					<input placeholder="Set Date"></input>
+					<input placeholder="Set Date"></input>
+				</div>
 				{(this.state.collapsed)
 					? null
 					: (<div><strong>Description: </strong>{ this.props.project.description }<br/></div>)
