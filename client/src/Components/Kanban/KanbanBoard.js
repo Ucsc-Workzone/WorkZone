@@ -82,11 +82,22 @@ class KanbanBoard extends React.Component {
 
 	//this is called when a Kanban card dropped over a column (called by card)
 	handleOnDragEnd(e, project) {
-      console.log(this.state.projects.slice(0))
+   
 		const updatedProjects = this.state.projects.slice(0);
-		updatedProjects.find((projectObject) => {return projectObject.name === project.name;}).project_stage = this.state.draggedOverCol;
+		updatedProjects.find((projectObject) => {return projectObject.subActivityId === project.subActivityId;}).project_stage = this.state.draggedOverCol;
 		this.setState({ projects: updatedProjects });
         console.log(updatedProjects)
+		axios
+        .post('http://localhost:5000/api/project/updateCards', {
+           updatedProjects
+           
+        })
+        .then((response) => {
+            console.log(response.data);
+			componentDidMount();
+        
+
+        });
 	}
 
 	changeState(e){

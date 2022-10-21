@@ -65,8 +65,44 @@ module.exports = {
   async getProjectDataMember(data) {
     try {
       //  sql = `select * from projects , activity,subactivity where projects.projectId=subactivity.projectId and subactivity.activityId=${data["activity_id"]} and acitivity.activityId=subactivity.activityId`;
-      sql=`SELECT * from subactivity WHERE activityId=${data["activity_id"]}`
-       const rows = await dbconnection.query(sql);
+      sql = `SELECT * from subactivity WHERE activityId=${data["activity_id"]}`;
+      const rows = await dbconnection.query(sql);
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
+
+  async updateCardMember(data) {
+    try {
+      for (let i = 0; i < data.length; i++) {
+        sql = `UPDATE subactivity SET project_stage = ${data[i]["project_stage"]} WHERE subActivityId=${data[i]["subActivityId"]};`;
+        const rows = await dbconnection.query(sql);
+      }
+
+      if (rows) {
+        return true;
+      } else {
+        return "tt";
+      }
+    } catch {
+      return "hh";
+    }
+  },
+
+  async addtoWork(data) {
+    try {
+      sql = `UPDATE subactivity SET project_stage = 4 WHERE subActivityId=${data};`;
+      const rows = await dbconnection.query(sql);
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
+  async getmemberProjectList(data) {
+    try {
+      sql=`SELECT * FROM activity,projects where activity.memberId=${data} and projects.projectId=activity.projectId and activity.complete=0 and projects.completion=0`;
+      const rows = await dbconnection.query(sql);
       return rows;
     } catch {
       return "error";

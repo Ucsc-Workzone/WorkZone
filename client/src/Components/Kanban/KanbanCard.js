@@ -1,6 +1,7 @@
-import { Chip } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 import React from "react";
 import './styles.css'
+import axios from "axios";
 
 class KanbanCard extends React.Component {
 	constructor(props) {
@@ -8,6 +9,22 @@ class KanbanCard extends React.Component {
 		this.state = {
 			collapsed: true,
 		};
+	}
+
+	addworkreport(){
+		console.log(event.target.value)
+		const id=event.target.value
+
+	axios
+        .post('http://localhost:5000/api/project/addworkReport', {
+           subacitivityId:id
+           
+        })
+        .then((response) => {
+            console.log(response.data);
+			
+
+        });
 	}
 
 	render() {
@@ -29,11 +46,11 @@ class KanbanCard extends React.Component {
 				draggable={true}
 				onDragEnd={(e) => {this.props.onDragEnd(e, this.props.project);}}
 			>
-				 {this.props.project.weigh=='High' && <Chip label={this.props.project.weigh}color="success"  className="chipcon"/>} 
-				 {this.props.project.weigh=='Med' && <Chip label={this.props.project.weigh} color="primary" className="chipcon1" />} 
-				 {this.props.project.weigh=='Low' && <Chip label={this.props.project.weigh} color="warning" className="chipcon2" />} 
+				 {this.props.project.weight=='High' && <Chip label={this.props.project.weight}color="success"  className="chipcon"/>} 
+				 {this.props.project.weight=='Med' && <Chip label={this.props.project.weight} color="primary" className="chipcon1" />} 
+				 {this.props.project.weight=='Low' && <Chip label={this.props.project.weight} color="warning" className="chipcon2" />} 
 				<div className="card-contetnt"><h4>{this.props.project.subActName}</h4></div>
-				
+				{this.props.project.project_stage==3 && <Button onClick={this.addworkreport} value={this.props.project.subActivityId}>Add to work report</Button>} 
 				{(this.state.collapsed)
 					? null
 					: (<div><strong>Description: </strong>{ this.props.project.description }<br/></div>)

@@ -184,81 +184,7 @@ console.log(taskName)
                             <TextField id="outlined-textarea-task" label="Task" placeholder="Task" multiline />
                             <TextField id="outlined-textarea-des" label="Description" placeholder="Description" multiline className="desCard" />
                         </div>
-                        <div className="scheduleCon">
-                            <div className="filed">
-                                {/* <IconButton className="calenIcon" onClick={handleClicknew('bottom-start')}>
-                                    {' '}
-                                    <IconCalendarStats></IconCalendarStats>
-                                </IconButton> */}
-                                <Chip
-                                    icon={
-                                        <IconButton className="calenIcon" onClick={handleClicknew('bottom-start')}>
-                                            <IconCalendarStats></IconCalendarStats>
-                                        </IconButton>
-                                    }
-                                    label={'value1'}
-                                />
-                             
-                                <Popper open={open1} anchorEl={anchorEl} placement={placement1} transition>
-                                    {({ TransitionProps }) => (
-                                        <Fade {...TransitionProps} timeout={350}>
-                                            <Paper>
-                                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                                    <Stack className="dueDate">
-                                                        <DesktopDatePicker
-                                                            label="Date desktop"
-                                                            inputFormat="MM/DD/YYYY"
-                                                            value={value}
-                                                            onChange={handleChange}
-                                                            renderInput={(params) => <TextField {...params} />}
-                                                        />
-                                                    </Stack>
-                                                </LocalizationProvider>
-                                            </Paper>
-                                        </Fade>
-                                    )}
-                                </Popper>
-                                <h2>Hiiii : {value1}</h2>
-                            </div>
-
-                            <div className="filed">
-                                <Chip
-                                    icon={
-                                        <IconButton className="calenIcon" onClick={handleClick('bottom-start')}>
-                                            <IconUser></IconUser>
-                                        </IconButton>
-                                    }
-                                    label={member}
-                                />
-                                {/* <IconButton className="userIcon" onClick={handleClick('bottom-start')}>
-                                    {' '}
-                                    <IconUser></IconUser>
-                                </IconButton> */}
-                                <Popper open={open2} anchorEl={anchorEl} placement={placement2} transition>
-                                    {({ TransitionProps }) => (
-                                        <Fade {...TransitionProps} timeout={350}>
-                                            <Paper>
-                                                <div>
-                                                    {' '}
-                                                    <Autocomplete
-                                                        id="filter-demo"
-                                                        options={top100Films}
-                                                        getOptionLabel={(option) => option.title}
-                                                        filterOptions={filterOptions}
-                                                        sx={{ width: 300 }}
-                                                        value={member}
-                                                        onChange={handlechangemember}
-                                                        renderInput={(params) => (
-                                                            <TextField {...params} label="Custom filter" id="filter-demo-d" />
-                                                        )}
-                                                    />
-                                                </div>
-                                            </Paper>
-                                        </Fade>
-                                    )}
-                                </Popper>
-                            </div>
-                        </div>
+                     
 
                         <div className="button-contetnt">
                             <Button variant="contained" className="buttonclass" onClick={saveCard}>
@@ -271,6 +197,7 @@ console.log(taskName)
                     </div>
                 </div>
             )}
+
             {generateKanbanCards()}
             <br />
         </div>
