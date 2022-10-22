@@ -1,6 +1,5 @@
 var dbconnection = require("../utils/index");
 module.exports = {
-
   async createProject(data) {
     try {
       var start_date = new Date().toISOString().slice(0, 10);
@@ -12,8 +11,7 @@ module.exports = {
         const query = `SELECT LAST_INSERT_ID();`;
         const rows1 = await dbconnection.query(query);
         return rows1[0][0];
-      }
-      else {
+      } else {
         return false;
       }
     } catch (err) {
@@ -27,7 +25,6 @@ module.exports = {
       // const rows = await dbconnection.query(sql);
 
       return TeamList;
-
     } catch (err) {
       throw err;
     }
@@ -37,15 +34,42 @@ module.exports = {
     return userid;
   },
 
-  async getorg(data){
-    const Sql=`SELECT * from org`;
+  async getorg(data) {
+    const Sql = `SELECT * from org`;
     const rows = await dbconnection.query(Sql);
-    if(rows){
+    if (rows) {
       return rows;
+    } else {
+      return "error";
     }
-    else{
-      return 'error'
+  },
+  async getProjectData(data) {
+    try {
+      sql = `select * from projects , activity where projects.projectId=${data["project_id"]}`;
+      const rows = await dbconnection.query(sql);
+      return rows;
+    } catch {
+      return "error";
     }
+  },
+  async saveCard(data) {
+    try {
+      sql = `INSERT INTO activity (projectId,activityName,description) Values (${data["project_id"]},'${data["taskName"]}','${data["description"]}')`;
+      const rows = await dbconnection.query(sql);
+      return true;
+    } catch {
+      return "error";
+    }
+  },
 
-  }
+  async getProjectDataMember(data) {
+    try {
+      //  sql = `select * from projects , activity,subactivity where projects.projectId=subactivity.projectId and subactivity.activityId=${data["activity_id"]} and acitivity.activityId=subactivity.activityId`;
+      sql=`SELECT * from subactivity WHERE activityId=${data["activity_id"]}`
+       const rows = await dbconnection.query(sql);
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
 };

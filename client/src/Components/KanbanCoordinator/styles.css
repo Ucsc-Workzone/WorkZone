@@ -1,0 +1,114 @@
+.card-contetnt{
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.devide1{
+    /* color: blueviolet;
+    background-color: brown; */
+    border-color: rgb(8, 97, 231);
+    height: 2px;
+    padding: 5px
+}
+
+.devide2{
+    /* color: blueviolet;
+    background-color: brown; */
+    border-color: rgb(255, 190, 12);
+    padding: 5px
+}
+.devide3{
+    /* color: blueviolet;
+    background-color: brown; */
+    border-color: rgb(45, 231, 8);
+    padding: 5px
+}
+
+.chipcon{
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #E3F9EA;
+    color: #5ACB74;
+}
+.chipcon1{
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #e3f6f9;
+    color: #5376d7;
+}
+.chipcon2{
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #F9EEE3;
+    color: #D79353;
+}
+
+.divCon{
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonAdd{
+    width: 150px;
+    background-color: #5376d7;
+    color: #fff;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.buttonAdd:hover{
+    background-color: #5b81e7;
+}
+
+.desCard{
+    width: 400px;
+    margin-left: 20px;
+}
+
+.dueDate{
+    width: 200px;
+    margin-top: 10px;
+    /* margin-left: 100px; */
+}
+
+.scheduleCon{
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.userIcon{
+    background-color: #5376d7;
+}
+
+.calenIcon{
+    background-color: #5b81e7;
+}
+.button-contetnt{
+    display: flex;
+    justify-content:flex-end;
+    margin: 10px;
+}
+
+.filed{
+    margin: 10px;
+}
+
+.buttonclass{
+    margin: 10px;
+}
+
+/* .popUpadd{
+    width: 90%;
+    background-color: #fff;
+} */

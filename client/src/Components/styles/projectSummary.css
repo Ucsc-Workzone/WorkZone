@@ -7,3 +7,22 @@
 .tag-conatiner{
     
 }
+
+.listItem{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chipleader{
+    width: 80px;
+    font-size: 10px;
+    background-color: rgb(60, 162, 221);
+}
+.Content{
+    padding-left: 10px;
+}
+
+.graph{
+    margin-top: -20px;
+}

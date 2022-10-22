@@ -1,0 +1,51 @@
+.projectmain {
+    width: 100%;
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.memberAssign {
+    /* width: 40%; */
+    /* background-color: #fff; */
+    display: flex;
+    border-radius: 10px;
+}
+.loweCon{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.todoContainer {
+    width: 60%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.memberAssignSerach{
+    /* background-color: #fff; */
+    height: 300px;
+    width: 30%;
+}
+.listsort{
+    /* background-color: #fff; */
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+  
+}
+.addBut{
+    background-color: blue;
+    margin-left: 5px;
+    margin-top: 5px;
+    color: #fff;
+}
+
+.list{
+    width: 100%;
+    border-radius: 10px;
+    margin-left: -15px;
+    background-color: #fff;
+    padding: 10px;
+}

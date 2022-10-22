@@ -49,9 +49,7 @@ const CoordinatorWorkrecords = () => {
             <div className="main-record-container">
                 <div className="workcontainer-up" >
                     <div className='up-left-container' display="flex">
-                        <Typography variant="h3" component="h4" className="" style={{marginBottom:"20px",marginTop:"20px"}}>
-                               Pending Work Records       
-                        </Typography>
+                      
                         <div className="record-pending-container"> 
                             <PendingWorkMember />
                         </div>
