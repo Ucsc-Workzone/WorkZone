@@ -19,46 +19,60 @@ export default function ThemeRoutes() {
 
     const [role,setRole]=useState('')
 
+    const token=localStorage.getItem('token');
+    axios
+        .post('http://localhost:5000/api/auth/roleconfig', {
+                accessToken: token
+        })
+        .then((response) => {
+            const data = response.data;
+            setRole(data);
+            console.log(data);  
+            console.log("inside1")
+        });
+
     useEffect(()=>{
         const token=localStorage.getItem('token');
         axios
-                .post('http://localhost:5000/api/auth/roleconfig', {
+            .post('http://localhost:5000/api/auth/roleconfig', {
                     accessToken: token
-                })
-                .then((response) => {
-                    const data = response.data;
-                    setRole(data)
-                    console.log(data);
-                  
-                });
+            })
+            .then((response) => {
+                const data = response.data;
+                setRole(data);
+                console.log(data);  
+                console.log("inside1")
+            });
+    },[]);
+
+  
+    console.log("inside2")
+   
+        if(role=='member'){
+            return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes]);
+        }
     
+        if(role=='coordinator'){
+            return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes]);
+        }
     
-    },[])
-    if(role=='member'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes]);
-    }
-
-    if(role=='coordinator'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes]);
-    }
-
-    if(role=='SAR'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, SARRoutes]);
-    }
-
-    if(role=='director'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, DirectorRoutes]);
-    }
-
-    if(role=='sysadmin'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, SysAdminRoutes]);
-    }
+        if(role=='SAR'){
+            return useRoutes([MainRoutes, AuthenticationRoutes, SARRoutes]);
+        }
     
-    if(role=='orgadmin'){
-        return useRoutes([MainRoutes, AuthenticationRoutes, OrgAdminRoutes]);
-    }
-    else{
-        return useRoutes([MainRoutes, AuthenticationRoutes]);
-    }
+        if(role=='director'){
+            return useRoutes([MainRoutes, AuthenticationRoutes, DirectorRoutes]);
+        }
+    
+        if(role=='sysadmin'){
+            return useRoutes([MainRoutes, AuthenticationRoutes, SysAdminRoutes]);
+        }
+        
+        if(role=='orgadmin'){
+            return useRoutes([MainRoutes, AuthenticationRoutes, OrgAdminRoutes]);
+        }
+        else{
+            return useRoutes([MainRoutes, AuthenticationRoutes]);
+        }
    
 }

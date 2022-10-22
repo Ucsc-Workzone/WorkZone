@@ -9,6 +9,7 @@ const { login, signUpUser,registerorg } = require("../models/model_Auth");
 const { getnotification } = require("../models/model_Notification");
 
 router.post("/login", async (req, res) => {
+
   const username = req.body.username;
   const password = req.body.password;
   const result = await login(username, password);

@@ -1,5 +1,4 @@
 import NoLeaveConfig from '../../Components/NoLeaveConfig';
-import CreateLeaveConfig from '../../Components/CreateLeaveConfig';
 import HaveLeaveConfig from '../../Components/HaveLeaveConfig';
 
 const ConfigLeaves = () => {
