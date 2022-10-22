@@ -233,7 +233,7 @@ const FirebaseRegister = ({ ...others }) => {
                                 <FormControl fullWidth error={Boolean(touched.code && errors.code)} sx={{ ...theme.typography.customInput }}>
                                     <TextField
                                         fullWidth
-                                        label="Organization Code"
+                                        label="Division Code"
                                         margin="normal"
                                         name="code"
                                         value={values.code}

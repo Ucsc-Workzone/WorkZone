@@ -53,7 +53,7 @@ export default function ThemeRoutes() {
         }
     
         if(role=='coordinator'){
-            return useRoutes([MainRoutes, AuthenticationRoutes, MemberRoutes, CoordinatorRoutes]);
+            return useRoutes([MainRoutes, AuthenticationRoutes, CoordinatorRoutes]);
         }
     
         if(role=='SAR'){
