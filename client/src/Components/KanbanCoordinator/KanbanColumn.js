@@ -1,7 +1,7 @@
 import KanbanCard from './KanbanCard';
 import SetCard from './setCard';
 import React from 'react';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Divider, TextField, IconButton, Stack, Chip } from '@mui/material';
 import './styles.css';
 import { IconPlus } from '@tabler/icons';
@@ -29,34 +29,34 @@ const KanbanColumn = () => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     // const [searchParams, setSearchParams] = useSearchParams();
-    
+
     const [open, setOpen] = React.useState(false);
     const [open1, setOpen1] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const [placement2, setPlacement2] = React.useState();
     const [placement1, setPlacement1] = React.useState();
-const [projectList,setProjectList]=useState([]);
+    const [projectList, setProjectList] = useState([]);
     const [member, setMember] = useState('Assign a member');
-    const {projectid}=useParams();
-    useEffect(()=>{
-       
-       getCardData();
-    },[])
-    const getCardData=()=>{
+    const { projectid } = useParams();
+    useEffect(() => {
+
+        getCardData();
+    }, [])
+    const getCardData = () => {
         axios
-        .post('http://localhost:5000/api/project/getProjectData', {
-            center_id: 1,
-            project_id:projectid,
-           
-        })
-        .then((response) => {
-            console.log(response.data);
-            setProjectList(response.data)
-            // const projectid = response.data['LAST_INSERT_ID()'];
-            // navigate('/coordinator/projectinit/' + `${projectid}`)
+            .post('http://localhost:5000/api/project/getProjectData', {
+                center_id: 1,
+                project_id: projectid,
+
+            })
+            .then((response) => {
+                console.log(response.data);
+                setProjectList(response.data)
+                // const projectid = response.data['LAST_INSERT_ID()'];
+                // navigate('/coordinator/projectinit/' + `${projectid}`)
 
 
-        });
+            });
 
     }
     const handlechangemember = (e) => {
@@ -90,9 +90,8 @@ const [projectList,setProjectList]=useState([]);
 
     const cardStyle = {
         backgroundColor: '#fff',
-        paddingLeft: '0px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
+
+        padding: '20px',
         marginLeft: '0px',
         marginRight: '5px',
         marginBottom: '5px',
@@ -113,42 +112,43 @@ const [projectList,setProjectList]=useState([]);
         setOpen(false);
     };
 
-    const saveCard=()=>{
-  
-        const taskName=document.getElementById('outlined-textarea-task').value;
-        const taskDes=document.getElementById('outlined-textarea-des').value;
+    const saveCard = () => {
+
+        const taskName = document.getElementById('outlined-textarea-task').value;
+        const taskDes = document.getElementById('outlined-textarea-des').value;
         axios
-        .post('http://localhost:5000/api/project/saveCard', {
-           taskName:taskName,
-           taskDes:taskDes,
-           project_id:51
-           
-        })
-        .then((response) => {
-            console.log(response.data);
-           if(true){
-            setOpen(false)
-            getCardData();
-           }
-            // const projectid = response.data['LAST_INSERT_ID()'];
-            // navigate('/coordinator/projectinit/' + `${projectid}`)
+            .post('http://localhost:5000/api/project/saveCard', {
+                taskName: taskName,
+                taskDes: taskDes,
+                project_id: 51
+
+            })
+            .then((response) => {
+                console.log(response.data);
+                if (true) {
+                    setOpen(false)
+                    getCardData();
+                }
+                // const projectid = response.data['LAST_INSERT_ID()'];
+                // navigate('/coordinator/projectinit/' + `${projectid}`)
 
 
-        });
-console.log(taskName)
+            });
+        console.log(taskName)
     }
 
     const columnStyle = {
         display: 'inline-block',
         verticalAlign: 'top',
-        marginRight: '5px',
-        marginBottom: '5px',
-        paddingLeft: '10px',
-        paddingTop: '0px',
+        marginRight: '0px',
+        marginBottom: '20px',
+        paddingLeft: '30px',
+        paddingRight: '30px',
+        paddingTop: '20px',
         width: '100%',
-        borderRadius: '10px',
+        borderRadius: '50px',
 
-        backgroundColor: '#f0eeee'
+        backgroundColor: '#fffff'
     };
 
     return (
@@ -184,81 +184,7 @@ console.log(taskName)
                             <TextField id="outlined-textarea-task" label="Task" placeholder="Task" multiline />
                             <TextField id="outlined-textarea-des" label="Description" placeholder="Description" multiline className="desCard" />
                         </div>
-                        <div className="scheduleCon">
-                            <div className="filed">
-                                {/* <IconButton className="calenIcon" onClick={handleClicknew('bottom-start')}>
-                                    {' '}
-                                    <IconCalendarStats></IconCalendarStats>
-                                </IconButton> */}
-                                <Chip
-                                    icon={
-                                        <IconButton className="calenIcon" onClick={handleClicknew('bottom-start')}>
-                                            <IconCalendarStats></IconCalendarStats>
-                                        </IconButton>
-                                    }
-                                    label={'value1'}
-                                />
-                             
-                                <Popper open={open1} anchorEl={anchorEl} placement={placement1} transition>
-                                    {({ TransitionProps }) => (
-                                        <Fade {...TransitionProps} timeout={350}>
-                                            <Paper>
-                                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                                    <Stack className="dueDate">
-                                                        <DesktopDatePicker
-                                                            label="Date desktop"
-                                                            inputFormat="MM/DD/YYYY"
-                                                            value={value}
-                                                            onChange={handleChange}
-                                                            renderInput={(params) => <TextField {...params} />}
-                                                        />
-                                                    </Stack>
-                                                </LocalizationProvider>
-                                            </Paper>
-                                        </Fade>
-                                    )}
-                                </Popper>
-                                <h2>Hiiii : {value1}</h2>
-                            </div>
 
-                            <div className="filed">
-                                <Chip
-                                    icon={
-                                        <IconButton className="calenIcon" onClick={handleClick('bottom-start')}>
-                                            <IconUser></IconUser>
-                                        </IconButton>
-                                    }
-                                    label={member}
-                                />
-                                {/* <IconButton className="userIcon" onClick={handleClick('bottom-start')}>
-                                    {' '}
-                                    <IconUser></IconUser>
-                                </IconButton> */}
-                                <Popper open={open2} anchorEl={anchorEl} placement={placement2} transition>
-                                    {({ TransitionProps }) => (
-                                        <Fade {...TransitionProps} timeout={350}>
-                                            <Paper>
-                                                <div>
-                                                    {' '}
-                                                    <Autocomplete
-                                                        id="filter-demo"
-                                                        options={top100Films}
-                                                        getOptionLabel={(option) => option.title}
-                                                        filterOptions={filterOptions}
-                                                        sx={{ width: 300 }}
-                                                        value={member}
-                                                        onChange={handlechangemember}
-                                                        renderInput={(params) => (
-                                                            <TextField {...params} label="Custom filter" id="filter-demo-d" />
-                                                        )}
-                                                    />
-                                                </div>
-                                            </Paper>
-                                        </Fade>
-                                    )}
-                                </Popper>
-                            </div>
-                        </div>
 
                         <div className="button-contetnt">
                             <Button variant="contained" className="buttonclass" onClick={saveCard}>
