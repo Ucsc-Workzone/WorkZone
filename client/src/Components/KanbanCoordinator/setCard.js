@@ -37,7 +37,7 @@ const setCard = () => {
         setOpen1((prev) => placement1 !== newPlacement || !prev);
         setPlacement1(newPlacement);
     };
-    const handleclosenew= (newPlacement) => (event) => {
+    const handleclosenew = (newPlacement) => (event) => {
         setAnchorEl(event.currentTarget);
         setOpen1((prev) => placement1 !== newPlacement || !prev);
         setPlacement1(newPlacement);
@@ -52,9 +52,9 @@ const setCard = () => {
         setSet1(true);
     };
 
-	const closeCard=()=>{
-		
-	}
+    const closeCard = () => {
+
+    }
     const filterOptions = createFilterOptions({
         matchFrom: 'start',
         stringify: (option) => option.title
@@ -133,9 +133,9 @@ const setCard = () => {
             </div>
 
             <div className="button-contetnt">
-				<Button variant="contained" className='buttonclass'>Save</Button>
-				<Button variant="outlined" className='buttonclass' onClick={closeCard}>Cancel</Button>
-			</div>
+                <Button variant="contained" className='buttonclass'>Save</Button>
+                <Button variant="outlined" className='buttonclass' onClick={closeCard}>Cancel</Button>
+            </div>
         </div>
     );
 };

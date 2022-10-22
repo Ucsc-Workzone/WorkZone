@@ -20,9 +20,17 @@ import { useLocation } from "react-router-dom";
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
+// date-fns
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// or for Day.js
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// or for Luxon
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
+// or for Moment.js
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 
 const KanbanColumn = () => {
@@ -183,6 +191,19 @@ const KanbanColumn = () => {
                         <div className="card-contetnt">
                             <TextField id="outlined-textarea-task" label="Task" placeholder="Task" multiline />
                             <TextField id="outlined-textarea-des" label="Description" placeholder="Description" multiline className="desCard" />
+                        </div>
+
+                        <div class="datex">
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker
+                                    label="Basic example"
+                                    value={value}
+                                    onChange={(newValue) => {
+                                        setValue(newValue);
+                                    }}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </LocalizationProvider>
                         </div>
 
 
