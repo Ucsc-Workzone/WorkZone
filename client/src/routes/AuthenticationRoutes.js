@@ -40,10 +40,10 @@ const AuthenticationRoutes = {
             path: '/pages/forgetpassword/main',
             element: <ForgetPasswordMain />
         },
-        // {
-        //     path: '*',
-        //     element: <NotFound />    
-        // },
+        {
+            path: '*',
+            element: <NotFound />    
+        },
         {
             path: '/pages/email',
             element: <EmailPage />
