@@ -62,6 +62,14 @@ const pagesSysAdmin = {
             icon: icons.IconTool,
             breadcrumbs: false
         },
+        {
+            id: 'leaveconfig',
+            title: 'Leave Configuration',
+            type: 'item',
+            url: '/sysadmin/leaveconfig',
+            icon: icons.IconAccessibleOff,
+            breadcrumbs: false
+        },   
         
        
     ]
