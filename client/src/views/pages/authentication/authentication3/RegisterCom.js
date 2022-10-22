@@ -40,7 +40,7 @@ const Register = () => {
                                                         gutterBottom
                                                         variant={matchDownSM ? 'h3' : 'h2'}
                                                     >
-                                                        Organization Registration
+                                                        Division Registration
                                                     </Typography>
                                                 </Stack>
                                             </Grid>

@@ -28,14 +28,14 @@ const pagesOrgAdmin = {
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
-        {
-            id: 'leaveconfig',
-            title: 'Leave Configuration',
-            type: 'item',
-            url: '/orgadmin/leaveconfig',
-            icon: icons.IconAccessibleOff,
-            breadcrumbs: false
-        },    
+        // {
+        //     id: 'leaveconfig',
+        //     title: 'Leave Configuration',
+        //     type: 'item',
+        //     url: '/orgadmin/leaveconfig',
+        //     icon: icons.IconAccessibleOff,
+        //     breadcrumbs: false
+        // },    
         {
             id: 'orgmanageuser',
             title: 'Manage User',
