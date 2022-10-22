@@ -5,7 +5,7 @@ import {Board,Editable} from "./Components/Board";
 
 
 
-function App_todo() {
+function App_todo_1() {
   const [boards, setBoards] = useState(
     JSON.parse(localStorage.getItem("prac-kanban")) || []
   );
@@ -15,24 +15,24 @@ function App_todo() {
     cid: "",
   });
 
-  const addboardHandler = (name) => {
-    const tempBoards = [...boards];
-    tempBoards.push({
-      id: Date.now() + Math.random() * 2,
-      title: name,
-      cards: [],
-    });
-    setBoards(tempBoards);
-  };
+  // const addboardHandler = (name) => {
+  //   const tempBoards = [...boards];
+  //   tempBoards.push({
+  //     id: Date.now() + Math.random() * 2,
+  //     title: name,
+  //     cards: [],
+  //   });
+  //   setBoards(tempBoards);
+  // };
 
-  const removeBoard = (id) => {
-    const index = boards.findIndex((item) => item.id === id);
-    if (index < 0) return;
+  // const removeBoard = (id) => {
+  //   const index = boards.findIndex((item) => item.id === id);
+  //   if (index < 0) return;
 
-    const tempBoards = [...boards];
-    tempBoards.splice(index, 1);
-    setBoards(tempBoards);
-  };
+  //   const tempBoards = [...boards];
+  //   tempBoards.splice(index, 1);
+  //   setBoards(tempBoards);
+  // };
 
   const addCardHandler = (id, title) => {
     const index = boards.findIndex((item) => item.id === id);
@@ -153,4 +153,4 @@ function App_todo() {
   );
 }
 
-export default App_todo;
+export default App_todo_1;

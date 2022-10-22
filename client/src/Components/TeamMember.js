@@ -8,10 +8,11 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import FaceIcon from '@mui/icons-material/Face';
 import CircleIcon from '@mui/icons-material/Circle';
-
+import Image from '../../src/assets/images/Profile/member1.jpg'
 import Avatar from '@mui/material/Avatar';
+import './styles/projectSummary.css'
 const picArray = [
-    [1,'Malithi Perera', 'member1.jpg','Team Leader'],
+    // [1,'Malithi Perera', 'member1.jpg','Team Leader'],
     [2,'Bimsara Kulasekara', 'member2.jpg','member'],
     [3,'Pamodha Mahagamage', 'member3.jpg','member'],
     [3,'Hiruni Guruge', 'member6.jpg','member'],
@@ -34,11 +35,12 @@ const TeamMember = () => {
                         </ListItemAvatar>
                         
                         <ListItemText primary={user[1]} />
-                        {user[3]=='member' &&
+                        {/* {user[3]=='member' &&
                             <Chip  label={user[3]} variant="outlined" style={{color:'green'}} />
-                        }
+                        } */}
+                        
                           {user[3]=='Team Leader' &&
-                            <Chip  label={user[3]} style={{color:'primary'}}  color="primary"/>
+                            <Chip  label={user[3]} style={{color:'primary'}}  color="primary" className='chipleader'/>
                         }
                         
                     </ListItem>

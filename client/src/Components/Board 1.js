@@ -23,22 +23,19 @@ function Board(PropTypes) {
         <div className="board">
             <div className="board_header">
                 <p className="board_header_title">
-                    {PropTypes.board?.title}
-                 
-                    <span>{PropTypes.board?.cards?.length || 0}</span>
-                </p>
+                   Todo </p>
                 <div className="board_header_title_more" onClick={() => setShowDropdown(true)}>
        
             {showDropdown && (
 
               
-              <>
-             < DiAptana
+              <><Dropdown
+
                 class="board_dropdown"
 
               >
                 {/* <p onClick={() => PropTypes.removeBoard()}>Delete Board</p> */}
-              </DiAptana></>
+              </Dropdown></>
             )}
           </div>
         </div>
