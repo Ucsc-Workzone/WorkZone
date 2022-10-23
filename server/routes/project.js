@@ -78,5 +78,11 @@ router.post("/getmemberProjectDetails",async(req,res)=>{
  })
  
 
+//workreport
+ router.post("/getworkreports",async(req,res)=>{
+  const status=await getmemberProjectList(req.body.userid);
+   res.json(status[0])
+ })
+ 
 
 module.exports = router;
