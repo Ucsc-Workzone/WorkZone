@@ -14,7 +14,7 @@ const LogoSection = () => (
         <div className="e-logo">
             {' '}
             <Card sx={{ maxWidth: 200 }}>
-                <CardMedia component="img" height="50" src={Logo} alt="green iguana" />
+                <CardMedia component="img" height="50" src={Logo} alt="WorkZone" />
             </Card>
         </div>
     </ButtonBase>
