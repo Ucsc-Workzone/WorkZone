@@ -67,18 +67,26 @@ const FirebaseLogin = ({ ...others }) => {
     const handleLogin = async () => {
         const email = document.getElementById('outlined-adornment-email-login').value;
         const password = document.getElementById('outlined-adornment-password-login').value;
-        console.log(email);
+
+        let data = JSON.stringify({
+            username: email,
+            password: password
+        });
+
+        console.log(data);
+
         axios
-            .post('http://localhost:5000/api/auth/login', {
-                username: email,
-                password: password
-            })
+            .post('http://localhost:5000/api/auth/login', data, {headers: {'Content-Type': 'application/JSON'}})
             .then((response) => {
+
                 const data = response.data;
                 console.log(data);
+
                 if (!data['accessToken']) {
                     alert(data['error']);
+                    
                 } else {
+
                     setLogin(true);
                     //  window.open('http://localhost:3000/#/register');
 
@@ -88,7 +96,14 @@ const FirebaseLogin = ({ ...others }) => {
                     localStorage.setItem('name', data['firstrName'] + ' ' + data['lastName']);
                     localStorage.setItem('image', data['image']);
                     localStorage.setItem('loginStatus', true);
+
                     const userrole = data['userRole'];
+
+                    if(userrole == 'coordinator'){
+                        navigate('./coordinator/dashboard')
+
+                        console.log("hello");
+                    }
 
                     {
                         userrole == 'member' && navigate('/member/dashboard');

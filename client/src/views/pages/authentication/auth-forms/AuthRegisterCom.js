@@ -81,11 +81,14 @@ const OrganizationRegister = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: '',
-                    password: '',
+                    name: '',
+                    description: '',
+                    email: '',   
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
+                    name: Yup.string().min(3).max(255).required('Name is required'),
+                    description: Yup.string().min(10).max(255).required('Description is required'),
                     email: Yup.string().email('Must be a valid email').max(255).required('Email is required')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
@@ -93,9 +96,8 @@ const OrganizationRegister = ({ ...others }) => {
                     axios
                         .post('http://localhost:5000/api/auth/registerorg', {
                             email: values.email,
-
-                            orgName: orgname,
-                            des: des
+                            orgName: values.name,
+                            des: values.description
                          
                         })
                         .then((response) => {
@@ -147,16 +149,23 @@ const OrganizationRegister = ({ ...others }) => {
                                 <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                             </Box>
                             <Grid item xs={12}>
+                            <FormControl fullWidth error={Boolean(touched.name && errors.name)} sx={{ ...theme.typography.customInput }}>
                                 <TextField
                                     fullWidth
-                                    label="Orgnaization Name"
+                                    label="Division Name"
                                     margin="normal"
-                                    name="orgname"
+                                    name="name"
                                     type="text"
-                                    value={orgname}
-                                    onChange={handleChangOrgname}
+                                    value={values.name}
+                                    onChange={handleChange}
                                     sx={{ ...theme.typography.customInput }}
                                 />
+                                 {touched.name && errors.name && (
+                                    <FormHelperText error id="standard-weight-helper-text--register">
+                                        {errors.name}
+                                    </FormHelperText>
+                                )}
+                            </FormControl>
                             </Grid>
                             {/* <Grid item xs={12} sm={6}>
                                 <TextField
@@ -184,16 +193,23 @@ const OrganizationRegister = ({ ...others }) => {
                                 />
                             </Grid> */}
                             <Grid item xs={12}>
+                            <FormControl fullWidth error={Boolean(touched.description && errors.description)} sx={{ ...theme.typography.customInput }}>
                                 <TextField
                                     fullWidth
-                                    label="Description about the organization"
+                                    label="Description about the Division"
                                     margin="normal"
-                                    name="descript"
+                                    name="description"
                                     type="text"
-                                    value={des}
-                                    onChange={handleChangeDes}
+                                    value={values.description}
+                                    onChange={handleChange}
                                     sx={{ ...theme.typography.customInput }}
                                 />
+                                {touched.description && errors.description && (
+                                    <FormHelperText error id="standard-weight-helper-text--register">
+                                        {errors.description}
+                                    </FormHelperText>
+                                )}
+                            </FormControl>
                             </Grid>
                         </Grid>
                         <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>

@@ -1,5 +1,11 @@
 
-
+.css-1dxvlw4-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 30.5px 14px 11.5px!important;
+}
+.css-wb57ya-MuiFormControl-root-MuiTextField-root{
+    margin-top: 8px;
+    margin-bottom:8px
+}
 .maincontainer{
     width: 100%;
     display: flex;
