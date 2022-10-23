@@ -47,7 +47,7 @@ const ProjectPage = () => {
                         <KanbanBoard />
                     </div>
                     <div className="memberAssignSerach">
-                        <div className="memberAssign">
+                        {/* <div className="memberAssign">
                             <div> <Autocomplete
                                 id="filter-demo"
                                 options={top100Films}
@@ -61,8 +61,8 @@ const ProjectPage = () => {
                             </div>
                            
                             
-                        </div>
-                        <div className="listsort">
+                        </div> */}
+                        {/* <div className="listsort">
                             {state && (
                                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} className='list'>
                                     {list.map((value) => {                                   
@@ -83,7 +83,7 @@ const ProjectPage = () => {
                                  })}
                                 </List>
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

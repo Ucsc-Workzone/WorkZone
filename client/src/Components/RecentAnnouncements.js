@@ -39,7 +39,7 @@ const RecentAnnoucements = () => {
                 <Button variant="outlined"><Typography className="addone" >+ NEW</Typography></Button>
             </Box>
             <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
-                <ListItem alignItems="flex-start">
+                <ListItem alignItems="flex-start" className=''>
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>

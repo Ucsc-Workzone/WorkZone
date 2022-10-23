@@ -193,6 +193,8 @@ const KanbanColumn = () => {
                             <TextField id="outlined-textarea-des" label="Description" placeholder="Description" multiline className="desCard" />
                         </div>
 
+
+
                         <div class="datex">
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker
@@ -207,6 +209,7 @@ const KanbanColumn = () => {
                         </div>
 
 
+
                         <div className="button-contetnt">
                             <Button variant="contained" className="buttonclass" onClick={saveCard}>
                                 Save
@@ -218,6 +221,7 @@ const KanbanColumn = () => {
                     </div>
                 </div>
             )}
+
             {generateKanbanCards()}
             <br />
         </div>

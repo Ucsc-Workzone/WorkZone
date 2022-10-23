@@ -1,6 +1,6 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
-const {createProject,createTeam, getorg,getProjectData,saveCard,getProjectDataMember}=require('../models/model_Project')
+const {createProject,createTeam, getorg,getProjectData,getmemberProjectList,saveCard,addtoWork,getProjectDataMember,updateCardMember}=require('../models/model_Project')
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");
 const { verify } = require("crypto");
@@ -61,6 +61,28 @@ router.post("/membergetCards",async(req,res)=>{
 })
 
 
+router.post("/updateCards",async(req,res)=>{
+   const staus=await updateCardMember(req.body['updatedProjects']);
+  res.json(staus)
+})
 
+router.post("/addworkReport",async(req,res)=>{
+ const staus=await addtoWork(req.body.subacitivityId);
+  res.json(staus)
+})
+
+
+router.post("/getmemberProjectDetails",async(req,res)=>{
+  const status=await getmemberProjectList(req.body.userid);
+   res.json(status[0])
+ })
+ 
+
+//workreport
+ router.post("/getworkreports",async(req,res)=>{
+  const status=await getmemberProjectList(req.body.userid);
+   res.json(status[0])
+ })
+ 
 
 module.exports = router;
