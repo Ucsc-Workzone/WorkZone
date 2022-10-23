@@ -24,9 +24,9 @@ import { IconChevronRight } from '@tabler/icons';
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
     ...theme.typography.mainContent,
     ...(!open && {
-        marginBottom:'20px',
+        marginBottom: '20px',
         minHeight: '1500px',
-        height:'auto',
+        height: 'auto',
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
@@ -53,7 +53,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
             duration: theme.transitions.duration.enteringScreen
         }),
         marginLeft: 0,
-        marginBottom:'20px',
+        marginBottom: '20px',
         minHeight: '1500px',
         width: `calc(100% - ${drawerWidth}px)`,
         [theme.breakpoints.down('md')]: {
@@ -110,10 +110,11 @@ const MainLayout = () => {
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />
-              
+
             </Main>
             <Customization />
-        </Box><Footer /></>
+        </Box>
+        </>
     );
 };
 
