@@ -72,9 +72,13 @@ class KanbanColumn extends React.Component {
                                 <IconPlus></IconPlus>Add Task
                             </Button>
                         </div>
+
+                     
                     </div>
                 )}
-                {this.state.addnewCard && <Button>Hello</Button>}
+                {this.state.addnewCard && <div className=''>
+                    
+                    </div>}
                 {this.generateKanbanCards()}
                 <br />
             </div>
