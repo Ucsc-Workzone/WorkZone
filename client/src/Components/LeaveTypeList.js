@@ -17,6 +17,50 @@ const LeaveTypes = () => {
                         <Avatar alt="leave_icon"  src={leaveimg} />
                     </ListItemAvatar>
                     <ListItemText
+                    primary="Annual Leaves"
+                    secondary={
+                        <React.Fragment>
+                        <Typography
+                            sx={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                            color="text.primary"
+                        >
+                            Maximum 15 days per year
+                        </Typography>
+                        {" — The employee is permitted to 14 days of annual leave competed with the full salary for each concluded year of serivce.Hence,employees are not entitled to annual leave on the first year of employement."}
+                        </React.Fragment>
+                    }
+                    />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        <Avatar alt="leave_icon"  src={leaveimg} />
+                    </ListItemAvatar>
+                    <ListItemText
+                    primary="Weekly Leaves"
+                    secondary={
+                        <React.Fragment>
+                        <Typography
+                            sx={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                            color="text.primary"
+                        >
+                            Most of the time complete day as a holiday on Satrday
+                        </Typography>
+                        {" — An employee who works for 28hours or more in a given week is eligible for one and half days as weekly holiday with full remuneration, which should be granted on such week or the week immediately succeeding."}
+                        </React.Fragment>
+                    }
+                    />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        <Avatar alt="leave_icon"  src={leaveimg} />
+                    </ListItemAvatar>
+                    <ListItemText
                     primary="Sick Leave"
                     secondary={
                         <React.Fragment>
@@ -33,51 +77,7 @@ const LeaveTypes = () => {
                     }
                     />
                 </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                    <Avatar alt="Travis Howard" src={leaveimg} />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary="Casual leave"
-                    secondary={
-                        <React.Fragment>
-                        <Typography
-                            sx={{ display: 'inline' }}
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                        >
-                            Maximum up to 8 to 15 per year
-                        </Typography>
-                        {" — Casual leave is taken by an employee for travel, vacation, rest, and family events."}
-                        </React.Fragment>
-                    }
-                    />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                    <Avatar alt="Cindy Baker" src={leaveimg} />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary="Bereavement leave"
-                    secondary={
-                        <React.Fragment>
-                        <Typography
-                            sx={{ display: 'inline' }}
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                        >
-                            Maximum up to 3 to 7 per year
-                        </Typography>
-                        {' — Losing a loved one is an unavoidable situation and in such events, employees take sudden leave. '}
-                        </React.Fragment>
-                    }
-                    />
-                </ListItem>
-                <Divider variant="inset" component="li" />
+                <Divider variant="inset" component="li" />            
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
                     <Avatar alt="Cindy Baker" src={leaveimg} />
@@ -104,7 +104,7 @@ const LeaveTypes = () => {
                     <Avatar alt="Cindy Baker" src={leaveimg} />
                     </ListItemAvatar>
                     <ListItemText
-                    primary="Sabbatical leave"
+                    primary="Mercantile Holidays"
                     secondary={
                         <React.Fragment>
                         <Typography
@@ -113,35 +113,15 @@ const LeaveTypes = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            Maximum up to 3 to 7 per year
+                            
                         </Typography>
-                        {' — Simply put, sabbatical leaves are “a break from work” where employees can pursue interests they have or take time off for physical and mental health reasons. '}
+                        {' Public holidays with pay for the shop and office employees '}
                         </React.Fragment>
                     }
                     />
                 </ListItem>
                 <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                    <Avatar alt="Cindy Baker" src={leaveimg} />
-                    </ListItemAvatar>
-                    <ListItemText
-                    primary="Maternity leave"
-                    secondary={
-                        <React.Fragment>
-                        <Typography
-                            sx={{ display: 'inline' }}
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                        >
-                            Maximum up to 7 to 17 Weeks per year
-                        </Typography>
-                        {' — From taking care of the newborn to recovering from the delivery, maternity leave is an important time for new mothers.  '}
-                        </React.Fragment>
-                    }
-                    />
-                </ListItem>
+                
             </List>
         </>
      );
