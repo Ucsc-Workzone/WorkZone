@@ -9,6 +9,7 @@ const { login, signUpUser,registerorg } = require("../models/model_Auth");
 const { getnotification } = require("../models/model_Notification");
 
 router.post("/login", async (req, res) => {
+
   const username = req.body.username;
   const password = req.body.password;
   const result = await login(username, password);
@@ -33,8 +34,8 @@ router.post("/login", async (req, res) => {
 
 router.post('/registerorg',async (req,res)=>{
 
- const status=await registerorg(req.body.email,req.body.orgName,req.body.des);
- res.json(status) ;
+//  const status=await registerorg(req.body.email,req.body.orgName,req.body.des);
+ res.json('status') ;
   
   // catch(err){
   //   res.json("malithu")

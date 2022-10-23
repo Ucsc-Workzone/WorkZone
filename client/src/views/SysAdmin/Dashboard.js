@@ -18,7 +18,7 @@ import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutl
 
 const HeadList = {
     head1:"No. of Registered Members",
-    head2:"No. of Registered Organizations",
+    head2:"No. of Registered Division",
 }
 var CountList = {
     count1:10,

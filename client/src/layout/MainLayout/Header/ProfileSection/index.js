@@ -66,7 +66,7 @@ const ProfileSection = () => {
         localStorage.removeItem('userRole');
         localStorage.removeItem('image');
         localStorage.removeItem('loginStatus');
-        localStorage.removeItem('prac-kanban');
+       
         navigate('/');}
       catch{
 

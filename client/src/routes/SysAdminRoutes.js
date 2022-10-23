@@ -11,6 +11,7 @@ const SysAdminFeedback = Loadable(lazy(() => import('views/SysAdmin/Feedback')))
 const SysAdminRegister = Loadable(lazy(() => import('views/SysAdmin/Register')));
 const SysAdminManageOrg = Loadable(lazy(() => import('views/SysAdmin/ManageOrg')));
 const Annoucements = Loadable(lazy(() => import('views/SysAdmin/Annoucements')));
+const SysAdminLeave = Loadable(lazy(() => import('views/SysAdmin/LeaveConfig')));
 
 const SysAdminRoutes = {
     path: '/',
@@ -30,15 +31,15 @@ const SysAdminRoutes = {
                 }
             ]
         },
-        // {
-        //     path: 'sysadmin',
-        //     children: [
-        //         {
-        //             path: 'manageuser',
-        //             element: <ManageUser />
-        //         }
-        //     ]
-        // },
+        {
+            path: 'sysadmin',
+            children: [
+                {
+                    path: 'leaveconfig',
+                    element: <SysAdminLeave />
+                }
+            ]
+        },
         {
             path: 'sysadmin',
             children: [

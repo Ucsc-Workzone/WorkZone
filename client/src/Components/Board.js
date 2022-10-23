@@ -12,15 +12,12 @@ function Board(PropTypes) {
   const [date, updateDate] = useState("");
 
   const addCard = () => {
-    axios.post("http://localhost:5000/api/member/createtodo", {
+    axios.post("http://localhost:3001/create", {
       id: title,
       name: desc,
       age: date,
       
-    }).then((response) => {
-      console.log(response.data)
-  });
-    
+    })
   };
     return (
         <div className="board">
@@ -35,13 +32,13 @@ function Board(PropTypes) {
             {showDropdown && (
 
               
-              <><Dropdown
-
+              <>
+             < DiAptana
                 class="board_dropdown"
 
               >
                 {/* <p onClick={() => PropTypes.removeBoard()}>Delete Board</p> */}
-              </Dropdown></>
+              </DiAptana></>
             )}
           </div>
         </div>
@@ -479,9 +476,7 @@ function Board(PropTypes) {
 }
 /******************************************Create********************* */
 function Create() {
-  const [boards, setBoards] = useState(
-    JSON.parse(localStorage.getItem("prac-kanban")) || []
-  );
+  
 
   const [targetCard, setTargetCard] = useState({
     bid: "",
@@ -537,6 +532,7 @@ function Create() {
   };
 
   const dragEnded = (bid, cid) => {
+    
     let s_boardIndex, s_cardIndex, t_boardIndex, t_cardIndex;
     s_boardIndex = boards.findIndex((item) => item.id === bid);
     if (s_boardIndex < 0) return;
@@ -590,7 +586,7 @@ function Create() {
   };
 
   useEffect(() => {
-    localStorage.setItem("prac-kanban", JSON.stringify(boards));
+    localStorage.setItem("", JSON.stringify(boards));
   }, [boards]);
 
   return (

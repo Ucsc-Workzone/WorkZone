@@ -1892,12 +1892,12 @@
   "resolved" "https://registry.npmjs.org/@mui/types/-/types-7.1.5.tgz"
   "version" "7.1.5"
 
-"@mui/utils@^5.4.1", "@mui/utils@^5.9.3":
-  "integrity" "sha512-l0N5bcrenE9hnwZ/jPecpIRqsDFHkPXoFUcmkgysaJwVZzJ3yQkGXB47eqmXX5yyGrSc6HksbbqXEaUya+siew=="
-  "resolved" "https://registry.npmjs.org/@mui/utils/-/utils-5.9.3.tgz"
-  "version" "5.9.3"
+"@mui/utils@^5.10.3", "@mui/utils@^5.4.1", "@mui/utils@^5.9.3":
+  "integrity" "sha512-4jXMDPfx6bpMVuheLaOpKTjpzw39ogAZLeaLj5+RJec3E37/hAZMYjURfblLfTWMMoGoqkY03mNsZaEwNobBow=="
+  "resolved" "https://registry.npmjs.org/@mui/utils/-/utils-5.10.3.tgz"
+  "version" "5.10.3"
   dependencies:
-    "@babel/runtime" "^7.17.2"
+    "@babel/runtime" "^7.18.9"
     "@types/prop-types" "^15.7.5"
     "@types/react-is" "^16.7.1 || ^17.0.0"
     "prop-types" "^15.8.1"
@@ -1921,7 +1921,25 @@
     "react-transition-group" "^4.4.5"
     "rifm" "^0.12.1"
 
-"@mui/x-date-pickers@^5.0.0-beta.5", "@mui/x-date-pickers@5.0.0-beta.6":
+"@mui/x-date-pickers@^5.0.2":
+  "integrity" "sha512-O2yxax8SnUX/M1lfU8+fcBEY+PmOnl0T4onmNrnFOT/7wiry7OYQDLa48nFpBYIK8ROjfi4sPzEKiFCrcwEwjw=="
+  "resolved" "https://registry.npmjs.org/@mui/x-date-pickers/-/x-date-pickers-5.0.2.tgz"
+  "version" "5.0.2"
+  dependencies:
+    "@babel/runtime" "^7.18.9"
+    "@date-io/core" "^2.15.0"
+    "@date-io/date-fns" "^2.15.0"
+    "@date-io/dayjs" "^2.15.0"
+    "@date-io/luxon" "^2.15.0"
+    "@date-io/moment" "^2.15.0"
+    "@mui/utils" "^5.10.3"
+    "@types/react-transition-group" "^4.4.5"
+    "clsx" "^1.2.1"
+    "prop-types" "^15.7.2"
+    "react-transition-group" "^4.4.5"
+    "rifm" "^0.12.1"
+
+"@mui/x-date-pickers@5.0.0-beta.6":
   "integrity" "sha512-8NS3s1uslmmZLl1KVCJ6eu9Wnago0EUdRb4NTCmJOwphE2w7cdI4LP+ZGRH7uWtkb6dQEmum1oumBAB3g4Ix+A=="
   "resolved" "https://registry.npmjs.org/@mui/x-date-pickers/-/x-date-pickers-5.0.0-beta.6.tgz"
   "version" "5.0.0-beta.6"
@@ -4082,10 +4100,10 @@
     "whatwg-mimetype" "^2.3.0"
     "whatwg-url" "^8.0.0"
 
-"date-fns@^2.0.0", "date-fns@^2.25.0", "date-fns@^2.29.2":
-  "integrity" "sha512-0VNbwmWJDS/G3ySwFSJA3ayhbURMTJLtwM2DTxf9CWondCnh6DTNlO9JgRSq6ibf4eD0lfMJNBxUdEAHHix+bA=="
-  "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.29.2.tgz"
-  "version" "2.29.2"
+"date-fns@^2.0.0", "date-fns@^2.25.0", "date-fns@^2.29.3":
+  "integrity" "sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA=="
+  "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.29.3.tgz"
+  "version" "2.29.3"
 
 "dayjs@^1.10.7", "dayjs@^1.11.5", "dayjs@^1.8.17":
   "integrity" "sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA=="

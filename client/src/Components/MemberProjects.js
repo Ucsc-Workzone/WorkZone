@@ -41,15 +41,15 @@ const UpcomingList = () => {
     });
     const [list,setList]=useState([]);
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const userid = localStorage.getItem('userid');
         axios
-            .post('http://localhost:5000/api/member/projectList', {
-                accessToken: token
+            .post('http://localhost:5000/api/project/getmemberProjectDetails', {
+                userid: userid
             })
             .then((response) => {
                
                 if (response.data) {
-                   const array=response.data[0]
+                   const array=response.data
                    console.log(array)
                  
               setList(array)
@@ -59,7 +59,7 @@ const UpcomingList = () => {
             });
     }, []);
     return (
-        <div className="upcomings">
+        <div className="upcomings" >
        
             {list.map((item)=>{
                 return(
