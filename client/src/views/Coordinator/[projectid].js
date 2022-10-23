@@ -36,6 +36,7 @@ const ProjectPage = () => {
          console.log(projectid)
     })
 
+    
     return (
         <>
             <div className="projectmain">
@@ -48,16 +49,11 @@ const ProjectPage = () => {
                     </div>
                     <div className="memberAssignSerach">
                         <div className="memberAssign">
-                            <div> <Autocomplete
-                                id="filter-demo"
-                                options={top100Films}
-                                getOptionLabel={(option) => option.title}
-                                filterOptions={filterOptions}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params} label="Custom filter" id="filter-demo-d" />}
-                            /></div>
                             <div>
-                            <Button onClick={handleClick} className='addBut'>Add</Button>
+                               {true &&
+                               <h2>no members assign yet </h2>
+
+                               }
                             </div>
                            
                             
@@ -92,14 +88,14 @@ const ProjectPage = () => {
 };
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-    { title: 'Eshan Herath', year: 1994 },
-    { title: 'Thara Sayuru', year: 1972 },
-    { title: 'Ravin Jayarathne', year: 1974 },
-    { title: 'Ravin Eranga', year: 2008 },
-    { title: 'Werath Ravin', year: 1957 },
-    { title: "Wihan Bandara", year: 1993 },
-    { title: 'Ravin Gamage', year: 1994 },
+// const top100Films = [
+//     { title: 'Eshan Herath', year: 1994 },
+//     { title: 'Thara Sayuru', year: 1972 },
+//     { title: 'Ravin Jayarathne', year: 1974 },
+//     { title: 'Ravin Eranga', year: 2008 },
+//     { title: 'Werath Ravin', year: 1957 },
+//     { title: "Wihan Bandara", year: 1993 },
+//     { title: 'Ravin Gamage', year: 1994 },
     
    
    
@@ -108,6 +104,6 @@ const top100Films = [
  
  
     
-];
+// ];
 
 export default ProjectPage;

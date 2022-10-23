@@ -45,7 +45,7 @@ module.exports = {
   },
   async getProjectData(data) {
     try {
-      sql = `select * from projects , activity where projects.projectId=${data["project_id"]}`;
+      sql = `select * from projects , activity where projects.projectId=${data["project_id"]} and  activity.projectId=${data["project_id"]} `;
       const rows = await dbconnection.query(sql);
       return rows;
     } catch {
@@ -54,7 +54,7 @@ module.exports = {
   },
   async saveCard(data) {
     try {
-      sql = `INSERT INTO activity (projectId,activityName,description) Values (${data["project_id"]},'${data["taskName"]}','${data["description"]}')`;
+      sql = `INSERT INTO activity (projectId,activityName,description) Values (${data["project_id"]},'${data["taskName"]}','${data["taskDes"]} ')`;
       const rows = await dbconnection.query(sql);
       return true;
     } catch {
@@ -72,4 +72,15 @@ module.exports = {
       return "error";
     }
   },
+  async projectSummary(data) {
+    try {
+      //  sql = `select * from projects , activity,subactivity where projects.projectId=subactivity.projectId and subactivity.activityId=${data["activity_id"]} and acitivity.activityId=subactivity.activityId`;
+      sql=`SELECT * FROM projects where projectId=${data}`;
+       const rows = await dbconnection.query(sql);
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
+  
 };

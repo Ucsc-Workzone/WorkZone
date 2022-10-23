@@ -16,7 +16,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { IconUser, IconCalendarStats } from '@tabler/icons';
 import { useParams } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -32,9 +32,7 @@ import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 // or for Moment.js
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
-
 const KanbanColumn = () => {
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     // const [searchParams, setSearchParams] = useSearchParams();
 
@@ -47,28 +45,23 @@ const KanbanColumn = () => {
     const [member, setMember] = useState('Assign a member');
     const { projectid } = useParams();
     useEffect(() => {
-
         getCardData();
-    }, [])
+    }, []);
     const getCardData = () => {
         axios
             .post('http://localhost:5000/api/project/getProjectData', {
                 center_id: 1,
-                project_id: projectid,
-
+                project_id: projectid
             })
             .then((response) => {
                 console.log(response.data);
-                setProjectList(response.data)
+                setProjectList(response.data);
                 // const projectid = response.data['LAST_INSERT_ID()'];
                 // navigate('/coordinator/projectinit/' + `${projectid}`)
-
-
             });
-
-    }
+    };
     const handlechangemember = (e) => {
-        console.log(e.target.innerHTML)
+        console.log(e.target.innerHTML);
         setMember(e.target.innerHTML);
     };
     const handleClick = (newPlacement) => (event) => {
@@ -87,7 +80,7 @@ const KanbanColumn = () => {
     const [value1, setValue1] = React.useState('2014-08-18');
     const [set1, setSet1] = useState(false);
     const handleChange = (e) => {
-        console.log(e.$d)
+        console.log(e.$d);
         setValue1(e.$d);
     };
 
@@ -109,11 +102,20 @@ const KanbanColumn = () => {
 
     const generateKanbanCards = () => {
         return projectList.slice(0).map((project) => {
-            return <KanbanCard project={project} key={project['activityId']} weight={project['weight']} activityName={project['activityName']} description={project['description']} onDragEnd={project.onDragEnd} />;
+            return (
+                <KanbanCard
+                    project={project}
+                    key={project['activityId']}
+                    weight={project['weight']}
+                    activityName={project['activityName']}
+                    description={project['description']}
+                    onDragEnd={project.onDragEnd}
+                />
+            );
         });
     };
     const addCard = () => {
-        console.log('Malithi');
+        // console.log('Malithi');
         setOpen(true);
     };
     const closepopUp = () => {
@@ -121,29 +123,25 @@ const KanbanColumn = () => {
     };
 
     const saveCard = () => {
-
         const taskName = document.getElementById('outlined-textarea-task').value;
         const taskDes = document.getElementById('outlined-textarea-des').value;
         axios
             .post('http://localhost:5000/api/project/saveCard', {
                 taskName: taskName,
                 taskDes: taskDes,
-                project_id: 51
-
+                project_id: projectid
             })
             .then((response) => {
                 console.log(response.data);
                 if (true) {
-                    setOpen(false)
+                    setOpen(false);
                     getCardData();
                 }
                 // const projectid = response.data['LAST_INSERT_ID()'];
                 // navigate('/coordinator/projectinit/' + `${projectid}`)
-
-
             });
-        console.log(taskName)
-    }
+        console.log(taskName);
+    };
 
     const columnStyle = {
         display: 'inline-block',
@@ -190,7 +188,13 @@ const KanbanColumn = () => {
                     <div style={cardStyle} draggable={true}>
                         <div className="card-contetnt">
                             <TextField id="outlined-textarea-task" label="Task" placeholder="Task" multiline />
-                            <TextField id="outlined-textarea-des" label="Description" placeholder="Description" multiline className="desCard" />
+                            <TextField
+                                id="outlined-textarea-des"
+                                label="Description"
+                                placeholder="Description"
+                                multiline
+                                className="desCard"
+                            />
                         </div>
 
                         <div class="datex">
@@ -206,7 +210,16 @@ const KanbanColumn = () => {
                             </LocalizationProvider>
                         </div>
 
-
+                        <div>
+                        <Autocomplete
+                                id="filter-demo"
+                                options={top100Films}
+                                getOptionLabel={(option) => option.title}
+                                filterOptions={filterOptions}
+                                sx={{ width: 300 }}
+                                renderInput={(params) => <TextField {...params} label="Custom filter" id="filter-demo-d" />}
+                            />
+                        </div>
                         <div className="button-contetnt">
                             <Button variant="contained" className="buttonclass" onClick={saveCard}>
                                 Save
@@ -231,9 +244,16 @@ const top100Films = [
     { title: 'Ravin Jayarathne', year: 1974 },
     { title: 'Ravin Eranga', year: 2008 },
     { title: 'Werath Ravin', year: 1957 },
-    { title: 'Wihan Bandara', year: 1993 },
-    { title: 'Ravin Gamage', year: 1994 }
+    { title: "Wihan Bandara", year: 1993 },
+    { title: 'Ravin Gamage', year: 1994 },
+    
+   
+   
+ 
+  
+ 
+ 
+    
 ];
-
 
 const board = [{ name: 'Work Assign', stage: 1 }];
