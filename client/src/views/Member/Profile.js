@@ -1,4 +1,4 @@
-
+import './styles/profile.css';
 // import React,{useState} from 'react';
 // import TextField from '@mui/material/TextField';
 // import Button from '@mui/material/Button';
@@ -291,6 +291,16 @@
 
 const userProfile = () => {
   return (<>
+
+    <div class="one">
+
+      <div class="cover">
+        <img scr="cover.jpg" width="1000"></img>
+        {/* <h1>wetewt</h1> */}
+      </div>
+
+
+    </div>
 
 
 
