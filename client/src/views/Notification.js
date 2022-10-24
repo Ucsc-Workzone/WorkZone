@@ -3,10 +3,16 @@ import NotificationList from 'layout/MainLayout/Header/NotificationSection/Notif
 // material-ui
 import InputBase from '@mui/material/InputBase';
 import './styles/notification.css';
-
+import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { useTheme } from '@emotion/react';
+import { useEffect } from 'react';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+
+
+import Modal from '@mui/material/Modal';
 import {
     Button,
     Card,
@@ -20,6 +26,7 @@ import {
     ListItemSecondaryAction,
     ListItemText,
     Stack,
+    TextField,
     Typography
 } from '@mui/material';
 
@@ -88,41 +95,67 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     }
 }));
 
-// notification status options
-const notificationArray = [
-    {
-        id: 1,
-        from: 'Malithi Perera',
-        label: 'You have been assign to a task',
-        image: 'member1.jpg',
-        staus: 'read'
-    },
-    {
-        id: 2,
-        from: 'Pamodha Mahagamage',
-        label: 'Trasfer a work',
-        image: 'member1.jpg',
-        staus: 'read'
-    },
-    {
-        id: 3,
-        from: 'Hiruni Guruge',
-        label: 'Leave request has been accepted',
-        image: 'member1.jpg',
-        staus: 'read'
-    },
-    {
-        id: 4,
-        from: 'Hiruni Guruge',
-        label: 'Leave requested has been rejected',
-        image: 'member1.jpg',
-        staus: 'read'
-    }
-];
-// third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
-
+import { useState } from 'react';
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 const Notification = () => {
+    const [marray5, setArray5] = useState([]);
+
+    const [open, setOpen] = React.useState(false);
+    const [open1, setOpen1] = React.useState(false);
+    const [project,setProject]=useState([]);
+    const handleOpen = (e) => {
+        // notificationType();
+        
+        notificationType();
+        setOpen(true);
+    console.log(e.target.value)
+    }
+    const handleClose = () => setOpen(false);
+    const notificationType = () => {
+        let type='m-005';
+      //  console.log(type, notid);
+        axios
+            .post('http://localhost:5000/api/notification/notificationType', {
+                type: 'm-005',
+                notificationId: 1
+            })
+            .then((response) => {
+                if ((type = 'm-005')) {
+                    // console.log(response.data);
+                    setArray5(response.data);
+                    console.log(response.data);
+                }
+            });
+        return true;
+    };
+    const [allArray, setAllArray] = useState([]);
+    const userid = localStorage.getItem('userid');
+
+    useEffect(() => {
+        allNotification();
+    }, []);
+
+    const allNotification = () => {
+        axios
+            .post('http://localhost:5000/api/notification/allnotification', {
+                userid: userid
+            })
+            .then((response) => {
+                console.log(response.data);
+                setAllArray(response.data);
+            });
+    };
     const theme = useTheme();
 
     const chipSX = {
@@ -209,17 +242,24 @@ const Notification = () => {
                             }
                         }}
                     >
-                        {notificationArray.map((notify) => {
+                        {allArray.map((notify) => {
                             return (
                                 <>
-                                    <ListItem alignItems="center" id={notify.id}>
+                                    <ListItem alignItems="center" id={notify.id} >
                                         <ListItemAvatar>
-                                            <Avatar alt="John Doe" src='assets/images/users/user-round.svg' />
+                                            <Avatar alt={notify.firstrName} src="assets/images/users/user-round.svg" />
                                         </ListItemAvatar>
-                                        <ListItemText primary={notify.from} />
+                                        <ListItemText primary={notify.firstrName + ' ' + notify.lastName} />
+
                                         <ListItemSecondaryAction>
                                             <Grid container justifyContent="flex-end">
                                                 <Grid item xs={12} container>
+                                                <Grid item>
+                                                    <button onClick={handleOpen} value={[notify.notificationId,notify.type]} >
+                                             view
+                                                    </button>
+                                                        
+                                                    </Grid>
                                                     <Grid item>
                                                         <Chip label="delete" sx={chipErrorSX} />
                                                     </Grid>
@@ -232,9 +272,26 @@ const Notification = () => {
                                     </ListItem>
                                     <Grid container direction="column" className="list-container">
                                         <Grid item xs={12} sx={{ pb: 2 }}>
-                                            <Typography variant="subtitle2">
-                                                {notify.label}
-                                            </Typography>
+                                            {notify.type == 'm-005' &&  (
+                                                <Typography variant="subtitle2">
+                                                    You have been assigned to a project view more..
+                                                </Typography>
+                                            )}
+                                            {notify.type == 'm-003' &&  (
+                                                <Typography variant="subtitle2">
+                                                   Your leave request has been Accepted.
+                                                </Typography>
+                                            )}
+                                             {notify.type == 'm-004' &&  (
+                                                <Typography variant="subtitle2">
+                                                   Your leave request has been Rejected.
+                                                </Typography>
+                                            )}
+                                             {notify.type == 'm-006' &&  (
+                                                <Typography variant="subtitle2">
+                                                   You have a task trasnfered to you 
+                                                </Typography>
+                                            )}
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Grid container>
@@ -254,6 +311,45 @@ const Notification = () => {
                             );
                         })}
                     </List>
+
+                    <div>
+                        
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                            You have been assign to a project  
+                                </Typography>
+                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                  <Button>Accept</Button>
+                                  <Button>Reject</Button>
+                                </Typography>
+                            </Box>
+                        </Modal>
+                    </div>
+                    <div>
+                        
+                        <Modal
+                            open={open1}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                            You have been assign to a project  
+                                </Typography>
+                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                  <Button>Accept</Button>
+                                  <Button>Reject</Button>
+                                </Typography>
+                            </Box>
+                        </Modal>
+                    </div>
                 </div>
             </div>
         </>

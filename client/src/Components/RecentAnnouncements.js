@@ -167,7 +167,7 @@ const RecentAnnoucements = ({ ...others }) => {
                 <Button variant="outlined" onClick={handleClickOpen}><Typography className="addone" >+ NEW</Typography></Button>
             </Box>
             <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
-                <ListItem alignItems="flex-start">
+                <ListItem alignItems="flex-start" className=''>
                     <ListItemAvatar>
                         <Avatar alt="admin" src={userimg} />
                     </ListItemAvatar>

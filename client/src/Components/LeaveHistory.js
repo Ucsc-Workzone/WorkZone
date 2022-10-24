@@ -30,8 +30,10 @@ import { Typography } from '@mui/material';
 
 import { styled } from '@mui/material/styles';
 import './styles/table.css';
+import { useEffect } from 'react';
 
-
+import axios from 'axios';
+import { useState } from 'react';
 
 
 const columns = [
@@ -97,6 +99,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const LeaveHistoryTable = () => {
   
   const [page, setPage] = React.useState(0);
+  
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
@@ -115,29 +118,33 @@ const LeaveHistoryTable = () => {
   };
 
   const [picdate, setValue] = React.useState(new Date('2022-08-24T21:11:54'));
-
+const [pendingData,setpendingdata]=useState([]);
   const handleDateChange = (newValue) => {
     setValue(newValue);
   };
 
-  function createData( no, name, date, duration, status, action) {
-    return { no, name, date, duration, status, action };
+  useEffect(()=>{
+getPendingData();
+  },[])
+
+
+  const getPendingData=()=>{
+    axios
+    .post('http://localhost:5000/api/coordinator/getLeavetableall', {
+        center_id: 1
+    })
+    .then((response) => {
+        console.log(response.data);
+     setpendingdata(response.data)
+
+
+    });
   }
-  
-  const rows = [
-    createData('1', 'Pamodha Mahagamage','20/08/2022', '3', 1, 1.1 ),
-    createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
-    createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
-    createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
-    createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
-    createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
-  ] 
-  
   return (
     <React.Fragment>
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
         <Typography variant="h3" component="h4" className="">
-            Leave Request History       
+            Leave Requests   
         </Typography>
         <InputLabel id="select-gender" style={{color:'#0C518A',fontWeight:"bold",padding:"10px"}}>Status</InputLabel>
         <Select

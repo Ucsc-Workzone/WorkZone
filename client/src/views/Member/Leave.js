@@ -191,7 +191,7 @@ const MemberLeave = () => {
         <>
             <div className="leavecontainer">
                 <div>
-                    <Button variant="contained" onClick={handleClickOpen} color="primary">
+                    <Button variant="contained" onClick={handleClickOpen} color="primary" >
                         Request a Leave
                     </Button>
                     <Dialog
@@ -349,14 +349,7 @@ const MemberLeave = () => {
 
                 <div className="card-section">
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
-                    {/* <TotalIncomeLightCard 
-                title={'Leaves in August'}
-                count={1}
-                />
-                <TotalIncomeLightCard 
-                  title={'Leaves in 2022'}
-                  count={8}
-                /> */}
+           
                 </div>
                 <div className="table-section-head">
                     <div className="table-section">
@@ -380,8 +373,8 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {tdata.map((row) => (
                                         <StyledTableRow key={row['leaveId']}>
-                                            <StyledTableCell align="right">{row['fromDate'].substring(0,10)}</StyledTableCell>
-                                            <StyledTableCell align="right">{row['toDate'].substring(0,10)}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['fromDate'].substring(0, 10)}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['toDate'].substring(0, 10)}</StyledTableCell>
 
                                             <StyledTableCell align="right">{row['nodays']}</StyledTableCell>
 

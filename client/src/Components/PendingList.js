@@ -8,7 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-
+import {useEffect,useState} from 'react';
+import axios from 'axios';
 function createData(id, name, date) {
   return { id, name, date };
 }
@@ -24,6 +25,25 @@ import { Typography } from '@mui/material';
 
 
 const LeavePendingList = ({flag}) => {
+    const [countleavelist,setleavelist]=useState([]);
+    useEffect(()=>{
+getCount();
+    },[]
+    )
+
+    const getCount=()=>{
+        axios
+        .post('http://localhost:5000/api/coordinator/getLeavetable', {
+            center_id: 1
+        })
+        .then((response) => {
+            console.log(response.data);
+            setleavelist(response.data)
+         
+
+
+        });
+    }
     return ( 
     
         <div className="pending-list">
@@ -39,14 +59,14 @@ const LeavePendingList = ({flag}) => {
                 <Table sx={{ padding:"0px" }} aria-label="simple table" style={{textAlign:'right'}}>
                     <TableHead></TableHead>
                     <TableBody style={{textAlign:'left'}}>
-                    {rows.map((row) => (
+                    {countleavelist.map((row) => (
                         <TableRow
-                        key={row.name}
+                        key={row['leaveId']}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                        <TableCell align="right"><Avatar className='small-avatar' src={require(`../assets/images/Profile/${row.id}`)}>M</Avatar></TableCell>
-                        <TableCell align="right">{row.name}</TableCell>
-                        <TableCell align="right">{row.date}</TableCell>
+                        <TableCell align="right"><Avatar className='small-avatar'>M</Avatar></TableCell>
+                        <TableCell align="right">{row['firstrName']+ " " + row['lastName']}</TableCell>
+                        <TableCell align="right">{row['fromDate'].substring(0,10)}</TableCell>
                         {!(flag)  &&
                             <Button variant="contained" className="process"><Typography >Process</Typography></Button>
                         }

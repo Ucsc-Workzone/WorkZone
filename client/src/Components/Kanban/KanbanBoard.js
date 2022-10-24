@@ -40,8 +40,8 @@ class KanbanBoard extends React.Component {
 			try {
 				const resp = await axios.post('http://localhost:5000/api/project/membergetCards', {
 					center_id: 1,
-        project_id:51,
-		activity_id:1
+        project_id:54,
+		activity_id:3
 				});
 				console.log(resp.data);
 			} catch (err) {
@@ -51,7 +51,7 @@ class KanbanBoard extends React.Component {
 		};
 		sendPutRequest();
 		
-		console.log("Heloo")
+		
 	}
 
 	componentDidMount() {
@@ -59,8 +59,8 @@ class KanbanBoard extends React.Component {
 			try {
 				const resp = await axios.post('http://localhost:5000/api/project/membergetCards', {
 					center_id: 1,
-        project_id:51,
-		activity_id:1
+        project_id:54,
+		activity_id:3
 				});
 				console.log(resp.data);
 				this.setState({ projects: resp.data, isLoading: false });
@@ -82,11 +82,22 @@ class KanbanBoard extends React.Component {
 
 	//this is called when a Kanban card dropped over a column (called by card)
 	handleOnDragEnd(e, project) {
-      console.log(this.state.projects.slice(0))
+   
 		const updatedProjects = this.state.projects.slice(0);
-		updatedProjects.find((projectObject) => {return projectObject.name === project.name;}).project_stage = this.state.draggedOverCol;
+		updatedProjects.find((projectObject) => {return projectObject.subActivityId === project.subActivityId;}).project_stage = this.state.draggedOverCol;
 		this.setState({ projects: updatedProjects });
         console.log(updatedProjects)
+		axios
+        .post('http://localhost:5000/api/project/updateCards', {
+           updatedProjects
+           
+        })
+        .then((response) => {
+            console.log(response.data);
+			componentDidMount();
+        
+
+        });
 	}
 
 	changeState(e){
@@ -104,8 +115,8 @@ class KanbanBoard extends React.Component {
 		{/* {this.state.testState && 
 		<button> Hello world</button>
 
-		}
-		<button onClick={this.changeState}>Hellooooo</button> */}
+		} */}
+		{/* <button onClick={this.changeState}>Hellooooo</button> */}
 				{this.columns.map((column) => {
 					return (
 						<KanbanColumn
@@ -124,47 +135,3 @@ class KanbanBoard extends React.Component {
 	}
 }
 export default KanbanBoard;
-// let projectList = [
-//     {
-//       name: 'UI Protitype',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 1,
-// 	  weigh:'High',
-//     },
-//     {
-//       name: 'Admin UI Design',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 1,
-// 	  weigh:'Med',
-//     },
-//     {
-//       name: 'Designing the Photos',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 1,
-// 	  weigh:'Low',
-//     },
-//     {
-//       name: 'Sketch the design',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 2,
-// 	  weigh:'High',
-//     },
-//     {
-//       name: 'Collectiong the components',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 3,
-// 	  weigh:'Med',
-//     },
-//     {
-//       name: 'Shortlist the components',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 3,
-// 	  weigh:'Low',
-//     },
-//     {
-//       name: '',
-//       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam posuere dui vel urna egestas rutrum. ',
-//       project_stage: 4,
-// 	  weigh:'Med',
-//     },
-//   ];

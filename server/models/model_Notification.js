@@ -1,16 +1,48 @@
 var dbconnection = require("../utils/index");
 module.exports = {
   
-  async getnotification(data) {
+  async allnotification(data) {
     try {
-        const {userid,type,category}=data;
     
-    //   sql = `INSERT INTO projects (centerId,projectName,description,startDate,estendDate,teamAssign) VALUES (${center_id},'${project_name}','${description}','${start_date}','${estend_date}',${team})`;
-    //   const rows = await dbconnection.query(sql);
+    
+      sql = `SELECT * From notification,user_notification,user where  notification.to=${data}  and notification.from=user.userid and user_notification.notificationId=notification.notificationId`;
+      const rows = await dbconnection.query(sql);
 
-      return userid;
+      return rows[0];
     } catch (err) {
       throw err;
     }
   },
+  async notificationType(id,type) {
+    try {
+  
+      switch (type) {
+        case 'm-005':
+          sql=`SELECT * from notification,projects where  notification.notificationId=${id} and notification.projectId=projects.projectId `;
+          const rows = await dbconnection.query(sql);
+          return rows;
+
+        break;
+     
+        // case 'B': document.write("Pretty good<br />");
+        // break;
+     
+        // case 'C': document.write("Passed<br />");
+        // break;
+     
+        // case 'D': document.write("Not so good<br />");
+        // break;
+     
+        // case 'F': document.write("Failed<br />");
+        // break;
+     
+        default:  return 0;
+     }
+      return rows[0];
+    } catch (err) {
+      throw err;
+    }
+  },
+
+
 }
