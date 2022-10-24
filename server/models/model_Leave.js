@@ -1,4 +1,5 @@
 var dbconnection = require("../utils/index");
+
 module.exports = {
   async getLeave(userid) {
     console.log(userid);
@@ -47,6 +48,41 @@ module.exports = {
   }
   else{
     return " Something went wrong ,please try again later";
+  }
+
+  },
+  async configLeave(req) {
+    const { annual, weekly, sick, maternity, mercantile } = req.body;
+
+    const sqlGet = `INSERT INTO leave_config(annual, weekly, sick, maternity, mercantile) VALUES('${annual}','${weekly}','${sick}','${maternity}', '${mercantile}')`;
+
+    const configquery = await dbconnection.query(sqlGet);
+
+  if(configquery){
+    return "1";
+  }
+  else{
+    return "0";
+  }
+
+  },
+  async isConfig(req) {
+    const { idLeaveConfig } = req.body;
+
+    const sqlGet = `SELECT leaveconfig FROM org WHERE orgcode='${idLeaveConfig}'`;
+
+    const configquery = await dbconnection.query(sqlGet);
+
+  if(configquery){
+    if(configquery != 0){ 
+      return 1;
+    }
+    else{
+      return 0;
+    }
+  }
+  else{
+    return 3;
   }
 
   },

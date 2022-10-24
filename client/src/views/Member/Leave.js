@@ -191,7 +191,7 @@ const MemberLeave = () => {
         <>
             <div className="leavecontainer">
                 <div>
-                    <Button variant="contained" onClick={handleClickOpen} color="primary">
+                    <Button variant="contained" onClick={handleClickOpen} color="primary" >
                         Request a Leave
                     </Button>
                     <Dialog
@@ -373,8 +373,8 @@ const MemberLeave = () => {
                                 <TableBody>
                                     {tdata.map((row) => (
                                         <StyledTableRow key={row['leaveId']}>
-                                            <StyledTableCell align="right">{row['fromDate'].substring(0,10)}</StyledTableCell>
-                                            <StyledTableCell align="right">{row['toDate'].substring(0,10)}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['fromDate'].substring(0, 10)}</StyledTableCell>
+                                            <StyledTableCell align="right">{row['toDate'].substring(0, 10)}</StyledTableCell>
 
                                             <StyledTableCell align="right">{row['nodays']}</StyledTableCell>
 
