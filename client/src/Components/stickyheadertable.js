@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Avatar from '@mui/material/Avatar';
-
+import axios from 'axios';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -19,6 +19,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
 import { styled } from '@mui/material/styles';
+import { useEffect } from 'react';
 import './styles/table.css';
 
 
@@ -123,6 +124,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const StickyHeadTable = () => {
+
+  useEffect(()=>{
+getuserData();
+  },[])
+
+  const getuserData=()=>{
+    axios
+    .post('http://localhost:5000/api/coordinator/staff', {
+   
+    })
+    .then((response) => {
+        console.log(response.data);
+       
+    });
+
+  }
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

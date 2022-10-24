@@ -79,6 +79,16 @@ return data;
     catch{
 return "error";
     }
+   },
+   async getStaff(){
+    try{
+    sql=`SELECT * FROM user where userRole='member'`;
+    const row2=await dbconnection.query(sql);
+return row2[0];
+    }
+    catch{
+return "error";
+    }
    }
    
 
