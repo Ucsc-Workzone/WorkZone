@@ -48,8 +48,39 @@ return row[0];
     catch{
 return "error";
     }
+   },
+   async getLeavetableall(){
+    try{
+sql=`select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate ;`;
+const row=await dbconnection.query(sql);
+return row[0];
+    }
+    catch{
+return "error";
+    }
    }
+   ,
+   async getLeavesummary(){
+    try{
+      data=[];
+sql=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='pending'`;
+const row=await dbconnection.query(sql);
+data.push(row[0]);
 
+sql1=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='Accepted'`;
+const row1=await dbconnection.query(sql);
+data.push(row1[0]);
+
+sql2=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='Rejected'`;
+const row2=await dbconnection.query(sql);
+data.push(row2[0]);
+return data;
+    }
+    catch{
+return "error";
+    }
+   }
+   
 
   
 };

@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid  from '@mui/material/Grid';
 import { CardMedia, Card, Typography, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
 import './styles/Leaves.css';
-
+import axios from 'axios';
 import Calender from 'Components/Calender';
 import { IconMessageDots } from '@tabler/icons';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -19,6 +19,7 @@ import PendingLeavescard from 'Components/PendingLeavecard';
 import LeaveHistory from 'Components/LeaveHistory';
 
 import BarChart from 'Components/BarChart';
+import { useEffect } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -42,7 +43,22 @@ var CountList = {
 }
 
 const CoordinatorLeaves = () => {
+    useEffect(()=>{
+        axios
+    .post('http://localhost:5000/api/coordinator/leavesummary', {
+        center_id: 1
+    })
+    .then((response) => {
+        console.log(response.data);
+     setpendingdata(response.data)
 
+
+    });
+
+    })
+    const leaverequest=()=>{
+
+    }
 
     const [userData, setUserData] = useState({
         labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
@@ -99,14 +115,14 @@ const CoordinatorLeaves = () => {
                     <div className="calender-container">
                         <Calender />
                     </div>
-                    <div className="onlineuser-container">
+                    {/* <div className="onlineuser-container">
                         <Typography variant="h3" component="h4" textAlign={'center'}>
                             Pending Leave Requests
                         </Typography>
                         <Box style={{display:"flex", justifyContent: 'left', width:'100', top: "50%"}}>
                           <PendingLeavescard />        
                         </Box>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             </Box>
