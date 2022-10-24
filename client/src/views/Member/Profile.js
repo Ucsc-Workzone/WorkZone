@@ -29,7 +29,7 @@ const userProfile = () => {
 
         </div>
 
-        <h1>Name : Bimsara Kulasekara</h1>
+        <h1>Name : Bimsar Kulasekara</h1>
         <h1>Age : 22 Yrs</h1>
         <h1>Gender : Male</h1>
         <h1>Mobile : 0785619959</h1>
