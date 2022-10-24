@@ -150,6 +150,27 @@ function createData( no, fname, lname, subdate, fromdate, todate, status, action
   return { no, name, date, duration, status, action };
 }
 
+function datefilter(subdate){
+  var date = subdate.substr(0,10)
+
+  return date;
+}
+
+function dateDurationCalc(fromdate, todate){
+    var d1 = new Date(fromdate);   
+      var d2 = new Date(todate);   
+          
+      var diff = d2.getTime() - d1.getTime();   
+          
+      var daydiff = diff / (1000 * 60 * 60 * 24);   
+
+      const duration = daydiff.toString();
+
+
+      return duration
+}
+
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
