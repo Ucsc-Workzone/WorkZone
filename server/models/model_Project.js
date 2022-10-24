@@ -128,5 +128,17 @@ module.exports = {
     } catch {
       return "error";
     }
-  }
+  },
+  async getCoordinatorCards(data){
+    try {
+      sql=`select * from projects where centerId=1 and completion=0;`;
+      const rows = await dbconnection.query(sql);
+      
+               
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
+  
 };

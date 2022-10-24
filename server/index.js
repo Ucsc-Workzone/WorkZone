@@ -8,6 +8,7 @@ const proRoute = require("./routes/project");
 const MemberRoutes = require("./routes/Member");
 const RegisterRoutes = require("./routes/Register");
 const NotificationRoutes = require("./routes/notificationRoute");
+const CoordinatorRoutes=require("./routes/coordinatorRoutes")
 
 const cors = require("cors");
 require("dotenv").config();
@@ -25,7 +26,7 @@ app.use("/api/leave", leaveRoute);
 app.use("/api/member", MemberRoutes);
 app.use("/api/project", testRoute);
 app.use("/api/register", RegisterRoutes);
-
+app.use("/api/coordinator", CoordinatorRoutes);
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running on port 5000");
 });

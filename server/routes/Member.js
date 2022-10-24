@@ -73,16 +73,6 @@ router.post("/createtodo", (req, res) => {
    const date = req.body.date;
   res.json(title)
  
-   // db.query(
-   //   "INSERT INTO todo (title, desc, date ) VALUES (?,?,?,?,?)",
-   //   [title,desc,date],
-   //   (err, result) => {
-   //     if (err) {
-   //       console.log(err);
-   //     } else {
-   //       res.send("Values Inserted");
-   //     }
-   //   }
-   // );
+  
  });
 module.exports = router;

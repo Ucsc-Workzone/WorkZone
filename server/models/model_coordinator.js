@@ -1,0 +1,55 @@
+var dbconnection = require("../utils/index");
+module.exports = {
+  async getCarddata(data) {
+    data=[];
+    try {
+     sql=`SELECT COUNT(userid) as memberCount
+     FROM user
+     WHERE userRole='member' `
+     const rows = await dbconnection.query(sql);
+
+     
+     data.push(rows[0])
+
+     sql1=`SELECT COUNT(projectId) as projectCount
+     FROM projects
+     WHERE completion=0 `
+     const rows1 = await dbconnection.query(sql1);
+     data.push(rows1[0])
+     sql2=`SELECT COUNT(projectId) as projectCountf
+     FROM projects
+     WHERE completion=1 `
+     const rows2 = await dbconnection.query(sql2);
+     data.push(rows2[0])
+     return data;
+      } 
+     catch (err) {
+    
+    }
+  },
+   async getLeave(){
+    try{
+sql=`SELECT COUNT(leaveId) as leaveCount
+FROM leaverequest
+WHERE status='pending'`;
+const row=await dbconnection.query(sql);
+return row[0];
+    }
+    catch{
+
+    }
+   },
+   async getLeavetable(){
+    try{
+sql=`select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate desc limit 3;`;
+const row=await dbconnection.query(sql);
+return row[0];
+    }
+    catch{
+return "error";
+    }
+   }
+
+
+  
+};
