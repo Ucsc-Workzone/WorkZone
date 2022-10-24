@@ -31,13 +31,16 @@ class KanbanCard extends React.Component {
 		const cardStyle = {
 			'backgroundColor': '#fff',
 			'paddingLeft': '0px',
+			// 'border':'0.5px solid black',
 			'paddingTop': '5px',
 			'paddingBottom': '5px',
 			'marginLeft': '0px',
 			'marginRight': '5px',
 			'marginBottom': '5px',
+			'paddingLeft':'5px',
             'borderRadius':'10px',
-			'textAlign':'left'
+			'textAlign':'left',
+			'boxShadow': 'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 0px'
 		};
 
 		return (

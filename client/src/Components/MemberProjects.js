@@ -9,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import DoughtChart from 'Components/DoughtChart';
-
+import { useParams } from 'react-router-dom';
 import { ButtonBase } from '@mui/material';
 import axios from 'axios';
 
@@ -40,6 +40,7 @@ import './styles/upcoming.css';
 
 const UpcomingList = () => {
     const navigate = useNavigate();
+    const {proid}=useParams();
     const [userData, setUserData] = useState({
         // labels: ["CM", "NC"],
         datasets: [

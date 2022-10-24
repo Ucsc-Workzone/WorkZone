@@ -83,8 +83,8 @@ const KanbanColumn = () => {
         // setValue1(newPlacement)
     };
 
-    const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
-    const [value1, setValue1] = React.useState('2014-08-18');
+    const [value, setValue] = React.useState(dayjs('2022-10-26T21:11:54'));
+    const [value1, setValue1] = React.useState('2022-10-26');
     const [set1, setSet1] = useState(false);
     const handleChange = (e) => {
         console.log(e.$d)
