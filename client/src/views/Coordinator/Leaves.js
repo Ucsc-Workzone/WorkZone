@@ -111,7 +111,7 @@ const CoordinatorLeaves = () => {
                     </div>
                 </div>
 
-                <div className="leavecontainer-right">
+                {/* <div className="leavecontainer-right">
                     <div className="calender-container">
                         <Calender />
                     </div>
@@ -123,7 +123,7 @@ const CoordinatorLeaves = () => {
                           <PendingLeavescard />        
                         </Box>
                     </div> */}
-                </div>
+                {/* </div> */} 
             </div>
             </Box>
         </>
