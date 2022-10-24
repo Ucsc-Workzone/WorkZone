@@ -163,6 +163,7 @@ const LeaveHistoryTable = () => {
     // createData('14', 'Vikum Pushpakumaea','09/08/2022', '2', 2, 14.1  ),
     // createData('15', 'Danuka Withana','09/08/2022', '2', 2, 15.1  ),
   ]
+  
   return (
     <React.Fragment>
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
