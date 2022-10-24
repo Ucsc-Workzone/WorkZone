@@ -36,6 +36,53 @@ import axios from 'axios';
 import { useState } from 'react';
 
 
+
+import PropTypes from 'prop-types';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import CloseIcon from '@mui/icons-material/Close';
+import { SentimentVeryDissatisfied } from 'material-ui-icons';
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+function BootstrapDialogTitle(props) {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+}
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
 const columns = [
   { id: 'no', 
     label: 'No.',
@@ -105,6 +152,26 @@ function createData( no, fname, lname, subdate, fromdate, todate, status, action
   return { no, name, date, duration, status, action };
 }
 
+function datefilter(subdate){
+  var date = subdate.substr(0,10)
+
+  return date;
+}
+
+function dateDurationCalc(fromdate, todate){
+    var d1 = new Date(fromdate);   
+      var d2 = new Date(todate);   
+          
+      var diff = d2.getTime() - d1.getTime();   
+          
+      var daydiff = diff / (1000 * 60 * 60 * 24);   
+
+      const duration = daydiff.toString();
+
+
+      return duration
+}
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -127,6 +194,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const LeaveHistoryTable = () => {
+
+  const [opendetails, setOpenDet] = React.useState(false);
+  const [entry, sententr] = React.useState(1);
+
+  const handleClickOpenDet = () => {
+
+    setOpenDet(true);
+  };
+  const handleCloseDet = () => {
+    setOpenDet(false);
+  };
   
   const [page, setPage] = React.useState(0);
   
@@ -211,6 +289,41 @@ const LeaveHistoryTable = () => {
 
   return (
     <React.Fragment>
+      {active &&
+      <div>
+      <BootstrapDialog
+        onClose={handleCloseDet}
+        aria-labelledby="customized-dialog-title"
+        open={opendetails}
+        
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleCloseDet} sx={{backgroundColor:"#0C518A", minWidth:"200px", color:"white", fontSize:"14px", fontWeight:"bold"}}>
+            Leave Request
+        </BootstrapDialogTitle>
+        <DialogContent dividers sx={{width:"400px"}}>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Name</b> <br />{pendingData[0].firstrName + " " }{pendingData[0].lastName}
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Requested Type</b> <br /> { " Annual Leave" }
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Requested Date</b> <br /> {datefilter(pendingData[0].fromDate) + " " }
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+             <b>Requested Duration</b> {dateDurationCalc(pendingData[0].fromDate, pendingData[0].toDate)} Days<br /> <b>From</b> {datefilter(pendingData[0].fromDate)} <b>To</b> {datefilter(pendingData[0].toDate)}
+           
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseDet}>
+            Close
+          </Button>
+        </DialogActions>
+      </BootstrapDialog>
+    </div>
+
+      }
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
         <Typography variant="h3" component="h4" className="">
             Leave Requests   
@@ -295,7 +408,7 @@ const LeaveHistoryTable = () => {
                       }else if (typeof value === 'number'){
                        
                         return (
-                          <StyledTableCell><Button variant="contained" >Details</Button></StyledTableCell>
+                          <StyledTableCell><Button variant="contained" onClick={handleClickOpenDet(value)} >Details</Button></StyledTableCell>
                         );
                       }else{
                         return (
