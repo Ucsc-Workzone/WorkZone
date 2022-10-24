@@ -39,9 +39,7 @@ getCount();
         .then((response) => {
             console.log(response.data);
             setleavelist(response.data)
-         
-
-
+        
         });
     }
     return ( 

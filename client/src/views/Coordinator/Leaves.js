@@ -31,6 +31,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
+
 const HeadList = {
     head1:"Pending",
     head2:"Approved",
@@ -43,21 +44,25 @@ var CountList = {
 }
 
 const CoordinatorLeaves = () => {
+
+    const [pendingData,setpendingdata]=useState([]);
+
     useEffect(()=>{
-        axios
-    .post('http://localhost:5000/api/coordinator/leavesummary', {
-        center_id: 1
-    })
-    .then((response) => {
-        console.log(response.data);
-     setpendingdata(response.data)
+       leaverequest();
+    },[])
 
-
-    });
-
-    })
     const leaverequest=()=>{
-
+        axios
+        .post('http://localhost:5000/api/coordinator/leavesummary', {
+            center_id: 1
+        })
+        .then((response) => {
+            console.log(response.data);
+            setpendingdata(response.data)
+    
+    
+        });
+    
     }
 
     const [userData, setUserData] = useState({

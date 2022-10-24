@@ -76,7 +76,29 @@ const columns = [
 ];
 
 
-function createData( no, name, date, duration, status, action) {
+function createData( no, fname, lname, date, fromdate, todate, status, action) {
+  const name = fname + " " +  lname;
+  if(status == "Accepted"){
+    status = 1
+  }
+  else if(status == "Rejected"){
+    status = 2
+  }
+  else if(status == "Pending"){
+    status = 3
+  }
+
+  var d1 = new Date(fromdate);   
+  var d2 = new Date(todate);   
+      
+  var diff = d2.getTime() - d1.getTime();   
+      
+  var daydiff = diff / (1000 * 60 * 60 * 24);   
+
+  const duration = daydiff.toString();
+
+
+
   return { no, name, date, duration, status, action };
 }
 
@@ -142,17 +164,17 @@ const LeaveHistoryTable = () => {
     })
     .then((response) => {
         console.log(response.data);
-        setpendingdata(response.data)
+        setpendingdata(response.data);
     });
   }
 
   const rows = [
-    createData('1', 'Pamodha Mahagamage','20/08/2022', '3', 1, 1.1 ),
-    createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
-    createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
-    createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
-    createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
-    createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
+    createData('1', 'Pamodha', 'Mahagamage','20/08/2022', "2022-08-21T18:30:00.000Z", "2022-08-22T18:30:00.000Z", "Rejected", 1 ),
+    // createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
+    // createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
+    // createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
+    // createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
+    // createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
     // createData('7', 'Chamara Amaraweera','15/08/2022', '3', 2, 7.1  ),
     // createData('8', 'Pramaodya Gamage','15/08/2022', '5', 2, 8.1  ),
     // createData('9', 'Dhanika Herath','12/08/2022', '1', 1, 9.1 ),
@@ -163,7 +185,7 @@ const LeaveHistoryTable = () => {
     // createData('14', 'Vikum Pushpakumaea','09/08/2022', '2', 2, 14.1  ),
     // createData('15', 'Danuka Withana','09/08/2022', '2', 2, 15.1  ),
   ]
-  
+
   return (
     <React.Fragment>
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
@@ -249,6 +271,11 @@ const LeaveHistoryTable = () => {
                           return (
                           <StyledTableCell align={column.align}><Chip label="Rejected" color="error"  /></StyledTableCell>
                           );}
+                        else if(value == 3){
+                          return (
+                          <StyledTableCell align={column.align}><Chip label="Pending" color="warning"  /></StyledTableCell>
+                        );}
+                          
                       }else if (typeof value === 'number'){
                        
                         return (
