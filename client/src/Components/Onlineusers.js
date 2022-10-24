@@ -36,9 +36,11 @@ const OnlineUser = () => {
                         <ListItemText primary={user[1]} />
                         {/* <Chip icon={<FaceIcon />} label="Online" variant="outlined" style={{color:'green'}} /> */}
                     </ListItem>
+
+
                 ))}
 
-                
+               
             </List>
         </>
     );

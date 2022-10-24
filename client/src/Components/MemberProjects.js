@@ -82,7 +82,7 @@ const UpcomingList = () => {
                     <>
                         <Box className="tag-container" key={item['projectId']}>
                             <Card variant="outlined" className="project-card">
-                                <CardActionArea href={"http://localhost:3000/workzone/member/project/" + item['projectId']}>
+                                <CardActionArea href={"http://localhost:3000/workzone/member/project/" + item['projectId']+"/"+item['activityId']}>
                                   
                                     <Box style={{ display: 'flex', width: '100%' }}>
                                         <Box

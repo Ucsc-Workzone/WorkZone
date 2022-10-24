@@ -12,8 +12,8 @@
 }
 
 .todo-conatiner{
-    width: 81%;
-    margin-left: -20px;
+    width: 100%;
+    /* margin-left: -20px; */
     /* background-color: rgb(54, 7, 92); */
     height: 500px;
 }
