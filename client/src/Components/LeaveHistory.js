@@ -36,14 +36,12 @@ import axios from 'axios';
 import { useState } from 'react';
 
 
-
 import PropTypes from 'prop-types';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import CloseIcon from '@mui/icons-material/Close';
-import { SentimentVeryDissatisfied } from 'material-ui-icons';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -253,7 +251,6 @@ const LeaveHistoryTable = () => {
       .then((response) => {
           console.log(response.data);
           handlependingLeave(response.data);
-          //setpendingdata(response.data);
         
       });
   }
@@ -288,7 +285,7 @@ const LeaveHistoryTable = () => {
  
 
   return (
-    <React.Fragment>
+    <>
       {active &&
       <div>
       <BootstrapDialog
@@ -439,7 +436,7 @@ const LeaveHistoryTable = () => {
         style={{backgroundColor:"lightblue"}}
       />
     </Paper>
-    </React.Fragment>
+    </>
   );
 }
 
