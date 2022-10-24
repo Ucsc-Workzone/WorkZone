@@ -81,6 +81,16 @@ function createData( no, name, date, duration, status, action) {
 }
 
 
+const rows = [
+  createData('1', 'Pamodha Mahagamage','20/08/2022', '3', 1, 1.1 ),
+  createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
+  createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
+  createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
+  createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
+  createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
+
+]
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
