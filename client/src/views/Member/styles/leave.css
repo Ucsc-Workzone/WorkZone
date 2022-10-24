@@ -106,3 +106,8 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(5, 151, 236);
 }
+
+.xc {
+    padding-bottom: 20px;
+    padding-right: 30px;
+}

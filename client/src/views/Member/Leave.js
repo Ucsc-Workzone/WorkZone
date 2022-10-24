@@ -212,7 +212,7 @@ const MemberLeave = () => {
                                             alignItems: 'center'
                                         }}
                                     >
-                                        <Typography component="h1" variant="h5">
+                                        <Typography component="h1" variant="h2">
                                             Request Form
                                         </Typography>
                                         <Divider />
@@ -233,18 +233,21 @@ const MemberLeave = () => {
                                                 </Grid>
 
                                                 <Grid item xs={12}>
-                                                    <FormLabel id="demo-row-radio-buttons-group-label">Leave Type</FormLabel>
-                                                    <RadioGroup
-                                                        row
-                                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                                        name="row-radio-buttons-group"
-                                                        value={value}
-                                                        onChange={handleChangeType}
-                                                    >
-                                                        <FormControlLabel value="one" control={<Radio />} label="one day" />
-                                                        <FormControlLabel value="short" control={<Radio />} label="short term" />
-                                                        <FormControlLabel value="long" control={<Radio />} label="long term" />
-                                                    </RadioGroup>
+                                                    <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                                                        <InputLabel id="demo-simple-select-filled-label">Leave Type</InputLabel>
+                                                        <Select
+                                                            labelId="demo-simple-select-filled-label"
+                                                            id="demo-simple-select-filled"
+                                                            value={value}
+                                                            onChange={handleChangeType}
+                                                        >
+                                                            <MenuItem value={1}>Short</MenuItem>
+                                                            <MenuItem value={2}>Half Day</MenuItem>
+                                                            <MenuItem value={3}>Annual</MenuItem>
+                                                            <MenuItem value={4}>Sick </MenuItem>
+                                                            <MenuItem value={5}>Maternity</MenuItem>
+                                                        </Select>
+                                                    </FormControl>
                                                 </Grid>
 
                                                 {render && (
@@ -336,14 +339,17 @@ const MemberLeave = () => {
                                 </Container>
                             </DialogContentText>
                         </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleSubmitLeave} variant="contained">
-                                Request
-                            </Button>
-                            <Button onClick={handleClose} autoFocus variant="outlined">
-                                Cancel
-                            </Button>
-                        </DialogActions>
+
+                        <div class="xc">
+                            <DialogActions>
+                                <Button onClick={handleSubmitLeave} variant="contained" >
+                                    Request
+                                </Button>
+                                <Button onClick={handleClose} autoFocus variant="outlined">
+                                    Cancel
+                                </Button>
+                            </DialogActions>
+                        </div>
                     </Dialog>
                 </div>
 
