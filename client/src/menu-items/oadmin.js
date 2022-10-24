@@ -22,20 +22,20 @@ const pagesOrgAdmin = {
         
         {
             id: 'orgadminHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/orgadmin/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
-        {
-            id: 'leaveconfig',
-            title: 'Leave Configuration',
-            type: 'item',
-            url: '/orgadmin/leaveconfig',
-            icon: icons.IconAccessibleOff,
-            breadcrumbs: false
-        },    
+        // {
+        //     id: 'leaveconfig',
+        //     title: 'Leave Configuration',
+        //     type: 'item',
+        //     url: '/orgadmin/leaveconfig',
+        //     icon: icons.IconAccessibleOff,
+        //     breadcrumbs: false
+        // },    
         {
             id: 'orgmanageuser',
             title: 'Manage User',

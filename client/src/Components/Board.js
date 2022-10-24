@@ -2,26 +2,43 @@ import React, { useState, useEffect, useRef } from 'react';
 // import {CheckSquare, Clock, MoreHorizontal,Calendar,List,Tag,Trash,Type,X, } from "react-feather";
 
 import './styles/board.css';
+// import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import axios from 'axios';
 
 function Board(PropTypes) {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [title, updateTitle] = useState("");
+    const [desc, updateDesc] = useState(0);
+  const [date, updateDate] = useState("");
 
+  const addCard = () => {
+    axios.post("http://localhost:3001/create", {
+      id: title,
+      name: desc,
+      age: date,
+      
+    })
+  };
     return (
         <div className="board">
             <div className="board_header">
                 <p className="board_header_title">
                     {PropTypes.board?.title}
+                 
                     <span>{PropTypes.board?.cards?.length || 0}</span>
                 </p>
                 <div className="board_header_title_more" onClick={() => setShowDropdown(true)}>
-           
+       
             {showDropdown && (
-              <Dropdown
-               class="board_dropdown"
-                onClose={() => setShowDropdown(false)}
+
+              
+              <>
+             < DiAptana
+                class="board_dropdown"
+
               >
-                <p onClick={() => PropTypes.removeBoard()}>Delete Board</p>
-              </Dropdown>
+                {/* <p onClick={() => PropTypes.removeBoard()}>Delete Board</p> */}
+              </DiAptana></>
             )}
           </div>
         </div>
@@ -153,10 +170,7 @@ function Board(PropTypes) {
       "#a8193d",
       "#4fcc25",
       "#1ebffa",
-      "#8da377",
-      "#9975bd",
-      "#cf61a1",
-      "#240959",
+     
     ];
   
     const [selectedColor, setSelectedColor] = useState();
@@ -329,9 +343,9 @@ function Board(PropTypes) {
             
               <p>Tasks</p>
             </div>
-            <div className="cardinfo_box_progress-bar">
+            <div >
               <div
-                className="cardinfo_box_progress"
+             
                 style={{
                   width: `${calculatePercent()}%`,
                   backgroundColor: calculatePercent() === 100 ? "limegreen" : "",
@@ -462,9 +476,7 @@ function Board(PropTypes) {
 }
 /******************************************Create********************* */
 function Create() {
-  const [boards, setBoards] = useState(
-    JSON.parse(localStorage.getItem("prac-kanban")) || []
-  );
+  
 
   const [targetCard, setTargetCard] = useState({
     bid: "",
@@ -520,6 +532,7 @@ function Create() {
   };
 
   const dragEnded = (bid, cid) => {
+    
     let s_boardIndex, s_cardIndex, t_boardIndex, t_cardIndex;
     s_boardIndex = boards.findIndex((item) => item.id === bid);
     if (s_boardIndex < 0) return;
@@ -573,7 +586,7 @@ function Create() {
   };
 
   useEffect(() => {
-    localStorage.setItem("prac-kanban", JSON.stringify(boards));
+    localStorage.setItem("", JSON.stringify(boards));
   }, [boards]);
 
   return (
@@ -613,3 +626,4 @@ function Create() {
 
 export {Board,Editable};
 
+     

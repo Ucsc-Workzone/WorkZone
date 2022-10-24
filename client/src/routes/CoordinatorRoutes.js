@@ -13,7 +13,7 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-
+const CoordinatorProjectinit = Loadable(lazy(() => import('views/Coordinator/[projectid]')));
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/Home')));
 
@@ -124,6 +124,15 @@ const CoordinatorRoutes = {
                 {
                     path: 'profile',
                     element: <CoordinatorProfile />
+                }
+            ]
+        },
+        {
+            path: 'coordinator',
+            children: [
+                {
+                    path: 'projectinit/:projectid',
+                    element: <CoordinatorProjectinit />
                 }
             ]
         }

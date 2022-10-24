@@ -5,9 +5,10 @@ import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/Home')));
+
 // ==============================|| OrgAdmin ROUTING ||============================== //
 const OrgAdminDashboard = Loadable(lazy(() => import('views/OrgAdmin/Dashboard')));
-// const OrgAdminFeedback = Loadable(lazy(() => import('views/OrgAdmin/Feedback')));
+const OrgAdminLeave= Loadable(lazy(() => import('views/OrgAdmin/LeaveConfig')));
 const OrgAdminRegister = Loadable(lazy(() => import('views/OrgAdmin/Register')));
 const ManageUser = Loadable(lazy(() => import('views/OrgAdmin/ManageUser')));
 const Annoucements = Loadable(lazy(() => import('views/OrgAdmin/Annoucements')));
@@ -48,15 +49,15 @@ const OrgAdminRoutes = {
                 }
             ]
         },
-        // {
-        //     path: 'orgadmin',
-        //     children: [
-        //         {
-        //             path: 'feedbacks',
-        //             element: <OrgAdminFeedback />
-        //         }
-        //     ]
-        // },
+        {
+            path: 'orgadmin',
+            children: [
+                {
+                    path: 'leaveconfig',
+                    element: <OrgAdminLeave />
+                }
+            ]
+        },
         {
             path: 'orgadmin',
             children: [

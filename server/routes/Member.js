@@ -67,5 +67,12 @@ else{
 
 });
 
-
+router.post("/createtodo", (req, res) => {
+   const title = req.body.title;
+   const desc = req.body.desc;
+   const date = req.body.date;
+  res.json(title)
+ 
+  
+ });
 module.exports = router;

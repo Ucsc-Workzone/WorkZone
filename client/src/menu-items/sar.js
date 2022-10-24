@@ -22,7 +22,7 @@ const pagesSAR = {
 
         {
             id: 'SARDashboard',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/sar/dashboard',
             icon: icons.IconLayoutDashboard,

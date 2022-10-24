@@ -17,12 +17,12 @@ import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurned
 import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutlined';
 
 const HeadList = {
-    head1:"No. of Members",
-    head2:"Ongoing Projects",
+    head1:"No. of Registered Members",
+    head2:"No. of Registered Division",
 }
 var CountList = {
-    count1:45,
-    count2:10,
+    count1:10,
+    count2:1,
 }
 
 const Dashboard = () => {

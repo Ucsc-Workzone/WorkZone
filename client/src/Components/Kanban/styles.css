@@ -1,0 +1,53 @@
+.card-contetnt{
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.devide1{
+    /* color: blueviolet;
+    background-color: brown; */
+    border-color: rgb(8, 97, 231);
+    height: 2px;
+    padding: 5px
+}
+
+.devide2{
+    /* color: blueviolet;
+    background-color: brown; */
+    border-color: rgb(255, 190, 12);
+    padding: 5px
+}
+.devide3{
+    /* color: blueviolet;
+    background-color: brown; */
+    border-color: rgb(45, 231, 8);
+    padding: 5px
+}
+
+.chipcon{
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #E3F9EA;
+    color: #5ACB74;
+}
+.chipcon1{
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #e3f6f9;
+    color: #5376d7;
+}
+.chipcon2{
+    margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #F9EEE3;
+    color: #D79353;
+}

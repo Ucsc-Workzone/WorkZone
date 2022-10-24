@@ -12,7 +12,8 @@ import Divider from '@mui/material/Divider';
 import HeaderCounter from 'Components/HeaderCounter2';
 import WorkTable from '../../Components/WorkReportMember';
 import TeamTable from 'Components/TeamList';
-
+import {useState,useEffect} from 'react';
+import axios from 'axios';
 
 import Calender from 'Components/Calender';
 import PendingCounter from 'Components/PendingCounter';
@@ -38,14 +39,17 @@ var CountList = {
 }
 
 const CoordinatorWorkrecords = () => {
+
+    useEffect(()=>{
+        
+
+    })
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-record-container">
                 <div className="workcontainer-up" >
                     <div className='up-left-container' display="flex">
-                        <Typography variant="h3" component="h4" className="" style={{marginBottom:"20px",marginTop:"20px"}}>
-                               Pending Work Records       
-                        </Typography>
+                      
                         <div className="record-pending-container"> 
                             <PendingWorkMember />
                         </div>

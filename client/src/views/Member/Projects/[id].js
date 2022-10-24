@@ -1,22 +1,29 @@
+import App_todo from 'App_todo';
+import KanbanBorad from 'Components/Kanban/Index';
 import ProjectSummary from 'Components/ProjectSummary';
+import TaskSummary from 'Components/TaskSummary';
 import TeamMember from 'Components/TeamMember';
 import '../styles/Projects.css';
 const Project = () => {
     return (
         <>
-            <div className="main-conatiner">
-                <div className="todo-conatiner">
-                    <h2>To do</h2>
+            <div className="mainConmain">
+                <div className="project-summary">
+                    <ProjectSummary />
                 </div>
-                <div className="sub-conatiner">
-                    <div className="project-summary">
-                        <ProjectSummary />
+                <div className="main-conatiner">
+                    <div className="todo-conatiner">
+                        <KanbanBorad />
                     </div>
-                    <div className="member-summary">
+                    <div className="sub-conatiner">
+                    <div className="task-summary">
+                        <TaskSummary />
+                    </div>
+                        <div className="member-summary">
+                            <TeamMember />
+                        </div>
                         
-                        <TeamMember />
                     </div>
-                    <div className="task-summary"></div>
                 </div>
             </div>
         </>

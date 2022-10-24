@@ -61,21 +61,32 @@ const FirebaseLogin = ({ ...others }) => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+
+
     const handleLogin = async () => {
         const email = document.getElementById('outlined-adornment-email-login').value;
         const password = document.getElementById('outlined-adornment-password-login').value;
-        console.log(email);
+
+        let data = JSON.stringify({
+            username: email,
+            password: password
+        });
+
+        console.log(data);
+
         axios
-            .post('http://localhost:5000/api/auth/login', {
-                username: email,
-                password: password
-            })
+            .post('http://localhost:5000/api/auth/login', data, {headers: {'Content-Type': 'application/JSON'}})
             .then((response) => {
+
                 const data = response.data;
                 console.log(data);
+
                 if (!data['accessToken']) {
                     alert(data['error']);
+                    
                 } else {
+
                     setLogin(true);
                     //  window.open('http://localhost:3000/#/register');
 
@@ -85,22 +96,32 @@ const FirebaseLogin = ({ ...others }) => {
                     localStorage.setItem('name', data['firstrName'] + ' ' + data['lastName']);
                     localStorage.setItem('image', data['image']);
                     localStorage.setItem('loginStatus', true);
+
                     const userrole = data['userRole'];
+
+                    if(userrole == 'coordinator'){
+                        navigate('./coordinator/dashboard')
+
+                        console.log("hello");
+                    }
 
                     {
                         userrole == 'member' && navigate('/member/dashboard');
                     }
                     {
-                        userrole == 'admin' && navigate('/admin/home');
+                        userrole == 'sysadmin' && navigate('/sysadmin/dashboard');
                     }
                     {
-                        userrole == 'director' && navigate('/director/home');
+                        userrole == 'orgadmin' && navigate('/orgadmin/dashboard');
                     }
                     {
-                        userrole == 'sar' && navigate('/sar/home');
+                        userrole == 'director' && navigate('/director/dashboard');
                     }
                     {
-                        userrole == 'coordinator' && navigate('/coordinator/home');
+                        userrole == 'sar' && navigate('/sar/dashboard');
+                    }
+                    {
+                        userrole == 'coordinator' && navigate('/coordinator/dashboard');
                     }
                 }
             });
@@ -170,7 +191,7 @@ const FirebaseLogin = ({ ...others }) => {
             <Formik
                 initialValues={{
                     email: '',
-                    password: null,
+                    password: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
