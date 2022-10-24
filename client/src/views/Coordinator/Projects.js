@@ -70,7 +70,7 @@ const CoordinatorProjects = () => {
                 
             </div>
 
-            <div className="leavecontainer-right">
+            {/* <div className="leavecontainer-right">
                 <div className="calender-container">
                     <Calender />
                 </div>
@@ -98,7 +98,7 @@ const CoordinatorProjects = () => {
                       <TeamsCardvieward />        
                     </Box>
                 </div>
-            </div>
+            </div> */}
         </div>
         </Box>
     </>

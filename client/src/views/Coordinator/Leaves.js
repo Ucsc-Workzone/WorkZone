@@ -119,12 +119,12 @@ const CoordinatorLeaves = () => {
                             <LeaveHistory />
                         </div>
                     </div>
+                {/* <div className="leavecontainer-right">
+                    <div className="calender-container">
+                        <Calender />
+                    </div>
+                    {/* <div className="onlineuser-container">
 
-                    <div className="leavecontainer-right">
-                        <div className="calender-container">
-                            <Calender />
-                        </div>
-                        {/* <div className="onlineuser-container">
                         <Typography variant="h3" component="h4" textAlign={'center'}>
                             Pending Leave Requests
                         </Typography>
@@ -132,8 +132,8 @@ const CoordinatorLeaves = () => {
                           <PendingLeavescard />        
                         </Box>
                     </div> */}
-                    </div>
-                </div>
+                {/* </div> */} 
+            </div>
             </Box>
         </>
     );
