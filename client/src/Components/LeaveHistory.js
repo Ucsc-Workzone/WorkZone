@@ -194,6 +194,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const LeaveHistoryTable = () => {
   
+  const [opendetails, setOpenDet] = React.useState(false);
+  const [entry, sententr] = React.useState(1);
+
+  const handleClickOpenDet = () => {
+
+    setOpenDet(true);
+  };
+  const handleCloseDet = () => {
+    setOpenDet(false);
+  };
+  
   const [page, setPage] = React.useState(0);
   
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
