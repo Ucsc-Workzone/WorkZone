@@ -118,7 +118,7 @@ const NoLeaveLoad = ({ ...others }) => {
     return (  
         <>
             <Box sx={{display:'flex', width:"100%", backgroundColor:'white', borderRadius:"10px", padding:"10px"}} >
-                <IconAdjustments width={50} height={50} stroke={'#6f32be'}/><Typography variant='h2' sx={{padding:"10px"}}>UCSC E-Learning Centre<Chip color="warning" label="No Configuration" sx={{marginLeft:'20px'}} icon={<SettingsOutlinedIcon />} /></Typography>
+                <IconAdjustments width={50} height={50} stroke={'#6f32be'}/><Typography variant='h2' sx={{padding:"10px"}}>Leave Configuration Panel<Chip color="warning" label="No Configuration" sx={{marginLeft:'20px'}} icon={<SettingsOutlinedIcon />} /></Typography>
             </Box>
             <Snackbar open={openpop} autoHideDuration={6000} onClose={handlepopClose} anchorOrigin={{ vertical: 'top',horizontal: 'right' }}>
                 
@@ -133,9 +133,9 @@ const NoLeaveLoad = ({ ...others }) => {
                     Something went wrong ,please try again later!
                     </Alert>
                 } */}
-                {
+                {/* {
                     type1==null && <></>
-                }
+                } */}
             </Snackbar>
             <Box sx={{display:'flex', width:"100%" }}>
                 <Box sx={{width:'70%', paddingTop:"30px", textAlign:"left", justifyContent:"left", alignItems:"left" , backgroundColor:'white', borderRadius:'15px', marginTop:"30px"}}>

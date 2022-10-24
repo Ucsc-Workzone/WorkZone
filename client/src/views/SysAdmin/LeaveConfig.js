@@ -6,7 +6,7 @@ import HaveLeaveConfig from '../../Components/HaveLeaveConfig';
 
 const ConfigLeaves = () => {
 
-     const [states, setStates] = React.useState(0);
+     const [states, setStates] = React.useState(1);
 
      // axios
      //          .post('http://localhost:5000/api/leave/isLeaveConfig', {

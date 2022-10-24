@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid  from '@mui/material/Grid';
 import LeaveList from './LeaveTypeList';
+import LeaveSetList from './LeaveTypeSet';
 import { Typography, Stack, Chip  } from '@mui/material';
 import Button from '@mui/material/Button';
 import { makeStyles } from '@material-ui/core';
@@ -93,26 +94,52 @@ const HaveLeaveLoad = ({ ...others }) => {
     return (  
         <>
         <Box sx={{display:'flex', width:"100%", backgroundColor:'white', borderRadius:"10px", padding:"10px"}} >
-            <IconAdjustments width={50} height={50} stroke={'#6f32be'}/><Typography variant='h2' sx={{padding:"10px"}}>UCSC E-Learning Centre<Chip color="warning" label="No Configuration" sx={{marginLeft:'20px'}} icon={<SettingsOutlinedIcon />} /></Typography>
+            <IconAdjustments width={50} height={50} stroke={'#6f32be'}/><Typography variant='h2' sx={{padding:"10px"}}>Leave COnfiguration Panel<Chip color="success" label="Configuration is fixed" sx={{marginLeft:'20px'}} icon={<SettingsOutlinedIcon />} /></Typography>
         </Box>
         <Snackbar open={openpop} autoHideDuration={6000} onClose={handlepopClose} anchorOrigin={{ vertical: 'top',horizontal: 'right' }}>
             { 
                 type1 && 
                 <Alert onClose={handlepopClose} variant="filled"  severity="success" sx={{ width: '100%' }}  >
-                This is a success message!
+                    Configuration Successfull!
                 </Alert>
              } 
-             { 
+             {/* { 
                 !type1 && <Alert onClose={handlepopClose} variant="filled"  severity="warning" sx={{ width: '100%' }}  >
                 Something went wrong ,please try again later!
                 </Alert>
             }
             {
                 type1==null && <></>
-            }
+            } */}
         </Snackbar>
-        <Box sx={{display:'flex', width:"100%" }}>
-            <Box sx={{width:'70%', paddingTop:"30px", textAlign:"left", justifyContent:"left", alignItems:"left" , backgroundColor:'white', borderRadius:'15px', marginTop:"30px"}}>
+        <Box sx={{width:"100%" }}>
+            <Box sx={{width:'100%',paddingTop:"30px", justifyContent:"center", display:"flex"}}>
+                <Box sx={{width:'100%',paddingTop:"30px", display:"flex"}}>
+                    <Box sx={{width:'70%'}}> 
+                        <Stack justifyContent="right">
+                            <Box>
+                                <Typography variant='h4'> Fixed Configuration</Typography>
+                            </Box>
+                            {/* <Box className='start_config' sx={{textAlign:"center", padding:"20px" , backgroundColor:'white', borderRadius:'15px',boxShadow:"5px" }}> */}
+                            <Box className='start_config' sx={{textAlign:"center", padding:"20px", width:"100%" }}>
+                                <LeaveSetList />
+                            </Box>
+                            {/* </Box> */}
+                        </Stack>
+                    </Box>
+                    <Box sx={{width:'30%'}}>
+                        <Stack justifyContent="left">
+                            <Box>
+                                <Typography variant='h4'>Update configuration</Typography>
+                            </Box>
+                            {/* <Box className='start_config' sx={{textAlign:"center", padding:"20px" , backgroundColor:'white', borderRadius:'15px',boxShadow:"5px" }}> */}
+                                <Button className={classes.button}><IconPlus width={100} height={100}  fontWeight={1000} onClick={handleClickOpen}/></Button>
+                            {/* </Box> */}
+                        </Stack>
+                    </Box>
+                </Box>    
+            </Box>
+            <Box sx={{width:'100%', paddingTop:"30px", textAlign:"left", justifyContent:"left", alignItems:"left" , backgroundColor:'white', borderRadius:'15px', marginTop:"30px"}}>
                 <Stack>
                     <Box>
                         <Typography variant='h3' sx={{paddingLeft:"30px"}} >Available Options to Configure</Typography>
@@ -122,16 +149,7 @@ const HaveLeaveLoad = ({ ...others }) => {
                     </Box>
                 </Stack>
             </Box>
-            <Box sx={{width:'30%',paddingTop:"30px", justifyContent:"center", display:"flex"}}>
-                <Stack justifyContent="right">
-                    <Box>
-                        <Typography variant='h4'>Add a configureation</Typography>
-                    </Box>
-                    {/* <Box className='start_config' sx={{textAlign:"center", padding:"20px" , backgroundColor:'white', borderRadius:'15px',boxShadow:"5px" }}> */}
-                        <Button className={classes.button}><IconPlus width={100} height={100}  fontWeight={1000} onClick={handleClickOpen}/></Button>
-                    {/* </Box> */}
-                </Stack>
-            </Box>
+           
             <React.Fragment>
                 <Dialog
                     fullWidth={fullWidth}
@@ -203,8 +221,8 @@ const HaveLeaveLoad = ({ ...others }) => {
 
                     
                     <Box
-                        noValidate
-                        component="form"
+                        // noValidate
+                        // component="form"
                         sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -240,8 +258,8 @@ const HaveLeaveLoad = ({ ...others }) => {
                     <Divider variant="inset"  />
 
                     <Box
-                        noValidate
-                        component="form"
+                        // noValidate
+                        // component="form"
                         sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -279,8 +297,8 @@ const HaveLeaveLoad = ({ ...others }) => {
                     </Box>
                     <Divider variant="inset"  />
                     <Box
-                        noValidate
-                        component="form"
+                        // noValidate
+                        // component="form"
                         sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -315,8 +333,8 @@ const HaveLeaveLoad = ({ ...others }) => {
                     </Box>
                     <Divider variant="inset"  />
                     <Box
-                        noValidate
-                        component="form"
+                        // noValidate
+                        // component="form"
                         sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -352,7 +370,7 @@ const HaveLeaveLoad = ({ ...others }) => {
                     </Box>
                     <Divider variant="inset"  />
                     <Box
-                        noValidate
+                        // noValidate
                         component="form"
                         sx={{
                         display: 'flex',
