@@ -15,7 +15,7 @@ import TeamTable from 'Components/TeamList';
 
 
 import Calender from 'Components/Calender';
-import PendingCounter from 'Components/PendingCounter';
+import PendingCounter from 'Components/PendingCounterWR';
 import PendingList from 'Components/WRPendingList';
 
 const Item = styled(Paper)(({ theme }) => ({
