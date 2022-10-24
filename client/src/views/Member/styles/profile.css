@@ -43,3 +43,29 @@
     margin-top: 10px;
     text-align: justify;
 }
+
+.leave {
+    display: flex;
+}
+
+.leave .xc {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.one {
+    background-color: #1E88E5;
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-right: 20px;
+
+}
+
+.xcc {
+    color: white;
+}

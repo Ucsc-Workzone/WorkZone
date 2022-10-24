@@ -13,12 +13,28 @@ const userProfile = () => {
 
       <div className='left'>
 
+        <div className='leave'>
+
+          <div className='one'>
+            <span className='xc'>1</span>
+            <span className='xcc'><br></br>Leaves Taken</span>
+
+          </div>
+
+          <div className='one'>
+            <span className='xc'>11</span>
+            <span className='xcc'><br></br>Leaves Remaining</span>
+
+          </div>
+
+        </div>
+
         <h1>Name : Bimsara Kulasekara</h1>
         <h1>Age : 22 Yrs</h1>
         <h1>Gender : Male</h1>
         <h1>Mobile : 0785619959</h1>
         <h1>Address : No. 123/A Mirigama</h1>
-        <h1>Bio : I’m a professional developer with experience working with technologies like Native android development, Mobile cross-platform development, backend/frontend development and Firebase & Google Cloud platforms. </h1>
+        <h1>Bio : I’m a professional developer with experience working with technologies like Native android development, Mobile cross-platform development, backend/frontend development and Firebase & Google Cloud platform. </h1>
 
 
 
