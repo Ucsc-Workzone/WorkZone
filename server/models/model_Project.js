@@ -117,4 +117,28 @@ module.exports = {
       return "error";
     }
   },
+
+  async saveCardMember(data){
+    try {
+      sql=`INSERT INTO subactivity (activityId,projectId,subActName,weight,project_stage,description) VALUES (${data['activity_id']},${data['project_id']},'${data['taskName']}','${data['weight']}',1,'${data['taskDes']}')`;
+      const rows = await dbconnection.query(sql);
+      
+               
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
+  async getCoordinatorCards(data){
+    try {
+      sql=`select * from projects where centerId=1 and completion=0;`;
+      const rows = await dbconnection.query(sql);
+      
+               
+      return rows;
+    } catch {
+      return "error";
+    }
+  },
+  
 };
