@@ -33,7 +33,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { makeStyles } from '@material-ui/core';
-import userimg from './../assets/images/user.png'
+import userimg from './../assets/images/user.png';
 
 
 import AppBar from '@mui/material/AppBar';
