@@ -75,27 +75,6 @@ const columns = [
     
 ];
 
-function createData( no, name, date, duration, status, action) {
-  return { no, name, date, duration, status, action };
-}
-
-const rows = [
-  createData('1', 'Pamodha Mahagamage','20/08/2022', '3', 1, 1.1 ),
-  createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
-  createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
-  createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
-  createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
-  createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
-  // createData('7', 'Chamara Amaraweera','15/08/2022', '3', 2, 7.1  ),
-  // createData('8', 'Pramaodya Gamage','15/08/2022', '5', 2, 8.1  ),
-  // createData('9', 'Dhanika Herath','12/08/2022', '1', 1, 9.1 ),
-  // createData('10', 'Nadun Sathsara','11/08/2022', '1', 1, 10.1  ),
-  // createData('11', 'Nipun Gunawardana','11/08/2022', '2', 1, 11.1  ),
-  // createData('12', 'Thilini Perera','10/08/2022', '3', 1, 12.1 ),
-  // createData('13', 'Dasun perera','10/08/2022', '4', 1, 13.1 ),
-  // createData('14', 'Vikum Pushpakumaea','09/08/2022', '2', 2, 14.1  ),
-  // createData('15', 'Danuka Withana','09/08/2022', '2', 2, 15.1  ),
-]
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {

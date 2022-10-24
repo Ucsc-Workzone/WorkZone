@@ -3,10 +3,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import {Typography } from '@mui/material';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import FaceIcon from '@mui/icons-material/Face';
 import CircleIcon from '@mui/icons-material/Circle';
+import Box from '@mui/material/Box';
 
 import Avatar from '@mui/material/Avatar';
 
@@ -23,15 +25,20 @@ const OnlineUser = () => {
     return (
         <>
             <List sx={{ width: '100%', maxWidth: 580, bgcolor: 'background.paper' }}>
+            <Box style={{ display: 'flex', justifyContent: 'right' }}>
+                <Button variant="contained"><Typography className="seeall">All Center Members</Typography></Button>
+            </Box>
                 {picArray.map((user) => (
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar src={require(`../assets/images/Profile/${user[2]}`)} >B</Avatar>
                         </ListItemAvatar>
                         <ListItemText primary={user[1]} />
-                        <Chip icon={<FaceIcon />} label="Online" variant="outlined" style={{color:'green'}} />
+                        {/* <Chip icon={<FaceIcon />} label="Online" variant="outlined" style={{color:'green'}} /> */}
                     </ListItem>
                 ))}
+
+                
             </List>
         </>
     );

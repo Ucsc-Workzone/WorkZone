@@ -6,9 +6,9 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import leaveimg from './../assets/images/leaves.png'
+import leaveimg from './../assets/images/next.png'
 
-const LeaveTypes = () => {
+const LeaveTypeSet = () => {
     return ( 
         <>
             <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
@@ -20,15 +20,14 @@ const LeaveTypes = () => {
                     primary="Annual Leaves"
                     secondary={
                         <React.Fragment>
-                        <Typography
-                            sx={{ display: 'inline' }}
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                        >
-                            Maximum 15 days per year
-                        </Typography>
-                        {" — The employee is permitted to 14 days of annual leave competed with the full salary for each concluded year of serivce.Hence,employees are not entitled to annual leave on the first year of employement."}
+                            <Typography
+                                sx={{ display: 'inline',textAlign: 'right' }}
+                                component="span"
+                                variant="body2"
+                                color="text.primary"
+                            >
+                                15 days per year
+                            </Typography>
                         </React.Fragment>
                     }
                     />
@@ -48,9 +47,8 @@ const LeaveTypes = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            Most of the time complete day as a holiday on Satrday
+                            Full Day
                         </Typography>
-                        {" — An employee who works for 28hours or more in a given week is eligible for one and half days as weekly holiday with full remuneration, which should be granted on such week or the week immediately succeeding."}
                         </React.Fragment>
                     }
                     />
@@ -70,9 +68,8 @@ const LeaveTypes = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            Maximum 15 days per year
+                            15 days per year
                         </Typography>
-                        {" — Sick leave is time off given by the company to allow employees to recover from an illness and take care of their health."}
                         </React.Fragment>
                     }
                     />
@@ -92,9 +89,8 @@ const LeaveTypes = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            Maximum up to 7 to 17 Weeks per year
+                            10 Weeks per year
                         </Typography>
-                        {' — From taking care of the newborn to recovering from the delivery, maternity leave is an important time for new mothers.  '}
                         </React.Fragment>
                     }
                     />
@@ -113,9 +109,8 @@ const LeaveTypes = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            
+                            Allowed
                         </Typography>
-                        {' Public holidays with pay for the shop and office employees '}
                         </React.Fragment>
                     }
                     />
@@ -127,4 +122,4 @@ const LeaveTypes = () => {
      );
 }
  
-export default LeaveTypes;
+export default LeaveTypeSet;

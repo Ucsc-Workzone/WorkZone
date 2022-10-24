@@ -3,9 +3,26 @@ const router = require("express").Router();
 const { createToken, validToken } = require("./JWT");
 const {verifyuserRole,verifyuser}=require("../utils/authenticate")
 const { db } = require("../utils/index");
-const { getLeave,requestLeave } = require("../models/model_Leave");
+const { getLeave,requestLeave, configLeave, isConfig } = require("../models/model_Leave");
 const jwt_token = require("jwt-decode");
 
+router.post("/leaveConfig", async (req, res) => {
+  const { annual, weekly, sick, maternity, mercantile } = req.body;
+
+  const result=await configLeave(req);
+
+  res.json(result)
+
+});
+
+router.post("/isLeaveConfig", async (req, res) => {
+  const { idLeaveConfig } = req.body;
+
+
+   const result=await isConfig(req)
+ 
+  res.json(result)
+});
 
 router.post("/getLeave", async (req, res) => {
   const userid = parseInt(req.body["userId"]);
