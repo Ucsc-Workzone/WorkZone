@@ -1,63 +1,55 @@
 var dbconnection = require("../utils/index");
 module.exports = {
   async getCarddata(data) {
-    data=[];
+    data = [];
     try {
-     sql=`SELECT COUNT(userid) as memberCount
+      sql = `SELECT COUNT(userid) as memberCount
      FROM user
-     WHERE userRole='member' `
-     const rows = await dbconnection.query(sql);
+     WHERE userRole='member' `;
+      const rows = await dbconnection.query(sql);
 
-     
-     data.push(rows[0])
+      data.push(rows[0]);
 
-     sql1=`SELECT COUNT(projectId) as projectCount
+      sql1 = `SELECT COUNT(projectId) as projectCount
      FROM projects
-     WHERE completion=0 `
-     const rows1 = await dbconnection.query(sql1);
-     data.push(rows1[0])
-     sql2=`SELECT COUNT(projectId) as projectCountf
+     WHERE completion=0 `;
+      const rows1 = await dbconnection.query(sql1);
+      data.push(rows1[0]);
+      sql2 = `SELECT COUNT(projectId) as projectCountf
      FROM projects
-     WHERE completion=1 `
-     const rows2 = await dbconnection.query(sql2);
-     data.push(rows2[0])
-     return data;
-      } 
-     catch (err) {
-    
-    }
+     WHERE completion=1 `;
+      const rows2 = await dbconnection.query(sql2);
+      data.push(rows2[0]);
+      return data;
+    } catch (err) {}
   },
-   async getLeave(){
-    try{
-sql=`SELECT COUNT(leaveId) as leaveCount
+  async getLeave() {
+    try {
+      sql = `SELECT COUNT(leaveId) as leaveCount
 FROM leaverequest
 WHERE status='pending'`;
-const row=await dbconnection.query(sql);
-return row[0];
+      const row = await dbconnection.query(sql);
+      return row[0];
+    } catch {}
+  },
+  async getLeavetable() {
+    try {
+      sql = `select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate desc limit 3;`;
+      const row = await dbconnection.query(sql);
+      return row[0];
+    } catch {
+      return "error";
     }
-    catch{
+  },
+  async getLeavetableall() {
+    try {
+      sql = `select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate ;`;
+      const row = await dbconnection.query(sql);
+      return row[0];
+    } catch {
+      return "error";
+    }
 
-    }
-   },
-   async getLeavetable(){
-    try{
-sql=`select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate desc limit 3;`;
-const row=await dbconnection.query(sql);
-return row[0];
-    }
-    catch{
-return "error";
-    }
-   },
-   async getLeavetableall(){
-    try{
-sql=`select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate ;`;
-const row=await dbconnection.query(sql);
-return row[0];
-    }
-    catch{
-return "error";
-    }
    }
    ,
    async getLeavesummary(){
@@ -75,12 +67,27 @@ sql2=`select count(leaveId) as leaveRejected from leaverequest where Month(fromD
 const row2=await dbconnection.query(sql2);
 data.push(row2[0]);
 return data;
+
     }
     catch{
-return "error";
+        
     }
-   }
-   
+  },
+  async getCarddataW(data) {
+    data = [];
+    try {
+      sql = `select count(recordId) as count from workrecord where status=1 `;
+      const rows = await dbconnection.query(sql);
 
-  
+      return rows[0];
+    } catch (err) {}
+  },
+  async getTable(data) {
+    try {
+      sql = `select * FROM workrecord ,user where workrecord.status=1 and user.userid=workrecord.memberId `;
+      const rows = await dbconnection.query(sql);
+
+      return rows[0];
+    } catch (err) {}
+  },
 };

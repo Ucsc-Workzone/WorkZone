@@ -1,6 +1,6 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
-const {getCarddata,getLeave,getLeavetable,getLeavetableall,getLeavesummary}=require('../models/model_coordinator')
+const {getCarddata,getLeave,getLeavetable,getLeavetableall,getLeavesummary,getTable,getCarddataW}=require('../models/model_coordinator')
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");
 const { verify } = require("crypto");
@@ -41,5 +41,13 @@ router.post("/leavesummary", async (req,res) => {
  res.json(result)
 });
 
+router.post("/getcardDataWR", async (req, res) => {
+  const status = await getCarddataW(req.body);
+  res.json(status);
+}),
 
+router.post("/getTable", async (req, res) => {
+  const status = await getTable(req.body);
+  res.json(status);
+}),
 module.exports = router;
