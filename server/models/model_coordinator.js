@@ -63,16 +63,16 @@ return "error";
    async getLeavesummary(){
     try{
       data=[];
-sql=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='pending'`;
+sql=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='Pending'`;
 const row=await dbconnection.query(sql);
 data.push(row[0]);
 
-sql1=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='Accepted'`;
-const row1=await dbconnection.query(sql);
+sql1=`select count(leaveId) as leaveAccept from leaverequest where Month(fromDate)=10 and status='Accepted'`;
+const row1=await dbconnection.query(sql1);
 data.push(row1[0]);
 
-sql2=`select count(leaveId) as leavepending from leaverequest where Month(fromDate)=10 and status='Rejected'`;
-const row2=await dbconnection.query(sql);
+sql2=`select count(leaveId) as leaveRejected from leaverequest where Month(fromDate)=10 and status='Rejected'`;
+const row2=await dbconnection.query(sql2);
 data.push(row2[0]);
 return data;
     }

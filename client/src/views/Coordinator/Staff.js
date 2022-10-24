@@ -36,10 +36,10 @@ const CoordinatorStaff = () => {
     return ( 
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-staff-container">
-                <div className="container-up">
+                {/* <div className="container-up">
                     <Typography variant="h3" component="h4" className="" coloir="blue" paddingBottom={"10px"} >Center of E-Learning</Typography>
                     <HeaderCounter headlist={HeadList} countlist={CountList} />
-                </div>
+                </div> */}
 
                 <div className="container-down">
                     <div className="staff-container">
