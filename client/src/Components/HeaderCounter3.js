@@ -18,7 +18,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {countlist.count1}
+                            {/* {countlist.count2} */}
                         </Typography>
                     </Box>
                 </Grid>
@@ -30,7 +30,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {countlist.count2}
+                            {/* {countlist.count2} */}
                         </Typography>
                     </Box>
                 </Grid>
@@ -42,7 +42,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {countlist.count3}
+                            {/* {countlist.count3} */}
                         </Typography>
                     </Box>
                 </Grid>
