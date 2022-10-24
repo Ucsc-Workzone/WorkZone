@@ -69,6 +69,9 @@ data.push(row2[0]);
 return data;
 
     }
+    catch{
+        
+    }
   },
   async getCarddataW(data) {
     data = [];
