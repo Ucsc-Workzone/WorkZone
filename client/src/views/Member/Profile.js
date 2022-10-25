@@ -5,6 +5,9 @@ import './styles/profile.css';
 import coverimg from '../../assets/images/cover.jpg';
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
 const userProfile = () => {
   return (<>
@@ -46,8 +49,30 @@ const userProfile = () => {
 
 
       </div>
+
       <div className='right'>
-        <h1>Name : Bimsara Kulasekara</h1>
+
+
+        <div className='projects'>
+          <div className='left'>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <br></br>
+
+
+            <h1>Mobile App Development</h1></div>
+          <div className='left'>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <br></br>
+
+
+            <h1>Mobile App Development</h1></div>
+        </div>
+
+
 
 
       </div>
