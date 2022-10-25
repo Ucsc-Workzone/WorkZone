@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -20,6 +19,8 @@ import LeaveHistory from 'Components/LeaveHistory';
 
 import BarChart from 'Components/BarChart';
 import { useEffect } from 'react';
+import { useState } from 'react';
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,15 +38,39 @@ const HeadList = {
     head2: 'Approved',
     head3: 'Rejected'
 };
-var CountList = {
-    count1:3,
-    count2:7,
-    count3:3
-}
+
+
 
 const CoordinatorLeaves = () => {
+    const [pendingData,setpendingdata]= useState([]);
+    const [active,setactive]= useState(false);
+    const [cnt2,setcount2]= useState(0);
+    const [cnt3,setcount3]= useState(0);
+    const [cnt1, setcount1] = React.useState(0);
 
-    const [pendingData,setpendingdata]=useState([]);
+
+    const CountList = {
+        count1:cnt1,
+        count2:cnt2,
+        count3:cnt3
+    }
+    
+    function updatesummary(data) {
+        setpendingdata(data);
+
+        const Counters = {
+            count1:data[0][0].leavepending,
+            count2:data[1][0].leaveAccept,
+            count3:data[2][0].leaveRejected
+        }
+        setcount1(Counters.count1);
+        setcount2(Counters.count2);
+        setcount3(Counters.count3);
+
+        setactive(true);
+    }
+    
+
 
     useEffect(()=>{
        leaverequest();
@@ -58,9 +83,7 @@ const CoordinatorLeaves = () => {
         })
         .then((response) => {
             console.log(response.data);
-            setpendingdata(response.data)
-    
-    
+            updatesummary(response.data);
         });
     
     }
@@ -91,9 +114,11 @@ const CoordinatorLeaves = () => {
                 <div className="main-leave-container">
                     <div className="leavecontainer-left">
                         <Typography variant="h2" component="h4" className="" colour="blue" textAlign={'center'}>
-                            AUGUST
+                            OCTOBER
                         </Typography>
-                        <HeaderCounter headlist={HeadList} countList={CountList} />
+                        
+                            <HeaderCounter headlist={HeadList} countList={CountList} />
+                        
                         <div className="chart-container">
                             <Typography variant="h2" component="h3" textAlign={'center'} style={{ color: '#0C518A' }}>
                                 2022

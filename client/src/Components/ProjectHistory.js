@@ -140,9 +140,9 @@ const LeaveHistoryTable = () => {
     <React.Fragment>
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
         <Typography variant="h3" component="h4" className="">
-            Center Project History       
+            Project History       
         </Typography>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDatePicker
                 label="Date"
                 inputFormat="MM/dd/yyyy"
@@ -151,7 +151,7 @@ const LeaveHistoryTable = () => {
                 onChange={handleDateChange}
                 renderInput={(params) => <TextField {...params} />}
                 />
-            </LocalizationProvider>
+            </LocalizationProvider> */}
             <TextField
                 id="search-bar"
                 className="textname"
