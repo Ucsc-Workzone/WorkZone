@@ -103,4 +103,25 @@ return row2[0];
       return rows[0];
     } catch (err) {}
   },
+  async getProjectHistory(){
+    try{
+    sql=`SELECT * FROM crud_contact.projects WHERE completion='1';`;
+    const row2=await dbconnection.query(sql);
+
+    return row2[0];
+    }catch{
+      return "error";
+    }
+   },
+   async getWRHistroy(){
+    try{
+    sql=`SELECT * FROM crud_contact.workrecord WHERE status='3' OR status='4';`;
+    const row2=await dbconnection.query(sql);
+
+    return row2[0];
+    }catch{
+      return "error";
+    }
+   },
+  
 };

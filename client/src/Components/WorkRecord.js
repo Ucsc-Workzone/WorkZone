@@ -30,6 +30,9 @@ import Chip from '@mui/material/Chip';
 import { styled } from '@mui/material/styles';
 import './styles/table.css';
 
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const columns = [
   { id: 'no', 
@@ -74,27 +77,29 @@ const columns = [
 ];
 
 
-function createData( no, name, date, period, status, action) {
-  return { no, name, date, period, status, action };
-}
+function createData( no, fname, lname, date, status, action) {
+  const name = fname + " " +  lname; 
+  var date = date.substr(0,10);
 
-const rows = [
-  createData('1', 'Pamodha Mahagamage', '28/08/2022', '1', 1, 1.1 ),
-  createData('2', 'Bimsara Kulasekara', '28/08/2022', '2', 2, 2.1  ),
-  createData('3', 'Malithi Perera', '27/08/2022', '2', 1, 3.1 ),
-  createData('4', 'Kavindu Gunawardana', '26/08/2022', '4', 2, 4.1 ),
-  createData('5', 'Hiruni Guruge', '25/08/2022', '3', 1, 5.1  ),
-  createData('6', 'Dulanjana Weerasinghe', '22/08/2022', '6', 2, 6.1  ),
-  createData('7', 'Chamara Amaraweera', '07/08/2022', '7', 1, 7.1  ),
-  createData('8', 'Pramaodya Gamage', '05/08/2022', '4', 1, 8.1  ),
-  createData('9', 'Dhanika Herath', '04/08/2022', '3', 2, 9.1  ),
-  createData('10', 'Nadun Sathsara', '04/08/2022', '5', 2, 10.1  ),
-  createData('11', 'Nipun Gunawardana', '02/08/2022', '1', 1, 11.1  ),
-  createData('12', 'Thilini Perera', '01/08/2022', '4', 1, 12.1 ),
-  createData('13', 'Dasun perera', '30/07/2022', '2', 1, 13.1 ),
-  createData('14', 'Vikum Pushpakumaea', '28/07/2022', '1', 1, 14.1  ),
-  createData('15', 'Danuka Withana', '28/07/2022', '1', 1, 15.1  ),
-]
+return { no, name, date, status, action };
+}
+// const rows = [
+//   createData('1', 'Pamodha Mahagamage', '28/08/2022', '1', 1, 1.1 ),
+//   createData('2', 'Bimsara Kulasekara', '28/08/2022', '2', 2, 2.1  ),
+//   createData('3', 'Malithi Perera', '27/08/2022', '2', 1, 3.1 ),
+//   createData('4', 'Kavindu Gunawardana', '26/08/2022', '4', 2, 4.1 ),
+//   createData('5', 'Hiruni Guruge', '25/08/2022', '3', 1, 5.1  ),
+//   createData('6', 'Dulanjana Weerasinghe', '22/08/2022', '6', 2, 6.1  ),
+//   createData('7', 'Chamara Amaraweera', '07/08/2022', '7', 1, 7.1  ),
+//   createData('8', 'Pramaodya Gamage', '05/08/2022', '4', 1, 8.1  ),
+//   createData('9', 'Dhanika Herath', '04/08/2022', '3', 2, 9.1  ),
+//   createData('10', 'Nadun Sathsara', '04/08/2022', '5', 2, 10.1  ),
+//   createData('11', 'Nipun Gunawardana', '02/08/2022', '1', 1, 11.1  ),
+//   createData('12', 'Thilini Perera', '01/08/2022', '4', 1, 12.1 ),
+//   createData('13', 'Dasun perera', '30/07/2022', '2', 1, 13.1 ),
+//   createData('14', 'Vikum Pushpakumaea', '28/07/2022', '1', 1, 14.1  ),
+//   createData('15', 'Danuka Withana', '28/07/2022', '1', 1, 15.1  ),
+// ]
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -117,7 +122,60 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const WorkRecordList = () => {
+
+  const [pendingData,setpendingdata]=useState([]);
+  const [active,setactive]=useState(false);
+  const [rows,setrows]=useState([]);
+
+  function structure(pendingData){
+    if(pendingData){
+      const i = pendingData.length;
+   
+      for(var j= 0 ; j < i ; j++){
+        var n= j+1;
+        var c = n.toString();
+
+        var pic = pendingData[j].image;
+        var ftname = pendingData[j].firstrName;
+        var ltname = pendingData[j].lastName;
+        var bdate = pendingData[j].dob;
+        var contac = pendingData[j].contactNo;
+        var gen = pendingData[j].gender;
+        var mail = pendingData[j].username;
+        var act = pendingData[j].userid;
+        
   
+        rows[j] = createData( c, pic, ftname, ltname, bdate, gen, contac, mail, act);
+      }
+  
+      console.log(rows);
+      setrows(rows);
+
+    }
+  
+  }
+
+  const handlerecordlist = (newValue) => {
+    setpendingdata(newValue);
+    structure(newValue);
+    setactive(true);
+  };
+  useEffect(()=>{
+    getRecordData();
+  },[])
+
+  const getRecordData=()=>{
+    axios
+    .post('http://localhost:5000/api/coordinator/wrhistory', {
+   
+    })
+    .then((response) => {
+        console.log(response.data);
+        handlerecordlist(response.data);
+       
+    });
+
+  }
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -211,7 +269,7 @@ const WorkRecordList = () => {
               </LocalizationProvider>
           </Box> */}
           <Box style={{display:"block",marginLeft:"3%", marginTop:"40px"}}>
-            <TextField
+            {/* <TextField
                   id="search-bar"
                   className="textname"
                   onInput={(e) => {
@@ -224,7 +282,7 @@ const WorkRecordList = () => {
                   />
                   <IconButton type="submit" aria-label="search">
                       <SearchIcon style={{ fill: "blue" }} />
-                  </IconButton>
+                  </IconButton> */}
           </Box>
 
         </Box>
