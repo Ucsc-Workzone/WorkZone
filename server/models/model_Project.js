@@ -162,5 +162,16 @@ module.exports = {
       return "error";
     }
   },
+  async getsummarycoordinator(data){
+    try {
+      sql1=`SELECT * FROM projects where projectId=${data['project_id']} `;
+      const rows = await dbconnection.query(sql1);
+      
+               
+      return rows[0];
+    } catch {
+      return "error";
+    }
+  },
   
 };

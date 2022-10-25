@@ -7,16 +7,17 @@ import {Button} from "@mui/material";
 const KanbanCard = ({ activityName, weight, description }) => {
     const cardStyle = {
         'backgroundColor': '#fff',
-        'paddingLeft': '20px',
-        'paddingTop': '20px',
-        'paddingBottom': '20px',
-        'paddingRight': '20px',
+        'paddingLeft': '30px',
+        'paddingTop': '30px',
+        'paddingBottom': '30px',
+        'paddingRight': '30px',
         'marginLeft': '0px',
         'marginRight': '0px',
         'marginBottom': '0px',
         'marginTop': '20px',
         'borderRadius': '10px',
         'textAlign': 'left',
+        'border':'1px solid #E8E8E8',
         'box-shadow': 'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 0px',
     };
 
@@ -47,7 +48,7 @@ const KanbanCard = ({ activityName, weight, description }) => {
                     {description}
                     <br />
                 </div>
-<Button variant="contained">edit</Button>
+<Button variant="contained" className="buttonEdit">edit</Button>
                 {/* <div
                     style={{ width: '100%' }}
                     onClick={(e) => {
