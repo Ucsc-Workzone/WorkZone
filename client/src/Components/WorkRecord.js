@@ -171,7 +171,7 @@ const WorkRecordList = () => {
                     <MenuItem value={3}>Rejected</MenuItem>
                 </Select>
           </Box>
-          <Box style={{display:"block",marginLeft:"3%"}}>
+          {/* <Box style={{display:"block",marginLeft:"3%"}}>
           <InputLabel id="select-days" style={{color:'#0C518A',fontWeight:"bold",padding:"10px"}}>Days</InputLabel>
             <Select
                 labelId="select-days"
@@ -209,7 +209,7 @@ const WorkRecordList = () => {
                   renderInput={(params) => <TextField {...params} />}
                   />
               </LocalizationProvider>
-          </Box>
+          </Box> */}
           <Box style={{display:"block",marginLeft:"3%", marginTop:"40px"}}>
             <TextField
                   id="search-bar"

@@ -48,12 +48,13 @@ const CoordinatorLeaves = () => {
     const [cnt3,setcount3]= useState(0);
     const [cnt1, setcount1] = React.useState(0);
 
-    const CountList ={
-        count1:'5',
-        count2:5,
-        count3:6
-    }
 
+    const CountList = {
+        count1:cnt1,
+        count2:cnt2,
+        count3:cnt3
+    }
+    
     function updatesummary(data) {
         setpendingdata(data);
 
@@ -62,13 +63,10 @@ const CoordinatorLeaves = () => {
             count2:data[1][0].leaveAccept,
             count3:data[2][0].leaveRejected
         }
-        setcount1(1);
-        console.log(cnt1);
-        setcount2(Counters.count1);
-        setcount3(Counters.count1);
-        console.log(Counters);
-       
-        console.log(CountList);
+        setcount1(Counters.count1);
+        setcount2(Counters.count2);
+        setcount3(Counters.count3);
+
         setactive(true);
     }
     
@@ -118,9 +116,9 @@ const CoordinatorLeaves = () => {
                         <Typography variant="h2" component="h4" className="" colour="blue" textAlign={'center'}>
                             OCTOBER
                         </Typography>
-                        {
-                            active && <HeaderCounter headlist={HeadList} countList={CountList} />
-                        }
+                        
+                            <HeaderCounter headlist={HeadList} countList={CountList} />
+                        
                         <div className="chart-container">
                             <Typography variant="h2" component="h3" textAlign={'center'} style={{ color: '#0C518A' }}>
                                 2022
