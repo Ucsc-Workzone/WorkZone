@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -197,9 +198,27 @@ const LeaveHistoryTable = () => {
   const [opendetails, setOpenDet] = React.useState(false);
   const [entry, sententr] = React.useState(1);
 
-  const handleClickOpenDet = () => {
-
-    setOpenDet(true);
+  const handleClickOpenDet = (event, val, cat) => {
+    sententr(val);
+    if(cat == null){
+      setcontrol(false)
+      setOpenDet(true);
+    }
+    else{
+      var num = parseInt(cat);
+      if(num<=3){ 
+        console.log("normal"+num);
+        setptype(true);
+        setcontrol(true)
+        setOpenDet(true);
+      }else{
+        console.log("Extend"+num);
+        setptype(false);
+        setcontrol(true);
+        setOpenDet(true);
+      }
+    }
+   
   };
   const handleCloseDet = () => {
     setOpenDet(false);
@@ -227,6 +246,8 @@ const LeaveHistoryTable = () => {
   const [picdate, setValue] = React.useState(new Date('2022-08-24T21:11:54'));
   const [pendingData,setpendingdata]=useState([]);
   const [active,setactive]=useState(false);
+  const [control,setcontrol]=useState(false);
+  const [ptype,setptype]=useState(true);
   const [rows,setrows]=useState([]);
 
   const handlependingLeave = (newValue) => {
@@ -288,6 +309,59 @@ const LeaveHistoryTable = () => {
 
   return (
     <React.Fragment>
+  {active &&
+      <div>
+      <BootstrapDialog
+        onClose={handleCloseDet}
+        aria-labelledby="customized-dialog-title"
+        open={opendetails}
+        
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleCloseDet} sx={{backgroundColor:"#0C518A", minWidth:"200px", color:"white", fontSize:"14px", fontWeight:"bold"}}>
+            Leave Request
+        </BootstrapDialogTitle>
+        <DialogContent dividers sx={{width:"400px"}}>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Name</b> <br />{pendingData[entry].firstrName + " " }{pendingData[entry].lastName}
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Requested Type</b> <br /> { " Annual Leave" }
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Requested Date</b> <br /> {datefilter(pendingData[entry].fromDate) + " " }
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+             <b>Requested Duration</b> {dateDurationCalc(pendingData[entry].fromDate, pendingData[entry].toDate)} Days<br /> <b>From</b> {datefilter(pendingData[entry].fromDate)} <b>To</b> {datefilter(pendingData[entry].toDate)}
+          </Typography>
+        </DialogContent>
+        {control &&
+            <Box sx={{display:"flex", widht:"100%", alignContent:"center", justifyContent:"center"}}>
+              {ptype &&
+                <Button variant="contained" sx={{width:"100px"}} color="success">
+                  Accept
+                </Button>
+              }
+              {!(ptype) &&
+                <Button variant="contained" sx={{width:"100px"}} color="success">
+                  Process
+                </Button>
+              }
+              <Button variant="contained" sx={{width:"100px"}} color="error">
+                  Reject
+              </Button>
+            </Box>
+        }
+        
+        
+        <DialogActions>
+          {/* <Button autoFocus onClick={handleCloseDet}>
+            Close
+          </Button> */}
+        </DialogActions>
+      </BootstrapDialog>
+    </div>
+
+      }
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
         <Typography variant="h3" component="h4" className="">
             Leave Requests   
@@ -350,11 +424,15 @@ const LeaveHistoryTable = () => {
             {active && rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+                const act = row['no'];
+                const val = act -1 ;
+                const stat = row['status'];
+                const du = row['duration'];
+
                 return (
                   <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
                     {columns.map((column) => {
                       const value = row[column.id];
-  
                       if(!column.format){
                         if(value == 1){
                           return (
@@ -370,10 +448,17 @@ const LeaveHistoryTable = () => {
                         );}
                           
                       }else if (typeof value === 'number'){
-                       
-                        return (
-                          <StyledTableCell><Button variant="contained" >Details</Button></StyledTableCell>
-                        );
+
+                        if(stat == 3){
+                          return (
+                            <StyledTableCell><Button variant="contained" onClick={e =>handleClickOpenDet(e, val, du)}>Process</Button></StyledTableCell>
+                          );
+                        }else{
+                          return (
+                            <StyledTableCell><Button variant="contained" onClick={e =>handleClickOpenDet(e, val, null)} >Details</Button></StyledTableCell>
+                          );
+                        }
+                      
                       }else{
                         return (
                           <StyledTableCell key={column.id} align={column.align}>
