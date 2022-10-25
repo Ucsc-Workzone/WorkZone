@@ -146,7 +146,7 @@ function createData( no, fname, lname, subdate, fromdate, todate, status, action
           
       var daydiff = diff / (1000 * 60 * 60 * 24);   
 
-      const duration = daydiff.toString();
+      const duration = (daydiff+1).toString();
 
   return { no, name, date, duration, status, action };
 }
@@ -165,10 +165,10 @@ function dateDurationCalc(fromdate, todate){
           
       var daydiff = diff / (1000 * 60 * 60 * 24);   
 
-      const duration = daydiff.toString();
+      const duration = (daydiff+1).toString();
 
 
-      return duration
+      return (duration)
 }
 
 
