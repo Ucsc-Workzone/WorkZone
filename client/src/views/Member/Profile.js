@@ -35,6 +35,12 @@ const userProfile = () => {
         <h1>Mobile : 0785619959</h1>
         <h1>Address : No. 123/A Mirigama</h1>
         <h1>Bio : I’m a professional developer with experience working with technologies like Native android development, Mobile cross-platform development, backend/frontend development and Firebase & Google Cloud platform. </h1>
+        <h1>SKILLS </h1>
+
+        <div className='skills'>
+
+          <h1>Node</h1> <h1>PHP</h1><h1>C++</h1><h1>JavaScript</h1><h1>C#</h1>
+        </div>
 
 
 
