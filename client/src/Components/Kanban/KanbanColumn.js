@@ -16,6 +16,12 @@ import { Box } from '@mui/system';
 import { useParams } from 'react-router';
 import { useLocation } from 'react-router-dom';
 // import Button from '@mui/material';
+
+// function test(){
+//     const {proid}=useParams();
+//     console.log(proid)
+// }
+// test();
 class KanbanColumn extends React.Component {
     constructor(props) {
         super(props);
@@ -51,9 +57,8 @@ class KanbanColumn extends React.Component {
         console.log(studentId);
     }
     saveCard() {
-        // const {proid}=useParams();
-
-        //   const name = new URLSearchParams(search).get('proid');
+        const proid = window.location.href.split('/')[6]
+        const actid = window.location.href.split('/')[7]
         const title = document.getElementById('outlined-textarea-task').value;
         const des = document.getElementById('outlined-textarea-des').value;
         if (title.length == 0) {
@@ -63,23 +68,26 @@ class KanbanColumn extends React.Component {
                 .post('http://localhost:5000/api/project/saveCardMember', {
                     taskName: title,
                     taskDes: des,
-                    project_id: 54,
-                    activity_id: 3,
+                    project_id: proid,
+                    activity_id: actid,
                     weight: 'High'
                 })
                 .then((response) => {
                     console.log(response.data);
                     this.getData();
+                    window.location.reload();
                 });
         }
     }
     getData(e) {
         const sendPutRequest = async () => {
             try {
+                const proid = window.location.href.split('/')[6]
+                const actId = window.location.href.split('/')[7]
                 const resp = await axios.post('http://localhost:5000/api/project/membergetCards', {
                     center_id: 1,
-                    project_id: 54,
-                    activity_id: 3
+                    project_id:proid ,
+                    activity_id: actId
                 });
                 console.log(resp.data);
             } catch (err) {

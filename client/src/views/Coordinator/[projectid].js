@@ -40,7 +40,7 @@ const ProjectPage = () => {
         <>
             <div className="projectmain">
                 <div>
-                    <ProjectSummary />
+                    {/* <ProjectSummary /> */}
                 </div>
                 <div className="loweCon">
                     <div className="todoContainer">

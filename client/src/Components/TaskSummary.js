@@ -18,13 +18,11 @@ const TaskSummary = () => {
     return (
         <>
             <div>
-                <div className="Content">
-                    <h4>Admin User Role Completion</h4>
-                </div>
+            
                 <div className="graph">
-                {/* <h4>Current Progress</h4> */}
+                
                     <Box style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-                        <div style={{ width: '38%' }}>
+                        <div style={{ width: '80%' }}>
                             <DoughtChart chartData={userData} percentage={'25'} />
                         </div>
                     </Box>

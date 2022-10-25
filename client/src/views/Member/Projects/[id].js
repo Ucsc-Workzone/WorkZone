@@ -16,12 +16,12 @@ const Project = () => {
                         <KanbanBorad />
                     </div>
                     <div className="sub-conatiner">
-                    <div className="task-summary">
+                    {/* <div className="task-summary">
                         <TaskSummary />
-                    </div>
-                        <div className="member-summary">
+                    </div> */}
+                        {/* <div className="member-summary">
                             <TeamMember />
-                        </div>
+                        </div> */}
                         
                     </div>
                 </div>

@@ -45,4 +45,33 @@ module.exports = {
   },
 
 
+
+
+
+
+  //all Annocemnts
+  async allAnnoucements(){
+    try{
+sql='SELECT * FROM annoucements order by date desc';
+const rows = await dbconnection.query(sql);
+return rows;
+
+    }
+    catch{
+
+    }
+  },
+  async publishannoucements(data){
+    try{
+      let currentDate = new Date().toJSON().slice(0, 10);
+      let time = new Date().toJSON()
+// sql=`INSERT INTO annoucements (from,to,content,title) VALUES ('${data['from']}','all','${data['description']}','${data['title']}') `;
+// const rows = await dbconnection.query(sql);
+return data;
+    }
+
+    catch(error){
+return error;
+    }
+  }
 }
