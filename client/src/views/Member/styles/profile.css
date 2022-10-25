@@ -149,7 +149,7 @@
 }
 
 input[type=text] {
-    width: 60%;
+    width: 30%;
     border: 1px solid #aaa;
     border-radius: 4px;
     margin: 8px 0;
@@ -167,8 +167,8 @@ input[type=text]:focus {
 }
 
 .cc {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     width: 100%;
 }
