@@ -6,6 +6,11 @@ import { Button, Divider, TextField, IconButton, Stack, Chip } from '@mui/materi
 import './styles.css';
 import { IconPlus } from '@tabler/icons';
 import dayjs from 'dayjs';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import axios from 'axios';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -16,13 +21,14 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { IconUser, IconCalendarStats } from '@tabler/icons';
 import { useParams } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
+
 // date-fns
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 // or for Day.js
@@ -32,9 +38,7 @@ import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 // or for Moment.js
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
-
 const KanbanColumn = () => {
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     // const [searchParams, setSearchParams] = useSearchParams();
 
@@ -45,30 +49,24 @@ const KanbanColumn = () => {
     const [placement1, setPlacement1] = React.useState();
     const [projectList, setProjectList] = useState([]);
     const [member, setMember] = useState('Assign a member');
+    const [valueweight, setValueweight] = React.useState('High');
     const { projectid } = useParams();
     useEffect(() => {
-
         getCardData();
-    }, [])
+    }, []);
     const getCardData = () => {
         axios
             .post('http://localhost:5000/api/project/getProjectData', {
                 center_id: 1,
-                project_id: projectid,
-
+                project_id: projectid
             })
             .then((response) => {
                 console.log(response.data);
-                setProjectList(response.data)
-                // const projectid = response.data['LAST_INSERT_ID()'];
-                // navigate('/coordinator/projectinit/' + `${projectid}`)
-
-
+                setProjectList(response.data);
             });
-
-    }
+    };
     const handlechangemember = (e) => {
-        console.log(e.target.innerHTML)
+        console.log(e.target.innerHTML);
         setMember(e.target.innerHTML);
     };
     const handleClick = (newPlacement) => (event) => {
@@ -87,7 +85,7 @@ const KanbanColumn = () => {
     const [value1, setValue1] = React.useState('2022-10-26');
     const [set1, setSet1] = useState(false);
     const handleChange = (e) => {
-        console.log(e.$d)
+        console.log(e.$d);
         setValue1(e.$d);
     };
 
@@ -97,7 +95,7 @@ const KanbanColumn = () => {
     });
 
     const cardStyle = {
-        backgroundColor: '#fff',
+        backgroundColor: '#E3F2FD',
 
         padding: '20px',
         marginLeft: '0px',
@@ -109,7 +107,18 @@ const KanbanColumn = () => {
 
     const generateKanbanCards = () => {
         return projectList.slice(0).map((project) => {
-            return <KanbanCard project={project} key={project['activityId']} weight={project['weight']} activityName={project['activityName']} description={project['description']} onDragEnd={project.onDragEnd} />;
+            return (
+                <KanbanCard
+                    project={project}
+                    key={project['activityId']}
+                    weight={project['weight']}
+                    activityName={project['activityName']}
+                    Date={project['estendDate'].substring(0,10)}
+                    assignMember={project['activityName']}
+                    description={project['description']}
+                    onDragEnd={project.onDragEnd}
+                />
+            );
         });
     };
     const addCard = () => {
@@ -121,30 +130,39 @@ const KanbanColumn = () => {
     };
 
     const saveCard = () => {
-
         const taskName = document.getElementById('outlined-textarea-task').value;
         const taskDes = document.getElementById('outlined-textarea-des').value;
+        const member = document.getElementById('filter-demo').value;
+        
+        console.log(value)
+     
+        
+        console.log(valueweight)
         axios
             .post('http://localhost:5000/api/project/saveCard', {
                 taskName: taskName,
-                taskDes: taskDes,
-                project_id: 51
+                description: taskDes,
+                project_id: projectid,
+                weight:valueweight,
+                estend:value,
+                member:5
 
             })
             .then((response) => {
                 console.log(response.data);
                 if (true) {
-                    setOpen(false)
+                    setOpen(false);
                     getCardData();
                 }
                 // const projectid = response.data['LAST_INSERT_ID()'];
                 // navigate('/coordinator/projectinit/' + `${projectid}`)
-
-
             });
-        console.log(taskName)
-    }
+        console.log(taskName);
+    };
 
+    const handleChangeweigh=(event)=>{
+        setValueweight(event.target.value)
+    }
     const columnStyle = {
         display: 'inline-block',
         verticalAlign: 'top',
@@ -190,15 +208,19 @@ const KanbanColumn = () => {
                     <div style={cardStyle} draggable={true}>
                         <div className="card-contetnt">
                             <TextField id="outlined-textarea-task" label="Task" placeholder="Task" multiline />
-                            <TextField id="outlined-textarea-des" label="Description" placeholder="Description" multiline className="desCard" />
+                            <TextField
+                                id="outlined-textarea-des"
+                                label="Description"
+                                placeholder="Description"
+                                multiline
+                                className="desCard"
+                            />
                         </div>
-
-
 
                         <div class="datex">
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker
-                                    label="Basic example"
+                                    label="Due Date"
                                     value={value}
                                     onChange={(newValue) => {
                                         setValue(newValue);
@@ -208,8 +230,31 @@ const KanbanColumn = () => {
                             </LocalizationProvider>
                         </div>
 
-
-
+                        <div className="memberAssign">
+                            <Autocomplete
+                                id="filter-demo"
+                                options={top100Films}
+                                getOptionLabel={(option) => option.title}
+                                filterOptions={filterOptions}
+                                sx={{ width: 300 }}
+                                renderInput={(params) => <TextField {...params} label="Assign Memeber" id="filter-demo-d" value={(option)=>option.id}/>}
+                            />
+                        </div>
+                        <div>
+                            <FormControl  >
+                                <FormLabel id="demo-row-radio-buttons-group-label">Task Weight</FormLabel>
+                                <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group"
+                                 value={valueweight}
+                                 onChange={handleChangeweigh}
+                                
+                                >
+                                    <FormControlLabel value="High" control={<Radio />} label="High" />
+                                    <FormControlLabel value="Med" control={<Radio />} label="Medium" />
+                                    <FormControlLabel value="Low" control={<Radio />} label="Low" />
+                                   
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
                         <div className="button-contetnt">
                             <Button variant="contained" className="buttonclass" onClick={saveCard}>
                                 Save
@@ -229,15 +274,14 @@ const KanbanColumn = () => {
 };
 
 export default KanbanColumn;
-const top100Films = [
-    { title: 'Eshan Herath', year: 1994 },
-    { title: 'Thara Sayuru', year: 1972 },
-    { title: 'Ravin Jayarathne', year: 1974 },
-    { title: 'Ravin Eranga', year: 2008 },
-    { title: 'Werath Ravin', year: 1957 },
-    { title: 'Wihan Bandara', year: 1993 },
-    { title: 'Ravin Gamage', year: 1994 }
-];
-
 
 const board = [{ name: 'Work Assign', stage: 1 }];
+const top100Films = [
+    { title: 'Malithi Perera', id: 5 },
+    { title: 'Bimsara Kulasekara', id: 6 },
+    { title: 'Ravin Jayarathne', id: 7 },
+    { title: 'Ravin Eranga', id: 8 },
+    { title: 'Werath Ravin', id: 9 },
+    { title: 'Wihan Bandara', id: 10 },
+    { title: 'Ravin Gamage', id: 11 }
+];

@@ -2,46 +2,7 @@ import { Chip } from "@mui/material";
 import React from "react";
 import './styles.css'
 
-// const KanbanCard=()=> {
-// 	// constructor(props) {
-// 	// 	super(props);
-// 	// 	this.state = {
-// 	// 		collapsed: true,
-// 	// 	};
-// 	// }
-
-
-// 		return (
-// 			<div
-// 				style={cardStyle}
-// 				draggable={true}
-// 				// onDragEnd={(e) => {this.props.onDragEnd(e, this.props.project);}}
-// 				// onClick={popUp}
-// 			>
-// 				 {this.props.project.weight=='High' && <Chip label={this.props.project.weight}color="success"  className="chipcon"/>}
-// 				 {this.props.project.weight=='Med' && <Chip label={this.props.project.weight} color="primary" className="chipcon1" />}
-// 				 {this.props.project.weight=='Low' && <Chip label={this.props.project.weight} color="warning" className="chipcon2" />}
-// 				<div className="card-contetnt"><h4>{this.props.project.activityName}</h4></div>
-// 				<div>
-
-// 				</div>
-// 				{(this.state.collapsed)
-// 					? null
-// 					: (<div><strong>Description: </strong>{ this.props.project.description }<br/></div>)
-// 				}
-// 				<div
-// 					style={{'width': '100%'}}
-// 					onClick={(e) => {this.setState({collapsed: !this.state.collapsed});}}
-// 				>
-// 					{(this.state.collapsed) ? String.fromCharCode('9660') : String.fromCharCode('9650')}
-// 				</div>
-// 			</div>
-
-// 		);
-
-// 	}
-
-// export default KanbanCard;
+import {Button} from "@mui/material";
 
 const KanbanCard = ({ activityName, weight, description }) => {
     const cardStyle = {
@@ -73,14 +34,20 @@ const KanbanCard = ({ activityName, weight, description }) => {
                 <div className="card-contetnt">
                     <h4>{activityName}</h4>
                 </div>
-                <div></div>
+                <div className="dateContainer">
+                    <div className="innerChip"><Chip label="2022-10-26" color="primary"  variant="outlined"/></div>
+                    <div className="innerChip"><Chip label="Malithi Perera" color="primary" variant="outlined"/></div>
+                
+
+                   
+                </div>
 
                 <div>
                     <strong>Description: </strong>
                     {description}
                     <br />
                 </div>
-
+<Button variant="contained">edit</Button>
                 {/* <div
                     style={{ width: '100%' }}
                     onClick={(e) => {

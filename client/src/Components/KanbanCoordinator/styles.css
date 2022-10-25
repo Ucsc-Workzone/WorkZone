@@ -1,6 +1,7 @@
 .card-contetnt {
     /* margin-left: 5px; */
     font-size: 15px;
+    display: flex;
 }
 
 .datex {
@@ -77,8 +78,8 @@
 }
 
 .desCard {
-    width: 400px;
-    margin-left: 20px;
+    width: 300px;
+    margin-left: 10px;
 }
 
 .dueDate {
@@ -120,3 +121,16 @@
     width: 90%;
     background-color: #fff;
 } */
+
+.memberAssign{
+    margin-top: 10px;
+}
+
+.dateContainer{
+    display: flex;
+    margin-left: -15px;
+}
+
+.innerChip{
+    margin: 10px;
+}

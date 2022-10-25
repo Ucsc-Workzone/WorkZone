@@ -45,8 +45,9 @@ module.exports = {
   },
   async getProjectData(data) {
     try {
-      sql = `select * from projects , activity where projects.projectId=${data["project_id"]}`;
+      sql = `select * from projects , activity where projects.projectId=${data['project_id']} and activity.projectId=${data['project_id']}`;
       const rows = await dbconnection.query(sql);
+      
       return rows;
     } catch {
       return "error";
@@ -54,7 +55,15 @@ module.exports = {
   },
   async saveCard(data) {
     try {
-      sql = `INSERT INTO activity (projectId,activityName,description) Values (${data["project_id"]},'${data["taskName"]}','${data["description"]}')`;
+      const date = new Date();
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      
+      // This arrangement can be altered based on how we want the date's format to appear.
+      let currentDate = `${year}-${month}-${day}`;
+      sql = `INSERT INTO activity (projectId,activityName,description,memberId,weight,startDate,endDate) Values (${data["project_id"]},'${data["taskName"]}','${data["description"]}',${data['member']},'${data['weight']}','${currentDate}','${data['estend']}')`;
       const rows = await dbconnection.query(sql);
       return true;
     } catch {
@@ -120,6 +129,8 @@ module.exports = {
 
   async saveCardMember(data){
     try {
+
+ 
       sql=`INSERT INTO subactivity (activityId,projectId,subActName,weight,project_stage,description) VALUES (${data['activity_id']},${data['project_id']},'${data['taskName']}','${data['weight']}',1,'${data['taskDes']}')`;
       const rows = await dbconnection.query(sql);
       
