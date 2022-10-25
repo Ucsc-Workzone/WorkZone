@@ -16,7 +16,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useState } from 'react';
 function generate(element) {
     return [0, 1, 2].map((value) =>
         React.cloneElement(element, {
@@ -35,16 +37,35 @@ const buttonContainer = {
     justifyContent: 'space-around',
     width: '100%',
     padding: '10px',
-    marginRight:'-20px'
+    marginRight: '-20px'
 };
-const buttonCon={
-  marginLeft:'40px'
-}
-const buttonCon1={
-  marginLeft:'40px'
-}
+const buttonCon = {
+    marginLeft: '40px'
+};
+const buttonCon1 = {
+    marginLeft: '40px'
+};
 
 export default function InteractiveList() {
+    const userid = localStorage.getItem('userid');
+    const [status, setStaus] = useState([]);
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const getData = () => {
+        
+        axios
+            .post('http://localhost:5000/api/project/getworkreportmember', {
+                userid: userid
+            })
+            .then((response) => {
+                console.log(response.data);
+                setStaus(response.data);
+              
+
+            });
+    };
     const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
 
@@ -53,57 +74,35 @@ export default function InteractiveList() {
             <Grid item xs={12} md={6}>
                 <Demo>
                     <List dense={dense}>
-                        <ListItem
-                            secondaryAction={
-                                <IconButton edge="end" aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>
-                            }
-                        >
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <FolderIcon />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="Admin Prototype Complte" secondary="Sub Task 001" />
-                        </ListItem>
-
-                        <ListItem
-                            secondaryAction={
-                                <IconButton edge="end" aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>
-                            }
-                        >
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <FolderIcon />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="Member Prototype Complte" secondary="Sub Task 001 Skelton web app" />
-                        </ListItem>
-
-                        <ListItem
-                            secondaryAction={
-                                <IconButton edge="end" aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>
-                            }
-                        >
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <FolderIcon />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText primary="React application Initialize" secondary="Sub Task 001 Skelton web app" />
-                        </ListItem>
+                        {status.map((data) => {
+                            return (
+                                <>
+                                    <ListItem
+                                        secondaryAction={
+                                            <IconButton edge="end" aria-label="delete" value={data['subActivityId']}>
+                                                <DeleteIcon />
+                                            </IconButton>
+                                        }
+                                    >
+                                        <ListItemAvatar>
+                                            <Avatar>
+                                                <FolderIcon />
+                                            </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText primary={data['subActName']} secondary={data['subActivityId']} />
+                                        <ListItemText primary={data['attachment']} secondary={data['description']} />
+                                    </ListItem>
+                                    ;
+                                </>
+                            );
+                        })}
                     </List>
 
                     <div style={buttonContainer}>
-                        <div style={buttonCon}>
+                        {/* <div style={buttonCon}>
                             {' '}
                             <Button variant="contained">View</Button>
-                        </div>
+                        </div> */}
 
                         <div style={buttonCon1}>
                             {' '}

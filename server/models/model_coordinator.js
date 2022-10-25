@@ -83,10 +83,8 @@ return row2[0];
     catch{
 return "error";
     }
-   }
+   },
    
-
-  },
   async getCarddataW(data) {
     data = [];
     try {
