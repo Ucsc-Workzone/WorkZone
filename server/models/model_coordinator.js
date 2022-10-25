@@ -51,7 +51,7 @@ return "error";
    },
    async getLeavetableall(){
     try{
-sql=`select * from leaverequest,user where status="pending" and leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate ;`;
+sql=`select * from leaverequest,user where leaverequest.memberId=user.userid ORDER BY leaverequest.fromDate desc;`;
 const row=await dbconnection.query(sql);
 return row[0];
     }
