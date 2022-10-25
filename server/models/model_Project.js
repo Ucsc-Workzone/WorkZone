@@ -140,5 +140,16 @@ module.exports = {
       return "error";
     }
   },
+  async getsummarymember(data){
+    try {
+      sql1=`SELECT * FROM projects,activity where projects.projectId=${data['project_id']} and activity.activityId=${data['activity_id']} limit 1`;
+      const rows = await dbconnection.query(sql1);
+      
+               
+      return rows[0];
+    } catch {
+      return "error";
+    }
+  },
   
 };

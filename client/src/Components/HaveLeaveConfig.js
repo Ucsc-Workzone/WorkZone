@@ -14,7 +14,7 @@ import { IconPlus, IconAdjustments } from "@tabler/icons";
 import CreateLeaveConfig from './CreateLeaveConfig';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-
+import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';

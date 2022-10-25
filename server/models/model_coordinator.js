@@ -72,12 +72,27 @@ return data;
     catch{
         
     }
+
+   },
+   async getStaff(){
+    try{
+    sql=`SELECT * FROM user where userRole='member'`;
+    const row2=await dbconnection.query(sql);
+return row2[0];
+    }
+    catch{
+return "error";
+    }
+   }
+   
+
   },
   async getCarddataW(data) {
     data = [];
     try {
       sql = `select count(recordId) as count from workrecord where status=1 `;
       const rows = await dbconnection.query(sql);
+
 
       return rows[0];
     } catch (err) {}

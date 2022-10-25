@@ -93,7 +93,7 @@ const MemberRoutes = {
             path: 'member',
             children: [
                 {
-                    path: 'project/:proid',
+                    path: 'project/:proid/:actid',
                     element: <ProjectPage />
                 }
             ]
