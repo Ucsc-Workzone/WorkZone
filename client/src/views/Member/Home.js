@@ -1,5 +1,5 @@
 import Calender from 'Components/Calender';
-import SiteAnnoucements from 'Components/SiteAnnoucements';
+import SiteAnnoucements from 'Components/memberAnnoucements';
 import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 import DevicesOutlinedIcon from '@mui/icons-material/DevicesOutlined';
 import NoAccountsOutlinedIcon from '@mui/icons-material/NoAccountsOutlined';

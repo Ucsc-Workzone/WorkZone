@@ -12,28 +12,45 @@ class KanbanCard extends React.Component {
         super(props);
         this.state = {
             collapsed: true,
-			statepop:false,
-			
+            statepop: false
         };
-		this.delete = this.delete.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     addworkreport() {
-        console.log(event.target.value);
         const id = event.target.value;
-
+        const userid = localStorage.getItem('userid');
         axios
-            .post('http://localhost:5000/api/project/addworkReport', {
-                subacitivityId: id
+            .post('http://localhost:5000/api/project/checkpendings', {
+                userid: userid
             })
             .then((response) => {
                 console.log(response.data);
+                if ((response.data = 0)) {
+                    alert('You Have already have a work report to submit');
+                } else {
+                    axios
+                        .post('http://localhost:5000/api/project/createReport', {
+                            userid: userid
+                        })
+                        .then((response) => {
+                            console.log(response.data);
+                        });
+
+                    // axios
+                    //     .post('http://localhost:5000/api/project/addworkReport', {
+                    //         subacitivityId: id
+                    //     })
+                    //     .then((response) => {
+                    //         console.log(response.data);
+                    //         alert("Added to work reports")
+                    //     });
+                }
             });
     }
     delete() {
-       
-console.log("DELETE")
-		this.setState({ statepop: true });
+        console.log('DELETE');
+        this.setState({ statepop: true });
     }
 
     render() {
@@ -50,6 +67,9 @@ console.log("DELETE")
             borderRadius: '10px',
             textAlign: 'left',
             boxShadow: 'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 0px'
+        };
+        const buttonStyle = {
+            marginLeft: '10px'
         };
 
         return (
@@ -68,8 +88,14 @@ console.log("DELETE")
                         <h4>{this.props.project.subActName}</h4>
                     </div>
                     {this.props.project.project_stage == 3 && (
-                        <Button onClick={this.addworkreport} value={this.props.project.subActivityId}>
+                        <Button onClick={this.addworkreport} value={this.props.project.subActivityId} variant="contained">
                             Add to work report
+                        </Button>
+                    )}
+                    {this.props.project.project_stage == 3 && (
+                        <Button variant="contained" component="label" style={buttonStyle}>
+                            Upload Proof
+                            <input hidden accept="image/*" multiple type="file" />
                         </Button>
                     )}
                     {this.props.project.project_stage == 1 && (
@@ -94,7 +120,6 @@ console.log("DELETE")
                     </div>
                 </div>
                 <div>
-                    
                     <Dialog
                         open={false}
                         // onClose={handleClose}
@@ -108,9 +133,7 @@ console.log("DELETE")
                                 apps are running.
                             </DialogContentText>
                         </DialogContent>
-                        <DialogActions>
-                          
-                        </DialogActions>
+                        <DialogActions></DialogActions>
                     </Dialog>
                 </div>
             </>

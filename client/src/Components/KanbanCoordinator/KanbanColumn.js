@@ -55,6 +55,8 @@ const KanbanColumn = () => {
         getCardData();
     }, []);
     const getCardData = () => {
+        const proid = window.location.href.split('/')[6]
+
         axios
             .post('http://localhost:5000/api/project/getProjectData', {
                 center_id: 1,

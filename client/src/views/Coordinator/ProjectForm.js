@@ -21,6 +21,9 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -53,6 +56,12 @@ export default function ProjectForm() {
 
     const handleDateChange = (newValue) => {
         setValue(newValue);
+    };
+
+    const [picdate2, set2Value] = React.useState(new Date());
+
+    const handleDate2Change = (newValue) => {
+        set2Value(newValue);
     };
 
     const createProject = () => {
@@ -107,13 +116,6 @@ export default function ProjectForm() {
                         alignItems: 'center'
                     }}
                 >
-                    <Typography
-                        component="h1"
-                        variant="h5"
-                        style={{ width: '100%', textAlign: 'center', color: 'black', fontWeight: '600' }}
-                    >
-                        Project Create Form
-                    </Typography>
 
                     <Divider />
                     <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -152,14 +154,28 @@ export default function ProjectForm() {
                                         disablePast
                                         label="Approximate Due Date"
                                         openTo="day"
+                                        id="formdate"
                                         views={['year', 'month', 'day']}
                                         value={picdate}
-                                        style={{ margin: '0' }}
+                                        style={{ margin: '0', width:"100%" }}
                                         onChange={handleDateChange}
                                         renderInput={(params) => <TextField {...params} />}
                                     />
                                 </LocalizationProvider>
+                                
                             </Grid>
+                            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DatePicker
+                                        disablePast
+                                        label="Approximate Due Date"
+                                        openTo="day"
+                                        views={['year', 'month', 'day']}
+                                        value={pic2date}
+                                        style={{ margin: '0' }}
+                                        onChange={handleDate2Change}
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider> */}
                             <Grid item xs={12}>
                                 <TextField
                                     required
@@ -173,9 +189,20 @@ export default function ProjectForm() {
                                     onChange={changedes}
                                 />
                             </Grid>
-
                             <Grid item xs={12}>
-                                <Button onClick={createProject}>Create</Button>
+                                <Button variant="contained" component="label">
+                                    Upload
+                                <input type="file" hidden/>
+                                </Button>
+                                <IconButton color="primary" aria-label="upload picture" component="label">
+                                    <input hidden  type="file" />
+                                    <UploadFileIcon />
+                                </IconButton>
+                            </Grid>
+                            Supporting Document
+                            <Grid item xs={12} sx={{justifyContent:"right", alignItems:"right", display:"flex"}}>
+
+                                <Button onClick={createProject} variant="contained">Create</Button>
                             </Grid>
                         </Grid>
                     </Box>

@@ -1,3 +1,4 @@
+
 .main-leave-container{
     width: 100%;
     /* background-color: rgb(194, 187, 187); */
@@ -5,6 +6,10 @@
     display: flex;
     justify-content: space-between;
 }
+/* #formdate{
+    margin-left: 0;
+    padding-left: 0;
+} */
 
 .leavecontainer-left{
 /* background-color: #fff; */
@@ -111,7 +116,8 @@ border-radius: 10px;
 }
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
-    margin-left: 30px;
+    /* margin-left: 30px; */
+    width: 100%;
 }
 
 /* width */
