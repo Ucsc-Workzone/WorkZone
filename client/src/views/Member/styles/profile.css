@@ -69,3 +69,15 @@
 .xcc {
     color: white;
 }
+
+.skills {
+    display: flex;
+}
+
+.skills h1 {
+    background-color: #1E88E5;
+    color: white;
+    padding: 5px;
+    border-radius: 30px;
+    margin-right: 10px;
+}
