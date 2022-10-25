@@ -1,7 +1,7 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
 
-const {createProject,createTeam, getorg,getProjectData,getsummarymember,getsummarycoordinator,getmemberProjectList,getCoordinatorCards,saveCardMember,saveCard,addtoWork,getProjectDataMember,updateCardMember}=require('../models/model_Project')
+const {createProject,createTeam, getorg,getProjectData,getsummarymember,getsummarycoordinator,getmemberProjectList,getCoordinatorCards,saveCardMember,saveCard,addtoWork,getProjectDataMember,updateCardMember,getworkreportmember}=require('../models/model_Project')
 
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");

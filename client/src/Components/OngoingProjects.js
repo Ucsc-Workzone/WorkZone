@@ -126,12 +126,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const LeaveHistoryTable = ({ flag }) => {
+
+
+    const [prec, setpercent]= useState(0);
     const [userData, setUserData] = useState({
         // labels: ["CM", "NC"],
         datasets: [
             {
                 label: 'Users Gained',
-                data: [85, 15],
+                data: [prec, (100-prec)],
                 backgroundColor: ['#0f65fa', '#c2c6d1'],
                 borderColor: 'white',
                 borderWidth: 2
@@ -257,6 +260,7 @@ const LeaveHistoryTable = ({ flag }) => {
 
                 <List sx={{ padding: '10px', display: 'block', justifyContent: 'center', maxHeight: '500px', overflow: 'auto' }}>
                     {projectCard.map((projectList) => {
+                       
                       return(
                         <ListItem sx={{ padding: '10px', display: 'flex', justifyContent: 'center' }}>
                             <Card variant="outlined" className="project-card">
@@ -276,16 +280,16 @@ const LeaveHistoryTable = ({ flag }) => {
                                                 {projectList['projectName']}
                                             </Typography>
                                             <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
-                                                {projects.pending} Remaining
+                                                {projectList['description']} 
                                             </Typography>
                                             <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
-                                                Due Date:{projects.date}
+                                                Due Date:{projectList['estendDate'].substr(0,10)}
                                             </Typography>
                                         </Stack>
                                     </Box>
                                     <Box style={{ display: 'flex', justifyContent: 'left', width: '60%', top: '50%' }}>
                                         <div style={{ width: '38%' }}>
-                                            <DoughtChart chartData={userData} percentage={'85'} />
+                                            <DoughtChart chartData={userData} percentage={projectList['percent']} />
                                         </div>
                                     </Box>
                                 </Box>
