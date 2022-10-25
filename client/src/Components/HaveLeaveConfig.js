@@ -103,11 +103,11 @@ const HaveLeaveLoad = ({ ...others }) => {
                     Configuration Successfull!
                 </Alert>
              } 
-             { 
+             {/* { 
                 !(type1) && <Alert onClose={handlepopClose} variant="filled"  severity="warning" sx={{ width: '100%' }}  >
                 Something went wrong ,please try again later!
                 </Alert>
-            }
+            } */}
             {/* {
                 type1==null && <></>
             } */}
