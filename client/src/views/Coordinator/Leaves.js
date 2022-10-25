@@ -30,6 +30,8 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary
 }));
 
+
+
 const HeadList = {
     head1: 'Pending',
     head2: 'Approved',
@@ -42,33 +44,26 @@ var CountList = {
 }
 
 const CoordinatorLeaves = () => {
-    // const [count1, setCount1] = useState();
-    // const [count2, setCount2] = useState();
-    // const [count3, setCount3] = useState();
 
-    useEffect(() => {
+    const [pendingData,setpendingdata]=useState([]);
+
+    useEffect(()=>{
+       leaverequest();
+    },[])
+
+    const leaverequest=()=>{
         axios
-            .post('http://localhost:5000/api/coordinator/leavesummary', {
-                center_id: 1
-            })
-            .then((response) => {
-                console.log(response.data);
-
-                // setCount1(response.data[0][0]['leavepending']);
-                // setCount2(response.data[1][0]['leaveAccept']);
-                // setCount3(response.data[2][0]['leaveRejected']);
-                //setpendingdata(response.data)
-
-                leaverequest();
-            });
-    });
-    const leaverequest = () => {
-        // let CountList = {
-        //     count1: count1,
-        //     count2: count2,
-        //     count3: count3
-        // };
-    };
+        .post('http://localhost:5000/api/coordinator/leavesummary', {
+            center_id: 1
+        })
+        .then((response) => {
+            console.log(response.data);
+            setpendingdata(response.data)
+    
+    
+        });
+    
+    }
 
     const [userData, setUserData] = useState({
         labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],

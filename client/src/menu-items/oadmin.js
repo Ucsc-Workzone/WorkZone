@@ -52,14 +52,14 @@ const pagesOrgAdmin = {
         //     icon: FeedbackOutlinedIcon,
         //     breadcrumbs: false
         // },
-        {
-            id: 'orgadminnot',
-            title: 'Annoucements',
-            type: 'item',
-            url: '/orgadmin/annoucements',
-            icon: IconBellRinging2,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'orgadminnot',
+        //     title: 'Annoucements',
+        //     type: 'item',
+        //     url: '/orgadmin/annoucements',
+        //     icon: IconBellRinging2,
+        //     breadcrumbs: false
+        // },
         {
             id: 'orgadminnot',
             title: 'Register Users',

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -34,6 +35,51 @@ import { useEffect } from 'react';
 
 import axios from 'axios';
 import { useState } from 'react';
+
+import PropTypes from 'prop-types';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import CloseIcon from '@mui/icons-material/Close';
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+function BootstrapDialogTitle(props) {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+}
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
 
 
 const columns = [
@@ -76,20 +122,55 @@ const columns = [
 ];
 
 
-function createData( no, name, date, duration, status, action) {
+function createData( no, fname, lname, subdate, fromdate, todate, status, action) {
+
+      const name = fname + " " +  lname;
+      
+
+      var date = subdate.substr(0,10);
+
+      if(status == "Accepted"){
+        status = 1
+      }
+      else if(status == "Rejected"){
+        status = 2
+      }
+      else if(status == "Pending"){
+        status = 3
+      }
+
+      var d1 = new Date(fromdate);   
+      var d2 = new Date(todate);   
+          
+      var diff = d2.getTime() - d1.getTime();   
+          
+      var daydiff = diff / (1000 * 60 * 60 * 24);   
+
+      const duration = (daydiff+1).toString();
+
   return { no, name, date, duration, status, action };
 }
 
+function datefilter(subdate){
+  var date = subdate.substr(0,10)
 
-const rows = [
-  createData('1', 'Pamodha Mahagamage','20/08/2022', '3', 1, 1.1 ),
-  createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
-  createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
-  createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
-  createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
-  createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
+  return date;
+}
 
-]
+function dateDurationCalc(fromdate, todate){
+    var d1 = new Date(fromdate);   
+      var d2 = new Date(todate);   
+          
+      var diff = d2.getTime() - d1.getTime();   
+          
+      var daydiff = diff / (1000 * 60 * 60 * 24);   
+
+      const duration = (daydiff+1).toString();
+
+
+      return (duration)
+}
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -114,6 +195,35 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const LeaveHistoryTable = () => {
   
+  const [opendetails, setOpenDet] = React.useState(false);
+  const [entry, sententr] = React.useState(1);
+
+  const handleClickOpenDet = (event, val, cat) => {
+    sententr(val);
+    if(cat == null){
+      setcontrol(false)
+      setOpenDet(true);
+    }
+    else{
+      var num = parseInt(cat);
+      if(num<=3){ 
+        console.log("normal"+num);
+        setptype(true);
+        setcontrol(true)
+        setOpenDet(true);
+      }else{
+        console.log("Extend"+num);
+        setptype(false);
+        setcontrol(true);
+        setOpenDet(true);
+      }
+    }
+   
+  };
+  const handleCloseDet = () => {
+    setOpenDet(false);
+  };
+  
   const [page, setPage] = React.useState(0);
   
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -135,6 +245,16 @@ const LeaveHistoryTable = () => {
 
   const [picdate, setValue] = React.useState(new Date('2022-08-24T21:11:54'));
   const [pendingData,setpendingdata]=useState([]);
+  const [active,setactive]=useState(false);
+  const [control,setcontrol]=useState(false);
+  const [ptype,setptype]=useState(true);
+  const [rows,setrows]=useState([]);
+
+  const handlependingLeave = (newValue) => {
+    setpendingdata(newValue);
+    structure(newValue);
+    setactive(true);
+  };
 
   const handleDateChange = (newValue) => {
       setValue(newValue);
@@ -146,36 +266,102 @@ const LeaveHistoryTable = () => {
 
 
   const getPendingData=()=>{
-    axios
-    .post('http://localhost:5000/api/coordinator/getLeavetableall', {
-        center_id: 1
-    })
-    .then((response) => {
-        console.log(response.data);
-        setpendingdata(response.data)
-    });
+      axios
+      .post('http://localhost:5000/api/coordinator/getLeavetableall', {
+          center_id: 1
+      })
+      .then((response) => {
+          console.log(response.data);
+          handlependingLeave(response.data);
+          //setpendingdata(response.data);
+        
+      });
   }
 
-  const rows = [
-    createData('1', 'Pamodha Mahagamage','20/08/2022', '3', 1, 1.1 ),
-    createData('2', 'Bimsara Kulasekara','20/08/2022', '2', 2, 2.1  ),
-    createData('3', 'Malithi Perera','18/08/2022', '1', 1, 3.1  ),
-    createData('4', 'Kavindu Gunawardana','17/08/2022', '1', 1, 4.1  ),
-    createData('5', 'Hiruni Guruge','16/08/2022', '2', 1, 5.1  ),
-    createData('6', 'Dulanjana Weerasinghe','15/08/2022', '2', 2, 6.1  ),
-    // createData('7', 'Chamara Amaraweera','15/08/2022', '3', 2, 7.1  ),
-    // createData('8', 'Pramaodya Gamage','15/08/2022', '5', 2, 8.1  ),
-    // createData('9', 'Dhanika Herath','12/08/2022', '1', 1, 9.1 ),
-    // createData('10', 'Nadun Sathsara','11/08/2022', '1', 1, 10.1  ),
-    // createData('11', 'Nipun Gunawardana','11/08/2022', '2', 1, 11.1  ),
-    // createData('12', 'Thilini Perera','10/08/2022', '3', 1, 12.1 ),
-    // createData('13', 'Dasun perera','10/08/2022', '4', 1, 13.1 ),
-    // createData('14', 'Vikum Pushpakumaea','09/08/2022', '2', 2, 14.1  ),
-    // createData('15', 'Danuka Withana','09/08/2022', '2', 2, 15.1  ),
-  ]
+
+  function structure(pendingData){
+    if(pendingData){
+      const i = pendingData.length;
+   
+      for(var j= 0 ; j < i ; j++){
+        var n= j+1;
+        var c = n.toString();
+
+        var ftname = pendingData[j].firstrName;
+        
+        var ltname = pendingData[j].lastName;
+        var subdate = pendingData[j].fromDate;
+        var fromd = pendingData[j].fromDate;
+        var tod = pendingData[j].toDate;
+        var st = pendingData[j].status;
+        var act = pendingData[j].userid;
   
+        rows[j] = createData( c, ftname, ltname, subdate, fromd, tod , st, act);
+      }
+  
+      console.log(rows);
+      setrows(rows);
+
+    }
+  
+  }
+ 
+
   return (
     <React.Fragment>
+  {active &&
+      <div>
+      <BootstrapDialog
+        onClose={handleCloseDet}
+        aria-labelledby="customized-dialog-title"
+        open={opendetails}
+        
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleCloseDet} sx={{backgroundColor:"#0C518A", minWidth:"200px", color:"white", fontSize:"14px", fontWeight:"bold"}}>
+            Leave Request
+        </BootstrapDialogTitle>
+        <DialogContent dividers sx={{width:"400px"}}>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Name</b> <br />{pendingData[entry].firstrName + " " }{pendingData[entry].lastName}
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Requested Type</b> <br /> { " Annual Leave" }
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+              <b>Requested Date</b> <br /> {datefilter(pendingData[entry].fromDate) + " " }
+          </Typography>
+          <Typography gutterBottom sx={{paddingTop:"10px", minWidth:"200px"}}>
+             <b>Requested Duration</b> {dateDurationCalc(pendingData[entry].fromDate, pendingData[entry].toDate)} Days<br /> <b>From</b> {datefilter(pendingData[entry].fromDate)} <b>To</b> {datefilter(pendingData[entry].toDate)}
+          </Typography>
+        </DialogContent>
+        {control &&
+            <Box sx={{display:"flex", widht:"100%", alignContent:"center", justifyContent:"center"}}>
+              {ptype &&
+                <Button variant="contained" sx={{width:"100px"}} color="success">
+                  Accept
+                </Button>
+              }
+              {!(ptype) &&
+                <Button variant="contained" sx={{width:"100px"}} color="success">
+                  Process
+                </Button>
+              }
+              <Button variant="contained" sx={{width:"100px"}} color="error">
+                  Reject
+              </Button>
+            </Box>
+        }
+        
+        
+        <DialogActions>
+          {/* <Button autoFocus onClick={handleCloseDet}>
+            Close
+          </Button> */}
+        </DialogActions>
+      </BootstrapDialog>
+    </div>
+
+      }
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
         <Typography variant="h3" component="h4" className="">
             Leave Requests   
@@ -235,21 +421,18 @@ const LeaveHistoryTable = () => {
           </TableHead>
           <TableBody sx={{fontSize:'16px'}}>
 
-           {/* {
-             pendingData.map((row) => {
-              return (
-                createData(row[])
-              )
-            }) 
-           }  */}
-            {rows
+            {active && rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+                const act = row['no'];
+                const val = act -1 ;
+                const stat = row['status'];
+                const du = row['duration'];
+
                 return (
                   <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
                     {columns.map((column) => {
                       const value = row[column.id];
-  
                       if(!column.format){
                         if(value == 1){
                           return (
@@ -259,11 +442,23 @@ const LeaveHistoryTable = () => {
                           return (
                           <StyledTableCell align={column.align}><Chip label="Rejected" color="error"  /></StyledTableCell>
                           );}
+                        else if(value == 3){
+                          return (
+                          <StyledTableCell align={column.align}><Chip label="Pending" color="warning"  /></StyledTableCell>
+                        );}
+                          
                       }else if (typeof value === 'number'){
-                       
-                        return (
-                          <StyledTableCell><Button variant="contained" >Details</Button></StyledTableCell>
-                        );
+
+                        if(stat == 3){
+                          return (
+                            <StyledTableCell><Button variant="contained" onClick={e =>handleClickOpenDet(e, val, du)}>Process</Button></StyledTableCell>
+                          );
+                        }else{
+                          return (
+                            <StyledTableCell><Button variant="contained" onClick={e =>handleClickOpenDet(e, val, null)} >Details</Button></StyledTableCell>
+                          );
+                        }
+                      
                       }else{
                         return (
                           <StyledTableCell key={column.id} align={column.align}>
