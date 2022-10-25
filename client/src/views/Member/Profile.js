@@ -5,6 +5,9 @@ import './styles/profile.css';
 import coverimg from '../../assets/images/cover.jpg';
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
 const userProfile = () => {
   return (<>
@@ -47,7 +50,68 @@ const userProfile = () => {
 
       </div>
       <div className='right'>
-        <h1>Name : Bimsara Kulasekara</h1>
+        <h1>Ongoing Projects</h1>
+
+        <div className='projects'>
+          <div className='left'>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <br></br>
+            <h1>51%</h1>
+            <br></br>
+
+
+            <h1>Mobile App Development</h1>
+          </div>
+          <div className='left'>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <br></br>
+            <h1>40%</h1>
+            <br></br>
+
+
+            <h1>Eterpise Application</h1></div>
+          <div className='left'>
+            <div class="progress">
+              <div class="progress-value"></div>
+            </div>
+            <br></br>
+            <h1>55%</h1>
+            <br></br>
+
+
+            <h1>Web  App</h1></div>
+        </div>
+
+        <div className='form'>
+
+          <h1>User Details</h1>
+
+          <div className="cc">
+
+            <form>
+              <label>
+                <br></br>
+                <input type="text" name="fname" placeholder='Malithi' disabled />
+                <input type="text" name="lname" placeholder='Perera' disabled />
+              </label>
+              <input type="submit" value="Submit" />
+            </form><br></br>
+
+          </div>
+
+
+
+
+
+
+
+        </div>
+
+
 
 
       </div>
