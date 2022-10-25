@@ -85,7 +85,9 @@ return row2[0];
     return "error";
     }
    },
+
     async getCarddataW(data) {
+
     data = [];
     try {
       sql = `select count(recordId) as count from workrecord where status=1 `;

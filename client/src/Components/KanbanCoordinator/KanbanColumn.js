@@ -51,15 +51,18 @@ const KanbanColumn = () => {
         getCardData();
     }, [])
     const getCardData = () => {
+        const proid = window.location.href.split('/')[6]
+
         axios
             .post('http://localhost:5000/api/project/getProjectData', {
                 center_id: 1,
-                project_id: projectid,
+                project_id: proid,
 
             })
             .then((response) => {
                 console.log(response.data);
                 setProjectList(response.data)
+                alert(proid)
                 // const projectid = response.data['LAST_INSERT_ID()'];
                 // navigate('/coordinator/projectinit/' + `${projectid}`)
 
