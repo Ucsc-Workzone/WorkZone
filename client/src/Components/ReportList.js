@@ -49,6 +49,7 @@ const buttonCon1 = {
 export default function InteractiveList() {
     const userid = localStorage.getItem('userid');
     const [status, setStaus] = useState([]);
+    const [activity,setActivity]=useState(false)
     useEffect(() => {
         getData();
     }, []);
@@ -60,7 +61,10 @@ export default function InteractiveList() {
                 userid: userid
             })
             .then((response) => {
-                console.log(response.data);
+               if(response.data.length==0){
+setActivity(true)
+               }
+                console.log(response.data.length);
                 setStaus(response.data);
               
 
@@ -70,6 +74,7 @@ export default function InteractiveList() {
     const [secondary, setSecondary] = React.useState(false);
 
     return (
+        
         <Box sx={{ flexGrow: 1, maxWidth: 752 }}>
             <Grid item xs={12} md={6}>
                 <Demo>
@@ -106,9 +111,19 @@ export default function InteractiveList() {
 
                         <div style={buttonCon1}>
                             {' '}
-                            <Button variant="contained" color="success">
-                                Submit
-                            </Button>
+                            {!activity &&
+                             <Button variant="contained" color="success">
+                             Submit
+                         </Button>
+
+                            }
+                            {activity &&
+                             <Typography variant="h3" component="h2" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                        No Activities to to submit
+                          </Typography>
+
+                            }
+                           
                         </div>
                     </div>
                 </Demo>
