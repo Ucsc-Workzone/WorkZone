@@ -15,28 +15,42 @@ class KanbanCard extends React.Component {
             statepop: false
         };
         this.delete = this.delete.bind(this);
+       
     }
+//     componentDidMount(){
+// let input=document.getElementById('upload-value').value;
+
+//     }
 
     addworkreport() {
         const id = event.target.value;
+        console.log(id)
         const userid = localStorage.getItem('userid');
         axios
             .post('http://localhost:5000/api/project/checkpendings', {
                 userid: userid
             })
             .then((response) => {
-                console.log(response.data);
-                if ((response.data = 0)) {
-                    alert('You Have already have a work report to submit');
-                } else {
+                console.log("Length",response.data.length);
+                if ((response.data = 1)) {
                     axios
-                        .post('http://localhost:5000/api/project/createReport', {
-                            userid: userid
+                        .post('http://localhost:5000/api/project/addToReport', {
+                            userid: userid,
+                            actId:id
                         })
                         .then((response) => {
-                            console.log(response.data);
+                            
                         });
-
+               
+                } else {
+                    // axios
+                    //     .post('http://localhost:5000/api/project/createReport', {
+                    //         userid: userid
+                    //     })
+                    //     .then((response) => {
+                    //         console.log(response.data);
+                    //     });
+                    alert('You Have already have a work report to submit');
                 
                 }
             });
@@ -73,10 +87,13 @@ class KanbanCard extends React.Component {
             boxShadow: 'rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 0px'
         };
         const buttonStyle = {
-            marginLeft: '10px'
+            // marginLeft: '10px',
+            marginBottom:'10px',
+            width:'300px'
         };
 const buttonStyle2={
-    marginRight: '10px'
+    // marginRight: '10px',
+   
 }
         return (
             <>
@@ -97,16 +114,17 @@ const buttonStyle2={
                         <h4>Description:{this.props.project.description}</h4>
                     </div>
                     {this.props.project.project_stage == 3 && (
+                        <Button variant="outlined" component="label" style={buttonStyle}>
+                            Upload Proof
+                            <input  accept="image/*" multiple type="file"id='upload-value' />
+                        </Button>
+                    )}
+                    {this.props.project.project_stage == 3 && (
                         <Button onClick={this.addworkreport} value={this.props.project.subActivityId} variant="contained">
                             Add to work report
                         </Button>
                     )}
-                    {this.props.project.project_stage == 3 && (
-                        <Button variant="contained" component="label" style={buttonStyle}>
-                            Upload Proof
-                            <input hidden accept="image/*" multiple type="file" />
-                        </Button>
-                    )}
+                    
                     {this.props.project.project_stage == 1 && (
                         <Button onClick={this.delete} value={this.props.project.subActivityId} variant='outlined' color='primary' style={buttonStyle2}>
                             Edit
