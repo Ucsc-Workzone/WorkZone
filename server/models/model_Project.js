@@ -142,7 +142,7 @@ module.exports = {
   },
   async getCoordinatorCards(data) {
     try {
-      sql = `select * from projects where centerId=1 and completion=0;`;
+      sql = `select * from projects where centerId=1 and completion=0 order by estendDate asc;`;
       const rows = await dbconnection.query(sql);
 
       return rows;
