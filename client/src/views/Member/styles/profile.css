@@ -146,10 +146,11 @@
     /* display: flex;
     align-items: center;
     justify-content: center; */
+    width: 100%;
 }
 
 input[type=text] {
-    width: 30%;
+    width: 100%;
     border: 1px solid #aaa;
     border-radius: 4px;
     margin: 8px 0;
@@ -159,6 +160,31 @@ input[type=text] {
     transition: .3s;
     margin-right: 20px;
     font-family: 'Poppins';
+}
+
+input[type=textarea] {
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    margin-right: 20px;
+    font-family: 'Poppins';
+}
+
+input[type=submit] {
+
+    font-family: 'Poppins';
+    background-color: #1E88E5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    float: center;
 }
 
 input[type=text]:focus {
@@ -171,4 +197,6 @@ input[type=text]:focus {
     align-items: center;
     justify-content: center; */
     width: 100%;
+    padding-left: 150px;
+    padding-right: 150px;
 }

@@ -93,12 +93,26 @@ const userProfile = () => {
           <div className="cc">
 
             <form>
+
+              <br></br>
               <label>
-                <br></br>
-                <input type="text" name="fname" placeholder='Malithi' disabled />
-                <input type="text" name="lname" placeholder='Perera' disabled />
-                <input type="textarea" name="address" placeholder='No.118, Vijayarajadahana, Mirigama' disabled />
+                First Name
               </label>
+              <input type="text" name="fname" placeholder='Malithi' value={'Malithi'} />
+
+              <label>
+                Last Name
+              </label>
+              <input type="text" name="lname" placeholder='Perera' value={'Perera'} /> <br></br>
+              <label>
+                Phone No
+              </label>
+              <input type="text" name="phone" placeholder='' value={'0785497726'} /> <br></br>
+              <label>
+                Address
+              </label>
+              <input type="textarea" name="address" placeholder='No.118, Vijayarajadahana, Mirigama' rows="4" columns="10" value={'No.118, Vijayarajadahana, Mirigama'} />
+              <br></br>
               <input type="submit" value="Submit" />
             </form><br></br>
 
