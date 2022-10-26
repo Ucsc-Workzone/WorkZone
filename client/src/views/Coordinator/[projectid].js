@@ -1,5 +1,5 @@
 import KanbanBoard from 'Components/KanbanCoordinator/KanbanBoard';
-import ProjectSummary from 'Components/ProjectSummary';
+import ProjectSummary from 'Components/ProjectSummarycoordinator';
 
 import './styles/project_create.css';
 import Chip from '@mui/material/Chip';
@@ -39,7 +39,7 @@ const ProjectPage = () => {
     return (
         <>
             <div className="projectmain">
-                <div>
+                <div className='summaryConatiner'>
                     <ProjectSummary />
                 </div>
                 <div className="loweCon">

@@ -192,7 +192,7 @@ const LeaveHistoryTable = ({ flag }) => {
                 <Typography variant="h3" component="h4" className="">
                     Ongoing Projects
                 </Typography>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DesktopDatePicker
                         label="Date"
                         inputFormat="MM/dd/yyyy"
@@ -201,7 +201,7 @@ const LeaveHistoryTable = ({ flag }) => {
                         onChange={handleDateChange}
                         renderInput={(params) => <TextField {...params} />}
                     />
-                </LocalizationProvider>
+                </LocalizationProvider> */}
                 <TextField
                     id="search-bar"
                     className="textname"
@@ -209,6 +209,7 @@ const LeaveHistoryTable = ({ flag }) => {
                         setSearchQuery(e.target.value);
                     }}
                     label="Search by Name"
+                    sx={{height:"80px"}}
                     variant="outlined"
                     placeholder="Search..."
                     size="small"
@@ -233,23 +234,24 @@ const LeaveHistoryTable = ({ flag }) => {
                     )}
                 </Box>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+                    <DialogTitle sx={{backgroundColor: '#185A90',color:"white",fontSize:"16"}}>
+                             <Button onClick={handleClose} autoFocus variant="text">
+                                <HighlightOffIcon style={{ color: 'white', justifyContent: 'right' }} />
+                            </Button>
+                            Project Initialization Form 
+                    </DialogTitle>
+                                 
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            <Box
-                                style={{ width: '100%', display: 'flex', justifyContent: 'right', marginTop: '10px', marginBottom: '10px' }}
-                            >
-                                <HighlightOffIcon style={{ color: 'blue', justifyContent: 'right' }} />
-                            </Box>
                             <ProjectForm />
                         </DialogContentText>
                     </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose} variant="contained">
-                            Create
-                        </Button>
-                        <Button onClick={handleClose} autoFocus variant="outlined">
-                            Cancel
-                        </Button>
+                    <DialogActions>  
+                        <Box
+                            style={{ width: '100%', display: 'flex', justifyContent: 'right', marginTop: '10px', marginBottom: '10px' }}
+                        >
+                              
+                        </Box>                    
                     </DialogActions>
                 </Dialog>
 

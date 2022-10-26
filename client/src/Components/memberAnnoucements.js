@@ -176,11 +176,11 @@ const RecentAnnoucements = ({ ...others }) => {
             <Typography variant="h3" component="h4" className="head11">
                 Recently Published
             </Typography>
-            <Box style={{ display: 'flex', justifyContent: 'right' }}>
+            {/* <Box style={{ display: 'flex', justifyContent: 'right' }}>
                 <Button variant="outlined" onClick={handleClickOpen}>
                     <Typography className="addone">+ NEW</Typography>
                 </Button>
-            </Box>
+            </Box> */}
             <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
                 <ListItem alignItems="flex-start" className="">
                     <ListItemAvatar>

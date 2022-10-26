@@ -3,6 +3,7 @@
     /* background-color: #fff; */
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 500px;
     border-radius: 10px;
 }
@@ -22,6 +23,7 @@
     width: 60%;
     background-color: #fff;
     border-radius: 10px;
+    margin-left: 300px;
 }
 .memberAssignSerach{
     /* background-color: #fff; */
@@ -48,4 +50,14 @@
     margin-left: -15px;
     background-color: #fff;
     padding: 10px;
+}
+
+.summaryConatiner{
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.listItemCoor{
+    margin-left: 30px;
 }

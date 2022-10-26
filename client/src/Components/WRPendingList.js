@@ -25,7 +25,7 @@ import { Typography } from '@mui/material';
 
 
 const LeavePendingList = ({flag}) => {
-    const [countleavelist,setleavelist]=useState([]);
+    const [countlist,setleavelist]=useState([]);
     useEffect(()=>{
 getCount();
     },[]
@@ -33,7 +33,7 @@ getCount();
 
     const getCount=()=>{
         axios
-        .post('http://localhost:5000/api/coordinator/getLeavetable', {
+        .post('http://localhost:5000/api/coordinator/getTable', {
             center_id: 1
         })
         .then((response) => {
@@ -59,16 +59,16 @@ getCount();
                 <Table sx={{ padding:"0px" }} aria-label="simple table" style={{textAlign:'right'}}>
                     <TableHead></TableHead>
                     <TableBody style={{textAlign:'left'}}>
-                    {countleavelist.map((row) => (
+                    {countlist.map((row) => (
                         <TableRow
                         key={row['leaveId']}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                         <TableCell align="right"><Avatar className='small-avatar'>M</Avatar></TableCell>
                         <TableCell align="right">{row['firstrName']+ " " + row['lastName']}</TableCell>
-                        <TableCell align="right">{row['fromDate'].substring(0,10)}</TableCell>
+                        <TableCell align="right">{row['startDate'].substring(0,10)}</TableCell>
                         {!(flag)  &&
-                            <Button variant="contained" className="process"><Typography >Process</Typography></Button>
+                            <Button variant="contained" className="process" value={row['recordId']}><Typography >Process</Typography></Button>
                         }
                         </TableRow>
                     ))}

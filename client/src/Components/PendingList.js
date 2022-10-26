@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import {useEffect,useState} from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function createData(id, name, date) {
   return { id, name, date };
 }
@@ -25,6 +26,7 @@ import { Typography } from '@mui/material';
 
 
 const LeavePendingList = ({flag}) => {
+    const navigate=useNavigate();
     const [countleavelist,setleavelist]=useState([]);
     useEffect(()=>{
 getCount();
@@ -39,10 +41,13 @@ getCount();
         .then((response) => {
             console.log(response.data);
             setleavelist(response.data)
-         
-
-
+        
         });
+    }
+
+    const changeRoute=()=>{
+// const navigate=useNavigate();
+navigate('/coordinator/leaves')
     }
     return ( 
     
@@ -50,7 +55,7 @@ getCount();
             
             <Box style={{display: 'flex', justifyContent: 'right'}}>
             {flag  &&
-                <Button variant="contained"><Typography className="seeall" >All Requests</Typography></Button>
+                <Button variant="contained" onClick={changeRoute}><Typography className="seeall" >All Requests</Typography></Button>
             }
 
                 

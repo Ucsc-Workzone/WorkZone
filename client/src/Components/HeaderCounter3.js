@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import './styles/headercounter.css';
 
 
-const HeaderCounter3 = ({headlist, countlist}) => {
+const HeaderCounter3 = ({headlist, countList}) => {
     return (
         <div className="header-counter">
             <Grid container spacing={2} minHeight={160}>
@@ -18,7 +18,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {/* {countlist.count2} */}
+                            {countList.count1}
                         </Typography>
                     </Box>
                 </Grid>
@@ -30,7 +30,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {/* {countlist.count2} */}
+                            {countList.count2}
                         </Typography>
                     </Box>
                 </Grid>
@@ -42,7 +42,7 @@ const HeaderCounter3 = ({headlist, countlist}) => {
                     </Box>
                     <Box xs display="block">
                         <Typography variant="h1" component="p" className="" fontSize="5vw">
-                            {/* {countlist.count3} */}
+                            {countList.count3}
                         </Typography>
                     </Box>
                 </Grid>

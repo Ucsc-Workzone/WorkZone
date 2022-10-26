@@ -1,17 +1,19 @@
 .main-container{
-    width: 100%;
+    width: 90%;
     display: flex;
-    
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   /* // flex-direction: column; */
 }
 .tag-conatiner{
     
 }
 
 .listItem{
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .chipleader{

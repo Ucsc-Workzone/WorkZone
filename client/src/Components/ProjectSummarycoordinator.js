@@ -14,8 +14,6 @@ import Image from '../../src/assets/images/Profile/member1.jpg'
 import TaskSummary from "./TaskSummary";
 import { useEffect } from "react";
 
-
-
 import axios from "axios";
 import { useState } from "react";
 const ProjectSummary = () => {
@@ -29,12 +27,12 @@ const ProjectSummary = () => {
 
   const sendPutRequest = async () => {
     const proid = window.location.href.split('/')[6];
-    const actid = window.location.href.split('/')[7];
+   
     try {
-        const resp = await axios.post('http://localhost:5000/api/project/getsummarymember', {
+        const resp = await axios.post('http://localhost:5000/api/project/getsummarycoordinator', {
             center_id: 1,
             project_id: proid,
-            activity_id: actid
+           
         });
         console.log(resp.data);
         setData(resp.data)
@@ -50,7 +48,7 @@ sendPutRequest();
         <>
         {state &&
           <div className="main-conatiner">
-        <List className="listItem">
+        <List className="listItemCoor">
       <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -67,22 +65,22 @@ sendPutRequest();
         </ListItemAvatar>
         <ListItemText primary="Due Date" secondary={data[0]['estendDate'].substring(0,10)} />
       </ListItem>
-      <ListItem>
+      {/* <ListItem>
         <ListItemAvatar>
           <Avatar>
             <EventAvailableIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Task Name" secondary={data[0]['activityName']} />
-      </ListItem>
-      <ListItem>
+      </ListItem> */}
+      {/* <ListItem>
         <ListItemAvatar>
           <Avatar>
             <GroupAddIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="No of Members" secondary="5" />
-      </ListItem>
+      </ListItem> */}
       <ListItem>
        <TaskSummary />
       </ListItem>

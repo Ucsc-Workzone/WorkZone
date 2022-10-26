@@ -14,7 +14,7 @@ import { IconPlus, IconAdjustments } from "@tabler/icons";
 import CreateLeaveConfig from './CreateLeaveConfig';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-
+import axios from 'axios';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -104,11 +104,11 @@ const HaveLeaveLoad = ({ ...others }) => {
                 </Alert>
              } 
              {/* { 
-                !type1 && <Alert onClose={handlepopClose} variant="filled"  severity="warning" sx={{ width: '100%' }}  >
+                !(type1) && <Alert onClose={handlepopClose} variant="filled"  severity="warning" sx={{ width: '100%' }}  >
                 Something went wrong ,please try again later!
                 </Alert>
-            }
-            {
+            } */}
+            {/* {
                 type1==null && <></>
             } */}
         </Snackbar>

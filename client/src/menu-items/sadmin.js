@@ -38,14 +38,14 @@ const pagesSysAdmin = {
             icon: FeedbackOutlinedIcon,
             breadcrumbs: false
         },
-        {
-            id: 'sysadminnot',
-            title: 'Annoucements',
-            type: 'item',
-            url: '/sysadmin/annoucements',
-            icon: IconBellRinging2,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'sysadminnot',
+        //     title: 'Annoucements',
+        //     type: 'item',
+        //     url: '/sysadmin/annoucements',
+        //     icon: IconBellRinging2,
+        //     breadcrumbs: false
+        // },
         {
             id: 'sysadminreg',
             title: 'Registration',
