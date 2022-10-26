@@ -8,6 +8,8 @@ module.exports = {
       const rows = await dbconnection.query(sql);
       const query = `SELECT LAST_INSERT_ID();`;
       const rows1 = await dbconnection.query(query);
+      sqlnot=`INSERT INTO notification (type,nfrom,nto,date,projectId) VALUES ('m-005',8,5,'2022-10-27',68)`;
+      const rows4 = await dbconnection.query(sqlnot);
       return rows1[0][0];
       // if (rows) {
       //   const query = `SELECT LAST_INSERT_ID();`;
@@ -193,7 +195,13 @@ module.exports = {
   },
   async getworkreportmember(data) {
     try {
-      sql = `SELECT * FROM workrecord,subactivity,reportActivity where workrecord.memberId=${data} and workrecord.status=1 and reportActivity.subActivityId=subactivity.subActivityId `;
+      const date = new Date();
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let currentDate = `${year}-${month}-${day}`;
+      sql = `SELECT * FROM workrecord,subactivity,reportActivity where workrecord.memberId=${data} and workrecord.status=0 and reportActivity.subActivityId=subactivity.subActivityId and workrecord.startDate='${currentDate}' and workrecord.recordId=reportActivity.reportId `;
       const rows = await dbconnection.query(sql);
 
       return rows[0];
@@ -227,5 +235,15 @@ return "Kkkkk"
 
     }
 
+  },
+  async deleteActivity(data){
+    try{
+sql=`DELETE FROM subactivity WHERE subActivityId=${data};`
+const rows = await dbconnection.query(sql);
+return rows;
+    }
+    catch{
+
+    }
   }
 };
