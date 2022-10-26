@@ -135,5 +135,36 @@ return row2[0];
       return "error";
     }
    },
-  
+   async seeRecord(data){
+    try{
+    sql=`select * from workrecord,reportActivity,subactivity where workrecord.recordId=reportActivity.reportId and subactivity.subActivityId=reportActivity.subActivityId and workrecord.recordId=${data}`;
+    const row2=await dbconnection.query(sql);
+
+    return row2[0];
+    }catch{
+      return "error";
+    }
+   },
+   async acceptLeaveRequest(data){
+    try{
+    sql=`UPDATE leaverequest SET status='Accepted' where leaveId=${data}`;
+    const row2=await dbconnection.query(sql);
+
+    return row2[0];
+    }catch{
+      return "error";
+    }
+   },
+   async rejectLeaveRequest(data){
+    try{
+    sql=`UPDATE leaverequest SET status='Rejected' where leaveId=${data}`;
+    const row2=await dbconnection.query(sql);
+
+    return row2[0];
+    }catch{
+      return "error";
+    }
+   },
+   
+   
 };

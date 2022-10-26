@@ -181,14 +181,14 @@ module.exports = {
 
       const date = new Date();
 
-      let day = date.getDate()-1;
+      let day = date.getDate();
       let month = date.getMonth() + 1;
       let year = date.getFullYear();
       let currentDate = `${year}-${month}-${day}`;
-      sql = `SELECT * FROM workrecord where memberId=${data} and status=1 and startDate='${currentDate}'`;
+      sql = `SELECT * FROM workrecord where memberId=${data} and status=0 and startDate='${currentDate}'`;
       const rows = await dbconnection.query(sql);
 
-      return rows[0].length;
+      return rows[0];
     } catch {
       return "error"
     }
@@ -245,5 +245,37 @@ return rows;
     catch{
 
     }
-  }
+  },
+  
+  async addToReport(data,actId){
+    try{
+      const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${day}`;
+sql=`SELECT recordId from workrecord where memberId=${data} and startDate='${currentDate}' `
+const rows = await dbconnection.query(sql);
+const recordId=rows[0][0]['recordId'];
+sql1=`INSERT INTO reportActivity values (${recordId},${actId})`;
+const rows1 = await dbconnection.query(sql1);
+sql2=`UPDATE subactivity SET project_stage=4 where subActivityId=${actId}`;
+const rows2 = await dbconnection.query(sql2);
+return rows2;
+    }
+    catch{
+return "Error"
+    }
+  },
+  async submitreport(data){
+    try{
+sql=`UPDATE workrecord SET status=1 where recordId=${data}`
+const rows = await dbconnection.query(sql);
+return true;
+    }
+    catch{
+
+    }
+  },
 };

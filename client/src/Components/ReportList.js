@@ -70,6 +70,27 @@ setActivity(true)
 
             });
     };
+
+    const submitWorkReport=()=>{
+        const recordId=localStorage.getItem('recordId')
+        axios
+        .post('http://localhost:5000/api/project/submitreport', {
+            recordId: recordId
+        })
+        .then((response) => {
+           if(response.data.length==0){
+setActivity(true)
+           }
+            console.log(response.data.length);
+            setStaus(response.data);
+            if(true){
+                alert("Successfully Submited")
+            }
+          
+
+        });
+
+    }
     const [dense, setDense] = React.useState(false);
     const [secondary, setSecondary] = React.useState(false);
 
@@ -80,6 +101,7 @@ setActivity(true)
                 <Demo>
                     <List dense={dense}>
                         {status.map((data) => {
+                            localStorage.setItem('recordId',data['reportId'])
                             return (
                                 <>
                                     <ListItem
@@ -97,7 +119,7 @@ setActivity(true)
                                         <ListItemText primary={data['subActName']} secondary={data['subActivityId']} />
                                         <ListItemText primary={data['attachment']} secondary={data['description']} />
                                     </ListItem>
-                                    ;
+                                    
                                 </>
                             );
                         })}
@@ -112,7 +134,7 @@ setActivity(true)
                         <div style={buttonCon1}>
                             {' '}
                             {!activity &&
-                             <Button variant="contained" color="success">
+                             <Button variant="contained" color="success" onClick={submitWorkReport} >
                              Submit
                          </Button>
 

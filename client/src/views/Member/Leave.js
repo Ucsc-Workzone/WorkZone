@@ -41,6 +41,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { resolveConfig } from 'prettier';
+import LeaveTypeSet from 'Components/LeaveTypeSet';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -425,7 +426,7 @@ const MemberLeave = () => {
                         {/* <Divider>
                             <h2>Leave Notifications</h2>
                         </Divider> */}
-                        <NotificationListLeave></NotificationListLeave>
+                       <LeaveTypeSet></LeaveTypeSet>
                     </div>
                 </div>
             </div>
