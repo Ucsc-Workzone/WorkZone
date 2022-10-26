@@ -8,7 +8,43 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import leaveimg from './../assets/images/next.png'
 
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 const LeaveTypeSet = () => {
+
+    const [ancount, setAnn] = React.useState(0);
+    const [wkcount, setWeek] = React.useState(0);
+    const [skcount, setSick] = React.useState(0);
+    const [matcount, setMat] = React.useState(0);
+    const [mercount, setMer] = React.useState(0);
+
+        
+    function setdata(data){
+        setAnn(data.annual);
+        setWeek(data.weekly);
+        setSick(data.sick);
+        setMat(data.maternity);
+        setMer(data.mercantile);
+
+    }
+    useEffect(() => {
+        configleave();
+    }, []);
+
+    const configleave = () => {
+        axios
+            .post('http://localhost:5000/api/Leave/getConfig', {
+                center_id: 1
+            })
+            .then((response) => {
+                console.log(response.data);
+                setdata(response.data[0]);
+            });
+    };
+
+
     return ( 
         <>
             <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
@@ -26,7 +62,7 @@ const LeaveTypeSet = () => {
                                 variant="body2"
                                 color="text.primary"
                             >
-                                15 days per year
+                                {ancount} days per year
                             </Typography>
                         </React.Fragment>
                     }
@@ -41,14 +77,23 @@ const LeaveTypeSet = () => {
                     primary="Weekly Leaves"
                     secondary={
                         <React.Fragment>
-                        <Typography
+                        {wkcount==1 && <Typography
+                            sx={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                            color="text.primary"
+                        >
+                            Half Day
+                        </Typography>}
+                        {wkcount==2 && <Typography
                             sx={{ display: 'inline' }}
                             component="span"
                             variant="body2"
                             color="text.primary"
                         >
                             Full Day
-                        </Typography>
+                        </Typography>}
+
                         </React.Fragment>
                     }
                     />
@@ -68,7 +113,7 @@ const LeaveTypeSet = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            15 days per year
+                            {skcount} days per year
                         </Typography>
                         </React.Fragment>
                     }
@@ -89,7 +134,7 @@ const LeaveTypeSet = () => {
                             variant="body2"
                             color="text.primary"
                         >
-                            10 Weeks per year
+                            {matcount} Weeks per year
                         </Typography>
                         </React.Fragment>
                     }
@@ -103,14 +148,27 @@ const LeaveTypeSet = () => {
                     primary="Mercantile Holidays"
                     secondary={
                         <React.Fragment>
-                        <Typography
-                            sx={{ display: 'inline' }}
-                            component="span"
-                            variant="body2"
-                            color="text.primary"
-                        >
-                            Allowed
-                        </Typography>
+                            { mercount == 0 && 
+                                 <Typography
+                                 sx={{ display: 'inline' }}
+                                 component="span"
+                                 variant="body2"
+                                 color="text.primary"
+                             >
+                                 Not Allowed
+                             </Typography>
+                            }
+                             { mercount== 1 && 
+                                 <Typography
+                                 sx={{ display: 'inline' }}
+                                 component="span"
+                                 variant="body2"
+                                 color="text.primary"
+                             >
+                                Allowed
+                             </Typography>
+                            }
+                       
                         </React.Fragment>
                     }
                     />

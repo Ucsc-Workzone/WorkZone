@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import {useEffect,useState} from 'react';
 import axios from 'axios';
 function createData(id, name, date) {
@@ -32,7 +33,7 @@ import { Typography } from '@mui/material';
 const projects ={
     id:1,
     name:"AWS Deployment",
-    pending:"3 Days",
+    pending:"2 Days",
     date:"2022-11-29"
   }
 
@@ -59,7 +60,6 @@ const LeavePendingList = ({flag}) => {
     return ( 
     
         <div className="pending-list2">
-            
             <Box style={{display: 'flex', justifyContent: 'right', marginBottom: '20px'}}>
                 <Button variant="contained"><Typography className="seeall" >View All</Typography></Button>
         
@@ -72,12 +72,14 @@ const LeavePendingList = ({flag}) => {
             
                         <TableRow
                         key={1}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 }, paddingBottom:"10px" }}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0, paddingBottom:"10px" } }}
                         >
                         <TableCell align="right">Login issue</TableCell>
                         <TableCell align="right">2022/10/25</TableCell>
                         <Button variant="contained" className="process"><Typography >View</Typography></Button>
                         </ TableRow >
+                        <Divider variant="inset"  />
+                        <Divider variant="inset"  />
                         <TableRow
                         key={2}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

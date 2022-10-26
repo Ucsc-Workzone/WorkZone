@@ -67,6 +67,28 @@ const CoordinatorLeaves = () => {
         setcount2(Counters.count2);
         setcount3(Counters.count3);
 
+        const mon ={
+            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            datasets: [
+                {
+                    label: 'Accepted',
+                    data: [0, 0, 0, 2, 3, 5, 1, 1, 1, Counters.count2, 0, 0],
+                    backgroundColor: ['#0f65fa'],
+                    borderColor: 'white',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Rejected',
+                    data: [0, 0, 0, 2, 3, 5, 6, 0, 1, Counters.count3, 0, 0],
+                    backgroundColor: ['#c2c6d1'],
+                    borderColor: 'white',
+                    borderWidth: 1
+                }
+            ]
+        }
+        console.log(mon);
+        setUserData(mon);
+
         setactive(true);
     }
     
@@ -84,23 +106,25 @@ const CoordinatorLeaves = () => {
         .then((response) => {
             console.log(response.data);
             updatesummary(response.data);
+
         });
     
     }
+
 
     const [userData, setUserData] = useState({
         labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
         datasets: [
             {
                 label: 'Accepted',
-                data: [0, 0, 0, 2, 3, 5, 1, 1, 1, 3, 0, 0],
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: ['#0f65fa'],
                 borderColor: 'white',
                 borderWidth: 1
             },
             {
                 label: 'Rejected',
-                data: [0, 0, 0, 2, 3, 5, 6, 0, 1, 2, 0, 0],
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: ['#c2c6d1'],
                 borderColor: 'white',
                 borderWidth: 1
