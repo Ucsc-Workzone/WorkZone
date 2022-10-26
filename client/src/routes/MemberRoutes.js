@@ -99,7 +99,7 @@ const MemberRoutes = {
             ]
         },
         {
-            path: 'member',
+            path: 'all',
             children: [
                 {
                     path: 'notification',

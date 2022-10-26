@@ -70,6 +70,12 @@ module.exports = {
           const sqlGet = `INSERT INTO user (username,userRole,joinDate,firstrname,lastName,orgcode,dob,address,gender,contactNo) VALUES ('${username}','member','${todayDate}','${firstrName}','${lastName}','${orgcode}','${dob}','${address}','${gender}','${contactNo}')`;
           const rows = await dbconnection.query(sqlGet);
           if (rows) {
+            sql=`SELECT LAST_INSERT_ID() as userid`;
+            const rows = await dbconnection.query(sql);
+
+            sql1=`INSERT INTO notification (type, nfrom, nto, userid) VALUES ('oa-001', 'WorkZone', 328, ${rows[0][0]['userid']})`;
+            const rows1 = await dbconnection.query(sql1);
+
             return "success";
           } else {
             return "failed";
