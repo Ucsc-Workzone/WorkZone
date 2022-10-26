@@ -9,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import {Alert} from '@mui/material';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -198,6 +199,38 @@ const LeaveHistoryTable = () => {
   const [opendetails, setOpenDet] = React.useState(false);
   const [entry, sententr] = React.useState(1);
 
+  const handleleave=(e)=>{
+    const leaveId=event.target.value
+  
+    axios
+    .post('http://localhost:5000/api/coordinator/acceptLeaveRequest', {
+        leaveId: leaveId
+    })
+    .then((response) => {
+        console.log(response.data);
+        setsucessAlert(true)
+
+       
+      
+    });
+
+  }
+  const handleleaveReject=(e)=>{
+    const leaveId=event.target.value
+  
+    axios
+    .post('http://localhost:5000/api/coordinator/rejectLeaveRequest', {
+        leaveId: leaveId
+    })
+    .then((response) => {
+        console.log(response.data);
+        setsucessAlert(true)
+
+       
+      
+    });
+
+  }
   const handleClickOpenDet = (event, val, cat) => {
     sententr(val);
     if(cat == null){
@@ -249,7 +282,7 @@ const LeaveHistoryTable = () => {
   const [control,setcontrol]=useState(false);
   const [ptype,setptype]=useState(true);
   const [rows,setrows]=useState([]);
-
+const [sucessAlert,setsucessAlert]=useState(false)
   const handlependingLeave = (newValue) => {
     setpendingdata(newValue);
     structure(newValue);
@@ -294,7 +327,7 @@ const LeaveHistoryTable = () => {
         var fromd = pendingData[j].fromDate;
         var tod = pendingData[j].toDate;
         var st = pendingData[j].status;
-        var act = pendingData[j].userid;
+        var act = pendingData[j].leaveId;
   
         rows[j] = createData( c, ftname, ltname, subdate, fromd, tod , st, act);
       }
@@ -311,6 +344,7 @@ const LeaveHistoryTable = () => {
     <React.Fragment>
   {active &&
       <div>
+        
       <BootstrapDialog
         onClose={handleCloseDet}
         aria-labelledby="customized-dialog-title"
@@ -337,7 +371,7 @@ const LeaveHistoryTable = () => {
         {control &&
             <Box sx={{display:"flex", widht:"100%", alignContent:"center", justifyContent:"center"}}>
               {ptype &&
-                <Button variant="contained" sx={{width:"100px"}} color="success">
+                <Button variant="contained" sx={{width:"100px"}} color="success" value={pendingData[entry].leaveId} onClick={handleleave}>
                   Accept
                 </Button>
               }
@@ -346,7 +380,7 @@ const LeaveHistoryTable = () => {
                   Process
                 </Button>
               }
-              <Button variant="contained" sx={{width:"100px"}} color="error">
+              <Button variant="contained" sx={{width:"100px"}} color="error" value={pendingData[entry].leaveId} onClick={handleleaveReject}>
                   Reject
               </Button>
             </Box>
@@ -363,6 +397,9 @@ const LeaveHistoryTable = () => {
 
       }
     <Paper sx={{ width: '100%', overflow: 'hidden', padding:'20px', marginTop:'20px'}}>
+      {sucessAlert && 
+        <Alert severity="success">Successfully Accepted</Alert>
+      }
         <Typography variant="h3" component="h4" className="">
             Leave Requests   
         </Typography>
