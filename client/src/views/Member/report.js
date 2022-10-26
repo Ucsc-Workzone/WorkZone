@@ -8,7 +8,12 @@ const Popup = PropTypes => {
     const togglePopup = () => {
       setIsOpen(!isOpen);
     }
-   
+    const data = [
+        {date: '5/1/22', name: "Anom Syndeya", type:"Half day" ,no: 2 },
+        { type:"Half day" ,no: 2 },
+        {date: '5/1/22', name: "Anom Syndeya", type:"full day" ,no: 3 },
+        {date: '5/1/22', name: "Anom Syndeya", type:"Half day" ,no: 5 },
+      ]
 
     return (
         <><div>
