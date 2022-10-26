@@ -415,8 +415,9 @@ const [sucessAlert,setsucessAlert]=useState(false)
                 <MenuItem value={1}>All</MenuItem>
                 <MenuItem value={2}>Accepted</MenuItem>
                 <MenuItem value={3}>Rejected</MenuItem>
+                <MenuItem value={3}>Pending</MenuItem>
             </Select>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDatePicker
                 label="Date"
                 inputFormat="MM/dd/yyyy"
@@ -439,7 +440,7 @@ const [sucessAlert,setsucessAlert]=useState(false)
                 />
                 <IconButton type="submit" aria-label="search">
                     <SearchIcon style={{ fill: "blue" }} />
-                </IconButton>
+                </IconButton> */}
       <TableContainer sx={{ maxHeight: 600 }} >
         <Table stickyHeader aria-label="sticky table" >
           <TableHead>

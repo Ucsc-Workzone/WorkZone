@@ -110,11 +110,11 @@ const RecentAnnoucements = ({ ...others }) => {
     const [open, setOpen] = React.useState(false);
     const [type1, settype] = React.useState(true);
     const [fullWidth, setFullWidth] = React.useState(true);
-    const [openpop, setOpenpop] = React.useState(true);
+    const [openpop, setOpenpop] = React.useState(false);
 
-    const handleopopOpen = () => {
-        setOpenpop(true);
-    };
+    // const handleopopOpen = () => {
+    //     setOpenpop(true);
+    // };
 
     const handlepopClose = () => {
         setOpenpop(false);
@@ -130,6 +130,13 @@ const RecentAnnoucements = ({ ...others }) => {
 
     return (
         <>
+            { type1 && 
+                <Snackbar open={openpop} autoHideDuration={5000} onClose={handlepopClose} anchorOrigin={{ vertical: 'top',horizontal: 'right' }}>
+                    <Alert onClose={handlepopClose} variant="filled"  severity="success" sx={{ width: '100%' }}  >
+                        Annoucement Published Successfully!
+                    </Alert>
+                </Snackbar>
+                }
             <div>
                 <Dialog fullScreen open={openfull} onClose={handlefullClose} TransitionComponent={Transition}>
                     <AppBar sx={{ position: 'relative' }}>
@@ -197,7 +204,7 @@ const RecentAnnoucements = ({ ...others }) => {
                                 <Accordion class="xx">
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                                         <Typography sx={{ display: '' }} component="h5" variant="h5" color="text.primary">
-                                            {recent['from']}
+                                            by {recent['nfrom']}
                                         </Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
@@ -235,14 +242,12 @@ const RecentAnnoucements = ({ ...others }) => {
                                     from:userRole
                                 })
                                 .then((response) => {
-                                    console.log(response);
-                                    // if (response == '1') {
-                                    //     settype(true);
-                                    // } else {
-                                    //     settype(false);
-                                    // }
-
-                                    // handleopopOpen(true);
+                                    console.log(response.data);
+                                    if (response.data == '1') {
+                                        settype(true);
+                                    } else {
+                                        settype(false);
+                                    }
                                 });
 
                             // try {

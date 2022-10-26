@@ -85,6 +85,16 @@ return row2[0];
     return "error";
     }
    },
+   async getStaffPart(){
+    try{
+    sql=`SELECT * FROM partial_signup`;
+    const row2=await dbconnection.query(sql);
+      return row2[0];
+    }
+    catch{
+      return "error";
+    }
+   },
 
     async getCarddataW(data) {
 
