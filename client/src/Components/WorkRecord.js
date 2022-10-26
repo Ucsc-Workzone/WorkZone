@@ -53,13 +53,13 @@ const columns = [
     align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
-  {
-    id: 'period',
-    label: 'Period',
-    // minWidth: 170,
-    align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
-  },
+  // {
+  //   id: 'period',
+  //   label: 'Period',
+  //   // minWidth: 170,
+  //   align: 'center',
+  //   format: (value) => value.toLocaleString('en-US'),
+  // },
   {
     id: 'status',
     label: 'Status',
@@ -135,17 +135,14 @@ const WorkRecordList = () => {
         var n= j+1;
         var c = n.toString();
 
-        var pic = pendingData[j].image;
         var ftname = pendingData[j].firstrName;
         var ltname = pendingData[j].lastName;
-        var bdate = pendingData[j].dob;
-        var contac = pendingData[j].contactNo;
-        var gen = pendingData[j].gender;
-        var mail = pendingData[j].username;
+        var bdate = pendingData[j].startDate;
+        var status = pendingData[j].status;
         var act = pendingData[j].userid;
         
   
-        rows[j] = createData( c, pic, ftname, ltname, bdate, gen, contac, mail, act);
+        rows[j] = createData( c, ftname, ltname, bdate, status, act);
       }
   
       console.log(rows);
@@ -315,11 +312,11 @@ const WorkRecordList = () => {
 
 
                       if(!column.format){
-                        if(value == 1){
+                        if(value == 3){
                           return (
                             <StyledTableCell align={column.align}><Chip label="Accepted" color="success" style={{width:"90px"}} /></StyledTableCell>
                           );
-                        }else if(value == 2){
+                        }else if(value == 4){
                           return (
                           <StyledTableCell align={column.align}><Chip label="Rejected" color="error"  /></StyledTableCell>
                           );}
