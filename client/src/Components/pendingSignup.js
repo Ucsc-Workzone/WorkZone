@@ -28,7 +28,8 @@ import './styles/table.css';
 
 
 const columns = [
-  { id: 'no', 
+  {
+    id: 'no',
     label: 'No.',
     align: 'center',
     // format: (value) => value.toLocaleString('en-US'),
@@ -38,18 +39,19 @@ const columns = [
   //   align: 'center',
   //   format: (value) => value.toString('en-US'),
   // },
-  { id: 'name', 
+  {
+    id: 'name',
     label: 'Name',
     align: 'left',
     fontsize: "15px",
     // format: (value) => value.toLocaleString('en-US'),
   },
-  {    
-    id: 'age', 
-    label: 'Age', 
+  {
+    id: 'age',
+    label: 'Age',
     align: 'center',
     // format: (value) => value.toLocaleString('en-US'),
-  
+
   },
   {
     id: 'gender',
@@ -79,22 +81,22 @@ const columns = [
     align: 'center',
     format: (value) => value.toFixed(0),
   },
-    
+
 ];
 
 
-function createData( no,fname, lname, bdate, gender, contc, mail, action) {
+function createData(no, fname, lname, bdate, gender, contc, mail, action) {
 
-  const name = fname + " " +  lname;  
+  const name = fname + " " + lname;
   const age = getAge(bdate).toString();
 
-return { no, name, age,  gender, contc, mail, action };
+  return { no, name, age, gender, contc, mail, action };
 }
 
-function datefilter(subdate){
-var date = subdate.substr(0,10)
+function datefilter(subdate) {
+  var date = subdate.substr(0, 10)
 
-return date;
+  return date;
 }
 
 function getAge(dateString) {
@@ -103,20 +105,20 @@ function getAge(dateString) {
   var age = today.getFullYear() - birthDate.getFullYear();
   var m = today.getMonth() - birthDate.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
+    age--;
   }
   return age;
 }
 
-function dateDurationCalc(fromdate, todate){
-  var d1 = new Date(fromdate);   
-  var d2 = new Date(todate);   
-      
-  var diff = d2.getTime() - d1.getTime();   
-      
-  var daydiff = diff / (1000 * 60 * 60 * 24);   
+function dateDurationCalc(fromdate, todate) {
+  var d1 = new Date(fromdate);
+  var d2 = new Date(todate);
 
-  const duration = (daydiff+1).toString();
+  var diff = d2.getTime() - d1.getTime();
+
+  var daydiff = diff / (1000 * 60 * 60 * 24);
+
+  const duration = (daydiff + 1).toString();
 
 
   return (duration)
@@ -145,42 +147,42 @@ const rows = [
 ]
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#0C518A',
-        color: theme.palette.common.white
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 12,
-    }
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: '#0C518A',
+    color: theme.palette.common.white
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 12,
+  }
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0
+  }
 }));
 
 const PendingSignup = () => {
 
-  const [pendingData,setpendingdata]=useState([]);
-  const [active,setactive]=useState(false);
-  const [control,setcontrol]=useState(false);
-  const [ptype,setptype]=useState(true);
-  const [rows,setrows]=useState([]);
+  const [pendingData, setpendingdata] = useState([]);
+  const [active, setactive] = useState(false);
+  const [control, setcontrol] = useState(false);
+  const [ptype, setptype] = useState(true);
+  const [rows, setrows] = useState([]);
 
-  function structure(pendingData){
-    if(pendingData){
+  function structure(pendingData) {
+    if (pendingData) {
       const i = pendingData.length;
-   
-      for(var j= 0 ; j < i ; j++){
-        var n= j+1;
+
+      for (var j = 0; j < i; j++) {
+        var n = j + 1;
         var c = n.toString();
 
-  
+
         var ftname = pendingData[j].firstrName;
         var ltname = pendingData[j].lastName;
         var bdate = pendingData[j].dob;
@@ -188,16 +190,16 @@ const PendingSignup = () => {
         var gen = pendingData[j].gender;
         var mail = pendingData[j].username;
         var act = pendingData[j].idsignup;
-        
-  
-        rows[j] = createData( c, ftname, ltname, bdate, gen, contac, mail, act);
+
+
+        rows[j] = createData(c, ftname, ltname, bdate, gen, contac, mail, act);
       }
-  
+
       console.log(rows);
       setrows(rows);
 
     }
-  
+
   }
 
   const handlepartstafflist = (newValue) => {
@@ -205,24 +207,24 @@ const PendingSignup = () => {
     structure(newValue);
     setactive(true);
   };
-  useEffect(()=>{
+  useEffect(() => {
     getuserData();
-  },[])
+  }, [])
 
-  const getuserData=()=>{
+  const getuserData = () => {
     axios
-    .post('http://localhost:5000/api/coordinator/staffpartial', {
-   
-    })
-    .then((response) => {
+      .post('http://localhost:5000/api/coordinator/staffpartial', {
+
+      })
+      .then((response) => {
         console.log("hi");
         console.log(response.data);
         handlepartstafflist(response.data);
-       
-    });
+
+      });
 
   }
-  
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -242,10 +244,10 @@ const PendingSignup = () => {
   };
 
 
- 
+
   return (
     <React.Fragment>
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
         {/* <InputLabel id="select-gender" style={{color:'#0C518A',fontWeight:"bold",padding:"10px"}}>Gender</InputLabel>
         <Select
             labelId="select-gender"
@@ -260,7 +262,7 @@ const PendingSignup = () => {
                 <MenuItem value={3}>Female</MenuItem>
             </Select> */}
 
-            {/* <TextField
+        {/* <TextField
                 id="search-bar"
                 className="textmail"
                 onInput={(e) => {
@@ -288,75 +290,75 @@ const PendingSignup = () => {
                 <IconButton type="submit" aria-label="search">
                     <SearchIcon style={{ fill: "blue" }} />
                 </IconButton> */}
-      <TableContainer sx={{ maxHeight: 600 }} >
-        <Table stickyHeader aria-label="sticky table" >
-          <TableHead>
-            <TableRow className="tablehead" >
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth, backgroundColor:'#0C518A' ,color:'white'}}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-            <TableRow className="tablehead" ></TableRow>
-          </TableHead>
-          <TableBody sx={{fontSize:'16px'}}>
-            {active && rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                console.log(row);
-                return (
-                  <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      // console.log(value);
-                      if(!column.format){
-                        console.log(row['contc']);
-                        console.log(row['mail']);
-                        return ( 
-                          <StyledTableCell key={column.id} align={column.align}>
-                            {value}
-                          </StyledTableCell>
-                          
-                        );
-                      }else if (typeof value == 'number'){
-                        return (
-                          <StyledTableCell key={column.id} align={column.align}>
-                            <Button variant="contained" color="success">Approved</Button><Button variant="contained" color="warning">Ignore</Button>
-                          </StyledTableCell>
-                        );
-                      }else{
-                        return (
-                          <StyledTableCell key={column.id} align={column.align}>
+        <TableContainer sx={{ maxHeight: 600 }} >
+          <Table stickyHeader aria-label="sticky table" >
+            <TableHead>
+              <TableRow className="tablehead" >
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{ minWidth: column.minWidth, backgroundColor: '#0C518A', color: 'white' }}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+              <TableRow className="tablehead" ></TableRow>
+            </TableHead>
+            <TableBody sx={{ fontSize: '16px' }}>
+              {active && rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  console.log(row);
+                  return (
+                    <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        // console.log(value);
+                        if (!column.format) {
+                          console.log(row['contc']);
+                          console.log(row['mail']);
+                          return (
+                            <StyledTableCell key={column.id} align={column.align}>
+                              {value}
+                            </StyledTableCell>
+
+                          );
+                        } else if (typeof value == 'number') {
+                          return (
+                            <StyledTableCell key={column.id} align={column.align}>
+                              <Button variant="contained" color="success">Approved</Button><Button variant="contained" color="warning">Ignore</Button>
+                            </StyledTableCell>
+                          );
+                        } else {
+                          return (
+                            <StyledTableCell key={column.id} align={column.align}>
                               {/* <Avatar >B</Avatar> */}
                               <Avatar src={require(`../assets/images/Profile/${value}`)} >B</Avatar>
-                          </StyledTableCell>
-                        );
-                      }
-                     
-                    })}
-                        
-                  </StyledTableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        style={{backgroundColor:"lightblue"}}
-      />
-    </Paper>
+                            </StyledTableCell>
+                          );
+                        }
+
+                      })}
+
+                    </StyledTableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          style={{ backgroundColor: "lightblue" }}
+        />
+      </Paper>
     </React.Fragment>
   );
 }
