@@ -41,18 +41,31 @@ import './styles/upcoming.css';
 const UpcomingList = () => {
     const navigate = useNavigate();
     const {proid}=useParams();
+    const [prec, setpercent] = useState(0);
     const [userData, setUserData] = useState({
         // labels: ["CM", "NC"],
         datasets: [
             {
                 label: 'Users Gained',
-                data: [85, 15],
+                data: [prec, 100 - prec],
                 backgroundColor: ['#0f65fa', '#c2c6d1'],
                 borderColor: 'white',
                 borderWidth: 2
             }
         ]
     });
+    // const [userData, setUserData] = useState({
+    //     // labels: ["CM", "NC"],
+    //     datasets: [
+    //         {
+    //             label: 'Users Gained',
+    //             data: [85, 15],
+    //             backgroundColor: ['#0f65fa', '#c2c6d1'],
+    //             borderColor: 'white',
+    //             borderWidth: 2
+    //         }
+    //     ]
+    // });
     const [list, setList] = useState([]);
     const handlechangePage = () => {
         console.log('Mma');
@@ -100,7 +113,7 @@ const UpcomingList = () => {
                                                     {item['projectName']}
                                                 </Typography>
                                                 <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
-                                                    {projects.pending} Remaining
+                                                    {item['description']}
                                                 </Typography>
                                                 <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
                                                     Due Date:
@@ -110,7 +123,7 @@ const UpcomingList = () => {
                                         </Box>
                                         <Box style={{ display: 'flex', justifyContent: 'left', width: '60%', top: '50%' }}>
                                             <div style={{ width: '38%' }}>
-                                                <DoughtChart chartData={userData} percentage={'85'} />
+                                                <DoughtChart chartData={userData} percentage={item['percent']} />
                                             </div>
                                         </Box>
                                     </Box>
