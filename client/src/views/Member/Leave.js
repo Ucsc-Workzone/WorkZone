@@ -318,7 +318,7 @@ const MemberLeave = () => {
                                                     </Grid>
                                                 )}
                                                 <Grid item xs={12}>
-                                                    <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                                                    {/* <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
                                                         <InputLabel id="demo-simple-select-filled-label">Memeber Assign</InputLabel>
                                                         <Select
                                                             labelId="demo-simple-select-filled-label"
@@ -330,7 +330,7 @@ const MemberLeave = () => {
                                                             <MenuItem value={2}>M.C Perera</MenuItem>
                                                             <MenuItem value={3}>M.N. Dias</MenuItem>
                                                         </Select>
-                                                    </FormControl>
+                                                    </FormControl> */}
                                                 </Grid>
                                                 <Grid item xs={12}></Grid>
                                             </Grid>
@@ -425,7 +425,7 @@ const MemberLeave = () => {
                         {/* <Divider>
                             <h2>Leave Notifications</h2>
                         </Divider> */}
-                        <NotificationListLeave></NotificationListLeave>
+                        {/* <NotificationListLeave></NotificationListLeave> */}
                     </div>
                 </div>
             </div>

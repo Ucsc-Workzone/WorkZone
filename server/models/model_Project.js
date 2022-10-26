@@ -112,7 +112,7 @@ module.exports = {
   },
   async getmemberProjectList(data) {
     try {
-      sql = `SELECT * FROM activity,projects where activity.memberId=${data} and projects.projectId=activity.projectId and activity.complete=0 and projects.completion=0`;
+      sql = `SELECT * FROM activity,projects where activity.memberId=${data} and projects.projectId=activity.projectId and activity.complete=1 and projects.completion=0`;
       const rows = await dbconnection.query(sql);
       return rows;
     } catch {

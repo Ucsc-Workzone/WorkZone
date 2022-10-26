@@ -23,7 +23,7 @@ module.exports = {
       arrayCard.push(row3[0][0]);
 
       array.push(arrayCard);
-      const sqlGet = `SELECT * from leaverequest WHERE memberId= ${userid}`;
+      const sqlGet = `SELECT * from leaverequest WHERE memberId= ${userid} order by fromDate desc`;
       const rows = await dbconnection.query(sqlGet);
 
       if (rows.length == 0) {
