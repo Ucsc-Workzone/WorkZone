@@ -8,6 +8,8 @@ module.exports = {
       const rows = await dbconnection.query(sql);
       const query = `SELECT LAST_INSERT_ID();`;
       const rows1 = await dbconnection.query(query);
+      sqlnot=`INSERT INTO notification (type,nfrom,nto,date,projectId) VALUES ('m-005',8,5,'2022-10-27',68)`;
+      const rows4 = await dbconnection.query(sqlnot);
       return rows1[0][0];
       // if (rows) {
       //   const query = `SELECT LAST_INSERT_ID();`;
@@ -227,5 +229,15 @@ return "Kkkkk"
 
     }
 
+  },
+  async deleteActivity(data){
+    try{
+sql=`DELETE FROM subactivity WHERE subActivityId=${data};`
+const rows = await dbconnection.query(sql);
+return rows;
+    }
+    catch{
+
+    }
   }
 };
