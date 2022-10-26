@@ -70,6 +70,12 @@ module.exports = {
           const sqlGet = `INSERT INTO user (username,userRole,joinDate,firstrname,lastName,orgcode,dob,address,gender,contactNo) VALUES ('${username}','member','${todayDate}','${firstrName}','${lastName}','${orgcode}','${dob}','${address}','${gender}','${contactNo}')`;
           const rows = await dbconnection.query(sqlGet);
           if (rows) {
+            sql=`SELECT LAST_INSERT_ID() as userid`;
+            const rows = await dbconnection.query(sql);
+
+            sql1=`INSERT INTO notification (type, nfrom, nto, userid) VALUES ('oa-001', 'WorkZone', 328, ${rows[0][0]['userid']})`;
+            const rows1 = await dbconnection.query(sql1);
+
             return "success";
           } else {
             return "failed";
@@ -85,15 +91,16 @@ module.exports = {
     }
   },
 
-  async registerorg(orgName, des, email) {
+  async registerorg(email,orgName, des) {
     try {
-      const sQuery1 = `INSERT INTO org (orgName,description,orgmail) VALUES ('${orgName}','${des}','${email}') `;
+      let x = Math.floor((Math.random() * 100) + 1);
+      const sQuery1 = `INSERT INTO org (orgId,orgName,description,orgmail) VALUES (${x},'${orgName}','${des}','${email}') `;
       const row = await dbconnection.query(sQuery1);
       if(row){
-        return row;
+        return true;
       }
       else{
-        return "Thaaha"
+        return false;
       }
     } 
     catch (error) {

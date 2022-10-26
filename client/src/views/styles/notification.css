@@ -26,3 +26,12 @@
     background-color: rgb(208, 226, 220);
     padding: 20px;
 }
+
+.buttonAccept{
+    margin-left: 20px;
+}
+
+.viewButton{
+    margin-right: 10px;
+
+}
