@@ -125,5 +125,15 @@ return row2[0];
       return "error";
     }
    },
-  
+  async leaveAccept(data){
+    try{
+sql=`UPDATE leaverequest SET status="Accepted" where leaveId=${data}`;
+const row2=await dbconnection.query(sql);
+return rows;
+    }
+    catch(error){
+return error;
+    }
+
+  }
 };
