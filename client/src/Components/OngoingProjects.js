@@ -15,7 +15,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import DoughtChart from 'Components/DoughtChart';
 import { useState } from 'react';
-import {CardActionArea} from '@mui/material';
+import { CardActionArea } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -189,8 +189,8 @@ const LeaveHistoryTable = ({ flag }) => {
     };
     return (
         <React.Fragment>
-            <Paper sx={{ width: '100%', overflow: 'hidden', padding: '20px', marginTop: '20px' }}>
-                <Typography variant="h3" component="h4" className="">
+            <Paper sx={{ width: '100%', overflow: 'hidden', paddingTop: '30px', marginTop: '20px' }}>
+                <Typography variant="h2" component="h4" className="" textAlign={'center'}>
                     Ongoing Projects
                 </Typography>
                 {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -203,7 +203,7 @@ const LeaveHistoryTable = ({ flag }) => {
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </LocalizationProvider> */}
-                <TextField
+                {/* <TextField
                     id="search-bar"
                     className="textname"
                     onInput={(e) => {
@@ -214,17 +214,17 @@ const LeaveHistoryTable = ({ flag }) => {
                     variant="outlined"
                     placeholder="Search..."
                     size="small"
-                />
-                <IconButton type="submit" aria-label="search">
+                /> */}
+                {/* <IconButton type="submit" aria-label="search">
                     <SearchIcon style={{ fill: 'blue', marginLeft: '30px', marginBottom: '20px' }} />
-                </IconButton>
+                </IconButton> */}
                 <Box
                     style={{
                         width: '100%',
                         display: 'flex',
-                        justifyContent: 'right',
-                        align: 'right',
-                        marginTop: '10px',
+                        justifyContent: 'center',
+                        align: 'center',
+                        marginTop: '20px',
                         marginBottom: '10px'
                     }}
                 >
@@ -254,46 +254,46 @@ const LeaveHistoryTable = ({ flag }) => {
                     </DialogActions>
                 </Dialog>
 
-                <List sx={{ padding: '10px', display: 'block', justifyContent: 'center', maxHeight: '500px', overflow: 'auto' }}>
+                <List sx={{ padding: '10px', display: 'block', justifyContent: 'center', maxHeight: '700px', overflow: 'auto' }}>
                     {projectCard.map((projectList) => {
                         return (
-                            <ListItem sx={{ padding: '10px', display: 'flex', justifyContent: 'center' }}>
-                                <Card variant="outlined" className="project-card"  sx={{cursor:'pointer'}}>
-                                    <CardActionArea  href={"http://localhost:3000/workzone/coordinator/projectinit/" + projectList['projectId']}>
-                                    <Box style={{ display: 'flex', width: '100%' }}>
-                                        <Box
-                                            style={{
-                                                display: 'flex',
-                                                justifyContent: 'left',
-                                                width: '5%',
-                                                backgroundColor: 'rgb(5 161 189)'
-                                            }}
-                                        ></Box>
-                                        <Box style={{ display: 'flex', justifyContent: 'left', width: '70%', paddingLeft: '70px' }}>
-                                            <Stack>
-                                                <Typography
-                                                    variant="h3"
-                                                    component="p"
-                                                    fontSize="1.5vw"
-                                                    paddingTop={'15px'}
-                                                    paddingBottom={'15px'}
-                                                >
-                                                    {projectList['projectName']}
-                                                </Typography>
-                                                <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
-                                                    {projectList['description']}
-                                                </Typography>
-                                                <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
-                                                    Due Date:{projectList['estendDate'].substr(0, 10)}
-                                                </Typography>
-                                            </Stack>
+                            <ListItem sx={{ padding: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Card variant="outlined" className="project-card" sx={{ cursor: 'pointer' }}>
+                                    <CardActionArea href={"http://localhost:3000/workzone/coordinator/projectinit/" + projectList['projectId']}>
+                                        <Box style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                                            <Box
+                                                style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'left',
+                                                    width: '5%',
+                                                    backgroundColor: 'rgb(5 161 189)'
+                                                }}
+                                            ></Box>
+                                            <Box style={{ display: 'flex', justifyContent: 'left', width: '70%', paddingLeft: '70px' }}>
+                                                <Stack>
+                                                    <Typography
+                                                        variant="h3"
+                                                        component="p"
+                                                        fontSize="1.5vw"
+                                                        paddingTop={'15px'}
+                                                        paddingBottom={'15px'}
+                                                    >
+                                                        {projectList['projectName']}
+                                                    </Typography>
+                                                    <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
+                                                        {projectList['description']}
+                                                    </Typography>
+                                                    <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
+                                                        Due Date:{projectList['estendDate'].substr(0, 10)}
+                                                    </Typography>
+                                                </Stack>
+                                            </Box>
+                                            <Box style={{ display: 'flex', justifyContent: 'center', width: '60%', top: '50%' }}>
+                                                <div style={{ width: '38%' }}>
+                                                    <DoughtChart chartData={userData} percentage={projectList['percent']} />
+                                                </div>
+                                            </Box>
                                         </Box>
-                                        <Box style={{ display: 'flex', justifyContent: 'center', width: '60%', top: '50%' }}>
-                                            <div style={{ width: '38%' }}>
-                                                <DoughtChart chartData={userData} percentage={projectList['percent']} />
-                                            </div>
-                                        </Box>
-                                    </Box>
                                     </CardActionArea>
                                 </Card>
                             </ListItem>
@@ -301,7 +301,7 @@ const LeaveHistoryTable = ({ flag }) => {
                     })}
                 </List>
             </Paper>
-        </React.Fragment>
+        </React.Fragment >
     );
 };
 
