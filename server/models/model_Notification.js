@@ -78,7 +78,8 @@ return error;
     try{
       sql=`SELECT * FROM activity where activityId=${data}`;
       const rows = await dbconnection.query(sql);
-      if(rows[0]['complete']=='0'){
+      if(rows[0]['complete']='0'){
+        
         sql=`UPDATE activity SET complete ="1" WHERE activityId=${data}`;
         const rows1 = await dbconnection.query(sql);
 

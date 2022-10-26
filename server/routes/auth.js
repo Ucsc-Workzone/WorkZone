@@ -3,7 +3,7 @@ const router = require("express").Router();
 const { createToken, validToken } = require("./JWT");
 const { db } = require("../utils/index");
 const jwt_token = require("jwt-decode");
-const { sendRegMail, sendforgetMail } = require("./Mail");
+const { sendRegMail, sendforgetMail ,sendRegMailOrg} = require("./Mail");
 
 const { login, signUpUser,registerorg } = require("../models/model_Auth");
 const { getnotification } = require("../models/model_Notification");
@@ -34,9 +34,16 @@ router.post("/login", async (req, res) => {
 
 router.post('/registerorg',async (req,res)=>{
 
-//  const status=await registerorg(req.body.email,req.body.orgName,req.body.des);
- res.json('status') ;
-  
+const status=await registerorg(req.body.email,req.body.orgName,req.body.des);
+//  res.json(status) ;
+  if(status){
+   const state= sendRegMailOrg(req.body.email)
+   res.json(true)
+  }
+
+  else{
+    res.json("MMm")
+  }
   // catch(err){
   //   res.json("malithu")
   // }
@@ -108,7 +115,7 @@ router.post("/forgetpass", (req, res) => {
     if (error) {
       res.send(error);
     } else {
-      if (result.length != 0) {
+      if (result.length != 0) {sendRegMail
         const status = sendforgetMail(mail);
         res.json("success");
       } else {

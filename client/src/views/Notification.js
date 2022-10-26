@@ -172,6 +172,7 @@ console.log(nameArr[0]);
     const acceptTask=(e)=>{
        const array=e.target.value
        var nameArr = array.split(',');
+       alert(nameArr[0])
         axios
         .post('http://localhost:5000/api/notification/acceptTask', {
             actId: nameArr[0]

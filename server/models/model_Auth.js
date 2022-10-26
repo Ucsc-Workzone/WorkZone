@@ -91,15 +91,16 @@ module.exports = {
     }
   },
 
-  async registerorg(orgName, des, email) {
+  async registerorg(email,orgName, des) {
     try {
-      const sQuery1 = `INSERT INTO org (orgName,description,orgmail) VALUES ('${orgName}','${des}','${email}') `;
+      let x = Math.floor((Math.random() * 100) + 1);
+      const sQuery1 = `INSERT INTO org (orgId,orgName,description,orgmail) VALUES (${x},'${orgName}','${des}','${email}') `;
       const row = await dbconnection.query(sQuery1);
       if(row){
-        return row;
+        return true;
       }
       else{
-        return "Thaaha"
+        return false;
       }
     } 
     catch (error) {
