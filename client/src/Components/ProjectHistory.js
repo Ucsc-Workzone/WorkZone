@@ -65,7 +65,7 @@ const columns = [
     id: 'action',
     label: 'Action',
     // minWidth: 170,
-    align: 'center',
+    align: 'left',
     format: (value) => value.toFixed(0),
   },
     

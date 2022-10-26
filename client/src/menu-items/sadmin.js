@@ -56,7 +56,7 @@ const pagesSysAdmin = {
         },
         {
             id: 'ManageOrg',
-            title: 'Manage Organizations',
+            title: 'Manage Divisions',
             type: 'item',
             url: '/sysadmin/manageorganizaton',
             icon: icons.IconTool,

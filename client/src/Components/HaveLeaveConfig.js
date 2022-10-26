@@ -34,7 +34,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-
+import { useEffect } from 'react';
 
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -59,17 +59,44 @@ const useStyles = makeStyles({
 
 const HaveLeaveLoad = ({ ...others }) => {
 
+    const [ancount, setAnn] = React.useState(0);
+    const [wkcount, setWeek] = React.useState(0);
+    const [skcount, setSick] = React.useState(0);
+    const [matcount, setMat] = React.useState(0);
+    const [mercount, setMer] = React.useState(0);
+
+        
+    function setdata(data){
+        setAnn(data.annual);
+        setWeek(data.weekly);
+        setSick(data.sick);
+        setMat(data.maternity);
+        setMer(data.mercantile);
+
+    }
+    useEffect(() => {
+        configleave();
+    }, []);
+
+    const configleave = () => {
+        axios
+            .post('http://localhost:5000/api/Leave/getConfig', {
+                center_id: 1
+            })
+            .then((response) => {
+                console.log(response.data);
+                setdata(response.data[0]);
+            });
+    };
+
     const classes = useStyles()
 
     const [open, setOpen] = React.useState(false);
     const [fullWidth, setFullWidth] = React.useState(true);
-    const [ancount, setAnn] = React.useState('0');
-    const [wkcount, setWeek] = React.useState('0');
-    const [skcount, setSick] = React.useState('0');
-    const [matcount, setMat] = React.useState('0');
-    const [mercount, setMer] = React.useState('0');
+    const [up, setup] = React.useState(false);
 
-    const [type1, settype] = React.useState(true);
+
+    const [type1, settype] = React.useState(null);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -89,29 +116,31 @@ const HaveLeaveLoad = ({ ...others }) => {
     const handlepopClose = () => {
        setOpenpop(false);
     };
-    
+
 
     return (  
         <>
         <Box sx={{display:'flex', width:"100%", backgroundColor:'white', borderRadius:"10px", padding:"10px"}} >
-            <IconAdjustments width={50} height={50} stroke={'#6f32be'}/><Typography variant='h2' sx={{padding:"10px"}}>Leave COnfiguration Panel<Chip color="success" label="Configuration is fixed" sx={{marginLeft:'20px'}} icon={<SettingsOutlinedIcon />} /></Typography>
+            <IconAdjustments width={50} height={50} stroke={'#6f32be'}/><Typography variant='h2' sx={{padding:"10px"}}>Leave Configuration Panel<Chip color="success" label="Configuration is fixed" sx={{marginLeft:'20px', color:"white"}} icon={<SettingsOutlinedIcon />} /></Typography>
         </Box>
-        <Snackbar open={openpop} autoHideDuration={6000} onClose={handlepopClose} anchorOrigin={{ vertical: 'top',horizontal: 'right' }}>
-            { 
-                type1 && 
-                <Alert onClose={handlepopClose} variant="filled"  severity="success" sx={{ width: '100%' }}  >
-                    Configuration Successfull!
-                </Alert>
-             } 
-             {/* { 
-                !(type1) && <Alert onClose={handlepopClose} variant="filled"  severity="warning" sx={{ width: '100%' }}  >
-                Something went wrong ,please try again later!
-                </Alert>
-            } */}
-            {/* {
-                type1==null && <></>
-            } */}
+        { type1 && 
+        <Snackbar open={openpop} autoHideDuration={5000} onClose={handlepopClose} anchorOrigin={{ vertical: 'top',horizontal: 'right' }}>
+            <Alert onClose={handlepopClose} variant="filled"  severity="success" sx={{ width: '100%' }}  >
+                Configuration Successfull!
+            </Alert>
         </Snackbar>
+        }
+        { !(type1) && <></>
+        // <Snackbar open={openpop} autoHideDuration={5000} onClose={handlepopClose} anchorOrigin={{ vertical: 'top',horizontal: 'right' }}>
+        //         <Alert onClose={handlepopClose} variant="filled"  severity="warning" sx={{ width: '100%' }}  >
+        //         Something went wrong ,please try again later!
+        //         </Alert>
+        // </Snackbar>
+
+        }{ type1==null && <></>
+
+        }
+
         <Box sx={{width:"100%" }}>
             <Box sx={{width:'100%',paddingTop:"30px", justifyContent:"center", display:"flex"}}>
                 <Box sx={{width:'100%',paddingTop:"30px", display:"flex"}}>
@@ -120,11 +149,18 @@ const HaveLeaveLoad = ({ ...others }) => {
                             <Box>
                                 <Typography variant='h4'> Fixed Configuration</Typography>
                             </Box>
-                            {/* <Box className='start_config' sx={{textAlign:"center", padding:"20px" , backgroundColor:'white', borderRadius:'15px',boxShadow:"5px" }}> */}
-                            <Box className='start_config' sx={{textAlign:"center", padding:"20px", width:"100%" }}>
-                                <LeaveSetList />
-                            </Box>
-                            {/* </Box> */}
+
+                            {up &&
+                                <Box className='start_config' sx={{textAlign:"center", padding:"20px", width:"100%" }}>
+                                    <LeaveSetList />
+                                </Box>
+                            } 
+                            {!(up) &&
+                                <Box className='start_config' sx={{textAlign:"center", padding:"20px", width:"100%" }}>
+                                    <LeaveSetList />
+                                </Box>
+                            }
+
                         </Stack>
                     </Box>
                     <Box sx={{width:'30%'}}>
@@ -158,11 +194,11 @@ const HaveLeaveLoad = ({ ...others }) => {
                 >
                     <Formik
                         initialValues={{
-                            annual: '0',
-                            weekly: '0',
-                            sick: '0',
-                            maternity: '0',
-                            mercantile: '0',
+                            annual: ancount,
+                            weekly: wkcount,
+                            sick: skcount,
+                            maternity: matcount,
+                            mercantile: mercount,
                             submit: null
                         }}
                         validationSchema={Yup.object().shape({
@@ -173,9 +209,10 @@ const HaveLeaveLoad = ({ ...others }) => {
                             mercantile: Yup.number('Must be a valid number').min(0, 'only available options can use').max(1, 'only available options can use').required('Mercantile Leave type is required'),
                         })}
                         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-
+                            setup(false);
                             axios
                             .post('http://localhost:5000/api/Leave/leaveConfig', {
+                                center_id:1,
                                 annual: values.annual,
                                 weekly:values.weekly,
                                 sick:values.sick,
@@ -183,14 +220,17 @@ const HaveLeaveLoad = ({ ...others }) => {
                                 mercantile:values.mercantile,
                             })
                             .then((response) => {
-                                console.log(response)
-                                if(response=='1'){
-                                   settype(true);  
+                                console.log(response.data);
+                                setup(true);
+                                setOpen(false);
+                                if(response.data=='1'){
+                                    settype(true);  
                                 }else{
                                    settype(false);
                                 }
+                               
 
-                                handleopopOpen(true);
+                                // handleopopOpen(true);
                             });
                         
 
