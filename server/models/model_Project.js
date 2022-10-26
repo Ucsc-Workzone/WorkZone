@@ -195,7 +195,13 @@ module.exports = {
   },
   async getworkreportmember(data) {
     try {
-      sql = `SELECT * FROM workrecord,subactivity,reportActivity where workrecord.memberId=${data} and workrecord.status=1 and reportActivity.subActivityId=subactivity.subActivityId `;
+      const date = new Date();
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      let currentDate = `${year}-${month}-${day}`;
+      sql = `SELECT * FROM workrecord,subactivity,reportActivity where workrecord.memberId=${data} and workrecord.status=0 and reportActivity.subActivityId=subactivity.subActivityId and workrecord.startDate='${currentDate}' and workrecord.recordId=reportActivity.reportId `;
       const rows = await dbconnection.query(sql);
 
       return rows[0];
