@@ -30,8 +30,31 @@ class KanbanColumn extends React.Component {
         this.closeCard = this.closeCard.bind(this);
         this.saveCard = this.saveCard.bind(this);
         this.getData = this.getData.bind(this);
-    }
+       // this.componentDidMount=this.componentDidMount(this);
 
+
+
+        }
+    
+componentDidMount(){
+    const sendPutRequest = async () => {
+        const proid = window.location.href.split('/')[6];
+        const actid = window.location.href.split('/')[7];
+        try {
+            const resp = await axios.post('http://localhost:5000/api/project/membergetCards', {
+                center_id: 1,
+                project_id: proid,
+                activity_id: actid
+            });
+            console.log(resp.data);
+            this.setState({ projects: resp.data, isLoading: false });
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+    };
+    sendPutRequest();
+}
     componentWillReceiveProps(nextProps) {
         this.state = { mouseIsHovering: false };
     }
@@ -75,7 +98,8 @@ class KanbanColumn extends React.Component {
                 .then((response) => {
                     console.log(response.data);
                     this.getData();
-                    window.location.reload();
+                    this.componentDidMount();
+                     window.location.reload();
                 });
         }
     }

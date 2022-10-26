@@ -54,11 +54,11 @@ const CoordinatorWorkrecords = () => {
                             <PendingWorkMember />
                         </div>
                     </div>
-                    <div className='up-right-container'>
+                    {/* <div className='up-right-container'>
                         <div className="calender-container">
                                 <Calender />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="workcontainer-down">
