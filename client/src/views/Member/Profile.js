@@ -113,7 +113,7 @@ const userProfile = () => {
               </label>
               <input type="textarea" name="address" placeholder='No.118, Vijayarajadahana, Mirigama' rows="4" columns="10" value={'No.118, Vijayarajadahana, Mirigama'} />
               <br></br>
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Update" />
             </form><br></br>
 
           </div>
