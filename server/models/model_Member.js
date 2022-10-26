@@ -61,5 +61,31 @@ if(count1.length!=0){
       throw err;
     }
   },
+  async reportDutyCheck(userid){
+    try{
+      const date = new Date();
+
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+// This arrangement can be altered based on how we want the date's format to appear.
+let currentDate = `${year}-${month}-${day}`;
+console.log(currentDate); // "17-6-2022"
+sql=`SELECT * from workrecord where memberId=${userid} and startDate='${currentDate}' `;
+const count= await dbconnection.query(sql);
+ return count;
+// if(count.length=0){
+//   sql1=`INSERT INTO workrecord (memberId,status,startDate) VALUES (${userid},0,'${currentDate}') `
+//   const count1= await dbconnection.query(sql1);
+//   return count1;
+
+// }
+
+    }
+    catch{
+return "error"
+    }
+  }
   
 };

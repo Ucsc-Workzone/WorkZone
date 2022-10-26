@@ -94,8 +94,8 @@ setCheckreport(true);
 
             {/* notification & profile */}
             
-            {user=='member' && checkreport==false && <LoginButton />}
-            {user=='member' && checkreport==true && <SubmitReport />}
+            {user=='member' && <LoginButton />}
+            {/* {user=='member' && checkreport==true && <SubmitReport />} */}
             {login && <NotificationSection />}
             {login && <ProfileSection />}
         </>

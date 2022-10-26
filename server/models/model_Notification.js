@@ -65,9 +65,9 @@ return rows;
     try{
       let currentDate = new Date().toJSON().slice(0, 10);
       let time = new Date().toJSON()
-// sql=`INSERT INTO annoucements (from,to,content,title) VALUES ('${data['from']}','all','${data['description']}','${data['title']}') `;
-// const rows = await dbconnection.query(sql);
-return data;
+sql=`INSERT INTO annoucements (nfrom,nto,content,title) VALUES ('${data['from']}','all','${data['description']}','${data['title']}') `;
+const rows = await dbconnection.query(sql);
+return true;
     }
 
     catch(error){
