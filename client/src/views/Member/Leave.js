@@ -76,7 +76,7 @@ const rows = [
 ];
 
 const HeadList = {
-    head1: 'No. of Leaves in July',
+    head1: 'No. of Leaves in October',
     head2: 'No of Leaves in 2022',
     head3: 'Pending Assignments'
 };
@@ -354,7 +354,7 @@ const MemberLeave = () => {
                 </div>
 
                 <div className="card-section">
-                    <HeaderCounter headlist={HeadList} countlist={CountList} />
+                    <HeaderCounter headlist={HeadList} countList={CountList} />
            
                 </div>
                 <div className="table-section-head">
