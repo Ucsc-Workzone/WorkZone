@@ -1,7 +1,7 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
 const {validToken}=require('./JWT')
-const {getData,getProjects, dutyReport,checkDuty}=require('../models/model_Member')
+const {getData,getProjects, dutyReport,checkDuty,reportDutyCheck}=require('../models/model_Member')
 const jwt_token = require("jwt-decode");
 const { db } = require("../utils/index");
 
@@ -75,4 +75,16 @@ router.post("/createtodo", (req, res) => {
  
   
  });
+ 
+router.post("/reportDutyCheck", async(req, res) => {
+const userid=req.body.userid;
+const status=await reportDutyCheck(userid);
+res.json(status)
+
+ 
+ 
+  
+ });
+
+ 
 module.exports = router;

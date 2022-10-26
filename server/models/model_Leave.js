@@ -51,19 +51,24 @@ module.exports = {
   }
 
   },
-  async configLeave(req) {
-    const { annual, weekly, sick, maternity, mercantile } = req.body;
+  async configLeave(data) {
+    const center_id = data['center_id'];
+    const annual = data['annual'];
+    const weekly = data['weekly'];
+    const sick = data['sick'];
+    const maternity = data['maternity'];
+    const mercantile = data['mercantile'];
 
-    const sqlGet = `INSERT INTO leave_config(annual, weekly, sick, maternity, mercantile) VALUES('${annual}','${weekly}','${sick}','${maternity}', '${mercantile}')`;
 
-    const configquery = await dbconnection.query(sqlGet);
-
-  if(configquery){
-    return "1";
-  }
-  else{
-    return "0";
-  }
+    try{
+      const sqlGet = `UPDATE leave_config SET annual='${annual}', weekly='${weekly}', sick='${sick}', maternity='${maternity}', mercantile='${mercantile}' WHERE idLeaveConfig='${center_id}' ;`
+      console.log
+      const row1 = await dbconnection.query(sqlGet);
+      
+       return '1';
+      }catch{
+        return '2';
+      }
 
   },
   async isConfig(req) {
@@ -84,6 +89,19 @@ module.exports = {
   else{
     return 3;
   }
+  },
+  async getConfig(data) {
+    const idLeaveConfig = data['center_id'];
 
+    try{
+      sqlGet = `SELECT * FROM crud_contact.leave_config Where idLeaveConfig = '${idLeaveConfig}'`;
+      // console.log(sqlGet);
+
+      const configfindq = await dbconnection.query(sqlGet);
+  
+      return configfindq[0];
+      }catch{
+        return "error";
+      }
   },
 };

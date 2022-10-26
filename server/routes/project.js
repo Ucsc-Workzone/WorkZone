@@ -1,7 +1,7 @@
 const bycrypt = require("bcrypt");
 const router = require("express").Router();
 
-const {createProject,createTeam, getorg,getProjectData,getsummarymember,getsummarycoordinator,getmemberProjectList,getCoordinatorCards,saveCardMember,saveCard,addtoWork,getProjectDataMember,updateCardMember}=require('../models/model_Project')
+const {createProject,createTeam, getorg,getProjectData,deleteActivity,getsummarymember,getsummarycoordinator,getmemberProjectList,getCoordinatorCards,saveCardMember,saveCard,addtoWork,getProjectDataMember,updateCardMember,getworkreportmember}=require('../models/model_Project')
 
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");
@@ -125,6 +125,10 @@ router.post("/getmemberProjectDetails",async(req,res)=>{
    res.json(status)
  })
 
+ router.post("/deleteActivity",async(req,res)=>{
+  const status=await deleteActivity(req.body.sunActId);
+   res.json(status)
+ })
 
  
  

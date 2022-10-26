@@ -23,7 +23,7 @@ import {
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
-
+import { useNavigate } from 'react-router-dom';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
@@ -55,6 +55,11 @@ const status = [
 // ==============================|| NOTIFICATION ||============================== //
 
 const NotificationSection = () => {
+    const navigate=useNavigate();
+
+    const movetoPage=()=>{
+navigate('/all/notification')
+    }
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -99,7 +104,7 @@ const NotificationSection = () => {
                     }
                 }}
             >
-                <ButtonBase sx={{ borderRadius: '12px' }}>
+                <ButtonBase sx={{ borderRadius: '12px' }} onClick={movetoPage}>
                     <Avatar
                         variant="rounded"
                         sx={{
@@ -123,7 +128,7 @@ const NotificationSection = () => {
                     </Avatar>
                 </ButtonBase>
             </Box>
-            <Popper
+            {/* <Popper
                 placement={matchesXs ? 'bottom' : 'bottom-end'}
                 open={open}
                 anchorEl={anchorRef.current}
@@ -173,7 +178,7 @@ const NotificationSection = () => {
                         </Paper>
                     </Transitions>
                 )}
-            </Popper>
+            </Popper> */}
         </>
     );
 };

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import * as React from 'react';
+import {Alert} from '@mui/material';
 
 import FormLabel from '@mui/material/FormLabel';
 // material-ui
@@ -47,6 +48,7 @@ const OrganizationRegister = ({ ...others }) => {
     const [orgname, setOrgname] = useState('');
     const [des, setDes] = useState('');
     const [email, setEmail] = useState('');
+    const [finalstate,setFinalState]=useState(false)
 
     const handleChangeGender = (event) => {
         setValue(event.target.value);
@@ -66,6 +68,11 @@ const OrganizationRegister = ({ ...others }) => {
     return (
         <>
             <Grid container direction="column" justifyContent="center" spacing={2}>
+                {finalstate && (
+                    <Alert variant="outlined" severity="success">
+                       SuccessFully Registerd
+                    </Alert>
+                )}
                 <Grid item xs={12}>
                     <AnimateButton></AnimateButton>
                 </Grid>
@@ -83,7 +90,7 @@ const OrganizationRegister = ({ ...others }) => {
                 initialValues={{
                     name: '',
                     description: '',
-                    email: '',   
+                    email: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -92,19 +99,19 @@ const OrganizationRegister = ({ ...others }) => {
                     email: Yup.string().email('Must be a valid email').max(255).required('Email is required')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-                  
                     axios
                         .post('http://localhost:5000/api/auth/registerorg', {
                             email: values.email,
                             orgName: values.name,
                             des: values.description
-                         
                         })
                         .then((response) => {
+                            setFinalState(true)
+                            setTimeout(()=>{
+setFinalState(false)
+                            },[2000])
                             console.log(response.data);
                         });
-
-                        
 
                     // try {
                     //     if (scriptedRef.current) {
@@ -149,23 +156,27 @@ const OrganizationRegister = ({ ...others }) => {
                                 <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                             </Box>
                             <Grid item xs={12}>
-                            <FormControl fullWidth error={Boolean(touched.name && errors.name)} sx={{ ...theme.typography.customInput }}>
-                                <TextField
+                                <FormControl
                                     fullWidth
-                                    label="Division Name"
-                                    margin="normal"
-                                    name="name"
-                                    type="text"
-                                    value={values.name}
-                                    onChange={handleChange}
+                                    error={Boolean(touched.name && errors.name)}
                                     sx={{ ...theme.typography.customInput }}
-                                />
-                                 {touched.name && errors.name && (
-                                    <FormHelperText error id="standard-weight-helper-text--register">
-                                        {errors.name}
-                                    </FormHelperText>
-                                )}
-                            </FormControl>
+                                >
+                                    <TextField
+                                        fullWidth
+                                        label="Division Name"
+                                        margin="normal"
+                                        name="name"
+                                        type="text"
+                                        value={values.name}
+                                        onChange={handleChange}
+                                        sx={{ ...theme.typography.customInput }}
+                                    />
+                                    {touched.name && errors.name && (
+                                        <FormHelperText error id="standard-weight-helper-text--register">
+                                            {errors.name}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
                             </Grid>
                             {/* <Grid item xs={12} sm={6}>
                                 <TextField
@@ -193,23 +204,27 @@ const OrganizationRegister = ({ ...others }) => {
                                 />
                             </Grid> */}
                             <Grid item xs={12}>
-                            <FormControl fullWidth error={Boolean(touched.description && errors.description)} sx={{ ...theme.typography.customInput }}>
-                                <TextField
+                                <FormControl
                                     fullWidth
-                                    label="Description about the Division"
-                                    margin="normal"
-                                    name="description"
-                                    type="text"
-                                    value={values.description}
-                                    onChange={handleChange}
+                                    error={Boolean(touched.description && errors.description)}
                                     sx={{ ...theme.typography.customInput }}
-                                />
-                                {touched.description && errors.description && (
-                                    <FormHelperText error id="standard-weight-helper-text--register">
-                                        {errors.description}
-                                    </FormHelperText>
-                                )}
-                            </FormControl>
+                                >
+                                    <TextField
+                                        fullWidth
+                                        label="Description about the Division"
+                                        margin="normal"
+                                        name="description"
+                                        type="text"
+                                        value={values.description}
+                                        onChange={handleChange}
+                                        sx={{ ...theme.typography.customInput }}
+                                    />
+                                    {touched.description && errors.description && (
+                                        <FormHelperText error id="standard-weight-helper-text--register">
+                                            {errors.description}
+                                        </FormHelperText>
+                                    )}
+                                </FormControl>
                             </Grid>
                         </Grid>
                         <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>

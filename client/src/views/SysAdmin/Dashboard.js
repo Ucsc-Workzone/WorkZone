@@ -11,18 +11,22 @@ import RecentAnnoucements from 'Components/RecentAnnouncements';
 import EarningCard from 'ui-component/cards/Skeleton/EarningCard';
 import TotalOrderLineChartCard from 'views/dashboard/Default/TotalOrderLineChartCard';
 import './styles/Home.css';
+import './../Coordinator/styles/Workrecords.css';
 
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
 import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutlined';
 
+import PendingCounter from 'Components/FBPendingCounter';
+import PendingList from 'Components/FBPendingList';
+
 const HeadList = {
-    head1:"No. of Registered Members",
+    head1:"No. of Registered Users",
     head2:"No. of Registered Division",
 }
 var CountList = {
-    count1:10,
-    count2:1,
+    count1:52,
+    count2:2,
 }
 
 const Dashboard = () => {
@@ -61,8 +65,15 @@ const Dashboard = () => {
                     <div className="annouceContainer" style={{padding:"10px"}}>
                     <RecentAnnoucements />
                     </div>
-                    <div className="feedBack">
-                        
+                    
+                        <div className='up-left-container' display="flex">
+                            <Typography variant="h3" component="h4" className="" style={{marginBottom:"20px",marginTop:"20px"}}>
+                                Weekly Feedbacks       
+                            </Typography>
+                            <div className="record-pending-container"> 
+                                {/* <PendingCounter headlist2={"Pending"} countlist2={'3'}/> */}
+                                <PendingList flag={false} />
+                            </div>
                     </div>
                 </div>
                 <div className="rightContainer">

@@ -15,7 +15,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import DoughtChart from 'Components/DoughtChart';
 import { useState } from 'react';
-
+import {CardActionArea} from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -126,12 +126,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const LeaveHistoryTable = ({ flag }) => {
+    const [prec, setpercent] = useState(0);
     const [userData, setUserData] = useState({
         // labels: ["CM", "NC"],
         datasets: [
             {
                 label: 'Users Gained',
-                data: [85, 15],
+                data: [prec, 100 - prec],
                 backgroundColor: ['#0f65fa', '#c2c6d1'],
                 borderColor: 'white',
                 borderWidth: 2
@@ -209,7 +210,7 @@ const LeaveHistoryTable = ({ flag }) => {
                         setSearchQuery(e.target.value);
                     }}
                     label="Search by Name"
-                    sx={{height:"80px"}}
+                    sx={{ height: '80px' }}
                     variant="outlined"
                     placeholder="Search..."
                     size="small"
@@ -234,65 +235,69 @@ const LeaveHistoryTable = ({ flag }) => {
                     )}
                 </Box>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-                    <DialogTitle sx={{backgroundColor: '#185A90',color:"white",fontSize:"16"}}>
-                             <Button onClick={handleClose} autoFocus variant="text">
-                                <HighlightOffIcon style={{ color: 'white', justifyContent: 'right' }} />
-                            </Button>
-                            Project Initialization Form 
+                    <DialogTitle sx={{ backgroundColor: '#185A90', color: 'white', fontSize: '16' }}>
+                        <Button onClick={handleClose} autoFocus variant="text">
+                            <HighlightOffIcon style={{ color: 'white', justifyContent: 'right' }} />
+                        </Button>
+                        Project Initialization Form
                     </DialogTitle>
-                                 
+
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
                             <ProjectForm />
                         </DialogContentText>
                     </DialogContent>
-                    <DialogActions>  
+                    <DialogActions>
                         <Box
                             style={{ width: '100%', display: 'flex', justifyContent: 'right', marginTop: '10px', marginBottom: '10px' }}
-                        >
-                              
-                        </Box>                    
+                        ></Box>
                     </DialogActions>
                 </Dialog>
 
                 <List sx={{ padding: '10px', display: 'block', justifyContent: 'center', maxHeight: '500px', overflow: 'auto' }}>
                     {projectCard.map((projectList) => {
-                      return(
-                        <ListItem sx={{ padding: '10px', display: 'flex', justifyContent: 'center' }}>
-                            <Card variant="outlined" className="project-card">
-                                <Box style={{ display: 'flex', width: '100%' }}>
-                                    <Box
-                                        style={{ display: 'flex', justifyContent: 'left', width: '5%', backgroundColor: 'rgb(5 161 189)' }}
-                                    ></Box>
-                                    <Box style={{ display: 'flex', justifyContent: 'left', width: '70%', paddingLeft: '70px' }}>
-                                        <Stack>
-                                            <Typography
-                                                variant="h3"
-                                                component="p"
-                                                fontSize="1.5vw"
-                                                paddingTop={'15px'}
-                                                paddingBottom={'15px'}
-                                            >
-                                                {projectList['projectName']}
-                                            </Typography>
-                                            <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
-                                                {projects.pending} Remaining
-                                            </Typography>
-                                            <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
-                                                Due Date:{projects.date}
-                                            </Typography>
-                                        </Stack>
+                        return (
+                            <ListItem sx={{ padding: '10px', display: 'flex', justifyContent: 'center' }}>
+                                <Card variant="outlined" className="project-card"  sx={{cursor:'pointer'}}>
+                                    <CardActionArea  href={"http://localhost:3000/workzone/coordinator/projectinit/" + projectList['projectId']}>
+                                    <Box style={{ display: 'flex', width: '100%' }}>
+                                        <Box
+                                            style={{
+                                                display: 'flex',
+                                                justifyContent: 'left',
+                                                width: '5%',
+                                                backgroundColor: 'rgb(5 161 189)'
+                                            }}
+                                        ></Box>
+                                        <Box style={{ display: 'flex', justifyContent: 'left', width: '70%', paddingLeft: '70px' }}>
+                                            <Stack>
+                                                <Typography
+                                                    variant="h3"
+                                                    component="p"
+                                                    fontSize="1.5vw"
+                                                    paddingTop={'15px'}
+                                                    paddingBottom={'15px'}
+                                                >
+                                                    {projectList['projectName']}
+                                                </Typography>
+                                                <Typography variant="p" component="p" fontSize="0.8vw" paddingBottom={'6px'}>
+                                                    {projectList['description']}
+                                                </Typography>
+                                                <Typography variant="h4" component="p" fontSize="1.0vw" paddingBottom={'15px'}>
+                                                    Due Date:{projectList['estendDate'].substr(0, 10)}
+                                                </Typography>
+                                            </Stack>
+                                        </Box>
+                                        <Box style={{ display: 'flex', justifyContent: 'center', width: '60%', top: '50%' }}>
+                                            <div style={{ width: '38%' }}>
+                                                <DoughtChart chartData={userData} percentage={projectList['percent']} />
+                                            </div>
+                                        </Box>
                                     </Box>
-                                    <Box style={{ display: 'flex', justifyContent: 'left', width: '60%', top: '50%' }}>
-                                        <div style={{ width: '38%' }}>
-                                            <DoughtChart chartData={userData} percentage={'85'} />
-                                        </div>
-                                    </Box>
-                                </Box>
-                            </Card>
-                        </ListItem>
-                      )
-                        
+                                    </CardActionArea>
+                                </Card>
+                            </ListItem>
+                        );
                     })}
                 </List>
             </Paper>

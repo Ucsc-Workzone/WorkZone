@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import HeaderCounter from 'Components/HeaderCounter2';
 import StaffTable from 'Components/stickyheadertable';
+import PendingStaffTable from 'Components/PendingSignup';
 import TeamTable from 'Components/TeamList';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -36,10 +37,14 @@ const CoordinatorStaff = () => {
     return ( 
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-staff-container">
-                {/* <div className="container-up">
-                    <Typography variant="h3" component="h4" className="" coloir="blue" paddingBottom={"10px"} >Center of E-Learning</Typography>
-                    <HeaderCounter headlist={HeadList} countlist={CountList} />
-                </div> */}
+                <div className="container-up">
+                    <div className="staff-container">
+                        <Typography variant="h3" component="h4" className="">
+                                Pending Signup Approvals       
+                        </Typography>
+                        <PendingStaffTable />  
+                    </div>
+                </div>
 
                 <div className="container-down">
                     <div className="staff-container">

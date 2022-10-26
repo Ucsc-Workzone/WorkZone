@@ -10,14 +10,16 @@ import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Avatar from '@mui/material/Avatar';
 
-import { useEffect } from 'react';
-
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
 import { styled } from '@mui/material/styles';
 import './styles/table.css';
+
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 
@@ -30,25 +32,25 @@ const columns = [
   },
   { id: 'pic', 
     label: '',
-    align: 'Organization pic',
+    align: 'Division pic',
     format: (value) => value.toString('en-US'),
   },
   { id: 'name', 
-    label: 'Organization Name',
+    label: 'Division Name',
     align: 'left',
     fontsize: "15px",
     // format: (value) => value.toLocaleString('en-US'),
   },
   {    
     id: 'orgc', 
-    label: 'Org Code', 
+    label: 'Div. Code', 
     align: 'center',
     // format: (value) => value.toLocaleString('en-US'),
   
   },
   {
     id: 'email',
-    label: 'Organization Mail',
+    label: 'Division Mail',
     // minWidth: 170,
     align: 'left',
     // format: (value) => value.toLocaleString('en-US'),
@@ -64,7 +66,8 @@ const columns = [
 ];
 
 
-function createData( no, pic, name, orgc, email, action) {
+function createData( no, name, orgc, email, action) {
+  const pic='org.png';
   return { no, pic, name, orgc, email, action };
 }
 
@@ -98,8 +101,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }
 }));
 
-const StickyHeadTable = (data) => {
-console.log("Malithi",data)
+const StickyHeadTable = () => {
+
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -118,6 +121,76 @@ console.log("Malithi",data)
   const handleChange = (event) => {
     setgender(event.target.value);
   };
+
+
+  const [array,setArray]=useState([]);
+
+  useEffect(()=>{
+
+      axios
+      .post('http://localhost:5000/api/project/getorg', {
+          
+      })
+      .then((response) => {
+          console.log(response.data)
+          setArray(response.data)
+      });
+  },[])
+
+  const [pendingData,setpendingdata]=useState([]);
+  const [active,setactive]=useState(false);
+  const [control,setcontrol]=useState(false);
+  const [ptype,setptype]=useState(true);
+  const [rows,setrows]=useState([]);
+
+  const handleOrg = (newValue) => {
+    console.log("in"+ newValue );
+    setpendingdata(newValue);
+    structure(newValue);
+    setactive(true);
+  };
+
+
+  useEffect(()=>{
+      getOrgData();
+  },[])
+
+
+  const getOrgData=()=>{
+    axios
+    .post('http://localhost:5000/api/project/getorg', {
+        
+    })
+    .then((response) => {
+        console.log(response.data)
+        setArray(response.data)
+        handleOrg(response.data);
+    });
+  }
+
+
+  function structure(pendingData){
+    if(pendingData){
+      const i = pendingData.length;
+   
+      for(var j= 0 ; j < i ; j++){
+        var n= j+1;
+        var c = n.toString();
+        
+        var name = pendingData[j].orgName;
+        var orgc = pendingData[j].orgcode;
+        var email = pendingData[j].orgmail;
+        var act = pendingData[j].orgId;
+  
+        rows[j] = createData( c , name, orgc, email, act);
+      }
+  
+      console.log(rows);
+      setrows(rows);
+
+    }
+  
+  }
 
   return (
     <React.Fragment>
@@ -168,9 +241,10 @@ console.log("Malithi",data)
             <TableRow className="tablehead" ></TableRow>
           </TableHead>
           <TableBody sx={{fontSize:'16px'}}>
-            {rows
+            {active && rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+
                 return (
                   <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
                     {columns.map((column) => {

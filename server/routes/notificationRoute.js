@@ -2,7 +2,7 @@ const bycrypt = require("bcrypt");
 const router = require("express").Router();
 //const {createProject,createTeam, getorg,getProjectData,getmemberProjectList,saveCard,addtoWork,getProjectDataMember,updateCardMember}=require('../models/model_Project')
 
-const{allnotification,notificationType,allAnnoucements,publishannoucements}=require('../models/model_Notification')
+const{allnotification,notificationType,allAnnoucements,acceptTask,publishannoucements}=require('../models/model_Notification')
 const {validToken}=require('./JWT')
 const { db } = require("../utils/index");
 const { verify } = require("crypto");
@@ -13,7 +13,7 @@ router.post("/allnotification", async (req,res) => {
 });
 
 router.post("/notificationType", async (req,res) => {
-    const data=await notificationType(req.body)
+    const data=await notificationType(req.body.type,req.body.notificationId)
     res.json(data[0])
    });
 
@@ -33,7 +33,11 @@ router.post("/notificationType", async (req,res) => {
     const data=await publishannoucements(req.body)
     res.json(data)
    });
+   router.post("/acceptTask", async (req,res) => {
+    const data=await acceptTask(req.body.actId)
+    res.json(data)
+   });
 
-
+   
    
 module.exports = router;
