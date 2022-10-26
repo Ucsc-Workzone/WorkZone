@@ -51,3 +51,9 @@
     background-color: #F9EEE3;
     color: #D79353;
 }
+
+.card-contetnt-des{
+    font-weight: 20px;
+    color: #444444;
+    margin-left: 10px;
+}

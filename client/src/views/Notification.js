@@ -10,8 +10,9 @@ import { useTheme } from '@emotion/react';
 import { useEffect } from 'react';
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
 
-
+import { useNavigate } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import {
     Button,
@@ -109,32 +110,40 @@ const style = {
     p: 4,
   };
 const Notification = () => {
+
+    const navigate=useNavigate();
     const [marray5, setArray5] = useState([]);
+    const [active,setActive]=useState(false);
 
     const [open, setOpen] = React.useState(false);
     const [open1, setOpen1] = React.useState(false);
     const [project,setProject]=useState([]);
     const handleOpen = (e) => {
         // notificationType();
-        
-        notificationType();
-        setOpen(true);
+     const array=e.target.value;  
+var nameArr = array.split(',');
+console.log(nameArr[0]);
+    
+        notificationType(nameArr[0],nameArr[1]);
+        // setOpen(true);
     console.log(e.target.value)
     }
     const handleClose = () => setOpen(false);
-    const notificationType = () => {
-        let type='m-005';
-      //  console.log(type, notid);
+    const handleClose1 = () => setOpen1(false);
+    const notificationType = (id,type) => {
+      
         axios
             .post('http://localhost:5000/api/notification/notificationType', {
-                type: 'm-005',
-                notificationId: 1
+                type:type,
+                notificationId: id
             })
             .then((response) => {
                 if ((type = 'm-005')) {
                     // console.log(response.data);
-                    setArray5(response.data);
+                    setArray5(response.data[0]);
                     console.log(response.data);
+                    setActive(true)
+                    setOpen1(true)
                 }
             });
         return true;
@@ -156,6 +165,41 @@ const Notification = () => {
                 setAllArray(response.data);
             });
     };
+
+    const [acceptT,setaccept]=useState(false)
+    const [error,setError]=useState(false)
+    const [success,setsuccess]=useState(false)
+    const acceptTask=(e)=>{
+       const array=e.target.value
+       var nameArr = array.split(',');
+       alert(nameArr[0])
+        axios
+        .post('http://localhost:5000/api/notification/acceptTask', {
+            actId: nameArr[0]
+        })
+        .then((response) => {
+            console.log(response.data);
+            if(response.data){
+                setOpen1(false)
+                setsuccess(true)
+                setTimeout(()=>{
+                   navigate('/member/project/'+nameArr[1]+"/"+nameArr[0])
+                },[2000])
+               
+
+            }
+           else{
+            setOpen1(false)
+            setError(true)
+            setTimeout(()=>{
+                setError(false)
+            },[2000])
+           
+
+           }
+        });
+
+    }
     const theme = useTheme();
 
     const chipSX = {
@@ -184,7 +228,17 @@ const Notification = () => {
     return (
         <>
             <div className="mainnotContainer">
+            {error &&  <Alert severity="error">
+                    Already Accepted</Alert>
+    
+                    }
+
+                    {
+                        success &&   <Alert severity="success">SuccessFullu Accepted</Alert>
+
+                    }
                 <div className="serchArea">
+                   
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -203,22 +257,22 @@ const Notification = () => {
                             </div>
                         </div>
                         <div className="all-not">
-                            <div className="contetent">
+                            {/* <div className="contetent">
                                 <Typography>Read</Typography>
-                            </div>
+                            </div> */}
                             <div className="icon">
                                 <IconBookmarksOff />
                             </div>
                         </div>
 
-                        <div className="all-not">
+                        {/* <div className="all-not">
                             <div className="contetent">
                                 <Typography>Archieve</Typography>
                             </div>
                             <div className="icon">
                                 <IconArchive />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="notificationArea">
@@ -255,17 +309,17 @@ const Notification = () => {
                                             <Grid container justifyContent="flex-end">
                                                 <Grid item xs={12} container>
                                                 <Grid item>
-                                                    <button onClick={handleOpen} value={[notify.notificationId,notify.type]} >
+                                                    <Button onClick={handleOpen} value={[notify.notificationId,notify.type]} className='viewButton' variant='outlined'>
                                              view
-                                                    </button>
+                                                    </Button>
                                                         
                                                     </Grid>
                                                     <Grid item>
-                                                        <Chip label="delete" sx={chipErrorSX} />
+                                                       <Button variant='outlined' color="error">Delete</Button>
                                                     </Grid>
-                                                    <Grid item>
+                                                    {/* <Grid item>
                                                         <Chip label="Archieve" sx={chipWarningSX} />
-                                                    </Grid>
+                                                    </Grid> */}
                                                 </Grid>
                                             </Grid>
                                         </ListItemSecondaryAction>
@@ -331,24 +385,44 @@ const Notification = () => {
                             </Box>
                         </Modal>
                     </div>
+                   
                     <div>
-                        
+                        {active && 
                         <Modal
-                            open={open1}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={style}>
-                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                            You have been assign to a project  
-                                </Typography>
-                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                  <Button>Accept</Button>
-                                  <Button>Reject</Button>
-                                </Typography>
-                            </Box>
-                        </Modal>
+                        open={open1}
+                        onClose={handleClose1}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h4" component="h2">
+                        You have been assign to a project  {marray5['projectName']}
+                     
+                            </Typography>
+                            <Typography id="modal-modal-title" variant="h5" component="h2">
+                       
+                     Your Task - {marray5['activityName']}
+                    
+                            </Typography>
+                            <Typography id="modal-modal-title" variant="h5" component="h2">
+                       
+                       Description - {marray5['description']}
+                      
+                              </Typography> 
+                            <Typography id="modal-modal-title" variant="h5" component="h2">
+                       
+                   
+                     Due Date - {marray5['estendDate'].substring(0,10)}
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                              <Button value={[marray5['activityId'],marray5['projectId']]} variant='contained' className='buttonAccept' onClick={acceptTask}>Accept</Button>
+                              <Button value={marray5['notificationId']} variant='outlined' className='buttonAccept'>Reject</Button>
+                            </Typography>
+                        </Box>
+                    </Modal>
+
+                        }
+                        
                     </div>
                 </div>
             </div>
