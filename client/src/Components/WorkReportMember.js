@@ -11,8 +11,9 @@ import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import {Typography} from '@mui/material';
 import {useState,useEffect} from 'react';
-import axios from 'axios';
+
 import InputLabel from '@mui/material/InputLabel';
+import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import IconButton from "@mui/material/IconButton";
@@ -103,6 +104,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const WorkReportMember = () => {
+  useEffect(()=>{
+    const userid=localStorage.getItem('userid')
+    axios
+        .post('http://localhost:5000/api/member/reportTableFetch', {
+            userId: userid
+        })
+        .then((response) => {
+            console.log("Hiiii",response.data);
+           
+        });
+  },[])
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -134,21 +146,7 @@ const WorkReportMember = () => {
     setValue(newValue);
   };
 
-  useEffect(()=>{
-    const accessToken=localStorage.getItem('token');
-
-    axios
-            .post('http://localhost:5000/api/project/gethistory', {
-                accessToken:accessToken
-            })
-            .then((response) => {
-                console.log(response.data);
-                if (response.data) {
-                    // window.location.reload(false);
-                    console.log(response.data)
-                }
-            });
-  })
+ 
 
   return (
     <React.Fragment>
