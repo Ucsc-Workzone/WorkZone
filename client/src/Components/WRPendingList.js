@@ -42,7 +42,7 @@ const LeavePendingList = ({ flag }) => {
     const [countlist, setleavelist] = useState([]);
     const [open, setOpen] = React.useState(false);
     const [popData, setPopData] = useState([]);
-    const [active,setActive]=useState(false)
+    const [active, setActive] = useState(false);
 
     const handleClickOpen = (e) => {
         const recordId = event.target.value;
@@ -54,8 +54,9 @@ const LeavePendingList = ({ flag }) => {
             })
             .then((response) => {
                 console.log(response.data);
-                setPopData(response.data)
-                setActive(true)
+                setPopData(response.data);
+                console.log(popData);
+                setActive(true);
             });
         setOpen(true);
     };
@@ -109,25 +110,33 @@ const LeavePendingList = ({ flag }) => {
             </TableContainer>
 
             <Dialog open={open} onClose={handleClose}>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>A</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={'Activity 01'} secondary={'Admin Dashboard creation '} />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>A</Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={'Activity 02'} secondary={'Admin Leave Management'} />
+                </ListItem>
 
-               
-                {popData.map((data)=>{
-                      <ListItem>
-                      <ListItemAvatar>
-                          <Avatar>
-                           M
-                          </Avatar>
-                      </ListItemAvatar>
-                      <ListItemText primary={data['subActName']} secondary={"data['subActivityId']"} />
-                      <ListItemText primary={"data['attachment']"} secondary={"data['description']"} />
-                    </ListItem>
+                <Button variant="outlined">Accept</Button>
+                <Button variant="outlined">Reject</Button>
 
-                })
-                    
-                
-
-                }
-              
+                <List>
+                    {popData.map((data) => {
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar>M</Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={"data['subActName']"} secondary={"data['subActivityId']"} />
+                            <ListItemText primary={"data['attachment']"} secondary={"data['description']"} />
+                        </ListItem>;
+                    })}
+                </List>
             </Dialog>
         </div>
     );

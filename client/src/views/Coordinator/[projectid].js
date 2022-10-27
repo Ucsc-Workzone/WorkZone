@@ -39,52 +39,15 @@ const ProjectPage = () => {
     return (
         <>
             <div className="projectmain">
-                <div className='summaryConatiner'>
-                    <ProjectSummary />
-                </div>
-                <div className="loweCon">
+              
+            
                     <div className="todoContainer">
                         <KanbanBoard />
                     </div>
-                    <div className="memberAssignSerach">
-                        {/* <div className="memberAssign">
-                            <div> <Autocomplete
-                                id="filter-demo"
-                                options={top100Films}
-                                getOptionLabel={(option) => option.title}
-                                filterOptions={filterOptions}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params} label="Custom filter" id="filter-demo-d" />}
-                            /></div>
-                            <div>
-                            <Button onClick={handleClick} className='addBut'>Add</Button>
-                            </div>
-                           
-                            
-                        </div> */}
-                        {/* <div className="listsort">
-                            {state && (
-                                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} className='list'>
-                                    {list.map((value) => {                                   
-                                        return(
-                                            <ListItem
-                                            key={value}
-                                            disableGutters
-                                            secondaryAction={
-                                                <IconButton aria-label="comment">
-                                                   <IconTrash></IconTrash>
-                                                </IconButton>
-                                            }
-                                        >
-                                            <ListItemText primary={` ${value}`} />
-                                        </ListItem>
-                                        );
-                                       
-                                 })}
-                                </List>
-                            )}
-                        </div> */}
-                    </div>
+                    
+            
+                <div className='summaryConatiner'>
+                    <ProjectSummary />
                 </div>
             </div>
         </>

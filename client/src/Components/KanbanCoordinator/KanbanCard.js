@@ -4,7 +4,10 @@ import './styles.css'
 
 import {Button} from "@mui/material";
 
-const KanbanCard = ({ activityName, weight, description }) => {
+const KanbanCard = ({ activityName, weight, description,date }) => {
+    const deleteActivity=()=>{
+
+    }
     const cardStyle = {
         'backgroundColor': '#fff',
         'paddingLeft': '30px',
@@ -35,20 +38,31 @@ const KanbanCard = ({ activityName, weight, description }) => {
                 <div className="card-contetnt">
                     <h4>{activityName}</h4>
                 </div>
-                <div className="dateContainer">
-                    <div className="innerChip"><Chip label="2022-10-26" color="primary"  variant="outlined"/></div>
-                    <div className="innerChip"><Chip label="Malithi Perera" color="primary" variant="outlined"/></div>
-                
-
-                   
-                </div>
-
                 <div>
                     <strong>Description: </strong>
                     {description}
                     <br />
                 </div>
-<Button variant="contained" className="buttonEdit">edit</Button>
+                <div className="dateContainer">
+                    <div className="innerChip"><Chip label={'2022-11-12'} color="primary"  variant="outlined"/></div>
+                    <div className="innerChip"><Chip label="Malithi Perera" color="primary" variant="outlined"/></div>
+                
+
+                   
+                </div>
+<div className="buttonDivMain">
+<div className="buttonDiv1">
+
+<Button variant="contained" className="buttonEdit">Edit</Button>
+</div>   
+<div className="buttonDiv2">
+
+<Button variant="outlined" className="buttonEdit" color="error" onClick={deleteActivity}>Delete</Button>
+</div>   
+
+</div>
+
+
                 {/* <div
                     style={{ width: '100%' }}
                     onClick={(e) => {

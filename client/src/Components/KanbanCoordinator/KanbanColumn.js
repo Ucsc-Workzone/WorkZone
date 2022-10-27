@@ -83,8 +83,8 @@ const KanbanColumn = () => {
         // setValue1(newPlacement)
     };
 
-    const [value, setValue] = React.useState(dayjs('2022-10-26T21:11:54'));
-    const [value1, setValue1] = React.useState('2022-10-26');
+    const [value, setValue] = React.useState(dayjs('2022-10-27T21:11:54'));
+    const [value1, setValue1] = React.useState('2022-10-27');
     const [set1, setSet1] = useState(false);
     const handleChange = (e) => {
         console.log(e.$d);
@@ -115,8 +115,9 @@ const KanbanColumn = () => {
                     key={project['activityId']}
                     weight={project['weight']}
                     activityName={project['activityName']}
-                    Date={project['estendDate'].substring(0,10)}
+                    Date={project['endDate'].substring(0,10)}
                     assignMember={project['activityName']}
+                   
                     description={project['description']}
                     onDragEnd={project.onDragEnd}
                 />
