@@ -15,7 +15,17 @@
     height: 2px;
     padding: 5px
 }
-
+.buttonDivMain{
+    display: flex;
+    justify-content: center;
+    /* margin-left: -500px; */
+}
+.buttonDiv2{
+    /* display: flex;
+    justify-content: center;
+    margin-left: -500px; */
+    margin-left: -350px;
+}
 .devide2 {
     /* color: blueviolet;
     background-color: brown; */

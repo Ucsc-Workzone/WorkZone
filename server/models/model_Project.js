@@ -69,6 +69,8 @@ module.exports = {
       let currentDate = `${year}-${month}-${day}`;
       sql = `INSERT INTO activity (projectId,activityName,description,memberId,weight,startDate,endDate) Values (${data["project_id"]},'${data["taskName"]}','${data["description"]}',${data['member']},'${data['weight']}','${currentDate}','${data['estend']}')`;
       const rows = await dbconnection.query(sql);
+      sql1 = `INSERT INTO notification (type,nfrom,nto,date,projectId) Values ('m-005',8,5,'2022-10-27',${data["project_id"]}`;
+      const rows1 = await dbconnection.query(sql1);
       return true;
     } catch {
       return "error";
