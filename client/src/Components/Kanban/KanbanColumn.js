@@ -207,8 +207,9 @@ componentDidMount(){
                             <div class="datex" style={cardContent}>
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DatePicker
+                                        disablePast
                                         label="Due Date"
-                                        value={2022 - 10 - 26}
+                                        value={"2022-10-27"}
                                         onChange={this.changeDate}
                                         renderInput={(params) => <TextField {...params} />}
                                     />

@@ -55,6 +55,14 @@ const pagesDirector = {
             breadcrumbs: false
         },
         {
+            id: 'directorLeave',
+            title: 'Reports',
+            type: 'item',
+            url: '/director/reports',
+            icon: icons.IconAccessibleOff,
+            breadcrumbs: false
+        },
+        {
             id: 'directorFeedbacks',
             title: 'Feedbacks',
             type: 'item',
