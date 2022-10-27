@@ -312,13 +312,17 @@ const WorkRecordList = () => {
 
 
                       if(!column.format){
-                        if(value == 3){
+                        if(value == 1){
                           return (
                             <StyledTableCell align={column.align}><Chip label="Accepted" color="success" style={{width:"90px"}} /></StyledTableCell>
                           );
-                        }else if(value == 4){
+                        }else if(value == 2){
                           return (
                           <StyledTableCell align={column.align}><Chip label="Rejected" color="error"  /></StyledTableCell>
+                          );}
+                        else if(value == 3){
+                          return (
+                          <StyledTableCell align={column.align}><Chip label="Pending" color="warning"  /></StyledTableCell>
                           );}
                       }else if (typeof value === 'number'){
                         return (
