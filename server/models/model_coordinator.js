@@ -127,7 +127,7 @@ return row2[0];
    },
    async getWRHistroy(){
     try{
-    sql=`SELECT * FROM crud_contact.workrecord,crud_contact.user  WHERE workrecord.status='3' OR workrecord.status='4' AND user.userid=workrecord.memberId;`;
+    sql=`SELECT * FROM crud_contact.workrecord,crud_contact.user  WHERE workrecord.status='1' OR workrecord.status='2' OR workrecord.status='3' AND user.userid=workrecord.memberId;`;
     const row2=await dbconnection.query(sql);
 
     return row2[0];
