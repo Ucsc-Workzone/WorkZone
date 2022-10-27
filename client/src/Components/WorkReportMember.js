@@ -48,40 +48,41 @@ const columns = [
     align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
-  {
-    id: 'period',
-    label: 'Period',
-    // minWidth: 170,
-    align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
-  },
+  // {
+  //   id: 'period',
+  //   label: 'Period',
+  //   // minWidth: 170,
+  //   align: 'center',
+  //   format: (value) => value.toLocaleString('en-US'),
+  // },
   {
     id: 'status',
     label: 'Status',
     // minWidth: 170,
     align: 'center',
   },
-  {
-    id: 'action',
-    label: '',
-    // minWidth: 170,
-    align: 'center',
-    format: (value) => value.toFixed(0),
-  },
+  // {
+  //   id: 'action',
+  //   label: 'Action',
+  //   // minWidth: 170,
+  //   align: 'center',
+  //   format: (value) => value.toFixed(0),
+  // },
     
 ];
 
 
-function createData( no, date, period, status, action) {
-  return { no, date, period, status, action };
-}
+function createData( no, date, status) { 
+  var date = date.substr(0,10);
 
-const rows = [
-  createData('1',  '28/08/2022', '1', 1, 1.1 ),
-  createData('2',  '28/08/2022', '2', 2, 2.1  ),
-  createData('2', '28/08/2022', '2', 2, 2.1  ),
+return { no, date, status };
+}
+// const rows = [
+//   createData('1',  '28/08/2022', '1', 1, 1.1 ),
+//   createData('2',  '28/08/2022', '2', 2, 2.1  ),
+//   createData('2', '28/08/2022', '2', 2, 2.1  ),
   
-]
+// ]
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -103,8 +104,49 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }
 }));
 
+
+
+
 const WorkReportMember = () => {
+  
+  const [pendingData,setpendingdata]=useState([]);
+  const [active,setactive]=useState(false);
+  const [rows,setrows]=useState([]);
+
+  function structure(pendingData){
+    if(pendingData){
+      const i = pendingData.length;
+   
+      for(var j= 0 ; j < i ; j++){
+        var n= j+1;
+        var c = n.toString();
+  
+        var bdate = pendingData[j].startDate;
+        var status = pendingData[j].status;
+        // var act = pendingData[j].userid;
+        
+  
+        rows[j] = createData( c, bdate, status);
+      }
+  
+      console.log(rows);
+      setrows(rows);
+  
+    }
+  
+  }
+  
+  const handlerecordlist = (newValue) => {
+    setpendingdata(newValue);
+    structure(newValue);
+    setactive(true);
+  };
   useEffect(()=>{
+    getRecordData();
+  },[])
+
+  const getRecordData=()=>{
+  // useEffect(()=>{
     const userid=localStorage.getItem('userid')
     axios
         .post('http://localhost:5000/api/member/reportTableFetch', {
@@ -112,9 +154,12 @@ const WorkReportMember = () => {
         })
         .then((response) => {
             console.log("Hiiii",response.data);
+            handlerecordlist(response.data);
            
         });
-  },[])
+  // },[])
+
+}
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -170,7 +215,7 @@ const WorkReportMember = () => {
                     <MenuItem value={3}>Rejected</MenuItem>
                 </Select>
           </Box>
-          <Box style={{display:"block",marginLeft:"3%"}}>
+          {/* <Box style={{display:"block",marginLeft:"3%"}}>
           <InputLabel id="select-days" style={{color:'#0C518A',fontWeight:"bold",padding:"10px"}}>Days</InputLabel>
             <Select
                 labelId="select-days"
@@ -196,8 +241,8 @@ const WorkReportMember = () => {
                     <MenuItem value={14}>14</MenuItem>
                     <MenuItem value={15}>15</MenuItem>
                 </Select>
-          </Box>
-          <Box style={{display:"block",marginLeft:"3%", marginTop:"40px"}}>
+          </Box> */}
+          {/* <Box style={{display:"block",marginLeft:"3%", marginTop:"40px"}}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DesktopDatePicker
                   label="Date"
@@ -208,8 +253,8 @@ const WorkReportMember = () => {
                   renderInput={(params) => <TextField {...params} />}
                   />
               </LocalizationProvider>
-          </Box>
-          <Box style={{display:"block",marginLeft:"3%", marginTop:"40px"}}>
+          </Box> */}
+          {/* <Box style={{display:"block",marginLeft:"3%", marginTop:"40px"}}>
             <TextField
                   id="search-bar"
                   className="textname"
@@ -224,7 +269,7 @@ const WorkReportMember = () => {
                   <IconButton type="submit" aria-label="search">
                       <SearchIcon style={{ fill: "blue" }} />
                   </IconButton>
-          </Box>
+          </Box> */}
 
         </Box>
             
@@ -264,6 +309,11 @@ const WorkReportMember = () => {
                           return (
                           <StyledTableCell align={column.align}><Chip label="Rejected" color="error"  /></StyledTableCell>
                           );}
+                          else if(value == 3){
+                            return (
+                            <StyledTableCell align={column.align}><Chip label="Pending" color="warning"  /></StyledTableCell>
+                          );}
+
                       }else if (typeof value === 'number'){
                         return (
                           <StyledTableCell><Button variant="contained" >Details</Button></StyledTableCell>
