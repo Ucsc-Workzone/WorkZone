@@ -6,7 +6,7 @@ import {Button} from "@mui/material";
 
 const KanbanCard = ({ activityName, weight, description,date }) => {
     const deleteActivity=()=>{
-        
+
     }
     const cardStyle = {
         'backgroundColor': '#fff',
@@ -53,7 +53,7 @@ const KanbanCard = ({ activityName, weight, description,date }) => {
 <div className="buttonDivMain">
 <div className="buttonDiv1">
 
-<Button variant="contained" className="buttonEdit">Delete</Button>
+<Button variant="contained" className="buttonEdit">Edit</Button>
 </div>   
 <div className="buttonDiv2">
 
