@@ -60,11 +60,17 @@ const ProfileSection = () => {
      * */
     const anchorRef = useRef(null);
     const handleLogout = async () => {
-        localStorage.removeItem('token');
+        try{  localStorage.removeItem('token');
         localStorage.removeItem('userid');
         localStorage.removeItem('name');
         localStorage.removeItem('userRole');
-        navigate('/');
+        localStorage.removeItem('image');
+        localStorage.removeItem('loginStatus');
+       
+        navigate('/');}
+      catch{
+
+      }
     };
 
     const handleClose = (event) => {
@@ -201,15 +207,15 @@ const ProfileSection = () => {
                                                 }
                                             }}
                                         >
-                                            <ListItemButton
+                                            {/* <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 0}
                                                 onClick={(event) => handleListItemClick(event, 0, '/user/account-profile/profile1')}
-                                            ></ListItemButton>
+                                            ></ListItemButton> */}
                                             <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 1}
-                                                onClick={(event) => handleListItemClick(event, 1, '/user/social-profile/posts')}
+                                                onClick={(event) => handleListItemClick(event, 1, '/user/profile/1')}
                                             >
                                                 <ListItemIcon>
                                                     <IconUser stroke={1.5} size="1.3rem" />

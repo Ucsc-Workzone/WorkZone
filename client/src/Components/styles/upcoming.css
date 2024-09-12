@@ -13,6 +13,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
+    cursor: pointer;
     justify-content: center;
 }
 .project-card{
@@ -21,6 +22,6 @@
 
 }
 .project-card:hover{
-   transform: scale(1.05);
-   transition: 0.1s ease-in-out;
+   /* transform: scale(1.05);
+   transition: 0.1s ease-in-out; */
 }

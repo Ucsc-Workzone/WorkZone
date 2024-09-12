@@ -137,7 +137,7 @@ function App_todo() {
               updateCard={updateCard}
             />
           ))}
-          <div className="app_boards_last">
+          {/* <div className="app_boards_last">
             <Editable
               displayClass="app_boards_add-board"
               editClass="app_boards_add-board_edit"
@@ -146,7 +146,7 @@ function App_todo() {
               buttonText="Add Board"
               onSubmit={addboardHandler}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

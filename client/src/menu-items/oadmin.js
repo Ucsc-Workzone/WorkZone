@@ -22,20 +22,20 @@ const pagesOrgAdmin = {
         
         {
             id: 'orgadminHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/orgadmin/dashboard',
             icon: icons.IconLayoutDashboard,
             breadcrumbs: false
         },
-        {
-            id: 'leaveconfig',
-            title: 'Leave Configuration',
-            type: 'item',
-            url: '/orgadmin/leaveconfig',
-            icon: icons.IconAccessibleOff,
-            breadcrumbs: false
-        },    
+        // {
+        //     id: 'leaveconfig',
+        //     title: 'Leave Configuration',
+        //     type: 'item',
+        //     url: '/orgadmin/leaveconfig',
+        //     icon: icons.IconAccessibleOff,
+        //     breadcrumbs: false
+        // },    
         {
             id: 'orgmanageuser',
             title: 'Manage User',
@@ -52,14 +52,14 @@ const pagesOrgAdmin = {
         //     icon: FeedbackOutlinedIcon,
         //     breadcrumbs: false
         // },
-        {
-            id: 'orgadminnot',
-            title: 'Annoucements',
-            type: 'item',
-            url: '/orgadmin/annoucements',
-            icon: IconBellRinging2,
-            breadcrumbs: false
-        },
+        // {
+        //     id: 'orgadminnot',
+        //     title: 'Annoucements',
+        //     type: 'item',
+        //     url: '/orgadmin/annoucements',
+        //     icon: IconBellRinging2,
+        //     breadcrumbs: false
+        // },
         {
             id: 'orgadminnot',
             title: 'Register Users',

@@ -3,13 +3,16 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: #fff;
 }
 .cardContainer{
     width: 100%;
     background-color: #fff;
+    padding:20px;
 }
 .tableContainer{
     width: 100%;
+    padding:20px;
     background-color: antiquewhite;
 }
 

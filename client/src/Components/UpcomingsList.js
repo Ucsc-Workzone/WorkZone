@@ -8,7 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import DoughtChart from 'Components/DoughtChart';
-
+import { useNavigate } from "react-router-dom";
 function createData(name, date) {
   return { name, date };
 }
@@ -22,20 +22,25 @@ const rows = [
 
 const projects ={
   id:1,
-  name:"Mobile App",
-  pending:"4 Days",
-  date:"27/03/2022"
+  name:"AWS Deployment",
+  pending:"3 Days",
+  date:"2022-11-29"
 }
 import './styles/upcoming.css';
 
 const UpcomingList = () => {
+  const navigate=useNavigate();
+
+  const chageRoute=()=>{
+navigate('/coordinator/projects')
+  }
 
   const [userData, setUserData] = useState({
     // labels: ["CM", "NC"],
     datasets: [
       {
         label: "Users Gained",
-        data: [85, 15],
+        data: [95, 5],
         backgroundColor: [
           "#0f65fa",
           "#c2c6d1",
@@ -50,7 +55,7 @@ const UpcomingList = () => {
     
         <div className="upcomings">
              <Box style={{display: 'flex', justifyContent: 'right'}}>
-                <Box ><Button variant="contained" ><Typography className="seeall" >Other Projects</Typography></Button></Box>
+                <Box ><Button variant="contained" ><Typography className="seeall" onClick={chageRoute} >Other Projects</Typography></Button></Box>
             </Box>
 
             <Box className="tag-container">
@@ -68,7 +73,7 @@ const UpcomingList = () => {
                 </Box>
                 <Box style={{display:"flex", justifyContent: 'left', width:'60%', top: "50%"}}>
                   <div style={{ width: "38%"}}>
-                    <DoughtChart chartData={userData} percentage={"85"}/>
+                    <DoughtChart chartData={userData} percentage={"95"}/>
                   </div>             
                 </Box>
               </Box>

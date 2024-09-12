@@ -34,7 +34,14 @@ const pages = {
                     type: 'item',
                     url: '/pages/register/register3',
                     target: true
-                }
+                },
+                {
+                    id: 'signup',
+                    title: 'Signup',
+                    type: 'item',
+                    url: '/signup',
+                    target: true
+                },
             ]
         }
     ]

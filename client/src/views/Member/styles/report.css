@@ -1,0 +1,10 @@
+/* Popup style */
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  /* width: 150vh; */
+  height: 100vh; 
+  top: 0;
+  left: 0;
+}
+

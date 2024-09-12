@@ -6,12 +6,10 @@ const PendingWorkMember = () => {
         <>
             <div className="pendingwork">
                 <div className="cardpending">
-                    <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                        Pending Work Reports
-                    </Typography>
                     <Typography variant="h2" component="h2" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                       1
+                        Work Reports
                     </Typography>
+                  
                 </div>
                 <div className="summarywork">
                     <ReportList /> </div>

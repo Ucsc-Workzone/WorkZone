@@ -1,27 +1,60 @@
-.addone{
+.addone {
     color: blue;
-    font-size: 16px;
+    font-size: 14px;
 }
-.seeall{
+
+.annouce-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: solid 1px #a9a9a930;
+}
+
+.seeall {
     color: white;
-    font-size: 16px;
-    width: 120px;
+    font-size: 14px;
+    width: 140px;
 }
-.css-1yvzr6j-MuiTypography-root{
+
+/* .xx {
+    background-color: #E3F2FD;
+    border: solid 1px #a9a9a930;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    margin-top: 10px;
+} */
+
+
+.head1 {
+    margin-top: -30px;
+}
+
+.head11 {
+    padding-top: 30px;
+}
+
+.css-1yvzr6j-MuiTypography-root {
     color: #1b1a1a;
 }
-.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root{
+
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
     background-color: rgb(103, 155, 204);
     border-radius: 5px;
 }
-.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root:hover{
+
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root:hover {
     background-color: rgb(0, 102, 255);
 }
 
-.css-1yvzr6j-MuiTypography-root:hover{
+.css-1yvzr6j-MuiTypography-root:hover {
     color: white;
 }
-.css-15v22id-MuiAccordionDetails-root{
+
+.css-15v22id-MuiAccordionDetails-root {
     margin: 0px;
     background-color: #ece8e8;
     border-bottom-left-radius: 5px;

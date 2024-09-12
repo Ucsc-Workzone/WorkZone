@@ -45,7 +45,7 @@ const NavCollapse = ({ menu, level }) => {
 
     const Icon = menu.icon;
     const menuIcon = menu.icon ? (
-        <Icon strokeWidth={1.5} size="1.3rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+        <Icon strokeWidth={1.5} size="1.3rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} color='#0F65FA' />
     ) : (
         <FiberManualRecordIcon
             sx={{
@@ -105,7 +105,7 @@ const NavCollapse = ({ menu, level }) => {
                             height: '100%',
                             width: '1px',
                             opacity: 1,
-                            background: theme.palette.primary.light
+                            background: '#0F65FA'
                         }
                     }}
                 >

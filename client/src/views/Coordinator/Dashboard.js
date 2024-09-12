@@ -18,6 +18,8 @@ import PendingCounter from 'Components/PendingCounter';
 import PendingList from 'Components/PendingList';
 import UpcomingList from 'Components/UpcomingsList';
 import TotalIncomeDarkCard from 'views/dashboard/Default/TotalIncomeDarkCard';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -34,15 +36,35 @@ const HeadList = {
     head2:"Ongoing Projects",
     head3:"Completed Projects"
 }
-var CountList = {
-    count1:45,
-    count2:10,
-    count3:15
-}
+// var CountList = {
+//     count1:45,
+//     count2:10,
+//     count3:15
+// }
 
 const Dashboard = () => {
+  useEffect(()=>{
+    cardData();
+
+  })
+  const [count1,setCount1]=useState();
+  const [count2,setCount2]=useState();
+  const [count3,setCount3]=useState();
     
-    
+    const cardData=()=>{
+        axios
+        .post('http://localhost:5000/api/coordinator/getCoordinatorCards', {
+            center_id: 1
+        })
+        .then((response) => {
+            console.log(response.data);
+          setCount1(response.data[0][0]['memberCount'])
+          setCount2(response.data[1][0]['projectCount'])
+          setCount3(response.data[2][0]['projectCountf'])
+
+
+        });
+    }
     return (
         <><Box sx={{ flexGrow: 1 }}>
             <div className="main-container">
@@ -51,13 +73,13 @@ const Dashboard = () => {
                     <Stack>
                     <Box className='summary-card'>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head1} count={CountList.count1} icon={<GroupsOutlinedIcon fontSize="inherit" />}/>
+                            <TotalIncomeDarkCard title={HeadList.head1} count={count1} icon={<GroupsOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head2} count={CountList.count2} icon={<HourglassBottomOutlinedIcon fontSize="inherit" />}/>
+                            <TotalIncomeDarkCard title={HeadList.head2} count={count2} icon={<HourglassBottomOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                         <Box>
-                            <TotalIncomeDarkCard title={HeadList.head3} count={CountList.count3} icon={<AssignmentTurnedInOutlinedIcon fontSize="inherit" />}/>
+                            <TotalIncomeDarkCard title={HeadList.head3} count={count3} icon={<AssignmentTurnedInOutlinedIcon fontSize="inherit" />}/>
                         </Box>
                     </Box>
                         <div className="annouce-container">

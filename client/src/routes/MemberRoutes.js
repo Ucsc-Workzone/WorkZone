@@ -19,7 +19,7 @@ const MemberProjects = Loadable(lazy(() => import('views/Member/Projects')));
 
 const SystemFeedback = Loadable(lazy(() => import('views/Member/Feedback')));
 const ProjectPage = Loadable(lazy(() => import('views/Member/Projects/[id]')));
-
+const Notification = Loadable(lazy(() => import('views/Notification')));
 const Todo = Loadable(lazy(() => import('views/Member/Todo')));
 const MemberReport = Loadable(lazy(() => import('views/Member/MemberReports')));
 const MemberRoutes = {
@@ -93,12 +93,20 @@ const MemberRoutes = {
             path: 'member',
             children: [
                 {
-                    path: 'project/:proid',
+                    path: 'project/:proid/:actid',
                     element: <ProjectPage />
                 }
             ]
         },
-       
+        {
+            path: 'all',
+            children: [
+                {
+                    path: 'notification',
+                    element: <Notification />
+                }
+            ]
+        },
     ]
 };
 

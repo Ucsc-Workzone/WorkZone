@@ -9,6 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Avatar from '@mui/material/Avatar';
+import axios from 'axios';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,6 +20,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 
 import { styled } from '@mui/material/styles';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import './styles/table.css';
 
 
@@ -56,14 +59,14 @@ const columns = [
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: 'phone',
+    id: 'contc',
     label: 'Mobile',
     // minWidth: 170,
     align: 'center',
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: 'email',
+    id: 'mail',
     label: 'Email',
     // minWidth: 170,
     align: 'left',
@@ -80,18 +83,57 @@ const columns = [
 ];
 
 
-function createData( no, pic, name, age, phone, gender, email, action) {
-  return { no, pic, name, age, phone, gender, email, action };
+function createData( no, pic,fname, lname, bdate, gender, contc, mail, action) {
+
+  const name = fname + " " +  lname;  
+  const age = getAge(bdate).toString();
+
+return { no, pic, name, age,  gender, contc, mail, action };
 }
 
+function datefilter(subdate){
+var date = subdate.substr(0,10)
+
+return date;
+}
+
+function getAge(dateString) {
+  var today = new Date();
+  var birthDate = new Date(dateString);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+  }
+  return age;
+}
+
+function dateDurationCalc(fromdate, todate){
+  var d1 = new Date(fromdate);   
+  var d2 = new Date(todate);   
+      
+  var diff = d2.getTime() - d1.getTime();   
+      
+  var daydiff = diff / (1000 * 60 * 60 * 24);   
+
+  const duration = (daydiff+1).toString();
+
+
+  return (duration)
+}
+
+// function createData( no, pic, name, age, phone, gender, email, action) {
+//   return { no, pic, name, age, phone, gender, email, action };
+// }
+
 const rows = [
-  createData('1', 'member2.jpg', 'Pamodha Mahagamage', '27', '776712245', 'Male', 'pamodhamahagamage19@gmail.com', 1),
-  createData('2', 'member3.jpg', 'Bimsara Kulasekara', '27', '776712245', 'Male', 'bimsarakulasekara19@gmail.com', 2  ),
-  createData('3', 'member1.jpg', 'Malithi Perera', '27', '776712245', 'Female', 'malithiperera1998@gmail.com', 3  ),
-  createData('4', 'member4.jpg', 'Kavindu Gunawardana', '27', '776712245', 'Male', 'kavindugunawaradana1997@gmail.com', 4  ),
-  createData('5', 'member6.jpg', 'Hiruni Guruge', '27', '776712245', 'Female', 'hiruniguruge99@gmail.com', 5  ),
-  createData('6', 'member5.jpg', 'Dulani Weerasinghe', '27', '776712245', 'Male', 'dulanajanaweerasinghe98@gmail.com', 6  ),
-  createData('7', 'member7.jpg', 'Chathuri Amaraweera', '27', '776712245', 'Male', 'chamaraamraweera9@gmail.com', 7  ),
+  createData('1', 'member2.jpg', 'Pamodha', 'Mahagamage', "2022-11-01T18:30:00.000Z", '776712245', 'Male', 'pamodhamahagamage19@gmail.com', 1),
+  // createData('2', 'member3.jpg', 'Bimsara Kulasekara', '27', '776712245', 'Male', 'bimsarakulasekara19@gmail.com', 2  ),
+  // createData('3', 'member1.jpg', 'Malithi Perera', '27', '776712245', 'Female', 'malithiperera1998@gmail.com', 3  ),
+  // createData('4', 'member4.jpg', 'Kavindu Gunawardana', '27', '776712245', 'Male', 'kavindugunawaradana1997@gmail.com', 4  ),
+  // createData('5', 'member6.jpg', 'Hiruni Guruge', '27', '776712245', 'Female', 'hiruniguruge99@gmail.com', 5  ),
+  // createData('6', 'member5.jpg', 'Dulani Weerasinghe', '27', '776712245', 'Male', 'dulanajanaweerasinghe98@gmail.com', 6  ),
+  // createData('7', 'member7.jpg', 'Chathuri Amaraweera', '27', '776712245', 'Male', 'chamaraamraweera9@gmail.com', 7  ),
   // createData('8', 'member8.jpg', 'Pramaodya Gamage', '27', '776712245', 'Female', 'prmogamage19@gmail.com', 8  ),
   // createData('9', 'member9.jpg', 'Dhanika Herath', '27', '776712245', 'Male', 'dhanikaherath19@gmail.com', 9  ),
   // createData('10', 'member10.jpg', 'Nadun Sathsara', '27', '776712245', 'Male', 'nadunsathsara19@gmail.com', 10  ),
@@ -123,6 +165,62 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const StickyHeadTable = () => {
+
+  const [pendingData,setpendingdata]=useState([]);
+  const [active,setactive]=useState(false);
+  const [control,setcontrol]=useState(false);
+  const [ptype,setptype]=useState(true);
+  const [rows,setrows]=useState([]);
+
+  function structure(pendingData){
+    if(pendingData){
+      const i = pendingData.length;
+   
+      for(var j= 0 ; j < i ; j++){
+        var n= j+1;
+        var c = n.toString();
+
+        var pic = pendingData[j].image;
+        var ftname = pendingData[j].firstrName;
+        var ltname = pendingData[j].lastName;
+        var bdate = pendingData[j].dob;
+        var contac = pendingData[j].contactNo;
+        var gen = pendingData[j].gender;
+        var mail = pendingData[j].username;
+        var act = pendingData[j].userid;
+        
+  
+        rows[j] = createData( c, pic, ftname, ltname, bdate, gen, contac, mail, act);
+      }
+  
+      console.log(rows);
+      setrows(rows);
+
+    }
+  
+  }
+
+  const handlestafflist = (newValue) => {
+    setpendingdata(newValue);
+    structure(newValue);
+    setactive(true);
+  };
+  useEffect(()=>{
+    getuserData();
+  },[])
+
+  const getuserData=()=>{
+    axios
+    .post('http://localhost:5000/api/coordinator/staff', {
+   
+    })
+    .then((response) => {
+        console.log(response.data);
+        handlestafflist(response.data);
+       
+    });
+
+  }
   
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -142,6 +240,8 @@ const StickyHeadTable = () => {
     setgender(event.target.value);
   };
 
+
+ 
   return (
     <React.Fragment>
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -159,7 +259,7 @@ const StickyHeadTable = () => {
                 <MenuItem value={3}>Female</MenuItem>
             </Select>
 
-            <TextField
+            {/* <TextField
                 id="search-bar"
                 className="textmail"
                 onInput={(e) => {
@@ -186,7 +286,7 @@ const StickyHeadTable = () => {
                 />
                 <IconButton type="submit" aria-label="search">
                     <SearchIcon style={{ fill: "blue" }} />
-                </IconButton>
+                </IconButton> */}
       <TableContainer sx={{ maxHeight: 600 }} >
         <Table stickyHeader aria-label="sticky table" >
           <TableHead>
@@ -204,15 +304,18 @@ const StickyHeadTable = () => {
             <TableRow className="tablehead" ></TableRow>
           </TableHead>
           <TableBody sx={{fontSize:'16px'}}>
-            {rows
+            {active && rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+                console.log(row);
                 return (
                   <StyledTableRow hover role="checkbox" tabIndex={-1} key={row.code}  >
                     {columns.map((column) => {
                       const value = row[column.id];
-                      
+                      // console.log(value);
                       if(!column.format){
+                        console.log(row['contc']);
+                        console.log(row['mail']);
                         return ( 
                           <StyledTableCell key={column.id} align={column.align}>
                             {value}

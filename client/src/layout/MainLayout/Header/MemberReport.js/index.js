@@ -9,6 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import axios from 'axios';
+import SubmitReport from './SubmitReport';
 
 const LoginButton = () => {
     const [open, setOpen] = useState(false);
@@ -19,7 +20,26 @@ const LoginButton = () => {
     const [project, setProject] = useState('');
     const [leave, setLeave] = useState('');
     const [log, setLog] = useState(false);
+    const [display,setDisplay]=useState(true);
     useEffect(() => {
+        const userid=localStorage.getItem('userid');
+        axios
+        .post('http://localhost:5000/api/member/reportDutyCheck', {
+            userid: userid
+        })
+        .then((response) => {
+            console.log(response.data);
+console.log("Lebgth",response.data[0].length)
+            if(response.data[0].length==0){
+
+
+            }
+            else{
+                setDisplay(false);
+            }
+           
+        });
+
         const loginState = localStorage.getItem('loginStatus');
         setLog(loginState);
     });
@@ -47,9 +67,11 @@ const LoginButton = () => {
         })
         .then((response) => {
             console.log(response.data);
-           
+            if(response.data){
+                setDisplay(false)
+            }
         });
-        console.log(stat);
+       
         if (!stat) {
             setMessege('Please submit your workreport at the end of the day to complete your attendence');
             setStat(true);
@@ -58,43 +80,51 @@ const LoginButton = () => {
         }
 
         setButton(false);
+        
     };
     return (
         <>
-            
-            <div className="report-conatiner">
-            <Button variant="contained" onClick={handleClickOpen}>
-                Report Duty
-            </Button>
-                <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                                {state}
-                            </Typography>
-                            <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                                {messege}
-                            </Typography>
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        {button && (
-                            <Button onClick={handleReport} color="primary" variant="contained">
-                                Continue
-                            </Button>
-                        )}
-                        {!button && (
-                            <Button onClick={handleClose} color="primary" variant="contained">
-                                Continue
-                            </Button>
-                        )} 
-                        {<Button onClick={handleClose} color="primary" variant="outlined" autoFocus>
-                            Cancel
-                        </Button>
+        {display && 
+         <div className="report-conatiner">
+         <Button variant="contained" onClick={handleClickOpen}>
+             Report Duty
+         </Button>
+             <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+                 <DialogContent>
+                     <DialogContentText id="alert-dialog-description">
+                         <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                             {state}
+                         </Typography>
+                         <Typography variant="h3" component="h4" className="" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                             {messege}
+                         </Typography>
+                     </DialogContentText>
+                 </DialogContent>
+                 <DialogActions>
+                     {button && (
+                         <Button onClick={handleReport} color="primary" variant="contained">
+                             Continue
+                         </Button>
+                     )}
+                     {!button && (
+                         <Button onClick={handleClose} color="primary" variant="contained">
+                             Continue
+                         </Button>
+                     )} 
+                     {<Button onClick={handleClose} color="primary" variant="outlined" autoFocus>
+                         Cancel
+                     </Button>
 }
-                    </DialogActions>
-                </Dialog>
-            </div>
+                 </DialogActions>
+             </Dialog>
+         </div>
+
+        }
+            {!display && 
+            <SubmitReport />
+
+            }
+           
         </>
     );
 };

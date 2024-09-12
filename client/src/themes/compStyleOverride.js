@@ -1,3 +1,5 @@
+import { height } from "@mui/system";
+
 export default function componentStyleOverrides(theme) {
     const bgColor = theme.colors?.grey50;
     return {
@@ -36,7 +38,8 @@ export default function componentStyleOverrides(theme) {
         MuiCardContent: {
             styleOverrides: {
                 root: {
-                    padding: '24px'
+                    padding: '24px',
+                    height:'500px'
                 }
             }
         },

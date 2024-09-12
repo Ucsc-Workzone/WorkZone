@@ -30,9 +30,16 @@ module.exports = {
   async dutyReport(userid) {
     const array = [];
     try {
-      var todayDate = new Date().toISOString().slice(0, 10);
-      console.log(todayDate);
-      const sqlGet1 = `INSERT INTO workrecord (memberId,status,startDate) VALUES (${userid},0,'${todayDate}')`;
+      const date = new Date();
+
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+// This arrangement can be altered based on how we want the date's format to appear.
+let currentDate = `${year}-${month}-${day}`;
+     
+      const sqlGet1 = `INSERT INTO workrecord (memberId,status,startDate) VALUES (${userid},0,'${currentDate}')`;
       const count1 = await dbconnection.query(sqlGet1);
     
 if(count1){
@@ -61,5 +68,44 @@ if(count1.length!=0){
       throw err;
     }
   },
+  async reportDutyCheck(userid){
+    try{
+      const date = new Date();
+
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+// This arrangement can be altered based on how we want the date's format to appear.
+let currentDate = `${year}-${month}-${day}`;
+console.log(currentDate); // "17-6-2022"
+sql=`SELECT * from workrecord where memberId=${userid} and startDate='${currentDate}' `;
+const count= await dbconnection.query(sql);
+ return count;
+// if(count.length=0){
+//   sql1=`INSERT INTO workrecord (memberId,status,startDate) VALUES (${userid},0,'${currentDate}') `
+//   const count1= await dbconnection.query(sql1);
+//   return count1;
+
+// }
+
+    }
+    catch{
+return "error"
+    }
+  }
+  ,
+  async reportTableFetch(userid) {
   
+    try {
+      
+      const sqlGet1 = `SELECT * FROM  workrecord WHERE memberId=${userid} order by  startDate desc`;
+      const count1 = await dbconnection.query(sqlGet1);
+      return count1[0];
+    
+  
+    } catch (err) {
+      throw err;
+    }
+  },
 };

@@ -23,7 +23,7 @@ const pagesDirector = {
     children: [
         {
             id: 'directorHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/director/dashboard',
             icon: icons.IconLayoutDashboard,
@@ -51,6 +51,14 @@ const pagesDirector = {
             title: 'Leave',
             type: 'item',
             url: '/director/leaves',
+            icon: icons.IconAccessibleOff,
+            breadcrumbs: false
+        },
+        {
+            id: 'directorLeave',
+            title: 'Reports',
+            type: 'item',
+            url: '/director/reports',
             icon: icons.IconAccessibleOff,
             breadcrumbs: false
         },

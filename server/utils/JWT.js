@@ -2,7 +2,7 @@ const {sign,verify}=require('jsonwebtoken')
 
 const createToken=(user)=>{
 const accessToken=sign({username:user.username,userid:user.userid,userrole:user.userRole},"Secret web Token",{
-    expiresIn: '1h' // expires in 24 hours
+    expiresIn: '24h' // expires in 24 hours
      });
 return accessToken;
 };

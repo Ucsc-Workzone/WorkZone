@@ -23,7 +23,7 @@ const pagesCoordinator = {
     children: [
         {
             id: 'coordinatorHome',
-            title: 'Dashborad',
+            title: 'Dashboard',
             type: 'item',
             url: '/coordinator/dashboard',
             icon: icons.IconLayoutDashboard,
